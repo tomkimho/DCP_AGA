@@ -1,0 +1,3298 @@
+{
+  "_embedded": {
+    "associations": [
+      {
+        "loci": [
+          {
+            "haplotypeSnpCount": null,
+            "description": "Single variant",
+            "strongestRiskAlleles": [
+              {
+                "riskAlleleName": "rs17059534-A",
+                "riskFrequency": "0.081",
+                "genomeWide": false,
+                "limitedList": false,
+                "_links": {
+                  "snp": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/rs17059534{?projection}",
+                    "templated": true
+                  },
+                  "proxySnps": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/NR{?projection}",
+                    "templated": true
+                  }
+                }
+              }
+            ],
+            "authorReportedGenes": [
+              {
+                "geneName": "HAND2",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "9464"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000164107"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "riskFrequency": "0.081",
+        "range": "[1.134-1.271]",
+        "pvalueDescription": "(Japanese)",
+        "orPerCopyNum": 1.201,
+        "snpType": "novel",
+        "multiSnpHaplotype": false,
+        "snpInteraction": false,
+        "pvalueMantissa": 3,
+        "pvalueExponent": -10,
+        "standardError": null,
+        "efoTraits": [
+          {
+            "trait": "atrial fibrillation",
+            "uri": "http://www.ebi.ac.uk/efo/EFO_0000275",
+            "shortForm": "EFO_0000275"
+          }
+        ],
+        "backgroundEfoTraits": [],
+        "pvalue": 3e-10,
+        "betaNum": null,
+        "betaUnit": null,
+        "betaDirection": null,
+        "study": {
+          "initialSampleSize": "8,180 Japanese ancestry cases, 28,612 Japanese ancestry controls",
+          "gxe": false,
+          "gxg": false,
+          "snpCount": 5018049,
+          "qualifier": null,
+          "imputed": true,
+          "pooled": false,
+          "studyDesignComment": null,
+          "accessionId": "GCST004373",
+          "fullPvalueSet": true,
+          "userRequested": false,
+          "platforms": [
+            {
+              "manufacturer": "Illumina"
+            }
+          ],
+          "ancestries": [
+            {
+              "type": "initial",
+              "numberOfIndividuals": 36792,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 129712,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "European"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "NR",
+                  "region": "NR",
+                  "countryName": "NR"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 128184,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            }
+          ],
+          "diseaseTrait": {
+            "trait": "Atrial fibrillation"
+          },
+          "genotypingTechnologies": [
+            {
+              "genotypingTechnology": "Genome-wide genotyping array"
+            }
+          ],
+          "replicationSampleSize": "3,120 Japanese ancestry cases, 125,064 Japanese ancestry controls, 15,993 European ancestry cases, 113,719 European ancestry controls",
+          "publicationInfo": {
+            "pubmedId": "28416822",
+            "publicationDate": "2017-04-17",
+            "publication": "Nat Genet",
+            "title": "Identification of six new genetic loci associated with atrial fibrillation in the Japanese population.",
+            "author": {
+              "fullname": "Low SK",
+              "orcid": null
+            }
+          }
+        },
+        "description": null,
+        "_links": {
+          "self": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/21584261"
+          },
+          "association": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/21584261{?projection}",
+            "templated": true
+          },
+          "backgroundEfoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/21584261/backgroundEfoTraits"
+          },
+          "snps": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/21584261/snps"
+          },
+          "efoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/21584261/efoTraits"
+          },
+          "study": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/21584261/study"
+          }
+        }
+      },
+      {
+        "loci": [
+          {
+            "haplotypeSnpCount": null,
+            "description": "Single variant",
+            "strongestRiskAlleles": [
+              {
+                "riskAlleleName": "rs6843082-G",
+                "riskFrequency": "0.68",
+                "genomeWide": false,
+                "limitedList": false,
+                "_links": {
+                  "snp": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/rs6843082{?projection}",
+                    "templated": true
+                  },
+                  "proxySnps": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/NR{?projection}",
+                    "templated": true
+                  }
+                }
+              }
+            ],
+            "authorReportedGenes": [
+              {
+                "geneName": "PITX2",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "5308"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000164093"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "riskFrequency": "0.68",
+        "range": "[1.751-1.939]",
+        "pvalueDescription": "(Japanese)",
+        "orPerCopyNum": 1.842,
+        "snpType": "known",
+        "multiSnpHaplotype": false,
+        "snpInteraction": false,
+        "pvalueMantissa": 1,
+        "pvalueExponent": -126,
+        "standardError": null,
+        "efoTraits": [
+          {
+            "trait": "atrial fibrillation",
+            "uri": "http://www.ebi.ac.uk/efo/EFO_0000275",
+            "shortForm": "EFO_0000275"
+          }
+        ],
+        "backgroundEfoTraits": [],
+        "pvalue": 1e-126,
+        "betaNum": null,
+        "betaUnit": null,
+        "betaDirection": null,
+        "study": {
+          "initialSampleSize": "8,180 Japanese ancestry cases, 28,612 Japanese ancestry controls",
+          "gxe": false,
+          "gxg": false,
+          "snpCount": 5018049,
+          "qualifier": null,
+          "imputed": true,
+          "pooled": false,
+          "studyDesignComment": null,
+          "accessionId": "GCST004373",
+          "fullPvalueSet": true,
+          "userRequested": false,
+          "platforms": [
+            {
+              "manufacturer": "Illumina"
+            }
+          ],
+          "ancestries": [
+            {
+              "type": "initial",
+              "numberOfIndividuals": 36792,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 129712,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "European"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "NR",
+                  "region": "NR",
+                  "countryName": "NR"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 128184,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            }
+          ],
+          "diseaseTrait": {
+            "trait": "Atrial fibrillation"
+          },
+          "genotypingTechnologies": [
+            {
+              "genotypingTechnology": "Genome-wide genotyping array"
+            }
+          ],
+          "replicationSampleSize": "3,120 Japanese ancestry cases, 125,064 Japanese ancestry controls, 15,993 European ancestry cases, 113,719 European ancestry controls",
+          "publicationInfo": {
+            "pubmedId": "28416822",
+            "publicationDate": "2017-04-17",
+            "publication": "Nat Genet",
+            "title": "Identification of six new genetic loci associated with atrial fibrillation in the Japanese population.",
+            "author": {
+              "fullname": "Low SK",
+              "orcid": null
+            }
+          }
+        },
+        "description": null,
+        "_links": {
+          "self": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/21584266"
+          },
+          "association": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/21584266{?projection}",
+            "templated": true
+          },
+          "backgroundEfoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/21584266/backgroundEfoTraits"
+          },
+          "snps": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/21584266/snps"
+          },
+          "efoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/21584266/efoTraits"
+          },
+          "study": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/21584266/study"
+          }
+        }
+      },
+      {
+        "loci": [
+          {
+            "haplotypeSnpCount": null,
+            "description": "Single variant",
+            "strongestRiskAlleles": [
+              {
+                "riskAlleleName": "rs3853445-T",
+                "riskFrequency": "0.67",
+                "genomeWide": false,
+                "limitedList": false,
+                "_links": {
+                  "snp": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/rs3853445{?projection}",
+                    "templated": true
+                  },
+                  "proxySnps": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/NR{?projection}",
+                    "templated": true
+                  }
+                }
+              }
+            ],
+            "authorReportedGenes": [
+              {
+                "geneName": "PITX2",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "5308"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000164093"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "riskFrequency": "0.67",
+        "range": "[1.271-1.391]",
+        "pvalueDescription": "(Japanese)",
+        "orPerCopyNum": 1.33,
+        "snpType": "known",
+        "multiSnpHaplotype": false,
+        "snpInteraction": false,
+        "pvalueMantissa": 2,
+        "pvalueExponent": -34,
+        "standardError": null,
+        "efoTraits": [
+          {
+            "trait": "atrial fibrillation",
+            "uri": "http://www.ebi.ac.uk/efo/EFO_0000275",
+            "shortForm": "EFO_0000275"
+          }
+        ],
+        "backgroundEfoTraits": [],
+        "pvalue": 2e-34,
+        "betaNum": null,
+        "betaUnit": null,
+        "betaDirection": null,
+        "study": {
+          "initialSampleSize": "8,180 Japanese ancestry cases, 28,612 Japanese ancestry controls",
+          "gxe": false,
+          "gxg": false,
+          "snpCount": 5018049,
+          "qualifier": null,
+          "imputed": true,
+          "pooled": false,
+          "studyDesignComment": null,
+          "accessionId": "GCST004373",
+          "fullPvalueSet": true,
+          "userRequested": false,
+          "platforms": [
+            {
+              "manufacturer": "Illumina"
+            }
+          ],
+          "ancestries": [
+            {
+              "type": "initial",
+              "numberOfIndividuals": 36792,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 129712,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "European"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "NR",
+                  "region": "NR",
+                  "countryName": "NR"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 128184,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            }
+          ],
+          "diseaseTrait": {
+            "trait": "Atrial fibrillation"
+          },
+          "genotypingTechnologies": [
+            {
+              "genotypingTechnology": "Genome-wide genotyping array"
+            }
+          ],
+          "replicationSampleSize": "3,120 Japanese ancestry cases, 125,064 Japanese ancestry controls, 15,993 European ancestry cases, 113,719 European ancestry controls",
+          "publicationInfo": {
+            "pubmedId": "28416822",
+            "publicationDate": "2017-04-17",
+            "publication": "Nat Genet",
+            "title": "Identification of six new genetic loci associated with atrial fibrillation in the Japanese population.",
+            "author": {
+              "fullname": "Low SK",
+              "orcid": null
+            }
+          }
+        },
+        "description": null,
+        "_links": {
+          "self": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/21584271"
+          },
+          "association": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/21584271{?projection}",
+            "templated": true
+          },
+          "backgroundEfoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/21584271/backgroundEfoTraits"
+          },
+          "snps": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/21584271/snps"
+          },
+          "efoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/21584271/efoTraits"
+          },
+          "study": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/21584271/study"
+          }
+        }
+      },
+      {
+        "loci": [
+          {
+            "haplotypeSnpCount": null,
+            "description": "Single variant",
+            "strongestRiskAlleles": [
+              {
+                "riskAlleleName": "rs12044963-A",
+                "riskFrequency": "0.502",
+                "genomeWide": false,
+                "limitedList": false,
+                "_links": {
+                  "snp": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/rs12044963{?projection}",
+                    "templated": true
+                  }
+                }
+              }
+            ],
+            "authorReportedGenes": [
+              {
+                "geneName": "KCND3",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "3752"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000171385"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "riskFrequency": "0.502",
+        "range": "[1.082-1.14]",
+        "pvalueDescription": null,
+        "orPerCopyNum": 1.11,
+        "snpType": "novel",
+        "multiSnpHaplotype": false,
+        "snpInteraction": false,
+        "pvalueMantissa": 4,
+        "pvalueExponent": -15,
+        "standardError": null,
+        "efoTraits": [
+          {
+            "trait": "atrial fibrillation",
+            "uri": "http://www.ebi.ac.uk/efo/EFO_0000275",
+            "shortForm": "EFO_0000275"
+          }
+        ],
+        "backgroundEfoTraits": [],
+        "pvalue": 4e-15,
+        "betaNum": null,
+        "betaUnit": null,
+        "betaDirection": null,
+        "study": {
+          "initialSampleSize": "8,180 Japanese ancestry cases, 28,612 Japanese ancestry controls",
+          "gxe": false,
+          "gxg": false,
+          "snpCount": 5018049,
+          "qualifier": null,
+          "imputed": true,
+          "pooled": false,
+          "studyDesignComment": null,
+          "accessionId": "GCST004373",
+          "fullPvalueSet": true,
+          "userRequested": false,
+          "platforms": [
+            {
+              "manufacturer": "Illumina"
+            }
+          ],
+          "ancestries": [
+            {
+              "type": "initial",
+              "numberOfIndividuals": 36792,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 129712,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "European"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "NR",
+                  "region": "NR",
+                  "countryName": "NR"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 128184,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            }
+          ],
+          "diseaseTrait": {
+            "trait": "Atrial fibrillation"
+          },
+          "genotypingTechnologies": [
+            {
+              "genotypingTechnology": "Genome-wide genotyping array"
+            }
+          ],
+          "replicationSampleSize": "3,120 Japanese ancestry cases, 125,064 Japanese ancestry controls, 15,993 European ancestry cases, 113,719 European ancestry controls",
+          "publicationInfo": {
+            "pubmedId": "28416822",
+            "publicationDate": "2017-04-17",
+            "publication": "Nat Genet",
+            "title": "Identification of six new genetic loci associated with atrial fibrillation in the Japanese population.",
+            "author": {
+              "fullname": "Low SK",
+              "orcid": null
+            }
+          }
+        },
+        "description": null,
+        "_links": {
+          "self": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687763"
+          },
+          "association": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687763{?projection}",
+            "templated": true
+          },
+          "backgroundEfoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687763/backgroundEfoTraits"
+          },
+          "snps": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687763/snps"
+          },
+          "efoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687763/efoTraits"
+          },
+          "study": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687763/study"
+          }
+        }
+      },
+      {
+        "loci": [
+          {
+            "haplotypeSnpCount": null,
+            "description": "Single variant",
+            "strongestRiskAlleles": [
+              {
+                "riskAlleleName": "rs17461925-A",
+                "riskFrequency": "0.797",
+                "genomeWide": false,
+                "limitedList": false,
+                "_links": {
+                  "snp": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/rs17461925{?projection}",
+                    "templated": true
+                  }
+                }
+              }
+            ],
+            "authorReportedGenes": [
+              {
+                "geneName": "PPFIA4",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "8497"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000143847"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "riskFrequency": "0.797",
+        "range": "[1.053-1.102]",
+        "pvalueDescription": null,
+        "orPerCopyNum": 1.077,
+        "snpType": "novel",
+        "multiSnpHaplotype": false,
+        "snpInteraction": false,
+        "pvalueMantissa": 9,
+        "pvalueExponent": -11,
+        "standardError": null,
+        "efoTraits": [
+          {
+            "trait": "atrial fibrillation",
+            "uri": "http://www.ebi.ac.uk/efo/EFO_0000275",
+            "shortForm": "EFO_0000275"
+          }
+        ],
+        "backgroundEfoTraits": [],
+        "pvalue": 9e-11,
+        "betaNum": null,
+        "betaUnit": null,
+        "betaDirection": null,
+        "study": {
+          "initialSampleSize": "8,180 Japanese ancestry cases, 28,612 Japanese ancestry controls",
+          "gxe": false,
+          "gxg": false,
+          "snpCount": 5018049,
+          "qualifier": null,
+          "imputed": true,
+          "pooled": false,
+          "studyDesignComment": null,
+          "accessionId": "GCST004373",
+          "fullPvalueSet": true,
+          "userRequested": false,
+          "platforms": [
+            {
+              "manufacturer": "Illumina"
+            }
+          ],
+          "ancestries": [
+            {
+              "type": "initial",
+              "numberOfIndividuals": 36792,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 129712,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "European"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "NR",
+                  "region": "NR",
+                  "countryName": "NR"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 128184,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            }
+          ],
+          "diseaseTrait": {
+            "trait": "Atrial fibrillation"
+          },
+          "genotypingTechnologies": [
+            {
+              "genotypingTechnology": "Genome-wide genotyping array"
+            }
+          ],
+          "replicationSampleSize": "3,120 Japanese ancestry cases, 125,064 Japanese ancestry controls, 15,993 European ancestry cases, 113,719 European ancestry controls",
+          "publicationInfo": {
+            "pubmedId": "28416822",
+            "publicationDate": "2017-04-17",
+            "publication": "Nat Genet",
+            "title": "Identification of six new genetic loci associated with atrial fibrillation in the Japanese population.",
+            "author": {
+              "fullname": "Low SK",
+              "orcid": null
+            }
+          }
+        },
+        "description": null,
+        "_links": {
+          "self": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687768"
+          },
+          "association": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687768{?projection}",
+            "templated": true
+          },
+          "backgroundEfoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687768/backgroundEfoTraits"
+          },
+          "snps": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687768/snps"
+          },
+          "efoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687768/efoTraits"
+          },
+          "study": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687768/study"
+          }
+        }
+      },
+      {
+        "loci": [
+          {
+            "haplotypeSnpCount": null,
+            "description": "Single variant",
+            "strongestRiskAlleles": [
+              {
+                "riskAlleleName": "rs2540953-G",
+                "riskFrequency": "0.65",
+                "genomeWide": false,
+                "limitedList": false,
+                "_links": {
+                  "snp": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/rs2540953{?projection}",
+                    "templated": true
+                  }
+                }
+              }
+            ],
+            "authorReportedGenes": [
+              {
+                "geneName": "SLC1A4",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "6509"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000115902"
+                  }
+                ]
+              },
+              {
+                "geneName": "CEP68",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "23177"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000011523"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "riskFrequency": "0.65",
+        "range": "[1.071-1.117]",
+        "pvalueDescription": null,
+        "orPerCopyNum": 1.094,
+        "snpType": "novel",
+        "multiSnpHaplotype": false,
+        "snpInteraction": false,
+        "pvalueMantissa": 3,
+        "pvalueExponent": -17,
+        "standardError": null,
+        "efoTraits": [
+          {
+            "trait": "atrial fibrillation",
+            "uri": "http://www.ebi.ac.uk/efo/EFO_0000275",
+            "shortForm": "EFO_0000275"
+          }
+        ],
+        "backgroundEfoTraits": [],
+        "pvalue": 3e-17,
+        "betaNum": null,
+        "betaUnit": null,
+        "betaDirection": null,
+        "study": {
+          "initialSampleSize": "8,180 Japanese ancestry cases, 28,612 Japanese ancestry controls",
+          "gxe": false,
+          "gxg": false,
+          "snpCount": 5018049,
+          "qualifier": null,
+          "imputed": true,
+          "pooled": false,
+          "studyDesignComment": null,
+          "accessionId": "GCST004373",
+          "fullPvalueSet": true,
+          "userRequested": false,
+          "platforms": [
+            {
+              "manufacturer": "Illumina"
+            }
+          ],
+          "ancestries": [
+            {
+              "type": "initial",
+              "numberOfIndividuals": 36792,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 129712,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "European"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "NR",
+                  "region": "NR",
+                  "countryName": "NR"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 128184,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            }
+          ],
+          "diseaseTrait": {
+            "trait": "Atrial fibrillation"
+          },
+          "genotypingTechnologies": [
+            {
+              "genotypingTechnology": "Genome-wide genotyping array"
+            }
+          ],
+          "replicationSampleSize": "3,120 Japanese ancestry cases, 125,064 Japanese ancestry controls, 15,993 European ancestry cases, 113,719 European ancestry controls",
+          "publicationInfo": {
+            "pubmedId": "28416822",
+            "publicationDate": "2017-04-17",
+            "publication": "Nat Genet",
+            "title": "Identification of six new genetic loci associated with atrial fibrillation in the Japanese population.",
+            "author": {
+              "fullname": "Low SK",
+              "orcid": null
+            }
+          }
+        },
+        "description": null,
+        "_links": {
+          "self": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687773"
+          },
+          "association": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687773{?projection}",
+            "templated": true
+          },
+          "backgroundEfoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687773/backgroundEfoTraits"
+          },
+          "snps": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687773/snps"
+          },
+          "efoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687773/efoTraits"
+          },
+          "study": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687773/study"
+          }
+        }
+      },
+      {
+        "loci": [
+          {
+            "haplotypeSnpCount": null,
+            "description": "Single variant",
+            "strongestRiskAlleles": [
+              {
+                "riskAlleleName": "rs7698692-A",
+                "riskFrequency": "0.505",
+                "genomeWide": false,
+                "limitedList": false,
+                "_links": {
+                  "snp": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/rs7698692{?projection}",
+                    "templated": true
+                  }
+                }
+              }
+            ],
+            "authorReportedGenes": [
+              {
+                "geneName": "HAND2",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "9464"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000164107"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "riskFrequency": "0.505",
+        "range": "[1.096-1.163]",
+        "pvalueDescription": null,
+        "orPerCopyNum": 1.129,
+        "snpType": "novel",
+        "multiSnpHaplotype": false,
+        "snpInteraction": false,
+        "pvalueMantissa": 8,
+        "pvalueExponent": -16,
+        "standardError": null,
+        "efoTraits": [
+          {
+            "trait": "atrial fibrillation",
+            "uri": "http://www.ebi.ac.uk/efo/EFO_0000275",
+            "shortForm": "EFO_0000275"
+          }
+        ],
+        "backgroundEfoTraits": [],
+        "pvalue": 8e-16,
+        "betaNum": null,
+        "betaUnit": null,
+        "betaDirection": null,
+        "study": {
+          "initialSampleSize": "8,180 Japanese ancestry cases, 28,612 Japanese ancestry controls",
+          "gxe": false,
+          "gxg": false,
+          "snpCount": 5018049,
+          "qualifier": null,
+          "imputed": true,
+          "pooled": false,
+          "studyDesignComment": null,
+          "accessionId": "GCST004373",
+          "fullPvalueSet": true,
+          "userRequested": false,
+          "platforms": [
+            {
+              "manufacturer": "Illumina"
+            }
+          ],
+          "ancestries": [
+            {
+              "type": "initial",
+              "numberOfIndividuals": 36792,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 129712,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "European"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "NR",
+                  "region": "NR",
+                  "countryName": "NR"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 128184,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            }
+          ],
+          "diseaseTrait": {
+            "trait": "Atrial fibrillation"
+          },
+          "genotypingTechnologies": [
+            {
+              "genotypingTechnology": "Genome-wide genotyping array"
+            }
+          ],
+          "replicationSampleSize": "3,120 Japanese ancestry cases, 125,064 Japanese ancestry controls, 15,993 European ancestry cases, 113,719 European ancestry controls",
+          "publicationInfo": {
+            "pubmedId": "28416822",
+            "publicationDate": "2017-04-17",
+            "publication": "Nat Genet",
+            "title": "Identification of six new genetic loci associated with atrial fibrillation in the Japanese population.",
+            "author": {
+              "fullname": "Low SK",
+              "orcid": null
+            }
+          }
+        },
+        "description": null,
+        "_links": {
+          "self": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687778"
+          },
+          "association": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687778{?projection}",
+            "templated": true
+          },
+          "backgroundEfoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687778/backgroundEfoTraits"
+          },
+          "snps": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687778/snps"
+          },
+          "efoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687778/efoTraits"
+          },
+          "study": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687778/study"
+          }
+        }
+      },
+      {
+        "loci": [
+          {
+            "haplotypeSnpCount": null,
+            "description": "Single variant",
+            "strongestRiskAlleles": [
+              {
+                "riskAlleleName": "rs2296610-T",
+                "riskFrequency": "0.125",
+                "genomeWide": false,
+                "limitedList": false,
+                "_links": {
+                  "snp": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/rs2296610{?projection}",
+                    "templated": true
+                  }
+                }
+              }
+            ],
+            "authorReportedGenes": [
+              {
+                "geneName": "NEBL",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "10529"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000078114"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "riskFrequency": "0.125",
+        "range": "[1.141-1.251]",
+        "pvalueDescription": null,
+        "orPerCopyNum": 1.195,
+        "snpType": "novel",
+        "multiSnpHaplotype": false,
+        "snpInteraction": false,
+        "pvalueMantissa": 2,
+        "pvalueExponent": -14,
+        "standardError": null,
+        "efoTraits": [
+          {
+            "trait": "atrial fibrillation",
+            "uri": "http://www.ebi.ac.uk/efo/EFO_0000275",
+            "shortForm": "EFO_0000275"
+          }
+        ],
+        "backgroundEfoTraits": [],
+        "pvalue": 2e-14,
+        "betaNum": null,
+        "betaUnit": null,
+        "betaDirection": null,
+        "study": {
+          "initialSampleSize": "8,180 Japanese ancestry cases, 28,612 Japanese ancestry controls",
+          "gxe": false,
+          "gxg": false,
+          "snpCount": 5018049,
+          "qualifier": null,
+          "imputed": true,
+          "pooled": false,
+          "studyDesignComment": null,
+          "accessionId": "GCST004373",
+          "fullPvalueSet": true,
+          "userRequested": false,
+          "platforms": [
+            {
+              "manufacturer": "Illumina"
+            }
+          ],
+          "ancestries": [
+            {
+              "type": "initial",
+              "numberOfIndividuals": 36792,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 129712,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "European"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "NR",
+                  "region": "NR",
+                  "countryName": "NR"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 128184,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            }
+          ],
+          "diseaseTrait": {
+            "trait": "Atrial fibrillation"
+          },
+          "genotypingTechnologies": [
+            {
+              "genotypingTechnology": "Genome-wide genotyping array"
+            }
+          ],
+          "replicationSampleSize": "3,120 Japanese ancestry cases, 125,064 Japanese ancestry controls, 15,993 European ancestry cases, 113,719 European ancestry controls",
+          "publicationInfo": {
+            "pubmedId": "28416822",
+            "publicationDate": "2017-04-17",
+            "publication": "Nat Genet",
+            "title": "Identification of six new genetic loci associated with atrial fibrillation in the Japanese population.",
+            "author": {
+              "fullname": "Low SK",
+              "orcid": null
+            }
+          }
+        },
+        "description": null,
+        "_links": {
+          "self": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687783"
+          },
+          "association": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687783{?projection}",
+            "templated": true
+          },
+          "backgroundEfoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687783/backgroundEfoTraits"
+          },
+          "snps": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687783/snps"
+          },
+          "efoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687783/efoTraits"
+          },
+          "study": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687783/study"
+          }
+        }
+      },
+      {
+        "loci": [
+          {
+            "haplotypeSnpCount": null,
+            "description": "Single variant",
+            "strongestRiskAlleles": [
+              {
+                "riskAlleleName": "rs2047036-G",
+                "riskFrequency": "0.257",
+                "genomeWide": false,
+                "limitedList": false,
+                "_links": {
+                  "snp": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/rs2047036{?projection}",
+                    "templated": true
+                  }
+                }
+              }
+            ],
+            "authorReportedGenes": [
+              {
+                "geneName": "SH3PXD2A",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "9644"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000107957"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "riskFrequency": "0.257",
+        "range": "[1.055-1.102]",
+        "pvalueDescription": null,
+        "orPerCopyNum": 1.078,
+        "snpType": "novel",
+        "multiSnpHaplotype": false,
+        "snpInteraction": false,
+        "pvalueMantissa": 2,
+        "pvalueExponent": -11,
+        "standardError": null,
+        "efoTraits": [
+          {
+            "trait": "atrial fibrillation",
+            "uri": "http://www.ebi.ac.uk/efo/EFO_0000275",
+            "shortForm": "EFO_0000275"
+          }
+        ],
+        "backgroundEfoTraits": [],
+        "pvalue": 2e-11,
+        "betaNum": null,
+        "betaUnit": null,
+        "betaDirection": null,
+        "study": {
+          "initialSampleSize": "8,180 Japanese ancestry cases, 28,612 Japanese ancestry controls",
+          "gxe": false,
+          "gxg": false,
+          "snpCount": 5018049,
+          "qualifier": null,
+          "imputed": true,
+          "pooled": false,
+          "studyDesignComment": null,
+          "accessionId": "GCST004373",
+          "fullPvalueSet": true,
+          "userRequested": false,
+          "platforms": [
+            {
+              "manufacturer": "Illumina"
+            }
+          ],
+          "ancestries": [
+            {
+              "type": "initial",
+              "numberOfIndividuals": 36792,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 129712,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "European"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "NR",
+                  "region": "NR",
+                  "countryName": "NR"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 128184,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            }
+          ],
+          "diseaseTrait": {
+            "trait": "Atrial fibrillation"
+          },
+          "genotypingTechnologies": [
+            {
+              "genotypingTechnology": "Genome-wide genotyping array"
+            }
+          ],
+          "replicationSampleSize": "3,120 Japanese ancestry cases, 125,064 Japanese ancestry controls, 15,993 European ancestry cases, 113,719 European ancestry controls",
+          "publicationInfo": {
+            "pubmedId": "28416822",
+            "publicationDate": "2017-04-17",
+            "publication": "Nat Genet",
+            "title": "Identification of six new genetic loci associated with atrial fibrillation in the Japanese population.",
+            "author": {
+              "fullname": "Low SK",
+              "orcid": null
+            }
+          }
+        },
+        "description": null,
+        "_links": {
+          "self": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687788"
+          },
+          "association": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687788{?projection}",
+            "templated": true
+          },
+          "backgroundEfoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687788/backgroundEfoTraits"
+          },
+          "snps": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687788/snps"
+          },
+          "efoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687788/efoTraits"
+          },
+          "study": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687788/study"
+          }
+        }
+      },
+      {
+        "loci": [
+          {
+            "haplotypeSnpCount": null,
+            "description": "Single variant",
+            "strongestRiskAlleles": [
+              {
+                "riskAlleleName": "rs13385-A",
+                "riskFrequency": "0.375",
+                "genomeWide": false,
+                "limitedList": false,
+                "_links": {
+                  "snp": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/rs13385{?projection}",
+                    "templated": true
+                  }
+                }
+              }
+            ],
+            "authorReportedGenes": [
+              {
+                "geneName": "HBEGF",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "1839"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000113070"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "riskFrequency": "0.375",
+        "range": "[1.058-1.131]",
+        "pvalueDescription": "(Japanese)",
+        "orPerCopyNum": 1.094,
+        "snpType": "novel",
+        "multiSnpHaplotype": false,
+        "snpInteraction": false,
+        "pvalueMantissa": 2,
+        "pvalueExponent": -7,
+        "standardError": null,
+        "efoTraits": [
+          {
+            "trait": "atrial fibrillation",
+            "uri": "http://www.ebi.ac.uk/efo/EFO_0000275",
+            "shortForm": "EFO_0000275"
+          }
+        ],
+        "backgroundEfoTraits": [],
+        "pvalue": 2e-07,
+        "betaNum": null,
+        "betaUnit": null,
+        "betaDirection": null,
+        "study": {
+          "initialSampleSize": "8,180 Japanese ancestry cases, 28,612 Japanese ancestry controls",
+          "gxe": false,
+          "gxg": false,
+          "snpCount": 5018049,
+          "qualifier": null,
+          "imputed": true,
+          "pooled": false,
+          "studyDesignComment": null,
+          "accessionId": "GCST004373",
+          "fullPvalueSet": true,
+          "userRequested": false,
+          "platforms": [
+            {
+              "manufacturer": "Illumina"
+            }
+          ],
+          "ancestries": [
+            {
+              "type": "initial",
+              "numberOfIndividuals": 36792,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 129712,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "European"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "NR",
+                  "region": "NR",
+                  "countryName": "NR"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 128184,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            }
+          ],
+          "diseaseTrait": {
+            "trait": "Atrial fibrillation"
+          },
+          "genotypingTechnologies": [
+            {
+              "genotypingTechnology": "Genome-wide genotyping array"
+            }
+          ],
+          "replicationSampleSize": "3,120 Japanese ancestry cases, 125,064 Japanese ancestry controls, 15,993 European ancestry cases, 113,719 European ancestry controls",
+          "publicationInfo": {
+            "pubmedId": "28416822",
+            "publicationDate": "2017-04-17",
+            "publication": "Nat Genet",
+            "title": "Identification of six new genetic loci associated with atrial fibrillation in the Japanese population.",
+            "author": {
+              "fullname": "Low SK",
+              "orcid": null
+            }
+          }
+        },
+        "description": null,
+        "_links": {
+          "self": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687793"
+          },
+          "association": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687793{?projection}",
+            "templated": true
+          },
+          "backgroundEfoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687793/backgroundEfoTraits"
+          },
+          "snps": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687793/snps"
+          },
+          "efoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687793/efoTraits"
+          },
+          "study": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687793/study"
+          }
+        }
+      },
+      {
+        "loci": [
+          {
+            "haplotypeSnpCount": null,
+            "description": "Single variant",
+            "strongestRiskAlleles": [
+              {
+                "riskAlleleName": "rs1675334-G",
+                "riskFrequency": "0.291",
+                "genomeWide": false,
+                "limitedList": false,
+                "_links": {
+                  "snp": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/rs1675334{?projection}",
+                    "templated": true
+                  }
+                }
+              }
+            ],
+            "authorReportedGenes": [
+              {
+                "geneName": "SYK",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "6850"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000165025"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "riskFrequency": "0.291",
+        "range": "[1.048-1.126]",
+        "pvalueDescription": "(Japanese)",
+        "orPerCopyNum": 1.087,
+        "snpType": "novel",
+        "multiSnpHaplotype": false,
+        "snpInteraction": false,
+        "pvalueMantissa": 6,
+        "pvalueExponent": -6,
+        "standardError": null,
+        "efoTraits": [
+          {
+            "trait": "atrial fibrillation",
+            "uri": "http://www.ebi.ac.uk/efo/EFO_0000275",
+            "shortForm": "EFO_0000275"
+          }
+        ],
+        "backgroundEfoTraits": [],
+        "pvalue": 6e-06,
+        "betaNum": null,
+        "betaUnit": null,
+        "betaDirection": null,
+        "study": {
+          "initialSampleSize": "8,180 Japanese ancestry cases, 28,612 Japanese ancestry controls",
+          "gxe": false,
+          "gxg": false,
+          "snpCount": 5018049,
+          "qualifier": null,
+          "imputed": true,
+          "pooled": false,
+          "studyDesignComment": null,
+          "accessionId": "GCST004373",
+          "fullPvalueSet": true,
+          "userRequested": false,
+          "platforms": [
+            {
+              "manufacturer": "Illumina"
+            }
+          ],
+          "ancestries": [
+            {
+              "type": "initial",
+              "numberOfIndividuals": 36792,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 129712,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "European"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "NR",
+                  "region": "NR",
+                  "countryName": "NR"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 128184,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            }
+          ],
+          "diseaseTrait": {
+            "trait": "Atrial fibrillation"
+          },
+          "genotypingTechnologies": [
+            {
+              "genotypingTechnology": "Genome-wide genotyping array"
+            }
+          ],
+          "replicationSampleSize": "3,120 Japanese ancestry cases, 125,064 Japanese ancestry controls, 15,993 European ancestry cases, 113,719 European ancestry controls",
+          "publicationInfo": {
+            "pubmedId": "28416822",
+            "publicationDate": "2017-04-17",
+            "publication": "Nat Genet",
+            "title": "Identification of six new genetic loci associated with atrial fibrillation in the Japanese population.",
+            "author": {
+              "fullname": "Low SK",
+              "orcid": null
+            }
+          }
+        },
+        "description": null,
+        "_links": {
+          "self": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687798"
+          },
+          "association": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687798{?projection}",
+            "templated": true
+          },
+          "backgroundEfoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687798/backgroundEfoTraits"
+          },
+          "snps": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687798/snps"
+          },
+          "efoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687798/efoTraits"
+          },
+          "study": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687798/study"
+          }
+        }
+      },
+      {
+        "loci": [
+          {
+            "haplotypeSnpCount": null,
+            "description": "Single variant",
+            "strongestRiskAlleles": [
+              {
+                "riskAlleleName": "rs2220427-T",
+                "riskFrequency": "0.45",
+                "genomeWide": false,
+                "limitedList": false,
+                "_links": {
+                  "snp": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/rs2220427{?projection}",
+                    "templated": true
+                  }
+                }
+              }
+            ],
+            "authorReportedGenes": [
+              {
+                "geneName": "PITX2",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "5308"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000164093"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "riskFrequency": "0.45",
+        "range": "[1.635-1.783]",
+        "pvalueDescription": "(Japanese)",
+        "orPerCopyNum": 1.707,
+        "snpType": "known",
+        "multiSnpHaplotype": false,
+        "snpInteraction": false,
+        "pvalueMantissa": 2,
+        "pvalueExponent": -134,
+        "standardError": null,
+        "efoTraits": [
+          {
+            "trait": "atrial fibrillation",
+            "uri": "http://www.ebi.ac.uk/efo/EFO_0000275",
+            "shortForm": "EFO_0000275"
+          }
+        ],
+        "backgroundEfoTraits": [],
+        "pvalue": 2e-134,
+        "betaNum": null,
+        "betaUnit": null,
+        "betaDirection": null,
+        "study": {
+          "initialSampleSize": "8,180 Japanese ancestry cases, 28,612 Japanese ancestry controls",
+          "gxe": false,
+          "gxg": false,
+          "snpCount": 5018049,
+          "qualifier": null,
+          "imputed": true,
+          "pooled": false,
+          "studyDesignComment": null,
+          "accessionId": "GCST004373",
+          "fullPvalueSet": true,
+          "userRequested": false,
+          "platforms": [
+            {
+              "manufacturer": "Illumina"
+            }
+          ],
+          "ancestries": [
+            {
+              "type": "initial",
+              "numberOfIndividuals": 36792,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 129712,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "European"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "NR",
+                  "region": "NR",
+                  "countryName": "NR"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 128184,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            }
+          ],
+          "diseaseTrait": {
+            "trait": "Atrial fibrillation"
+          },
+          "genotypingTechnologies": [
+            {
+              "genotypingTechnology": "Genome-wide genotyping array"
+            }
+          ],
+          "replicationSampleSize": "3,120 Japanese ancestry cases, 125,064 Japanese ancestry controls, 15,993 European ancestry cases, 113,719 European ancestry controls",
+          "publicationInfo": {
+            "pubmedId": "28416822",
+            "publicationDate": "2017-04-17",
+            "publication": "Nat Genet",
+            "title": "Identification of six new genetic loci associated with atrial fibrillation in the Japanese population.",
+            "author": {
+              "fullname": "Low SK",
+              "orcid": null
+            }
+          }
+        },
+        "description": null,
+        "_links": {
+          "self": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687803"
+          },
+          "association": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687803{?projection}",
+            "templated": true
+          },
+          "backgroundEfoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687803/backgroundEfoTraits"
+          },
+          "snps": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687803/snps"
+          },
+          "efoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687803/efoTraits"
+          },
+          "study": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687803/study"
+          }
+        }
+      },
+      {
+        "loci": [
+          {
+            "haplotypeSnpCount": null,
+            "description": "Single variant",
+            "strongestRiskAlleles": [
+              {
+                "riskAlleleName": "rs1049334-G",
+                "riskFrequency": "0.71",
+                "genomeWide": false,
+                "limitedList": false,
+                "_links": {
+                  "snp": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/rs1049334{?projection}",
+                    "templated": true
+                  }
+                }
+              }
+            ],
+            "authorReportedGenes": [
+              {
+                "geneName": "CAV1",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "857"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000105974"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "riskFrequency": "0.71",
+        "range": "[1.148-1.261]",
+        "pvalueDescription": "(Japanese)",
+        "orPerCopyNum": 1.203,
+        "snpType": "known",
+        "multiSnpHaplotype": false,
+        "snpInteraction": false,
+        "pvalueMantissa": 2,
+        "pvalueExponent": -14,
+        "standardError": null,
+        "efoTraits": [
+          {
+            "trait": "atrial fibrillation",
+            "uri": "http://www.ebi.ac.uk/efo/EFO_0000275",
+            "shortForm": "EFO_0000275"
+          }
+        ],
+        "backgroundEfoTraits": [],
+        "pvalue": 2e-14,
+        "betaNum": null,
+        "betaUnit": null,
+        "betaDirection": null,
+        "study": {
+          "initialSampleSize": "8,180 Japanese ancestry cases, 28,612 Japanese ancestry controls",
+          "gxe": false,
+          "gxg": false,
+          "snpCount": 5018049,
+          "qualifier": null,
+          "imputed": true,
+          "pooled": false,
+          "studyDesignComment": null,
+          "accessionId": "GCST004373",
+          "fullPvalueSet": true,
+          "userRequested": false,
+          "platforms": [
+            {
+              "manufacturer": "Illumina"
+            }
+          ],
+          "ancestries": [
+            {
+              "type": "initial",
+              "numberOfIndividuals": 36792,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 129712,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "European"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "NR",
+                  "region": "NR",
+                  "countryName": "NR"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 128184,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            }
+          ],
+          "diseaseTrait": {
+            "trait": "Atrial fibrillation"
+          },
+          "genotypingTechnologies": [
+            {
+              "genotypingTechnology": "Genome-wide genotyping array"
+            }
+          ],
+          "replicationSampleSize": "3,120 Japanese ancestry cases, 125,064 Japanese ancestry controls, 15,993 European ancestry cases, 113,719 European ancestry controls",
+          "publicationInfo": {
+            "pubmedId": "28416822",
+            "publicationDate": "2017-04-17",
+            "publication": "Nat Genet",
+            "title": "Identification of six new genetic loci associated with atrial fibrillation in the Japanese population.",
+            "author": {
+              "fullname": "Low SK",
+              "orcid": null
+            }
+          }
+        },
+        "description": null,
+        "_links": {
+          "self": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687808"
+          },
+          "association": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687808{?projection}",
+            "templated": true
+          },
+          "backgroundEfoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687808/backgroundEfoTraits"
+          },
+          "snps": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687808/snps"
+          },
+          "efoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687808/efoTraits"
+          },
+          "study": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687808/study"
+          }
+        }
+      },
+      {
+        "loci": [
+          {
+            "haplotypeSnpCount": null,
+            "description": "Single variant",
+            "strongestRiskAlleles": [
+              {
+                "riskAlleleName": "rs60572254-T",
+                "riskFrequency": "0.09",
+                "genomeWide": false,
+                "limitedList": false,
+                "_links": {
+                  "snp": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/rs60572254{?projection}",
+                    "templated": true
+                  }
+                }
+              }
+            ],
+            "authorReportedGenes": [
+              {
+                "geneName": "NEURL1",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "9148"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000107954"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "riskFrequency": "0.09",
+        "range": "[1.336-1.532]",
+        "pvalueDescription": "(Japanese)",
+        "orPerCopyNum": 1.43,
+        "snpType": "known",
+        "multiSnpHaplotype": false,
+        "snpInteraction": false,
+        "pvalueMantissa": 3,
+        "pvalueExponent": -24,
+        "standardError": null,
+        "efoTraits": [
+          {
+            "trait": "atrial fibrillation",
+            "uri": "http://www.ebi.ac.uk/efo/EFO_0000275",
+            "shortForm": "EFO_0000275"
+          }
+        ],
+        "backgroundEfoTraits": [],
+        "pvalue": 2.9999999999999996e-24,
+        "betaNum": null,
+        "betaUnit": null,
+        "betaDirection": null,
+        "study": {
+          "initialSampleSize": "8,180 Japanese ancestry cases, 28,612 Japanese ancestry controls",
+          "gxe": false,
+          "gxg": false,
+          "snpCount": 5018049,
+          "qualifier": null,
+          "imputed": true,
+          "pooled": false,
+          "studyDesignComment": null,
+          "accessionId": "GCST004373",
+          "fullPvalueSet": true,
+          "userRequested": false,
+          "platforms": [
+            {
+              "manufacturer": "Illumina"
+            }
+          ],
+          "ancestries": [
+            {
+              "type": "initial",
+              "numberOfIndividuals": 36792,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 129712,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "European"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "NR",
+                  "region": "NR",
+                  "countryName": "NR"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 128184,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            }
+          ],
+          "diseaseTrait": {
+            "trait": "Atrial fibrillation"
+          },
+          "genotypingTechnologies": [
+            {
+              "genotypingTechnology": "Genome-wide genotyping array"
+            }
+          ],
+          "replicationSampleSize": "3,120 Japanese ancestry cases, 125,064 Japanese ancestry controls, 15,993 European ancestry cases, 113,719 European ancestry controls",
+          "publicationInfo": {
+            "pubmedId": "28416822",
+            "publicationDate": "2017-04-17",
+            "publication": "Nat Genet",
+            "title": "Identification of six new genetic loci associated with atrial fibrillation in the Japanese population.",
+            "author": {
+              "fullname": "Low SK",
+              "orcid": null
+            }
+          }
+        },
+        "description": null,
+        "_links": {
+          "self": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687818"
+          },
+          "association": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687818{?projection}",
+            "templated": true
+          },
+          "backgroundEfoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687818/backgroundEfoTraits"
+          },
+          "snps": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687818/snps"
+          },
+          "efoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687818/efoTraits"
+          },
+          "study": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687818/study"
+          }
+        }
+      },
+      {
+        "loci": [
+          {
+            "haplotypeSnpCount": null,
+            "description": "Single variant",
+            "strongestRiskAlleles": [
+              {
+                "riskAlleleName": "rs13219206-C",
+                "riskFrequency": "0.72",
+                "genomeWide": false,
+                "limitedList": false,
+                "_links": {
+                  "snp": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/rs13219206{?projection}",
+                    "templated": true
+                  }
+                }
+              }
+            ],
+            "authorReportedGenes": [
+              {
+                "geneName": "GJA1",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "2697"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000152661"
+                  }
+                ]
+              },
+              {
+                "geneName": "HSF2",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "3298"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000025156"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "riskFrequency": "0.72",
+        "range": "[1.091-1.198]",
+        "pvalueDescription": "(Japanese)",
+        "orPerCopyNum": 1.144,
+        "snpType": "known",
+        "multiSnpHaplotype": false,
+        "snpInteraction": false,
+        "pvalueMantissa": 4,
+        "pvalueExponent": -8,
+        "standardError": null,
+        "efoTraits": [
+          {
+            "trait": "atrial fibrillation",
+            "uri": "http://www.ebi.ac.uk/efo/EFO_0000275",
+            "shortForm": "EFO_0000275"
+          }
+        ],
+        "backgroundEfoTraits": [],
+        "pvalue": 4e-08,
+        "betaNum": null,
+        "betaUnit": null,
+        "betaDirection": null,
+        "study": {
+          "initialSampleSize": "8,180 Japanese ancestry cases, 28,612 Japanese ancestry controls",
+          "gxe": false,
+          "gxg": false,
+          "snpCount": 5018049,
+          "qualifier": null,
+          "imputed": true,
+          "pooled": false,
+          "studyDesignComment": null,
+          "accessionId": "GCST004373",
+          "fullPvalueSet": true,
+          "userRequested": false,
+          "platforms": [
+            {
+              "manufacturer": "Illumina"
+            }
+          ],
+          "ancestries": [
+            {
+              "type": "initial",
+              "numberOfIndividuals": 36792,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 129712,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "European"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "NR",
+                  "region": "NR",
+                  "countryName": "NR"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 128184,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            }
+          ],
+          "diseaseTrait": {
+            "trait": "Atrial fibrillation"
+          },
+          "genotypingTechnologies": [
+            {
+              "genotypingTechnology": "Genome-wide genotyping array"
+            }
+          ],
+          "replicationSampleSize": "3,120 Japanese ancestry cases, 125,064 Japanese ancestry controls, 15,993 European ancestry cases, 113,719 European ancestry controls",
+          "publicationInfo": {
+            "pubmedId": "28416822",
+            "publicationDate": "2017-04-17",
+            "publication": "Nat Genet",
+            "title": "Identification of six new genetic loci associated with atrial fibrillation in the Japanese population.",
+            "author": {
+              "fullname": "Low SK",
+              "orcid": null
+            }
+          }
+        },
+        "description": null,
+        "_links": {
+          "self": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687823"
+          },
+          "association": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687823{?projection}",
+            "templated": true
+          },
+          "backgroundEfoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687823/backgroundEfoTraits"
+          },
+          "snps": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687823/snps"
+          },
+          "efoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687823/efoTraits"
+          },
+          "study": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687823/study"
+          }
+        }
+      },
+      {
+        "loci": [
+          {
+            "haplotypeSnpCount": null,
+            "description": "Single variant",
+            "strongestRiskAlleles": [
+              {
+                "riskAlleleName": "rs639652-G",
+                "riskFrequency": "0.54",
+                "genomeWide": false,
+                "limitedList": false,
+                "_links": {
+                  "snp": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/rs639652{?projection}",
+                    "templated": true
+                  }
+                }
+              }
+            ],
+            "authorReportedGenes": [
+              {
+                "geneName": "PRRX1",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "5396"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000116132"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "riskFrequency": "0.54",
+        "range": "[1.086-1.184]",
+        "pvalueDescription": "(Japanese)",
+        "orPerCopyNum": 1.135,
+        "snpType": "known",
+        "multiSnpHaplotype": false,
+        "snpInteraction": false,
+        "pvalueMantissa": 4,
+        "pvalueExponent": -9,
+        "standardError": null,
+        "efoTraits": [
+          {
+            "trait": "atrial fibrillation",
+            "uri": "http://www.ebi.ac.uk/efo/EFO_0000275",
+            "shortForm": "EFO_0000275"
+          }
+        ],
+        "backgroundEfoTraits": [],
+        "pvalue": 4e-09,
+        "betaNum": null,
+        "betaUnit": null,
+        "betaDirection": null,
+        "study": {
+          "initialSampleSize": "8,180 Japanese ancestry cases, 28,612 Japanese ancestry controls",
+          "gxe": false,
+          "gxg": false,
+          "snpCount": 5018049,
+          "qualifier": null,
+          "imputed": true,
+          "pooled": false,
+          "studyDesignComment": null,
+          "accessionId": "GCST004373",
+          "fullPvalueSet": true,
+          "userRequested": false,
+          "platforms": [
+            {
+              "manufacturer": "Illumina"
+            }
+          ],
+          "ancestries": [
+            {
+              "type": "initial",
+              "numberOfIndividuals": 36792,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 129712,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "European"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "NR",
+                  "region": "NR",
+                  "countryName": "NR"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 128184,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            }
+          ],
+          "diseaseTrait": {
+            "trait": "Atrial fibrillation"
+          },
+          "genotypingTechnologies": [
+            {
+              "genotypingTechnology": "Genome-wide genotyping array"
+            }
+          ],
+          "replicationSampleSize": "3,120 Japanese ancestry cases, 125,064 Japanese ancestry controls, 15,993 European ancestry cases, 113,719 European ancestry controls",
+          "publicationInfo": {
+            "pubmedId": "28416822",
+            "publicationDate": "2017-04-17",
+            "publication": "Nat Genet",
+            "title": "Identification of six new genetic loci associated with atrial fibrillation in the Japanese population.",
+            "author": {
+              "fullname": "Low SK",
+              "orcid": null
+            }
+          }
+        },
+        "description": null,
+        "_links": {
+          "self": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687828"
+          },
+          "association": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687828{?projection}",
+            "templated": true
+          },
+          "backgroundEfoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687828/backgroundEfoTraits"
+          },
+          "snps": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687828/snps"
+          },
+          "efoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687828/efoTraits"
+          },
+          "study": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687828/study"
+          }
+        }
+      },
+      {
+        "loci": [
+          {
+            "haplotypeSnpCount": null,
+            "description": "Single variant",
+            "strongestRiskAlleles": [
+              {
+                "riskAlleleName": "rs883079-T",
+                "riskFrequency": "0.42",
+                "genomeWide": false,
+                "limitedList": false,
+                "_links": {
+                  "snp": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/rs883079{?projection}",
+                    "templated": true
+                  }
+                }
+              }
+            ],
+            "authorReportedGenes": [
+              {
+                "geneName": "TBX5",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "6910"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000089225"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "riskFrequency": "0.42",
+        "range": "[1.134-1.236]",
+        "pvalueDescription": "(Japanese)",
+        "orPerCopyNum": 1.184,
+        "snpType": "known",
+        "multiSnpHaplotype": false,
+        "snpInteraction": false,
+        "pvalueMantissa": 5,
+        "pvalueExponent": -15,
+        "standardError": null,
+        "efoTraits": [
+          {
+            "trait": "atrial fibrillation",
+            "uri": "http://www.ebi.ac.uk/efo/EFO_0000275",
+            "shortForm": "EFO_0000275"
+          }
+        ],
+        "backgroundEfoTraits": [],
+        "pvalue": 5.000000000000001e-15,
+        "betaNum": null,
+        "betaUnit": null,
+        "betaDirection": null,
+        "study": {
+          "initialSampleSize": "8,180 Japanese ancestry cases, 28,612 Japanese ancestry controls",
+          "gxe": false,
+          "gxg": false,
+          "snpCount": 5018049,
+          "qualifier": null,
+          "imputed": true,
+          "pooled": false,
+          "studyDesignComment": null,
+          "accessionId": "GCST004373",
+          "fullPvalueSet": true,
+          "userRequested": false,
+          "platforms": [
+            {
+              "manufacturer": "Illumina"
+            }
+          ],
+          "ancestries": [
+            {
+              "type": "initial",
+              "numberOfIndividuals": 36792,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 129712,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "European"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "NR",
+                  "region": "NR",
+                  "countryName": "NR"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 128184,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            }
+          ],
+          "diseaseTrait": {
+            "trait": "Atrial fibrillation"
+          },
+          "genotypingTechnologies": [
+            {
+              "genotypingTechnology": "Genome-wide genotyping array"
+            }
+          ],
+          "replicationSampleSize": "3,120 Japanese ancestry cases, 125,064 Japanese ancestry controls, 15,993 European ancestry cases, 113,719 European ancestry controls",
+          "publicationInfo": {
+            "pubmedId": "28416822",
+            "publicationDate": "2017-04-17",
+            "publication": "Nat Genet",
+            "title": "Identification of six new genetic loci associated with atrial fibrillation in the Japanese population.",
+            "author": {
+              "fullname": "Low SK",
+              "orcid": null
+            }
+          }
+        },
+        "description": null,
+        "_links": {
+          "self": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687833"
+          },
+          "association": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687833{?projection}",
+            "templated": true
+          },
+          "backgroundEfoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687833/backgroundEfoTraits"
+          },
+          "snps": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687833/snps"
+          },
+          "efoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687833/efoTraits"
+          },
+          "study": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687833/study"
+          }
+        }
+      },
+      {
+        "loci": [
+          {
+            "haplotypeSnpCount": null,
+            "description": "Single variant",
+            "strongestRiskAlleles": [
+              {
+                "riskAlleleName": "rs4766566-T",
+                "riskFrequency": "0.68",
+                "genomeWide": false,
+                "limitedList": false,
+                "_links": {
+                  "snp": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/rs4766566{?projection}",
+                    "templated": true
+                  }
+                }
+              }
+            ],
+            "authorReportedGenes": [
+              {
+                "geneName": "CUX2",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "23316"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000111249"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "riskFrequency": "0.68",
+        "range": "[1.062-1.162]",
+        "pvalueDescription": "(Japanese)",
+        "orPerCopyNum": 1.11,
+        "snpType": "known",
+        "multiSnpHaplotype": false,
+        "snpInteraction": false,
+        "pvalueMantissa": 7,
+        "pvalueExponent": -6,
+        "standardError": null,
+        "efoTraits": [
+          {
+            "trait": "atrial fibrillation",
+            "uri": "http://www.ebi.ac.uk/efo/EFO_0000275",
+            "shortForm": "EFO_0000275"
+          }
+        ],
+        "backgroundEfoTraits": [],
+        "pvalue": 7e-06,
+        "betaNum": null,
+        "betaUnit": null,
+        "betaDirection": null,
+        "study": {
+          "initialSampleSize": "8,180 Japanese ancestry cases, 28,612 Japanese ancestry controls",
+          "gxe": false,
+          "gxg": false,
+          "snpCount": 5018049,
+          "qualifier": null,
+          "imputed": true,
+          "pooled": false,
+          "studyDesignComment": null,
+          "accessionId": "GCST004373",
+          "fullPvalueSet": true,
+          "userRequested": false,
+          "platforms": [
+            {
+              "manufacturer": "Illumina"
+            }
+          ],
+          "ancestries": [
+            {
+              "type": "initial",
+              "numberOfIndividuals": 36792,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 129712,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "European"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "NR",
+                  "region": "NR",
+                  "countryName": "NR"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 128184,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            }
+          ],
+          "diseaseTrait": {
+            "trait": "Atrial fibrillation"
+          },
+          "genotypingTechnologies": [
+            {
+              "genotypingTechnology": "Genome-wide genotyping array"
+            }
+          ],
+          "replicationSampleSize": "3,120 Japanese ancestry cases, 125,064 Japanese ancestry controls, 15,993 European ancestry cases, 113,719 European ancestry controls",
+          "publicationInfo": {
+            "pubmedId": "28416822",
+            "publicationDate": "2017-04-17",
+            "publication": "Nat Genet",
+            "title": "Identification of six new genetic loci associated with atrial fibrillation in the Japanese population.",
+            "author": {
+              "fullname": "Low SK",
+              "orcid": null
+            }
+          }
+        },
+        "description": null,
+        "_links": {
+          "self": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687838"
+          },
+          "association": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687838{?projection}",
+            "templated": true
+          },
+          "backgroundEfoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687838/backgroundEfoTraits"
+          },
+          "snps": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687838/snps"
+          },
+          "efoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687838/efoTraits"
+          },
+          "study": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687838/study"
+          }
+        }
+      },
+      {
+        "loci": [
+          {
+            "haplotypeSnpCount": null,
+            "description": "Single variant",
+            "strongestRiskAlleles": [
+              {
+                "riskAlleleName": "rs2106261-T",
+                "riskFrequency": "0.31",
+                "genomeWide": false,
+                "limitedList": false,
+                "_links": {
+                  "snp": {
+                    "href": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/rs2106261{?projection}",
+                    "templated": true
+                  }
+                }
+              }
+            ],
+            "authorReportedGenes": [
+              {
+                "geneName": "ZFHX3",
+                "entrezGeneIds": [
+                  {
+                    "entrezGeneId": "463"
+                  }
+                ],
+                "ensemblGeneIds": [
+                  {
+                    "ensemblGeneId": "ENSG00000140836"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "riskFrequency": "0.31",
+        "range": "[1.267-1.387]",
+        "pvalueDescription": "(Japanese)",
+        "orPerCopyNum": 1.326,
+        "snpType": "known",
+        "multiSnpHaplotype": false,
+        "snpInteraction": false,
+        "pvalueMantissa": 1,
+        "pvalueExponent": -35,
+        "standardError": null,
+        "efoTraits": [
+          {
+            "trait": "atrial fibrillation",
+            "uri": "http://www.ebi.ac.uk/efo/EFO_0000275",
+            "shortForm": "EFO_0000275"
+          }
+        ],
+        "backgroundEfoTraits": [],
+        "pvalue": 1e-35,
+        "betaNum": null,
+        "betaUnit": null,
+        "betaDirection": null,
+        "study": {
+          "initialSampleSize": "8,180 Japanese ancestry cases, 28,612 Japanese ancestry controls",
+          "gxe": false,
+          "gxg": false,
+          "snpCount": 5018049,
+          "qualifier": null,
+          "imputed": true,
+          "pooled": false,
+          "studyDesignComment": null,
+          "accessionId": "GCST004373",
+          "fullPvalueSet": true,
+          "userRequested": false,
+          "platforms": [
+            {
+              "manufacturer": "Illumina"
+            }
+          ],
+          "ancestries": [
+            {
+              "type": "initial",
+              "numberOfIndividuals": 36792,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 129712,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "European"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "NR",
+                  "region": "NR",
+                  "countryName": "NR"
+                }
+              ]
+            },
+            {
+              "type": "replication",
+              "numberOfIndividuals": 128184,
+              "ancestralGroups": [
+                {
+                  "ancestralGroup": "East Asian"
+                }
+              ],
+              "countryOfOrigin": [],
+              "countryOfRecruitment": [
+                {
+                  "majorArea": "Asia",
+                  "region": "Eastern Asia",
+                  "countryName": "Japan"
+                }
+              ]
+            }
+          ],
+          "diseaseTrait": {
+            "trait": "Atrial fibrillation"
+          },
+          "genotypingTechnologies": [
+            {
+              "genotypingTechnology": "Genome-wide genotyping array"
+            }
+          ],
+          "replicationSampleSize": "3,120 Japanese ancestry cases, 125,064 Japanese ancestry controls, 15,993 European ancestry cases, 113,719 European ancestry controls",
+          "publicationInfo": {
+            "pubmedId": "28416822",
+            "publicationDate": "2017-04-17",
+            "publication": "Nat Genet",
+            "title": "Identification of six new genetic loci associated with atrial fibrillation in the Japanese population.",
+            "author": {
+              "fullname": "Low SK",
+              "orcid": null
+            }
+          }
+        },
+        "description": null,
+        "_links": {
+          "self": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687843"
+          },
+          "association": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687843{?projection}",
+            "templated": true
+          },
+          "backgroundEfoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687843/backgroundEfoTraits"
+          },
+          "snps": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687843/snps"
+          },
+          "efoTraits": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687843/efoTraits"
+          },
+          "study": {
+            "href": "https://www.ebi.ac.uk/gwas/rest/api/associations/19687843/study"
+          }
+        }
+      }
+    ]
+  },
+  "_links": {
+    "self": {
+      "href": "https://www.ebi.ac.uk/gwas/rest/api/studies/GCST004373/associations?projection=associationByStudy"
+    }
+  }
+}

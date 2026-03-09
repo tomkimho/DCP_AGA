@@ -1,0 +1,26 @@
+[
+  {
+    "target": "Prolactin Receptor (PRLR)",
+    "tier": "T3",
+    "evidence": "ABS-201 Phase 1/2a (AI-designed, 2025)",
+    "druggability": "3/5"
+  },
+  {
+    "target": "AR PROTAC Degradation",
+    "tier": "T1-novel",
+    "evidence": "GT20029 Phase 2+ (2025), no sexual AEs",
+    "druggability": "5/5"
+  },
+  {
+    "target": "HFSC Metabolic Dormancy",
+    "tier": "T2-novel",
+    "evidence": "PP405 Phase 2a, stem cell escape",
+    "druggability": "3/5"
+  },
+  {
+    "target": "Scalp Microbiome",
+    "tier": "T4-novel",
+    "evidence": "Microbiome dysbiosis (2024-2025)",
+    "druggability": "2/5"
+  }
+]

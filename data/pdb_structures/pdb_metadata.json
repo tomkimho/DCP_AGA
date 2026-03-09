@@ -1,0 +1,82 @@
+{
+  "7BW1": {
+    "description": "SRD5A2 (5α-Reductase Type 2) + Finasteride",
+    "file": "7BW1.pdb"
+  },
+  "7BW2": {
+    "description": "SRD5A2 (5α-Reductase Type 2) + Dutasteride",
+    "file": "7BW2.pdb"
+  },
+  "1I37": {
+    "description": "AR LBD (Androgen Receptor) + Metribolone",
+    "file": "1I37.pdb"
+  },
+  "2AX6": {
+    "description": "AR LBD + Hydroxyflutamide",
+    "file": "2AX6.pdb"
+  },
+  "3L3X": {
+    "description": "AR LBD + Enzalutamide analog",
+    "file": "3L3X.pdb"
+  },
+  "5JJM": {
+    "description": "AR LBD + Darolutamide",
+    "file": "5JJM.pdb"
+  },
+  "8FWG": {
+    "description": "AR LBD + PROTAC (ARV-110 analog)",
+    "file": "8FWG.pdb"
+  },
+  "3S2K": {
+    "description": "Wnt3a",
+    "file": "3S2K.pdb"
+  },
+  "4F0A": {
+    "description": "DKK1-LRP6 complex",
+    "file": "4F0A.pdb"
+  },
+  "6AHY": {
+    "description": "Porcupine (PORCN) + WNT-974",
+    "file": "6AHY.pdb"
+  },
+  "3FUP": {
+    "description": "JAK1 + Tofacitinib",
+    "file": "3FUP.pdb"
+  },
+  "6VN8": {
+    "description": "JAK2 + Ruxolitinib",
+    "file": "6VN8.pdb"
+  },
+  "4W9X": {
+    "description": "JAK3 + Baricitinib",
+    "file": "4W9X.pdb"
+  },
+  "1BJ1": {
+    "description": "FGF receptor",
+    "file": "1BJ1.pdb"
+  },
+  "5BO4": {
+    "description": "HDAC6",
+    "file": "5BO4.pdb"
+  },
+  "3OZ6": {
+    "description": "PDE5 + Sildenafil",
+    "file": "3OZ6.pdb"
+  },
+  "6G8Y": {
+    "description": "CXCR4",
+    "file": "6G8Y.pdb"
+  },
+  "4RWS": {
+    "description": "CXCL12/SDF-1",
+    "file": "4RWS.pdb"
+  },
+  "1KTZ": {
+    "description": "TGF-β1",
+    "file": "1KTZ.pdb"
+  },
+  "3TZM": {
+    "description": "ALK5 (TGF-β receptor I)",
+    "file": "3TZM.pdb"
+  }
+}

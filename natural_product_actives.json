@@ -1,0 +1,1992 @@
+{
+  "metadata": {
+    "total_natural_products_mapped": 126,
+    "total_active_compounds": 96,
+    "found_in_pubchem": 89,
+    "generated_date": "2026-03-06 07:34:30"
+  },
+  "natural_product_mapping": {
+    "Anti-EGFR antibody": [
+      "Epidermal growth factor"
+    ],
+    "Camellia sinensis (녹차잎)": [
+      "Epigallocatechin gallate",
+      "Caffeine",
+      "Theanine"
+    ],
+    "Camellia sinensis var. assamica": [
+      "Epigallocatechin gallate",
+      "Caffeine",
+      "Theanine"
+    ],
+    "Camellia sinensis)": [
+      "Epigallocatechin gallate",
+      "Caffeine",
+      "Theanine"
+    ],
+    "Centella asiatica (병풀잎)": [
+      "Asiaticoside",
+      "Madecassoside",
+      "Asiatic acid"
+    ],
+    "Centella asiatica extract": [
+      "Asiaticoside",
+      "Madecassoside"
+    ],
+    "Centella asiatica extract powder": [
+      "Asiaticoside",
+      "Madecassoside",
+      "Asiatic acid"
+    ],
+    "Centella asiatica powder (병풀 가루)": [
+      "Asiaticoside",
+      "Madecassoside",
+      "Asiatic acid"
+    ],
+    "Concentrated Growth Factor (CGF)": [
+      "Platelet-derived growth factor"
+    ],
+    "Conditionally active anti-EGFR antibody": [
+      "Epidermal growth factor"
+    ],
+    "Conjugated linoleic acid (CLA)": [
+      "Conjugated linoleic acid"
+    ],
+    "Connarus semidecandrus Jack ethanol extract (Cs-EE)": [
+      "Rhamnetin"
+    ],
+    "Connarus semidecandrus Jack. extract": [
+      "Rhamnetin"
+    ],
+    "Copper ions (Cu2+)": [
+      "Copper gluconate"
+    ],
+    "Coprinus comatus extract": [
+      "Ergothioneine"
+    ],
+    "Coptis chinensis extract": [
+      "Berberine",
+      "Coptisine",
+      "Palmatine"
+    ],
+    "Coptis chinensis extract (황련 추출물)": [
+      "Berberine",
+      "Coptisine",
+      "Palmatine"
+    ],
+    "Corni Fructus (산수유)": [
+      "Loganin",
+      "Morroniside",
+      "Ursolic acid"
+    ],
+    "Cornus officinalis": [
+      "Loganin",
+      "Morroniside",
+      "Ursolic acid"
+    ],
+    "Cornus officinalis (CO)": [
+      "Loganin",
+      "Morroniside",
+      "Ursolic acid"
+    ],
+    "Corticotropin-releasing hormone (CRH)": [
+      "Corticotropin-releasing hormone"
+    ],
+    "Corydalis yanhusuo (현호색)": [
+      "Tetrahydropalmatine",
+      "Corydaline",
+      "Berberine"
+    ],
+    "Crataegus pinnatifida extract": [
+      "Vitexin",
+      "Hyperoside",
+      "Chlorogenic acid"
+    ],
+    "Crinum asiaticum extract": [
+      "Lycorine",
+      "Crinamine"
+    ],
+    "Crinum asiaticum var. japonicum (문주란) extract": [
+      "Lycorine"
+    ],
+    "Cu-GHK peptide": [
+      "Copper peptide GHK-Cu"
+    ],
+    "Cucumber extract": [
+      "Cucurbitacin E"
+    ],
+    "Cucurbita pepo extract": [
+      "Beta-sitosterol",
+      "Cucurbitacin"
+    ],
+    "Curcumin derivatives": [
+      "Curcumin",
+      "Demethoxycurcumin",
+      "Bisdemethoxycurcumin"
+    ],
+    "Cuscuta reflexa Roxb. ethanolic extract": [
+      "Kaempferol",
+      "Quercetin"
+    ],
+    "Cycloastragenol (CAG)": [
+      "Cycloastragenol"
+    ],
+    "Cyclophosphamide (CTX)": [
+      "Cyclophosphamide"
+    ],
+    "Cyclophosphamide (CYP)": [
+      "Cyclophosphamide"
+    ],
+    "Cyclosporin A (CsA)": [
+      "Cyclosporine"
+    ],
+    "Cynanchi wilfordii": [
+      "Cynandione A"
+    ],
+    "Cynanchum wilfordii (Baekhasueoul)": [
+      "Cynandione A"
+    ],
+    "Cynanchum wilfordii (백하수오)": [
+      "Cynandione A",
+      "Acetophenone"
+    ],
+    "Cyperus Rotundus Root Extract (향부자추출물)": [
+      "Alpha-cyperone",
+      "Rotundone"
+    ],
+    "DHT (Dihydrotestosterone)": [
+      "Dihydrotestosterone"
+    ],
+    "DPHC (diphlorethohydroxycarmalol)": [
+      "Diphlorethohydroxycarmalol"
+    ],
+    "Dandelion extract (민들레 추출물)": [
+      "Taraxasterol",
+      "Luteolin"
+    ],
+    "Dendropanax morbifera extract": [
+      "Rutin",
+      "Chlorogenic acid"
+    ],
+    "Dinitrochlorobenzene (DNCB)": [
+      "Dinitrochlorobenzene"
+    ],
+    "Dioscorea polystachya (노랑하늘타리) extract": [
+      "Diosgenin",
+      "Allantoin"
+    ],
+    "Diospyros kaki": [
+      "Gallic acid",
+      "Kaempferol"
+    ],
+    "Diospyros kaki leaf (감잎)": [
+      "Gallic acid",
+      "Kaempferol",
+      "Astragalin"
+    ],
+    "Diphencyprone (DPCP)": [
+      "Diphencyprone"
+    ],
+    "Diphenyleneiodonium (DPI)": [
+      "Diphenyleneiodonium"
+    ],
+    "Docosahexaenoic acid (DHA)": [
+      "Docosahexaenoic acid"
+    ],
+    "Doxorubicin (DOX)": [
+      "Doxorubicin"
+    ],
+    "Dried brewer's yeast": [
+      "Beta-glucan",
+      "Biotin"
+    ],
+    "Drynaria fortunei (보골지)": [
+      "Naringin",
+      "Neoeriocitrin"
+    ],
+    "Duchesnea indica (Indian strawberry) extract": [
+      "Ellagic acid"
+    ],
+    "EGCG (Epigallocatechin gallate)": [
+      "Epigallocatechin gallate"
+    ],
+    "EGF": [
+      "Epidermal growth factor"
+    ],
+    "EGF (Epidermal Growth Factor)": [
+      "Epidermal growth factor"
+    ],
+    "Eclipta alba (한련초)": [
+      "Wedelolactone",
+      "Eclalbatin"
+    ],
+    "Eclipta prostrata": [
+      "Wedelolactone",
+      "Eclalbatin",
+      "Luteolin"
+    ],
+    "Eclipta prostrata (한련초)": [
+      "Wedelolactone",
+      "Eclalbatin",
+      "Luteolin"
+    ],
+    "Eclipta prostrata (한련초) horse oil extract": [
+      "Wedelolactone",
+      "Eclalbatin",
+      "Luteolin"
+    ],
+    "Eclipta prostrata L. extract": [
+      "Wedelolactone",
+      "Eclalbatin"
+    ],
+    "Eclipta prostrata extract in horse oil": [
+      "Wedelolactone",
+      "Eclalbatin",
+      "Luteolin"
+    ],
+    "Ecliptae Herba": [
+      "Wedelolactone",
+      "Eclalbatin"
+    ],
+    "Ecliptae Herba (EH)": [
+      "Wedelolactone",
+      "Eclalbatin"
+    ],
+    "Eggplant extract": [
+      "Nasunin",
+      "Chlorogenic acid"
+    ],
+    "Eicosapentaenoic acid (EPA)": [
+      "Eicosapentaenoic acid"
+    ],
+    "Enterococcus faecalis": [
+      "Lipoteichoic acid"
+    ],
+    "Enterococcus faecalis EF-2001": [
+      "Lipoteichoic acid"
+    ],
+    "Enterococcus faecalis EF-2001 (dead cell)": [
+      "Lipoteichoic acid"
+    ],
+    "Enterococcus faecalis EF-2001 dead cells": [
+      "Lipoteichoic acid"
+    ],
+    "GHK peptide": [
+      "Copper peptide GHK-Cu"
+    ],
+    "Ginkgo biloba": [
+      "Ginkgolide A",
+      "Ginkgolide B",
+      "Bilobalide"
+    ],
+    "Ginkgo biloba extract (은행잎 추출물)": [
+      "Ginkgolide A",
+      "Ginkgolide B",
+      "Bilobalide"
+    ],
+    "Ginkgo biloba leaf (은행잎)": [
+      "Ginkgolide A",
+      "Ginkgolide B",
+      "Bilobalide"
+    ],
+    "Ginkgo biloba leaf extract": [
+      "Ginkgolide A",
+      "Ginkgolide B",
+      "Bilobalide"
+    ],
+    "Glycyrrhiza glabra": [
+      "Glycyrrhizin",
+      "Glabridin"
+    ],
+    "Glycyrrhiza glabra (감초)": [
+      "Glycyrrhizin",
+      "Glabridin"
+    ],
+    "Green tea": [
+      "Epigallocatechin gallate",
+      "Epicatechin",
+      "Catechin"
+    ],
+    "Green tea extract": [
+      "Epigallocatechin gallate",
+      "Epicatechin",
+      "Catechin"
+    ],
+    "Licorice": [
+      "Glycyrrhizin",
+      "Glabridin",
+      "Liquiritigenin"
+    ],
+    "Licorice extract": [
+      "Glycyrrhizin",
+      "Glabridin",
+      "Liquiritigenin"
+    ],
+    "Modified anti-EGFR antibody": [
+      "Epidermal growth factor"
+    ],
+    "Natural extract mixture (Cornus officinalis": [
+      "Loganin",
+      "Morroniside",
+      "Ursolic acid"
+    ],
+    "Panax ginseng (인삼)": [
+      "Ginsenoside Rg1",
+      "Ginsenoside Rb1",
+      "Ginsenoside Rg3"
+    ],
+    "Panax ginseng (홍삼) extract": [
+      "Ginsenoside Rg1",
+      "Ginsenoside Rb1",
+      "Ginsenoside Rg3"
+    ],
+    "Panax ginseng seed (인삼씨)": [
+      "Ginsenoside Rg1",
+      "Ginsenoside Rb1",
+      "Ginsenoside Rg3"
+    ],
+    "Plant extract from Group 2 (Panax ginseng": [
+      "Ginsenoside Rg1",
+      "Ginsenoside Rb1",
+      "Ginsenoside Rg3"
+    ],
+    "Plant extract from Group 3 (Camellia sinensis": [
+      "Epigallocatechin gallate",
+      "Caffeine",
+      "Theanine"
+    ],
+    "Platycladus orientalis (측백엽)": [
+      "Kaempferol",
+      "Hinokiflavone"
+    ],
+    "Polygonum multiflorum": [
+      "Emodin",
+      "Stilbene glycoside",
+      "Resveratrol"
+    ],
+    "Polygonum multiflorum (적하수오)": [
+      "Emodin",
+      "Stilbene glycoside",
+      "Resveratrol"
+    ],
+    "Polygonum multiflorum (하수오)": [
+      "Emodin",
+      "Stilbene glycoside",
+      "Resveratrol"
+    ],
+    "Polygonum multiflorum extract": [
+      "Emodin",
+      "Stilbene glycoside",
+      "Resveratrol"
+    ],
+    "Polygonum multiflorum extract (백수오 추출물)": [
+      "Emodin",
+      "Stilbene glycoside",
+      "Resveratrol"
+    ],
+    "Polygonum multiflorum)": [
+      "Emodin",
+      "Stilbene glycoside",
+      "Resveratrol"
+    ],
+    "Pueraria lobata (갈근)": [
+      "Puerarin",
+      "Daidzein",
+      "Genistein"
+    ],
+    "Pueraria lobata extract": [
+      "Puerarin",
+      "Daidzein",
+      "Genistein"
+    ],
+    "Pumpkin seed oil": [
+      "Beta-sitosterol",
+      "Delta-7-stigmastenol"
+    ],
+    "Red ginseng extract": [
+      "Ginsenoside Rg3",
+      "Ginsenoside Rh2",
+      "Compound K"
+    ],
+    "Red ginseng extract (홍삼 추출물)": [
+      "Ginsenoside Rg3",
+      "Ginsenoside Rh2",
+      "Compound K"
+    ],
+    "Red ginseng fermented extract": [
+      "Ginsenoside Rg3",
+      "Ginsenoside Rh2",
+      "Compound K"
+    ],
+    "Red ginseng oil": [
+      "Ginsenoside Rg3",
+      "Ginsenoside Rh2",
+      "Compound K"
+    ],
+    "Rosemary": [
+      "Rosmarinic acid",
+      "Carnosic acid",
+      "Carnosol"
+    ],
+    "Rosemary extract (Rosmarinus officinalis L.)": [
+      "Rosmarinic acid",
+      "Carnosic acid",
+      "Carnosol"
+    ],
+    "Saw Palmetto": [
+      "Beta-sitosterol",
+      "Lauric acid",
+      "Oleic acid"
+    ],
+    "Saw Palmetto (Serenoa repens)": [
+      "Beta-sitosterol",
+      "Lauric acid",
+      "Oleic acid"
+    ],
+    "Saw Palmetto extract": [
+      "Beta-sitosterol",
+      "Lauric acid",
+      "Oleic acid"
+    ],
+    "Saw palmetto": [
+      "Beta-sitosterol",
+      "Lauric acid",
+      "Oleic acid"
+    ],
+    "Saw palmetto extract": [
+      "Beta-sitosterol",
+      "Lauric acid",
+      "Oleic acid"
+    ],
+    "Saw palmetto oil": [
+      "Beta-sitosterol",
+      "Lauric acid",
+      "Oleic acid"
+    ],
+    "Serenoa repens": [
+      "Beta-sitosterol",
+      "Lauric acid"
+    ],
+    "Serenoa repens extract": [
+      "Beta-sitosterol",
+      "Lauric acid"
+    ],
+    "Sophora flavescens (고삼)": [
+      "Matrine",
+      "Oxymatrine",
+      "Kurarinone"
+    ],
+    "Sophora flavescens extract": [
+      "Matrine",
+      "Oxymatrine",
+      "Kurarinone"
+    ],
+    "Sophora flavescens extract (고삼 extract)": [
+      "Matrine",
+      "Oxymatrine",
+      "Kurarinone"
+    ],
+    "Thuja orientalis L. extract": [
+      "Kaempferol",
+      "Isoquercetin",
+      "Hinokiflavone"
+    ],
+    "Thuja orientalis extract": [
+      "Kaempferol",
+      "Isoquercetin",
+      "Hinokiflavone"
+    ],
+    "Thuja orientalis leaf (측백엽)": [
+      "Kaempferol",
+      "Isoquercetin",
+      "Hinokiflavone"
+    ],
+    "VEGF": [
+      "Epidermal growth factor"
+    ],
+    "VEGFA": [
+      "Epidermal growth factor"
+    ],
+    "Vascular endothelial growth factor (VEGF)": [
+      "Epidermal growth factor"
+    ],
+    "보골지": [
+      "Naringin",
+      "Neoeriocitrin"
+    ],
+    "측백나무 잎(Thuja orientalis)": [
+      "Kaempferol",
+      "Isoquercetin",
+      "Hinokiflavone"
+    ],
+    "한련초": [
+      "Wedelolactone",
+      "Eclalbatin",
+      "Luteolin"
+    ],
+    "한련초 (Eclipta prostrata)": [
+      "Wedelolactone",
+      "Eclalbatin",
+      "Luteolin"
+    ],
+    "현호색)": [
+      "Tetrahydropalmatine",
+      "Corydaline",
+      "Berberine"
+    ]
+  },
+  "active_compounds": {
+    "Acetophenone": {
+      "name": "Acetophenone",
+      "CID": 7410,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C8H8O",
+      "MolecularWeight": "120.15",
+      "IUPACName": "1-phenylethanone",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/7410/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/7410",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Allantoin": {
+      "name": "Allantoin",
+      "CID": 204,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C4H6N4O3",
+      "MolecularWeight": "158.12",
+      "IUPACName": "(2,5-dioxoimidazolidin-4-yl)urea",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/204/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/204",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Alpha-cyperone": {
+      "name": "Alpha-cyperone",
+      "CID": 6452086,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C15H22O",
+      "MolecularWeight": "218.33",
+      "IUPACName": "(4aS,7R)-1,4a-dimethyl-7-prop-1-en-2-yl-3,4,5,6,7,8-hexahydronaphthalen-2-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/6452086/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/6452086",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Asiatic acid": {
+      "name": "Asiatic acid",
+      "CID": 119034,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C30H48O5",
+      "MolecularWeight": "488.7",
+      "IUPACName": "(1S,2R,4aS,6aR,6aS,6bR,8aR,9R,10R,11R,12aR,14bS)-10,11-dihydroxy-9-(hydroxymethyl)-1,2,6a,6b,9,12a-hexamethyl-2,3,4,5,6,6a,7,8,8a,10,11,12,13,14b-tetradecahydro-1H-picene-4a-carboxylic acid",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/119034/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/119034",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Asiaticoside": {
+      "name": "Asiaticoside",
+      "CID": 11954171,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C48H78O19",
+      "MolecularWeight": "959.1",
+      "IUPACName": "[(2S,3R,4S,5S,6R)-6-[[(2R,3R,4R,5S,6R)-3,4-dihydroxy-6-(hydroxymethyl)-5-[(2S,3R,4R,5R,6S)-3,4,5-trihydroxy-6-methyloxan-2-yl]oxyoxan-2-yl]oxymethyl]-3,4,5-trihydroxyoxan-2-yl] (1S,2R,4aS,6aR,6aS,6bR,8aR,9R,10R,11R,12aR,14bS)-10,11-dihydroxy-9-(hydroxymethyl)-1,2,6a,6b,9,12a-hexamethyl-2,3,4,5,6,6a,7,8,8a,10,11,12,13,14b-tetradecahydro-1H-picene-4a-carboxylate",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/11954171/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/11954171",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Astragalin": {
+      "name": "Astragalin",
+      "CID": 5282102,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C21H20O11",
+      "MolecularWeight": "448.4",
+      "IUPACName": "5,7-dihydroxy-2-(4-hydroxyphenyl)-3-[(2S,3R,4S,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxychromen-4-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5282102/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5282102",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Berberine": {
+      "name": "Berberine",
+      "CID": 2353,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C20H18NO4+",
+      "MolecularWeight": "336.4",
+      "IUPACName": "16,17-dimethoxy-5,7-dioxa-13-azoniapentacyclo[11.8.0.02,10.04,8.015,20]henicosa-1(13),2,4(8),9,14,16,18,20-octaene",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2353/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/2353",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Beta-glucan": {
+      "name": "Beta-glucan",
+      "CID": 439262,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C18H32O16",
+      "MolecularWeight": "504.4",
+      "IUPACName": "(2S,3R,4S,5S,6R)-2-[(2R,4R,5R,6S)-4,5-dihydroxy-2-(hydroxymethyl)-6-[(2R,4R,5R,6S)-4,5,6-trihydroxy-2-(hydroxymethyl)oxan-3-yl]oxyoxan-3-yl]oxy-6-(hydroxymethyl)oxane-3,4,5-triol",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/439262/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/439262",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Beta-sitosterol": {
+      "name": "Beta-sitosterol",
+      "CID": 222284,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C29H50O",
+      "MolecularWeight": "414.7",
+      "IUPACName": "(3S,8S,9S,10R,13R,14S,17R)-17-[(2R,5R)-5-ethyl-6-methylheptan-2-yl]-10,13-dimethyl-2,3,4,7,8,9,11,12,14,15,16,17-dodecahydro-1H-cyclopenta[a]phenanthren-3-ol",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/222284/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/222284",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Bilobalide": {
+      "name": "Bilobalide",
+      "CID": 73581,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C15H18O8",
+      "MolecularWeight": "326.30",
+      "IUPACName": "(1S,4R,7R,8S,9R,11S)-9-tert-butyl-7,9-dihydroxy-3,5,12-trioxatetracyclo[6.6.0.01,11.04,8]tetradecane-2,6,13-trione",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/73581/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/73581",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Biotin": {
+      "name": "Biotin",
+      "CID": 171548,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C10H16N2O3S",
+      "MolecularWeight": "244.31",
+      "IUPACName": "5-[(3aS,4S,6aR)-2-oxo-1,3,3a,4,6,6a-hexahydrothieno[3,4-d]imidazol-4-yl]pentanoic acid",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/171548/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/171548",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Bisdemethoxycurcumin": {
+      "name": "Bisdemethoxycurcumin",
+      "CID": 5315472,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C19H16O4",
+      "MolecularWeight": "308.3",
+      "IUPACName": "(1E,6E)-1,7-bis(4-hydroxyphenyl)hepta-1,6-diene-3,5-dione",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5315472/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5315472",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Caffeine": {
+      "name": "Caffeine",
+      "CID": 2519,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C8H10N4O2",
+      "MolecularWeight": "194.19",
+      "IUPACName": "1,3,7-trimethylpurine-2,6-dione",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2519/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/2519",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Carnosic acid": {
+      "name": "Carnosic acid",
+      "CID": 65126,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C20H28O4",
+      "MolecularWeight": "332.4",
+      "IUPACName": "(4aR,10aS)-5,6-dihydroxy-1,1-dimethyl-7-propan-2-yl-2,3,4,9,10,10a-hexahydrophenanthrene-4a-carboxylic acid",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/65126/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/65126",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Carnosol": {
+      "name": "Carnosol",
+      "CID": 442009,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C20H26O4",
+      "MolecularWeight": "330.4",
+      "IUPACName": "(1R,8S,10S)-3,4-dihydroxy-11,11-dimethyl-5-propan-2-yl-16-oxatetracyclo[6.6.2.01,10.02,7]hexadeca-2,4,6-trien-15-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/442009/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/442009",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Catechin": {
+      "name": "Catechin",
+      "CID": 9064,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C15H14O6",
+      "MolecularWeight": "290.27",
+      "IUPACName": "(2R,3S)-2-(3,4-dihydroxyphenyl)-3,4-dihydro-2H-chromene-3,5,7-triol",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/9064/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/9064",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Chlorogenic acid": {
+      "name": "Chlorogenic acid",
+      "CID": 1794427,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C16H18O9",
+      "MolecularWeight": "354.31",
+      "IUPACName": "(1S,3R,4R,5R)-3-[(E)-3-(3,4-dihydroxyphenyl)prop-2-enoyl]oxy-1,4,5-trihydroxycyclohexane-1-carboxylic acid",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/1794427/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/1794427",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Compound K": {
+      "name": "Compound K",
+      "CID": 5481990,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C38H47N5O5",
+      "MolecularWeight": "653.8",
+      "IUPACName": "(2S)-1-[(2S,4R)-4-benzyl-2-hydroxy-5-[[(1S,2R)-2-hydroxy-2,3-dihydro-1H-inden-1-yl]amino]-5-oxopentyl]-N-tert-butyl-4-(furo[2,3-b]pyridin-5-ylmethyl)piperazine-2-carboxamide",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5481990/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5481990",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Conjugated linoleic acid": {
+      "name": "Conjugated linoleic acid",
+      "status": "not_found"
+    },
+    "Copper gluconate": {
+      "name": "Copper gluconate",
+      "CID": 10692,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C12H22CuO14",
+      "MolecularWeight": "453.84",
+      "IUPACName": "copper bis((2R,3S,4R,5R)-2,3,4,5,6-pentahydroxyhexanoate)",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/10692/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/10692",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Copper peptide GHK-Cu": {
+      "name": "Copper peptide GHK-Cu",
+      "status": "not_found"
+    },
+    "Coptisine": {
+      "name": "Coptisine",
+      "CID": 72322,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C19H14NO4+",
+      "MolecularWeight": "320.3",
+      "IUPACName": "5,7,17,19-tetraoxa-13-azoniahexacyclo[11.11.0.02,10.04,8.015,23.016,20]tetracosa-1(13),2,4(8),9,14,16(20),21,23-octaene",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/72322/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/72322",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Corticotropin-releasing hormone": {
+      "name": "Corticotropin-releasing hormone",
+      "status": "not_found"
+    },
+    "Corydaline": {
+      "name": "Corydaline",
+      "CID": 101301,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C22H27NO4",
+      "MolecularWeight": "369.5",
+      "IUPACName": "(13S,13aR)-2,3,9,10-tetramethoxy-13-methyl-6,8,13,13a-tetrahydro-5H-isoquinolino[2,1-b]isoquinoline",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/101301/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/101301",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Crinamine": {
+      "name": "Crinamine",
+      "CID": 73620,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C17H19NO4",
+      "MolecularWeight": "301.34",
+      "IUPACName": "(1S,13S,15R,18R)-15-methoxy-5,7-dioxa-12-azapentacyclo[10.5.2.01,13.02,10.04,8]nonadeca-2,4(8),9,16-tetraen-18-ol",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/73620/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/73620",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Cucurbitacin": {
+      "name": "Cucurbitacin",
+      "CID": 5281323,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C32H48O8",
+      "MolecularWeight": "560.7",
+      "IUPACName": "[(E,6R)-6-hydroxy-2-methyl-5-oxo-6-[(2R,3S,8S,9R,10R,13R,14S,16R,17R)-2,3,16-trihydroxy-4,4,9,13,14-pentamethyl-11-oxo-1,2,3,7,8,10,12,15,16,17-decahydrocyclopenta[a]phenanthren-17-yl]hept-3-en-2-yl] acetate",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5281323/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5281323",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Cucurbitacin E": {
+      "name": "Cucurbitacin E",
+      "CID": 5281319,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C32H44O8",
+      "MolecularWeight": "556.7",
+      "IUPACName": "[(E,6R)-6-[(8S,9R,10R,13R,14S,16R,17R)-2,16-dihydroxy-4,4,9,13,14-pentamethyl-3,11-dioxo-8,10,12,15,16,17-hexahydro-7H-cyclopenta[a]phenanthren-17-yl]-6-hydroxy-2-methyl-5-oxohept-3-en-2-yl] acetate",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5281319/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5281319",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Curcumin": {
+      "name": "Curcumin",
+      "CID": 969516,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C21H20O6",
+      "MolecularWeight": "368.4",
+      "IUPACName": "(1E,6E)-1,7-bis(4-hydroxy-3-methoxyphenyl)hepta-1,6-diene-3,5-dione",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/969516/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/969516",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Cycloastragenol": {
+      "name": "Cycloastragenol",
+      "CID": 13943286,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C30H50O5",
+      "MolecularWeight": "490.7",
+      "IUPACName": "(1S,3R,6S,8R,9S,11S,12S,14S,15R,16R)-15-[(2R,5S)-5-(2-hydroxypropan-2-yl)-2-methyloxolan-2-yl]-7,7,12,16-tetramethylpentacyclo[9.7.0.01,3.03,8.012,16]octadecane-6,9,14-triol",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/13943286/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/13943286",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Cyclophosphamide": {
+      "name": "Cyclophosphamide",
+      "CID": 2907,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C7H15Cl2N2O2P",
+      "MolecularWeight": "261.08",
+      "IUPACName": "N,N-bis(2-chloroethyl)-2-oxo-1,3,2lambda5-oxazaphosphinan-2-amine",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2907/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/2907",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Cyclosporine": {
+      "name": "Cyclosporine",
+      "CID": 5284373,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C62H111N11O12",
+      "MolecularWeight": "1202.6",
+      "IUPACName": "(3S,6S,9S,12R,15S,18S,21S,24S,30S,33S)-30-ethyl-33-[(E,1R,2R)-1-hydroxy-2-methylhex-4-enyl]-1,4,7,10,12,15,19,25,28-nonamethyl-6,9,18,24-tetrakis(2-methylpropyl)-3,21-di(propan-2-yl)-1,4,7,10,13,16,19,22,25,28,31-undecazacyclotritriacontane-2,5,8,11,14,17,20,23,26,29,32-undecone",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5284373/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5284373",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Cynandione A": {
+      "name": "Cynandione A",
+      "CID": 10063465,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C16H14O6",
+      "MolecularWeight": "302.28",
+      "IUPACName": "1-[3-(2-acetyl-3,6-dihydroxyphenyl)-2,4-dihydroxyphenyl]ethanone",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/10063465/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/10063465",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Daidzein": {
+      "name": "Daidzein",
+      "CID": 5281708,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C15H10O4",
+      "MolecularWeight": "254.24",
+      "IUPACName": "7-hydroxy-3-(4-hydroxyphenyl)chromen-4-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5281708/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5281708",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Delta-7-stigmastenol": {
+      "name": "Delta-7-stigmastenol",
+      "status": "not_found"
+    },
+    "Demethoxycurcumin": {
+      "name": "Demethoxycurcumin",
+      "CID": 5469424,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C20H18O5",
+      "MolecularWeight": "338.4",
+      "IUPACName": "(1E,6E)-1-(4-hydroxy-3-methoxyphenyl)-7-(4-hydroxyphenyl)hepta-1,6-diene-3,5-dione",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5469424/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5469424",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Dihydrotestosterone": {
+      "name": "Dihydrotestosterone",
+      "CID": 10635,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C19H30O2",
+      "MolecularWeight": "290.4",
+      "IUPACName": "(5S,8R,9S,10S,13S,14S,17S)-17-hydroxy-10,13-dimethyl-1,2,4,5,6,7,8,9,11,12,14,15,16,17-tetradecahydrocyclopenta[a]phenanthren-3-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/10635/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/10635",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Dinitrochlorobenzene": {
+      "name": "Dinitrochlorobenzene",
+      "CID": 6,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C6H3ClN2O4",
+      "MolecularWeight": "202.55",
+      "IUPACName": "1-chloro-2,4-dinitrobenzene",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/6/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/6",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Diosgenin": {
+      "name": "Diosgenin",
+      "CID": 99474,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C27H42O3",
+      "MolecularWeight": "414.6",
+      "IUPACName": "(1S,2S,4S,5'R,6R,7S,8R,9S,12S,13R,16S)-5',7,9,13-tetramethylspiro[5-oxapentacyclo[10.8.0.02,9.04,8.013,18]icos-18-ene-6,2'-oxane]-16-ol",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/99474/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/99474",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Diphencyprone": {
+      "name": "Diphencyprone",
+      "CID": 65057,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C15H10O",
+      "MolecularWeight": "206.24",
+      "IUPACName": "2,3-diphenylcycloprop-2-en-1-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/65057/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/65057",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Diphenyleneiodonium": {
+      "name": "Diphenyleneiodonium",
+      "CID": 3101,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C12H8I+",
+      "MolecularWeight": "279.10",
+      "IUPACName": "8-iodoniatricyclo[7.4.0.02,7]trideca-1(13),2,4,6,9,11-hexaene",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/3101/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/3101",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Diphlorethohydroxycarmalol": {
+      "name": "Diphlorethohydroxycarmalol",
+      "CID": 16075395,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C24H16O13",
+      "MolecularWeight": "512.4",
+      "IUPACName": "7-(3,5-dihydroxyphenoxy)-3-(2,4,6-trihydroxyphenoxy)dibenzo-p-dioxin-1,2,6,8-tetrol",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/16075395/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/16075395",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Docosahexaenoic acid": {
+      "name": "Docosahexaenoic acid",
+      "CID": 445580,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C22H32O2",
+      "MolecularWeight": "328.5",
+      "IUPACName": "(4Z,7Z,10Z,13Z,16Z,19Z)-docosa-4,7,10,13,16,19-hexaenoic acid",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/445580/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/445580",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Doxorubicin": {
+      "name": "Doxorubicin",
+      "CID": 31703,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C27H29NO11",
+      "MolecularWeight": "543.5",
+      "IUPACName": "(7S,9S)-7-[(2R,4S,5S,6S)-4-amino-5-hydroxy-6-methyloxan-2-yl]oxy-6,9,11-trihydroxy-9-(2-hydroxyacetyl)-4-methoxy-8,10-dihydro-7H-tetracene-5,12-dione",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/31703/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/31703",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Eclalbatin": {
+      "name": "Eclalbatin",
+      "status": "not_found"
+    },
+    "Eicosapentaenoic acid": {
+      "name": "Eicosapentaenoic acid",
+      "CID": 5282847,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C20H30O2",
+      "MolecularWeight": "302.5",
+      "IUPACName": "(5E,8E,11E,14E,17E)-icosa-5,8,11,14,17-pentaenoic acid",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5282847/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5282847",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Ellagic acid": {
+      "name": "Ellagic acid",
+      "CID": 5281855,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C14H6O8",
+      "MolecularWeight": "302.19",
+      "IUPACName": "6,7,13,14-tetrahydroxy-2,9-dioxatetracyclo[6.6.2.04,16.011,15]hexadeca-1(15),4,6,8(16),11,13-hexaene-3,10-dione",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5281855/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5281855",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Emodin": {
+      "name": "Emodin",
+      "CID": 3220,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C15H10O5",
+      "MolecularWeight": "270.24",
+      "IUPACName": "1,3,8-trihydroxy-6-methylanthracene-9,10-dione",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/3220/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/3220",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Epicatechin": {
+      "name": "Epicatechin",
+      "CID": 72276,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C15H14O6",
+      "MolecularWeight": "290.27",
+      "IUPACName": "(2R,3R)-2-(3,4-dihydroxyphenyl)-3,4-dihydro-2H-chromene-3,5,7-triol",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/72276/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/72276",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Epidermal growth factor": {
+      "name": "Epidermal growth factor",
+      "CID": 56841751,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C257H381N73O83S7",
+      "MolecularWeight": "6046",
+      "IUPACName": "(4S)-4-[[(2S)-2-[[(2S)-2-[[(2S)-2-[[(2S)-2-[[(2S)-2-[[(2S)-2-[[(2S,3R)-2-[[(2S)-5-amino-2-[[(2R)-2-[[(2S)-2-[[(2S)-2-[[2-[[(2S)-2-[[(2S)-2-[[2-[[(2S,3S)-2-[[(2S)-2-[[(2R)-2-[[(2S)-4-amino-2-[[(2R)-2-[[(2S,3R)-2-[[(2S)-2-[[(2S)-2-[[(2S)-2-[[(2S)-2-[[(2S)-2-[[(2S)-2-[[(2S,3S)-2-[[(2S)-2-[[(2S)-2-[[(2R)-2-[[(2S)-2-[[2-[[2-[[(2S)-4-amino-2-[[(2S)-2-[[(2R)-2-[[(2S)-2-[[2-[[(2S)-3-carboxy-2-[[(2S)-2-[[(2S)-2-[[(2S)-2-[[(2S)-1-[(2R)-2-[[2-[[(2S)-1-[(2S)-2-[[(2S)-2-[[(2S)-2,4-diamino-4-oxobutanoyl]amino]-3-hydroxypropanoyl]amino]-3-(4-hydroxyphenyl)propanoyl]pyrrolidine-2-carbonyl]amino]acetyl]amino]-3-sulfanylpropanoyl]pyrrolidine-2-carbonyl]amino]-3-hydroxypropanoyl]amino]-3-hydroxypropanoyl]amino]-3-(4-hydroxyphenyl)propanoyl]amino]propanoyl]amino]acetyl]amino]-3-(4-hydroxyphenyl)propanoyl]amino]-3-sulfanylpropanoyl]amino]-4-methylpentanoyl]amino]-4-oxobutanoyl]amino]acetyl]amino]acetyl]amino]-3-methylbutanoyl]amino]-3-sulfanylpropanoyl]amino]-4-methylsulfanylbutanoyl]amino]-3-(1H-imidazol-5-yl)propanoyl]amino]-3-methylpentanoyl]amino]-4-carboxybutanoyl]amino]-3-hydroxypropanoyl]amino]-4-methylpentanoyl]amino]-3-carboxypropanoyl]amino]-3-hydroxypropanoyl]amino]-3-(4-hydroxyphenyl)propanoyl]amino]-3-hydroxybutanoyl]amino]-3-sulfanylpropanoyl]amino]-4-oxobutanoyl]amino]-3-sulfanylpropanoyl]amino]-3-methylbutanoyl]amino]-3-methylpentanoyl]amino]acetyl]amino]-3-(4-hydroxyphenyl)propanoyl]amino]-3-hydroxypropanoyl]amino]acetyl]amino]-3-carboxypropanoyl]amino]-5-carbamimidamidopentanoyl]amino]-3-sulfanylpropanoyl]amino]-5-oxopentanoyl]amino]-3-hydroxybutanoyl]amino]-5-carbamimidamidopentanoyl]amino]-3-carboxypropanoyl]amino]-4-methylpentanoyl]amino]-5-carbamimidamidopentanoyl]amino]-3-(1H-indol-3-yl)propanoyl]amino]-3-(1H-indol-3-yl)propanoyl]amino]-5-[[(2S)-1-[[(1S)-4-carbamimidamido-1-carboxybutyl]amino]-4-methyl-1-oxopentan-2-yl]amino]-5-oxopentanoic acid",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/56841751/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/56841751",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Epigallocatechin gallate": {
+      "name": "Epigallocatechin gallate",
+      "CID": 65064,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C22H18O11",
+      "MolecularWeight": "458.4",
+      "IUPACName": "[(2R,3R)-5,7-dihydroxy-2-(3,4,5-trihydroxyphenyl)-3,4-dihydro-2H-chromen-3-yl] 3,4,5-trihydroxybenzoate",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/65064/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/65064",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Ergothioneine": {
+      "name": "Ergothioneine",
+      "CID": 5351619,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C9H15N3O2S",
+      "MolecularWeight": "229.30",
+      "IUPACName": "(2S)-3-(2-sulfanylidene-1,3-dihydroimidazol-4-yl)-2-(trimethylazaniumyl)propanoate",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5351619/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5351619",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Gallic acid": {
+      "name": "Gallic acid",
+      "CID": 370,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C7H6O5",
+      "MolecularWeight": "170.12",
+      "IUPACName": "3,4,5-trihydroxybenzoic acid",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/370/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/370",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Genistein": {
+      "name": "Genistein",
+      "CID": 5280961,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C15H10O5",
+      "MolecularWeight": "270.24",
+      "IUPACName": "5,7-dihydroxy-3-(4-hydroxyphenyl)chromen-4-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5280961/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5280961",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Ginkgolide A": {
+      "name": "Ginkgolide A",
+      "CID": 9909368,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C20H24O9",
+      "MolecularWeight": "408.4",
+      "IUPACName": "(1R,3R,6R,7S,8S,10R,11S,13S,16S,17R)-8-tert-butyl-6,17-dihydroxy-16-methyl-2,4,14,19-tetraoxahexacyclo[8.7.2.01,11.03,7.07,11.013,17]nonadecane-5,15,18-trione",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/9909368/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/9909368",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Ginkgolide B": {
+      "name": "Ginkgolide B",
+      "CID": 11973122,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C20H24O10",
+      "MolecularWeight": "424.4",
+      "IUPACName": "(1R,3R,6R,7S,8S,10R,11R,12S,13S,16S,17R)-8-tert-butyl-6,12,17-trihydroxy-16-methyl-2,4,14,19-tetraoxahexacyclo[8.7.2.01,11.03,7.07,11.013,17]nonadecane-5,15,18-trione",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/11973122/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/11973122",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Ginsenoside Rb1": {
+      "name": "Ginsenoside Rb1",
+      "CID": 9898279,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C54H92O23",
+      "MolecularWeight": "1109.3",
+      "IUPACName": "(2R,3R,4S,5S,6R)-2-[[(2R,3S,4S,5R,6S)-6-[(2S)-2-[(3S,5R,8R,9R,10R,12R,13R,14R,17S)-3-[(2R,3R,4S,5S,6R)-4,5-dihydroxy-6-(hydroxymethyl)-3-[(2S,3R,4S,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxyoxan-2-yl]oxy-12-hydroxy-4,4,8,10,14-pentamethyl-2,3,5,6,7,9,11,12,13,15,16,17-dodecahydro-1H-cyclopenta[a]phenanthren-17-yl]-6-methylhept-5-en-2-yl]oxy-3,4,5-trihydroxyoxan-2-yl]methoxy]-6-(hydroxymethyl)oxane-3,4,5-triol",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/9898279/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/9898279",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Ginsenoside Rg1": {
+      "name": "Ginsenoside Rg1",
+      "CID": 441923,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C42H72O14",
+      "MolecularWeight": "801.0",
+      "IUPACName": "(2R,3R,4S,5S,6R)-2-[[(3S,5R,6S,8R,9R,10R,12R,13R,14R,17S)-3,12-dihydroxy-4,4,8,10,14-pentamethyl-17-[(2S)-6-methyl-2-[(2S,3R,4S,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxyhept-5-en-2-yl]-2,3,5,6,7,9,11,12,13,15,16,17-dodecahydro-1H-cyclopenta[a]phenanthren-6-yl]oxy]-6-(hydroxymethyl)oxane-3,4,5-triol",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/441923/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/441923",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Ginsenoside Rg3": {
+      "name": "Ginsenoside Rg3",
+      "CID": 9918693,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C42H72O13",
+      "MolecularWeight": "785.0",
+      "IUPACName": "(2S,3R,4S,5S,6R)-2-[(2R,3R,4S,5S,6R)-4,5-dihydroxy-2-[[(3S,5R,8R,9R,10R,12R,13R,14R,17S)-12-hydroxy-17-[(2S)-2-hydroxy-6-methylhept-5-en-2-yl]-4,4,8,10,14-pentamethyl-2,3,5,6,7,9,11,12,13,15,16,17-dodecahydro-1H-cyclopenta[a]phenanthren-3-yl]oxy]-6-(hydroxymethyl)oxan-3-yl]oxy-6-(hydroxymethyl)oxane-3,4,5-triol",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/9918693/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/9918693",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Ginsenoside Rh2": {
+      "name": "Ginsenoside Rh2",
+      "CID": 119307,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C36H62O8",
+      "MolecularWeight": "622.9",
+      "IUPACName": "(2R,3R,4S,5S,6R)-2-[[(3S,5R,8R,9R,10R,12R,13R,14R,17S)-12-hydroxy-17-[(2S)-2-hydroxy-6-methylhept-5-en-2-yl]-4,4,8,10,14-pentamethyl-2,3,5,6,7,9,11,12,13,15,16,17-dodecahydro-1H-cyclopenta[a]phenanthren-3-yl]oxy]-6-(hydroxymethyl)oxane-3,4,5-triol",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/119307/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/119307",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Glabridin": {
+      "name": "Glabridin",
+      "CID": 124052,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C20H20O4",
+      "MolecularWeight": "324.4",
+      "IUPACName": "4-[(3R)-8,8-dimethyl-3,4-dihydro-2H-pyrano[2,3-f]chromen-3-yl]benzene-1,3-diol",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/124052/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/124052",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Glycyrrhizin": {
+      "name": "Glycyrrhizin",
+      "CID": 14982,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C42H62O16",
+      "MolecularWeight": "822.9",
+      "IUPACName": "(2S,3S,4S,5R,6R)-6-[(2S,3R,4S,5S,6S)-2-[[(3S,4aR,6aR,6bS,8aS,11S,12aR,14aR,14bS)-11-carboxy-4,4,6a,6b,8a,11,14b-heptamethyl-14-oxo-2,3,4a,5,6,7,8,9,10,12,12a,14a-dodecahydro-1H-picen-3-yl]oxy]-6-carboxy-4,5-dihydroxyoxan-3-yl]oxy-3,4,5-trihydroxyoxane-2-carboxylic acid",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/14982/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/14982",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Hinokiflavone": {
+      "name": "Hinokiflavone",
+      "CID": 5281627,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C30H18O10",
+      "MolecularWeight": "538.5",
+      "IUPACName": "6-[4-(5,7-dihydroxy-4-oxochromen-2-yl)phenoxy]-5,7-dihydroxy-2-(4-hydroxyphenyl)chromen-4-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5281627/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5281627",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Hyperoside": {
+      "name": "Hyperoside",
+      "CID": 5281643,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C21H20O12",
+      "MolecularWeight": "464.4",
+      "IUPACName": "2-(3,4-dihydroxyphenyl)-5,7-dihydroxy-3-[(2S,3R,4S,5R,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxychromen-4-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5281643/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5281643",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Isoquercetin": {
+      "name": "Isoquercetin",
+      "CID": 5280804,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C21H20O12",
+      "MolecularWeight": "464.4",
+      "IUPACName": "2-(3,4-dihydroxyphenyl)-5,7-dihydroxy-3-[(2S,3R,4S,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxychromen-4-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5280804/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5280804",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Kaempferol": {
+      "name": "Kaempferol",
+      "CID": 5280863,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C15H10O6",
+      "MolecularWeight": "286.24",
+      "IUPACName": "3,5,7-trihydroxy-2-(4-hydroxyphenyl)chromen-4-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5280863/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5280863",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Kurarinone": {
+      "name": "Kurarinone",
+      "CID": 11982640,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C26H30O6",
+      "MolecularWeight": "438.5",
+      "IUPACName": "(2S)-2-(2,4-dihydroxyphenyl)-7-hydroxy-5-methoxy-8-[(2R)-5-methyl-2-prop-1-en-2-ylhex-4-enyl]-2,3-dihydrochromen-4-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/11982640/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/11982640",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Lauric acid": {
+      "name": "Lauric acid",
+      "CID": 3893,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C12H24O2",
+      "MolecularWeight": "200.32",
+      "IUPACName": "dodecanoic acid",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/3893/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/3893",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Lipoteichoic acid": {
+      "name": "Lipoteichoic acid",
+      "CID": 137349712,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C39H70N2O13",
+      "MolecularWeight": "775.0",
+      "IUPACName": "[(2S)-1-[(2S,3R,4S,5R,6R)-4-[(2S,3R,4S,5R,6R)-3-acetamido-5-amino-4-hydroxy-6-methyloxan-2-yl]oxy-3,5-dihydroxy-6-(hydroxymethyl)oxan-2-yl]oxy-3-heptanoyloxypropan-2-yl] (E)-pentadec-7-enoate",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/137349712/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/137349712",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Liquiritigenin": {
+      "name": "Liquiritigenin",
+      "CID": 114829,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C15H12O4",
+      "MolecularWeight": "256.25",
+      "IUPACName": "(2S)-7-hydroxy-2-(4-hydroxyphenyl)-2,3-dihydrochromen-4-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/114829/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/114829",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Loganin": {
+      "name": "Loganin",
+      "CID": 87691,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C17H26O10",
+      "MolecularWeight": "390.4",
+      "IUPACName": "methyl (1S,4aS,6S,7R,7aS)-6-hydroxy-7-methyl-1-[(2S,3R,4S,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxy-1,4a,5,6,7,7a-hexahydrocyclopenta[c]pyran-4-carboxylate",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/87691/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/87691",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Luteolin": {
+      "name": "Luteolin",
+      "CID": 5280445,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C15H10O6",
+      "MolecularWeight": "286.24",
+      "IUPACName": "2-(3,4-dihydroxyphenyl)-5,7-dihydroxychromen-4-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5280445/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5280445",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Lycorine": {
+      "name": "Lycorine",
+      "CID": 72378,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C16H17NO4",
+      "MolecularWeight": "287.31",
+      "IUPACName": "(1S,17S,18S,19S)-5,7-dioxa-12-azapentacyclo[10.6.1.02,10.04,8.015,19]nonadeca-2,4(8),9,15-tetraene-17,18-diol",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/72378/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/72378",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Madecassoside": {
+      "name": "Madecassoside",
+      "CID": 24825675,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C48H78O20",
+      "MolecularWeight": "975.1",
+      "IUPACName": "[(2S,3R,4S,5S,6R)-6-[[(2R,3R,4R,5S,6R)-3,4-dihydroxy-6-(hydroxymethyl)-5-[(2S,3R,4R,5R,6S)-3,4,5-trihydroxy-6-methyloxan-2-yl]oxyoxan-2-yl]oxymethyl]-3,4,5-trihydroxyoxan-2-yl] (1S,2R,4aS,6aR,6aS,6bR,8R,8aR,9R,10R,11R,12aR,14bS)-8,10,11-trihydroxy-9-(hydroxymethyl)-1,2,6a,6b,9,12a-hexamethyl-2,3,4,5,6,6a,7,8,8a,10,11,12,13,14b-tetradecahydro-1H-picene-4a-carboxylate",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/24825675/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/24825675",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Matrine": {
+      "name": "Matrine",
+      "CID": 91466,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C15H24N2O",
+      "MolecularWeight": "248.36",
+      "IUPACName": "(1R,2R,9S,17S)-7,13-diazatetracyclo[7.7.1.02,7.013,17]heptadecan-6-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/91466/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/91466",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Morroniside": {
+      "name": "Morroniside",
+      "CID": 11228693,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C17H26O11",
+      "MolecularWeight": "406.4",
+      "IUPACName": "methyl (1S,3R,4aS,8S,8aS)-3-hydroxy-1-methyl-8-[(2S,3R,4S,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxy-1,3,4,4a,8,8a-hexahydropyrano[3,4-c]pyran-5-carboxylate",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/11228693/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/11228693",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Naringin": {
+      "name": "Naringin",
+      "CID": 442428,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C27H32O14",
+      "MolecularWeight": "580.5",
+      "IUPACName": "(2S)-7-[(2S,3R,4S,5S,6R)-4,5-dihydroxy-6-(hydroxymethyl)-3-[(2S,3R,4R,5R,6S)-3,4,5-trihydroxy-6-methyloxan-2-yl]oxyoxan-2-yl]oxy-5-hydroxy-2-(4-hydroxyphenyl)-2,3-dihydrochromen-4-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/442428/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/442428",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Nasunin": {
+      "name": "Nasunin",
+      "CID": 154723842,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C42H47ClO23",
+      "MolecularWeight": "955.3",
+      "IUPACName": "[(2S,3R,4S,5R,6R)-4,5-dihydroxy-2-methyl-6-[[(2R,3S,4S,5R,6S)-3,4,5-trihydroxy-6-[7-hydroxy-5-[(2S,3R,4S,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxy-2-(3,4,5-trihydroxyphenyl)chromenylium-3-yl]oxyoxan-2-yl]methoxy]oxan-3-yl] (E)-3-(4-hydroxyphenyl)prop-2-enoate chloride",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/154723842/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/154723842",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Neoeriocitrin": {
+      "name": "Neoeriocitrin",
+      "CID": 114627,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C27H32O15",
+      "MolecularWeight": "596.5",
+      "IUPACName": "(2S)-7-[(2S,3R,4S,5S,6R)-4,5-dihydroxy-6-(hydroxymethyl)-3-[(2S,3R,4R,5R,6S)-3,4,5-trihydroxy-6-methyloxan-2-yl]oxyoxan-2-yl]oxy-2-(3,4-dihydroxyphenyl)-5-hydroxy-2,3-dihydrochromen-4-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/114627/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/114627",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Oleic acid": {
+      "name": "Oleic acid",
+      "CID": 445639,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C18H34O2",
+      "MolecularWeight": "282.5",
+      "IUPACName": "(Z)-octadec-9-enoic acid",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/445639/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/445639",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Oxymatrine": {
+      "name": "Oxymatrine",
+      "CID": 24864132,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C15H24N2O2",
+      "MolecularWeight": "264.36",
+      "IUPACName": "(1R,2R,9S,13R,17S)-13-oxido-7-aza-13-azoniatetracyclo[7.7.1.02,7.013,17]heptadecan-6-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/24864132/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/24864132",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Palmatine": {
+      "name": "Palmatine",
+      "CID": 19009,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C21H22NO4+",
+      "MolecularWeight": "352.4",
+      "IUPACName": "2,3,9,10-tetramethoxy-5,6-dihydroisoquinolino[2,1-b]isoquinolin-7-ium",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/19009/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/19009",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Platelet-derived growth factor": {
+      "name": "Platelet-derived growth factor",
+      "status": "not_found"
+    },
+    "Puerarin": {
+      "name": "Puerarin",
+      "CID": 5281807,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C21H20O9",
+      "MolecularWeight": "416.4",
+      "IUPACName": "7-hydroxy-3-(4-hydroxyphenyl)-8-[(2S,3R,4R,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]chromen-4-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5281807/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5281807",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Quercetin": {
+      "name": "Quercetin",
+      "CID": 5280343,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C15H10O7",
+      "MolecularWeight": "302.23",
+      "IUPACName": "2-(3,4-dihydroxyphenyl)-3,5,7-trihydroxychromen-4-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5280343/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5280343",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Resveratrol": {
+      "name": "Resveratrol",
+      "CID": 445154,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C14H12O3",
+      "MolecularWeight": "228.24",
+      "IUPACName": "5-[(E)-2-(4-hydroxyphenyl)ethenyl]benzene-1,3-diol",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/445154/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/445154",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Rhamnetin": {
+      "name": "Rhamnetin",
+      "CID": 5281691,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C16H12O7",
+      "MolecularWeight": "316.26",
+      "IUPACName": "2-(3,4-dihydroxyphenyl)-3,5-dihydroxy-7-methoxychromen-4-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5281691/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5281691",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Rosmarinic acid": {
+      "name": "Rosmarinic acid",
+      "CID": 5281792,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C18H16O8",
+      "MolecularWeight": "360.3",
+      "IUPACName": "(2R)-3-(3,4-dihydroxyphenyl)-2-[(E)-3-(3,4-dihydroxyphenyl)prop-2-enoyl]oxypropanoic acid",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5281792/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5281792",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Rotundone": {
+      "name": "Rotundone",
+      "CID": 5321003,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C15H22O",
+      "MolecularWeight": "218.33",
+      "IUPACName": "(3S,5R,8S)-3,8-dimethyl-5-prop-1-en-2-yl-3,4,5,6,7,8-hexahydro-2H-azulen-1-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5321003/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5321003",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Rutin": {
+      "name": "Rutin",
+      "CID": 5280805,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C27H30O16",
+      "MolecularWeight": "610.5",
+      "IUPACName": "2-(3,4-dihydroxyphenyl)-5,7-dihydroxy-3-[(2S,3R,4S,5S,6R)-3,4,5-trihydroxy-6-[[(2R,3R,4R,5R,6S)-3,4,5-trihydroxy-6-methyloxan-2-yl]oxymethyl]oxan-2-yl]oxychromen-4-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5280805/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5280805",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Stilbene glycoside": {
+      "name": "Stilbene glycoside",
+      "status": "not_found"
+    },
+    "Taraxasterol": {
+      "name": "Taraxasterol",
+      "CID": 115250,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C30H50O",
+      "MolecularWeight": "426.7",
+      "IUPACName": "(3S,4aR,6aR,6aR,6bR,8aR,12S,12aR,14aR,14bR)-4,4,6a,6b,8a,12,14b-heptamethyl-11-methylidene-1,2,3,4a,5,6,6a,7,8,9,10,12,12a,13,14,14a-hexadecahydropicen-3-ol",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/115250/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/115250",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Tetrahydropalmatine": {
+      "name": "Tetrahydropalmatine",
+      "CID": 72301,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C21H25NO4",
+      "MolecularWeight": "355.4",
+      "IUPACName": "(13aS)-2,3,9,10-tetramethoxy-6,8,13,13a-tetrahydro-5H-isoquinolino[2,1-b]isoquinoline",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/72301/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/72301",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Theanine": {
+      "name": "Theanine",
+      "CID": 439378,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C7H14N2O3",
+      "MolecularWeight": "174.20",
+      "IUPACName": "(2S)-2-amino-5-(ethylamino)-5-oxopentanoic acid",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/439378/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/439378",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Ursolic acid": {
+      "name": "Ursolic acid",
+      "CID": 64945,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C30H48O3",
+      "MolecularWeight": "456.7",
+      "IUPACName": "(1S,2R,4aS,6aR,6aS,6bR,8aR,10S,12aR,14bS)-10-hydroxy-1,2,6a,6b,9,9,12a-heptamethyl-2,3,4,5,6,6a,7,8,8a,10,11,12,13,14b-tetradecahydro-1H-picene-4a-carboxylic acid",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/64945/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/64945",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Vitexin": {
+      "name": "Vitexin",
+      "CID": 5280441,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C21H20O10",
+      "MolecularWeight": "432.4",
+      "IUPACName": "5,7-dihydroxy-2-(4-hydroxyphenyl)-8-[(2S,3R,4R,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]chromen-4-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5280441/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5280441",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    },
+    "Wedelolactone": {
+      "name": "Wedelolactone",
+      "CID": 5281813,
+      "SMILES": "",
+      "IsomericSMILES": "",
+      "MolecularFormula": "C16H10O7",
+      "MolecularWeight": "314.25",
+      "IUPACName": "1,8,9-trihydroxy-3-methoxy-[1]benzofuro[3,2-c]chromen-6-one",
+      "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5281813/PNG?image_size=300x300",
+      "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5281813",
+      "status": "found",
+      "bioactivity": {
+        "active_assay_count": 0,
+        "known_targets": []
+      }
+    }
+  }
+}

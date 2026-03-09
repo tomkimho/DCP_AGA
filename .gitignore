@@ -1,0 +1,19 @@
+# PDF 논문/특허 (대용량)
+*.pdf
+totalpaper/
+
+# 임시 파일
+*.tmp
+__pycache__/
+*.pyc
+.DS_Store
+
+# 스크립트 임시 파일
+scripts/fix_smiles*.py
+scripts/aga_data_collector.py
+
+# 로그
+logs/
+
+# 환경 변수
+.env

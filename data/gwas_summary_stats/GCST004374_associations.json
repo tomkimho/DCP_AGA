@@ -1,0 +1,10 @@
+{
+  "_embedded": {
+    "associations": []
+  },
+  "_links": {
+    "self": {
+      "href": "https://www.ebi.ac.uk/gwas/rest/api/studies/GCST004374/associations?projection=associationByStudy"
+    }
+  }
+}

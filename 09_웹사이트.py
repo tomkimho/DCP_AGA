@@ -569,9 +569,22 @@ with tab4:
 
             with img_col:
                 img_url = struct.get("image_url", "")
+                img_local = struct.get("image_2d", "")
                 if img_url:
                     st.image(img_url, caption=f"{selected_compound} 2D Structure",
                              width=250)
+                elif img_local and os.path.exists(os.path.join(BASE_FOLDER, img_local)):
+                    st.image(os.path.join(BASE_FOLDER, img_local),
+                             caption=f"{selected_compound} 2D Structure", width=250)
+                # 3D SDF 다운로드 버튼
+                sdf_path = struct.get("sdf_3d", "")
+                if sdf_path:
+                    sdf_full = os.path.join(BASE_FOLDER, sdf_path)
+                    if os.path.exists(sdf_full):
+                        with open(sdf_full, "r", encoding="utf-8") as sdf_f:
+                            st.download_button("⬇️ 3D SDF", sdf_f.read(),
+                                             file_name=f"{selected_compound}.sdf",
+                                             mime="chemical/x-mdl-sdfile")
 
             with info_col:
                 st.markdown(f"**분자식:** {struct.get('MolecularFormula', '-')}")

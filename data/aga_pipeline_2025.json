@@ -1,0 +1,52 @@
+{
+  "last_updated": "2026-03-09",
+  "total_candidates": "100+",
+  "companies": "80+",
+  "key_candidates": [
+    {
+      "name": "GT20029",
+      "phase": "Phase 3 planned",
+      "mechanism": "AR PROTAC"
+    },
+    {
+      "name": "KX-826",
+      "phase": "Phase 2",
+      "mechanism": "Topical AR antagonist"
+    },
+    {
+      "name": "Clascoterone 5%",
+      "phase": "Phase 3",
+      "mechanism": "Topical AR inhibitor"
+    },
+    {
+      "name": "PP405",
+      "phase": "Phase 2a",
+      "mechanism": "HFSC reactivation"
+    },
+    {
+      "name": "VDPHL01",
+      "phase": "Phase 2",
+      "mechanism": "ER oral minoxidil"
+    },
+    {
+      "name": "ABS-201",
+      "phase": "Phase 1/2a",
+      "mechanism": "Anti-PRLR Ab (AI)"
+    },
+    {
+      "name": "SM04554",
+      "phase": "Phase 2",
+      "mechanism": "Wnt activator"
+    },
+    {
+      "name": "Anti-CXCL12 Ab",
+      "phase": "Preclinical",
+      "mechanism": "CXCL12 neutralization"
+    },
+    {
+      "name": "EX104",
+      "phase": "Preclinical",
+      "mechanism": "Engineered exosomes"
+    }
+  ]
+}
