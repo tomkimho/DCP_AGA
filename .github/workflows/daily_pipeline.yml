@@ -54,7 +54,6 @@ jobs:
           fi
 
           python scripts/08_orchestrator.py --append $WEEKLY_FLAG
-        working-directory: 문헌데이터_탈모
         env:
           CLAUDE_API_KEY: ${{ secrets.CLAUDE_API_KEY }}
           NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
@@ -65,9 +64,9 @@ jobs:
       - name: Check pipeline status
         if: always()
         run: |
-          if [ -f 문헌데이터_탈모/pipeline_status.json ]; then
+          if [ -f pipeline_status.json ]; then
             echo "=== Pipeline Status ==="
-            cat 문헌데이터_탈모/pipeline_status.json
+            cat pipeline_status.json
           fi
 
       # 6. 파이프라인 로그 업로드
@@ -76,15 +75,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: pipeline-logs-${{ github.run_id }}
-          path: 문헌데이터_탈모/logs/
+          path: logs/
           retention-days: 30
 
       # 7. 변경사항 커밋 및 푸시 (Streamlit 자동 재배포 트리거)
       - name: Commit and push changes
         if: always()
         run: |
-          cd 문헌데이터_탈모
-
           git config user.name "AGA Pipeline Bot"
           git config user.email "pipeline@basgenbio.com"
 
@@ -97,6 +94,7 @@ jobs:
             git add collection_log.json pipeline_status.json processed_files.json 2>/dev/null || true
             git add compound_structures.json natural_product_actives.json 2>/dev/null || true
             git add output/*.json output/*.xlsx 2>/dev/null || true
+            git add compound_images/ data/ 2>/dev/null || true
             git add scripts/ .github/ requirements.txt 2>/dev/null || true
 
             COMMIT_DATE=$(date '+%Y-%m-%d %H:%M')
