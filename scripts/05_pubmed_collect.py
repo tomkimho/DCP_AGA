@@ -632,23 +632,31 @@ class PubMedPaperCollector:
 
     def update_pipeline_status(self, status: str, error_msg: Optional[str] = None):
         """
-        pipeline_status.json 업데이트
+        pipeline_status.json 업데이트 (기존 오케스트레이터 형식 보존)
 
         Args:
             status: "searching", "idle", 또는 "error"
             error_msg: 에러 메시지 (status가 "error"일 때)
         """
-        pipeline_status = {
-            "agent": "paper_searcher",
+        # 기존 상태 파일 로드 (오케스트레이터 형식 보존)
+        pipeline_status = {}
+        if os.path.exists(self.pipeline_status_path):
+            try:
+                with open(self.pipeline_status_path, "r", encoding="utf-8") as f:
+                    pipeline_status = json.load(f)
+            except Exception:
+                pass
+
+        # 에이전트 상태만 업데이트 (오케스트레이터 키 보존)
+        pipeline_status["paper_searcher"] = {
             "status": status,
             "last_run": datetime.now().isoformat(),
             "papers_found": self.papers_found,
             "papers_downloaded": self.papers_downloaded,
             "papers_skipped": self.papers_skipped,
         }
-
         if error_msg:
-            pipeline_status["error"] = error_msg
+            pipeline_status["paper_searcher"]["error"] = error_msg
 
         try:
             with open(self.pipeline_status_path, "w", encoding="utf-8") as f:

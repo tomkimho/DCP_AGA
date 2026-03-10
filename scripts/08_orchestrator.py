@@ -356,36 +356,31 @@ class PipelineOrchestrator:
         self._update_collection_log(new_papers)
 
     def _update_collection_log(self, new_papers: int):
-        """수집된 논문을 collection_log.json에 기록"""
+        """collection_log.json 통계 확인 및 pipeline_status에 반영
+        (실제 수집은 05_pubmed_collect.py가 직접 collection_log.json에 기록함)"""
         collection_log_path = os.path.join(BASE_FOLDER, "collection_log.json")
         try:
             if os.path.exists(collection_log_path):
                 with open(collection_log_path, "r", encoding="utf-8") as f:
                     log = json.load(f)
+                total = len(log)
+                pdf_count = sum(1 for p in log if isinstance(p, dict) and p.get("pdf_downloaded"))
+                abstract_count = sum(1 for p in log if isinstance(p, dict)
+                                     and not p.get("pdf_downloaded") and not p.get("has_pdf", True))
+
+                self.status.update(
+                    total_papers_new=total,
+                    collection_stats={
+                        "total": total,
+                        "pdf_downloaded": pdf_count,
+                        "abstract_only": abstract_count,
+                    }
+                )
+                logger.info(f"  collection_log.json: 총 {total}건 (PDF: {pdf_count}, Abstract: {abstract_count})")
             else:
-                log = []
-
-            # new_papers 폴더에서 새로 수집된 PDF 파일 정보 추가
-            if os.path.isdir(NEW_PAPERS_FOLDER):
-                existing_titles = {entry.get("title", "") for entry in log if isinstance(entry, dict)}
-                for pdf_file in os.listdir(NEW_PAPERS_FOLDER):
-                    if pdf_file.endswith('.pdf'):
-                        title = pdf_file.replace('.pdf', '').replace('_', ' ')
-                        if title not in existing_titles:
-                            log.append({
-                                "title": title,
-                                "source": "PubMed",
-                                "collected_date": datetime.now().isoformat(),
-                                "pdf_path": os.path.join("new_papers", pdf_file),
-                                "pipeline_run": self.start_time.isoformat() if self.start_time else ""
-                            })
-
-            with open(collection_log_path, "w", encoding="utf-8") as f:
-                json.dump(log, f, indent=2, ensure_ascii=False)
-
-            logger.info(f"  collection_log.json 업데이트: 총 {len(log)}건")
+                logger.info("  collection_log.json 없음 — 수집 스크립트가 실행되지 않았을 수 있음")
         except Exception as e:
-            logger.warning(f"  collection_log.json 업데이트 실패: {e}")
+            logger.warning(f"  collection_log.json 확인 실패: {e}")
 
 
 # ============================================================

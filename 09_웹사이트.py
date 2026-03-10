@@ -1425,8 +1425,11 @@ with tab11:
     st.markdown("---")
     total_collected = len(collection_log) or pipeline_status.get("total_papers_new", 0)
     total_processed = len(df_ok)
+    # 날짜 필드 통합 (collected_date 또는 collection_date)
     new_this_week = sum(1 for p in collection_log
-                       if isinstance(p, dict) and p.get("collected_date", "")[:10] >= (datetime.now().strftime('%Y-%m-%d')[:8] + "01"))
+                       if isinstance(p, dict) and
+                       (p.get("collected_date", "") or p.get("collection_date", ""))[:10] >=
+                       (datetime.now().strftime('%Y-%m-%d')[:8] + "01"))
 
     last_run_raw = pipeline_status.get("last_run", "")
     if last_run_raw and last_run_raw != "아직 실행 안 됨":
@@ -1513,23 +1516,38 @@ with tab11:
     st.markdown("#### 📊 최근 수집 활동")
 
     if collection_log:
-        # 최근 20건 표시
+        # 날짜 필드 통합 (collected_date 또는 collection_date)
+        def get_date(p):
+            return p.get("collected_date", "") or p.get("collection_date", "") or ""
+
+        # 최근 30건 표시
         recent = sorted(
-            [p for p in collection_log if isinstance(p, dict) and p.get("collected_date")],
-            key=lambda x: x.get("collected_date", ""),
+            [p for p in collection_log if isinstance(p, dict) and get_date(p)],
+            key=lambda x: get_date(x),
             reverse=True
-        )[:20]
+        )[:30]
 
         if recent:
             log_rows = []
             for p in recent:
+                # PDF/Abstract 상태 아이콘
+                if p.get("pdf_downloaded") or p.get("pdf_path"):
+                    text_status = "📄 PDF"
+                elif p.get("abstract") or p.get("patent_abstract"):
+                    text_status = "📝 초록"
+                else:
+                    text_status = "❌ 없음"
+
+                # 제목 (PubMed 또는 특허)
+                title = p.get("title", "") or p.get("patent_title", "") or ""
+
                 log_rows.append({
-                    "수집일": p.get("collected_date", "")[:10],
-                    "출처": p.get("source", "PubMed"),
-                    "제목": (p.get("title", "") or "")[:80],
-                    "PDF": "✅" if p.get("pdf_path") else "❌",
+                    "수집일": get_date(p)[:10],
+                    "출처": p.get("source", p.get("download_source", "PubMed")),
+                    "제목": title[:80],
+                    "텍스트": text_status,
                 })
-            st.dataframe(pd.DataFrame(log_rows), use_container_width=True, height=300)
+            st.dataframe(pd.DataFrame(log_rows), use_container_width=True, height=400)
         else:
             st.info("아직 자동 수집된 논문이 없습니다. 파이프라인을 실행하세요.")
     else:
