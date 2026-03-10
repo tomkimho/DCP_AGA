@@ -1423,12 +1423,23 @@ with tab11:
 
     # ── 통계 카드 ──
     st.markdown("---")
-    total_collected = len(collection_log)
+    total_collected = len(collection_log) or pipeline_status.get("total_papers_new", 0)
     total_processed = len(df_ok)
     new_this_week = sum(1 for p in collection_log
                        if isinstance(p, dict) and p.get("collected_date", "")[:10] >= (datetime.now().strftime('%Y-%m-%d')[:8] + "01"))
 
-    last_run = pipeline_status.get("last_run", "아직 실행 안 됨")
+    last_run_raw = pipeline_status.get("last_run", "")
+    if last_run_raw and last_run_raw != "아직 실행 안 됨":
+        try:
+            from datetime import datetime as _dt, timedelta as _td
+            lr_dt = _dt.fromisoformat(last_run_raw.replace("Z", "+00:00"))
+            # UTC → KST (+9)
+            lr_kst = lr_dt + _td(hours=9)
+            last_run = lr_kst.strftime("%Y-%m-%d %H:%M KST")
+        except Exception:
+            last_run = last_run_raw[:19]
+    else:
+        last_run = "아직 실행 안 됨"
     steps_done = pipeline_status.get("steps_completed", 0)
 
     sc1, sc2, sc3, sc4 = st.columns(4)
@@ -1477,12 +1488,21 @@ with tab11:
     ]
 
     steps_status = pipeline_status.get("steps", {})
+    # step_details 폴백 (오케스트레이터 호환)
+    if not steps_status:
+        steps_status = pipeline_status.get("step_details", {})
     for step_id, step_label in step_names:
         step_info = steps_status.get(step_id, {})
-        if isinstance(step_info, dict):
+        # step_details에서 한글 이름으로도 검색
+        if not step_info:
+            name_map = {"05_pubmed": "PubMed 논문 수집", "06_특허": "특허 자동 수집",
+                        "07_biorxiv": "BioRxiv 사전인쇄 수집", "01_pdf": "PDF 텍스트 추출",
+                        "02_정보추출": "정보 AI 분석", "03_화합물": "화합물 구조 수집"}
+            step_info = steps_status.get(name_map.get(step_id, ""), {})
+        if isinstance(step_info, dict) and step_info:
             s_status = step_info.get("status", "pending")
             s_duration = step_info.get("duration", "")
-            icon = {"completed": "✅", "running": "🔄", "error": "❌"}.get(s_status, "⬜")
+            icon = {"completed": "✅", "running": "🔄", "error": "❌", "failed": "❌", "skipped": "⏭️"}.get(s_status, "⬜")
             dur_text = f" ({s_duration})" if s_duration else ""
             st.caption(f"{icon} {step_label}{dur_text}")
         else:
@@ -1517,7 +1537,7 @@ with tab11:
         st.markdown("""
         **시작하는 방법:**
         1. 로컬에서: `python scripts/08_orchestrator.py`
-        2. GitHub Actions: 매일 오후 3시(KST) 자동 실행 (설정 필요)
+        2. GitHub Actions: 매일 오전 5시(KST) 자동 실행
         """)
 
     # ── GitHub Actions 설정 안내 ──
@@ -1538,7 +1558,7 @@ with tab11:
 
         3. GitHub Actions 탭에서 워크플로우 활성화
 
-        매일 오후 3시(KST)에 자동으로 새 논문을 수집하고 분석합니다.
+        매일 오전 5시(KST)에 자동으로 새 논문을 수집하고 분석합니다.
         """)
 
 

@@ -115,11 +115,36 @@ class PipelineStatus:
     def update_step(self, step_name: str, status: str, details: Dict = None):
         if "step_details" not in self.status:
             self.status["step_details"] = {}
-        self.status["step_details"][step_name] = {
+        step_info = {
             "status": status,
             "timestamp": datetime.now().isoformat(),
             "details": details or {}
         }
+        # duration 정보가 있으면 상위 레벨에도 저장 (Streamlit 호환)
+        if details and "duration" in details:
+            dur_sec = details["duration"]
+            if dur_sec >= 60:
+                step_info["duration"] = f"{dur_sec/60:.1f}분"
+            else:
+                step_info["duration"] = f"{dur_sec:.0f}초"
+        self.status["step_details"][step_name] = step_info
+
+        # Streamlit 호환: steps 딕셔너리에도 매핑하여 저장
+        step_id_map = {
+            "PubMed 논문 수집": "05_pubmed",
+            "특허 자동 수집": "06_특허",
+            "BioRxiv 사전인쇄 수집": "07_biorxiv",
+            "PDF 텍스트 추출": "01_pdf",
+            "정보 AI 분석": "02_정보추출",
+            "화합물 구조 수집": "03_화합물",
+            "지능형 패턴 분석": "10_패턴분석",
+            "AI 신약 후보 도출": "11_신약후보",
+            "바이오마커 분석": "12_바이오마커",
+        }
+        step_id = step_id_map.get(step_name, step_name)
+        if "steps" not in self.status:
+            self.status["steps"] = {}
+        self.status["steps"][step_id] = step_info
         self.save()
 
     def add_error(self, error: str):
@@ -312,7 +337,7 @@ class PipelineOrchestrator:
             return False
 
     def _finalize_pipeline(self):
-        """파이프라인 최종 정리 + 비용 추정"""
+        """파이프라인 최종 정리 + 비용 추정 + collection_log 업데이트"""
         logger.info("최종 정리...")
 
         new_papers = self._count_new_papers()
@@ -326,6 +351,41 @@ class PipelineOrchestrator:
         )
 
         logger.info(f"  PDF: {new_papers}개, TXT: {new_txt}개, 예상비용: ${est_cost:.2f}")
+
+        # collection_log.json 업데이트 (Streamlit 수집 활동 표시용)
+        self._update_collection_log(new_papers)
+
+    def _update_collection_log(self, new_papers: int):
+        """수집된 논문을 collection_log.json에 기록"""
+        collection_log_path = os.path.join(BASE_FOLDER, "collection_log.json")
+        try:
+            if os.path.exists(collection_log_path):
+                with open(collection_log_path, "r", encoding="utf-8") as f:
+                    log = json.load(f)
+            else:
+                log = []
+
+            # new_papers 폴더에서 새로 수집된 PDF 파일 정보 추가
+            if os.path.isdir(NEW_PAPERS_FOLDER):
+                existing_titles = {entry.get("title", "") for entry in log if isinstance(entry, dict)}
+                for pdf_file in os.listdir(NEW_PAPERS_FOLDER):
+                    if pdf_file.endswith('.pdf'):
+                        title = pdf_file.replace('.pdf', '').replace('_', ' ')
+                        if title not in existing_titles:
+                            log.append({
+                                "title": title,
+                                "source": "PubMed",
+                                "collected_date": datetime.now().isoformat(),
+                                "pdf_path": os.path.join("new_papers", pdf_file),
+                                "pipeline_run": self.start_time.isoformat() if self.start_time else ""
+                            })
+
+            with open(collection_log_path, "w", encoding="utf-8") as f:
+                json.dump(log, f, indent=2, ensure_ascii=False)
+
+            logger.info(f"  collection_log.json 업데이트: 총 {len(log)}건")
+        except Exception as e:
+            logger.warning(f"  collection_log.json 업데이트 실패: {e}")
 
 
 # ============================================================

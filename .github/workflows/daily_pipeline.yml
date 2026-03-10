@@ -2,8 +2,8 @@ name: Daily AGA Pipeline Auto-Update
 
 on:
   schedule:
-    # 매일 06:00 UTC (15:00 KST) 실행
-    - cron: '0 6 * * *'
+    # 매일 20:00 UTC (05:00 KST) 실행
+    - cron: '0 20 * * *'
 
   # 수동 트리거 활성화
   workflow_dispatch:
@@ -91,7 +91,7 @@ jobs:
 
             # 데이터 파일만 스테이지 (불필요한 로그 제외)
             git add AGA_data.xlsx AGA_문헌분류_결과.xlsx 2>/dev/null || true
-            git add collection_log.json pipeline_status.json processed_files.json 2>/dev/null || true
+            git add collection_log.json pipeline_status.json processed_files.json new_papers/ 2>/dev/null || true
             git add compound_structures.json natural_product_actives.json 2>/dev/null || true
             git add output/*.json output/*.xlsx 2>/dev/null || true
             git add compound_images/ data/ 2>/dev/null || true
