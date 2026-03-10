@@ -124,6 +124,10 @@
     "sdf_3d": "compound_images/3d_structures/122016.sdf"
   },
   {
+    "name": "11α-hydroxyfinasteride",
+    "status": "not_found"
+  },
+  {
     "name": "12-Dodecanedioic acid esters",
     "status": "not_found"
   },
@@ -288,6 +292,10 @@
     "status": "not_found"
   },
   {
+    "name": "15β-hydroxyfinasteride",
+    "status": "not_found"
+  },
+  {
     "name": "16-(3-chlorophenoxy)-17",
     "status": "not_found"
   },
@@ -317,6 +325,10 @@
   },
   {
     "name": "17-phenyl trinor PGF2α cyclopropyl methyl amide",
+    "status": "not_found"
+  },
+  {
+    "name": "17-α-estradiol",
     "status": "not_found"
   },
   {
@@ -941,6 +953,10 @@
     "status": "not_found"
   },
   {
+    "name": "5 mg daily)",
+    "status": "not_found"
+  },
+  {
     "name": "5-(Tetradecyloxy)-2-furancarboxylic acid (TOFA) analogs",
     "status": "not_found"
   },
@@ -958,6 +974,10 @@
     "2d_pubchem_path": "compound_images/3385.png",
     "image_2d": "compound_images/2d_structures/3385.png",
     "sdf_3d": "compound_images/3d_structures/3385.sdf"
+  },
+  {
+    "name": "5-alpha reductase inhibitors",
+    "status": "not_found"
   },
   {
     "name": "5-azacitidine",
@@ -1125,6 +1145,10 @@
     "status": "not_found"
   },
   {
+    "name": "99mTc-Minoxidil",
+    "status": "not_found"
+  },
+  {
     "name": "9β-lanost-24",
     "status": "not_found"
   },
@@ -1228,6 +1252,10 @@
     "2d_pubchem_path": "compound_images/65015.png",
     "image_2d": "compound_images/2d_structures/65015.png",
     "sdf_3d": "compound_images/3d_structures/65015.sdf"
+  },
+  {
+    "name": "AR-PROTAC (ARV110)",
+    "status": "not_found"
   },
   {
     "name": "ARTA (Androgen Receptor Targeting Agent)",
@@ -1598,6 +1626,18 @@
     "status": "not_found"
   },
   {
+    "name": "Adapalene",
+    "CID": 60164,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C28H28O3",
+    "MolecularWeight": "412.5",
+    "IUPACName": "6-[3-(1-adamantyl)-4-methoxyphenyl]naphthalene-2-carboxylic acid",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/60164/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/60164",
+    "status": "found"
+  },
+  {
     "name": "Adenine",
     "CID": 190,
     "SMILES": "C1=NC2=NC=NC(=C2N1)N",
@@ -1613,11 +1653,31 @@
     "sdf_3d": "compound_images/3d_structures/190.sdf"
   },
   {
+    "name": "Adenosine",
+    "CID": 60961,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C10H13N5O4",
+    "MolecularWeight": "267.24",
+    "IUPACName": "(2R,3R,4S,5R)-2-(6-aminopurin-9-yl)-5-(hydroxymethyl)oxolane-3,4-diol",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/60961/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/60961",
+    "status": "found"
+  },
+  {
     "name": "Adipic acid esters",
     "status": "not_found"
   },
   {
+    "name": "Adipose stem cell-derived exosomes (ASC-Exosomes)",
+    "status": "not_found"
+  },
+  {
     "name": "Adipose-derived stem cell constituent extract",
+    "status": "not_found"
+  },
+  {
+    "name": "Adipose-derived stem cell secretome",
     "status": "not_found"
   },
   {
@@ -1701,6 +1761,10 @@
     "status": "not_found"
   },
   {
+    "name": "Allium macrostemon Bunge extract",
+    "status": "not_found"
+  },
+  {
     "name": "Allyl 2-(2-(1-naphthoyl)-8-fluoro-1",
     "status": "not_found"
   },
@@ -1762,6 +1826,18 @@
     "sdf_3d": "compound_images/3d_structures/54576299.sdf"
   },
   {
+    "name": "Aminexil",
+    "CID": 10197687,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C4H6N4O",
+    "MolecularWeight": "126.12",
+    "IUPACName": "3-hydroxy-2-iminopyrimidin-4-amine",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/10197687/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/10197687",
+    "status": "found"
+  },
+  {
     "name": "Amino acids",
     "status": "not_found"
   },
@@ -1781,8 +1857,32 @@
     "sdf_3d": "compound_images/3d_structures/54690785.sdf"
   },
   {
+    "name": "Amphotericin B",
+    "CID": 5280965,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C47H73NO17",
+    "MolecularWeight": "924.1",
+    "IUPACName": "(1R,3S,5R,6R,9R,11R,15S,16R,17R,18S,19E,21E,23E,25E,27E,29E,31E,33R,35S,36R,37S)-33-[(2R,3S,4S,5S,6R)-4-amino-3,5-dihydroxy-6-methyloxan-2-yl]oxy-1,3,5,6,9,11,17,37-octahydroxy-15,16,18-trimethyl-13-oxo-14,39-dioxabicyclo[33.3.1]nonatriaconta-19,21,23,25,27,29,31-heptaene-36-carboxylic acid",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5280965/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5280965",
+    "status": "found"
+  },
+  {
     "name": "Amygdalin (아미그달린)",
     "status": "not_found"
+  },
+  {
+    "name": "Anastrozole",
+    "CID": 2187,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C17H19N5",
+    "MolecularWeight": "293.4",
+    "IUPACName": "2-[3-(2-cyanopropan-2-yl)-5-(1,2,4-triazol-1-ylmethyl)phenyl]-2-methylpropanenitrile",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/2187/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/2187",
+    "status": "found"
   },
   {
     "name": "Androgen Receptor Targeting Agents (ARTA)",
@@ -1840,7 +1940,15 @@
     "status": "not_found"
   },
   {
+    "name": "Angelica sinensis aqueous extract",
+    "status": "not_found"
+  },
+  {
     "name": "Angelica sinensis extract powder",
+    "status": "not_found"
+  },
+  {
+    "name": "Angelica sinensis polysaccharides (ASP)",
     "status": "not_found"
   },
   {
@@ -1938,6 +2046,14 @@
   },
   {
     "name": "Anti-p40 antibody",
+    "status": "not_found"
+  },
+  {
+    "name": "Antiandrogen therapy",
+    "status": "not_found"
+  },
+  {
+    "name": "Antiandrogens",
     "status": "not_found"
   },
   {
@@ -2090,6 +2206,10 @@
     "sdf_3d": "compound_images/3d_structures/182199.sdf"
   },
   {
+    "name": "Aromatase inhibitors",
+    "status": "not_found"
+  },
+  {
     "name": "Artemisia (mugwort) fermented extract",
     "status": "not_found"
   },
@@ -2164,6 +2284,10 @@
     "status": "not_found"
   },
   {
+    "name": "Astragalus polysaccharides (APS)",
+    "status": "not_found"
+  },
+  {
     "name": "Astressin (non-selective CRHR1/CRHR2 antagonist)",
     "status": "not_found"
   },
@@ -2180,6 +2304,10 @@
     "status": "found",
     "2d_pubchem_path": "compound_images/73350132.png",
     "image_2d": "compound_images/2d_structures/73350132.png"
+  },
+  {
+    "name": "Atalantia monophylla root extract",
+    "status": "not_found"
   },
   {
     "name": "Atorvastatin",
@@ -2227,6 +2355,10 @@
   },
   {
     "name": "Autologous fat",
+    "status": "not_found"
+  },
+  {
+    "name": "Autologous leucocyte rich platelet-rich plasma (L-PRP)",
     "status": "not_found"
   },
   {
@@ -2375,6 +2507,18 @@
     "status": "not_found"
   },
   {
+    "name": "Baicalein",
+    "CID": 5281605,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C15H10O5",
+    "MolecularWeight": "270.24",
+    "IUPACName": "5,6,7-trihydroxy-2-phenylchromen-4-one",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5281605/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5281605",
+    "status": "found"
+  },
+  {
     "name": "Baicalin",
     "CID": 64982,
     "SMILES": "C1=CC=C(C=C1)C2=CC(=O)C3=C(C(=C(C=C3O2)O[C@H]4[C@@H]([C@H]([C@@H]([C@H](O4)C(=O)O)O)O)O)O)O",
@@ -2391,6 +2535,10 @@
   },
   {
     "name": "Baicalin (BA)",
+    "status": "not_found"
+  },
+  {
+    "name": "Baicalin nanocrystals",
     "status": "not_found"
   },
   {
@@ -2444,6 +2592,22 @@
   {
     "name": "Benzo[a]pyrene (B[a]P)",
     "status": "not_found"
+  },
+  {
+    "name": "Benzo[c]quinolizin-3-one derivatives",
+    "status": "not_found"
+  },
+  {
+    "name": "Benzoic acid",
+    "CID": 243,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C7H6O2",
+    "MolecularWeight": "122.12",
+    "IUPACName": "benzoic acid",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/243/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/243",
+    "status": "found"
   },
   {
     "name": "Benzopyran compound",
@@ -2624,6 +2788,10 @@
     "sdf_3d": "compound_images/3d_structures/5280373.sdf"
   },
   {
+    "name": "Bioengineered Exosomal Hair Growth Factors Complex (BEHC™)",
+    "status": "not_found"
+  },
+  {
     "name": "Biometa Complex",
     "status": "not_found"
   },
@@ -2677,6 +2845,10 @@
     "status": "not_found"
   },
   {
+    "name": "Bletilla striata polysaccharide (BSP)",
+    "status": "not_found"
+  },
+  {
     "name": "Bongsamsa (봉삼",
     "status": "not_found"
   },
@@ -2686,6 +2858,10 @@
   },
   {
     "name": "Boracin (보라틴)",
+    "status": "not_found"
+  },
+  {
+    "name": "Borate-modified recombinant type XVII collagen",
     "status": "not_found"
   },
   {
@@ -2862,6 +3038,18 @@
     "status": "not_found"
   },
   {
+    "name": "Buprenorphine",
+    "CID": 644073,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C29H41NO4",
+    "MolecularWeight": "467.6",
+    "IUPACName": "(1S,2S,6R,14R,15R,16R)-5-(cyclopropylmethyl)-16-[(2S)-2-hydroxy-3,3-dimethylbutan-2-yl]-15-methoxy-13-oxa-5-azahexacyclo[13.2.2.12,8.01,6.02,14.012,20]icosa-8(20),9,11-trien-11-ol",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/644073/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/644073",
+    "status": "found"
+  },
+  {
     "name": "Burdock extract",
     "status": "not_found"
   },
@@ -2936,6 +3124,10 @@
     "2d_pubchem_path": "compound_images/57336812.png",
     "image_2d": "compound_images/2d_structures/57336812.png",
     "sdf_3d": "compound_images/3d_structures/57336812.sdf"
+  },
+  {
+    "name": "CG2001",
+    "status": "not_found"
   },
   {
     "name": "CHR-7310",
@@ -3036,6 +3228,10 @@
     "3d_sdf_path": "compound_images/3d_structures/Caffeine-based solutions.sdf",
     "image_2d": "compound_images/2d_structures/Caffeine-based_solutions.png",
     "sdf_3d": "compound_images/3d_structures/Caffeine-based_solutions.sdf"
+  },
+  {
+    "name": "Caffeine-based topical liquid 0.2%",
+    "status": "not_found"
   },
   {
     "name": "Caffeoyl hemiterpene glycosides",
@@ -3142,6 +3338,22 @@
     "status": "not_found"
   },
   {
+    "name": "Cannabidiol (CBD)",
+    "status": "not_found"
+  },
+  {
+    "name": "Cannabidivarin (CBDV)",
+    "CID": 11601669,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C19H26O2",
+    "MolecularWeight": "286.4",
+    "IUPACName": "2-[(1R,6R)-3-methyl-6-prop-1-en-2-ylcyclohex-2-en-1-yl]-5-propylbenzene-1,3-diol",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/11601669/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/11601669",
+    "status": "found"
+  },
+  {
     "name": "Canrenone",
     "CID": 13789,
     "SMILES": "C[C@]12CCC(=O)C=C1C=C[C@@H]3[C@@H]2CC[C@]4([C@H]3CC[C@@]45CCC(=O)O5)C",
@@ -3191,6 +3403,22 @@
     "2d_pubchem_path": "compound_images/10339178.png",
     "image_2d": "compound_images/2d_structures/10339178.png",
     "sdf_3d": "compound_images/3d_structures/10339178.sdf"
+  },
+  {
+    "name": "Carboxygas",
+    "status": "not_found"
+  },
+  {
+    "name": "Carboxymethyl chitosan",
+    "CID": 71306969,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C20H37N3O14",
+    "MolecularWeight": "543.5",
+    "IUPACName": "N-[(2S,3R,4R,6R)-5-[(2S,3R,4R,5S,6R)-3-amino-4,5-dihydroxy-6-(hydroxymethyl)oxan-2-yl]oxy-2-[(2R,4R,5R,6R)-5-amino-4,6-dihydroxy-2-(hydroxymethyl)oxan-3-yl]oxy-4-hydroxy-6-(hydroxymethyl)oxan-3-yl]acetamide",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/71306969/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/71306969",
+    "status": "found"
   },
   {
     "name": "Carfilzomib",
@@ -3294,11 +3522,23 @@
     "status": "not_found"
   },
   {
+    "name": "Cell-derived nanovesicles (CNVs)",
+    "status": "not_found"
+  },
+  {
     "name": "Cell-free Fat Extract (CEFFE)",
     "status": "not_found"
   },
   {
     "name": "Cell-free fat extract (CEFFE)",
+    "status": "not_found"
+  },
+  {
+    "name": "Cell-penetrating peptides",
+    "status": "not_found"
+  },
+  {
+    "name": "Cellcurin",
     "status": "not_found"
   },
   {
@@ -3382,6 +3622,10 @@
     "status": "not_found"
   },
   {
+    "name": "Changfa Zirong Powder (CFZRS)",
+    "status": "not_found"
+  },
+  {
     "name": "Chebulagic acid",
     "CID": 442674,
     "SMILES": "C1[C@@H]2[C@@H]3[C@@H]([C@H]([C@@H](O2)OC(=O)C4=CC(=C(C(=C4)O)O)O)OC(=O)C5=CC(=C(C6=C5[C@H]([C@@H](C(=O)O3)CC(=O)O)[C@@H](C(=O)O6)O)O)O)OC(=O)C7=CC(=C(C(=C7C8=C(C(=C(C=C8C(=O)O1)O)O)O)O)O)O",
@@ -3433,6 +3677,10 @@
     "2d_pubchem_path": "compound_images/49779393.png",
     "image_2d": "compound_images/2d_structures/49779393.png",
     "sdf_3d": "compound_images/3d_structures/49779393.sdf"
+  },
+  {
+    "name": "Chitosan",
+    "status": "not_found"
   },
   {
     "name": "Chitosan Nanoparticles",
@@ -3622,6 +3870,10 @@
     "status": "not_found"
   },
   {
+    "name": "Clacosterone",
+    "status": "not_found"
+  },
+  {
     "name": "Clascoterone",
     "CID": 11750009,
     "SMILES": "CC12CCC3C(CCC4=CC(=O)CCC34C)C1CCC2(O)C(=O)Cl",
@@ -3649,8 +3901,44 @@
     "sdf_3d": "compound_images/3d_structures/Clascoterone_(Cortexolone-17α-propionate).sdf"
   },
   {
+    "name": "Clindamycin",
+    "CID": 446598,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C18H33ClN2O5S",
+    "MolecularWeight": "425.0",
+    "IUPACName": "(2S,4R)-N-[(1S,2S)-2-chloro-1-[(2R,3R,4S,5R,6R)-3,4,5-trihydroxy-6-methylsulfanyloxan-2-yl]propyl]-1-methyl-4-propylpyrrolidine-2-carboxamide",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/446598/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/446598",
+    "status": "found"
+  },
+  {
+    "name": "Clobetasol",
+    "CID": 5311051,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C22H28ClFO4",
+    "MolecularWeight": "410.9",
+    "IUPACName": "(8S,9R,10S,11S,13S,14S,16S,17R)-17-(2-chloroacetyl)-9-fluoro-11,17-dihydroxy-10,13,16-trimethyl-6,7,8,11,12,14,15,16-octahydrocyclopenta[a]phenanthren-3-one",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5311051/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5311051",
+    "status": "found"
+  },
+  {
     "name": "Clobetasol 0.05%",
     "status": "not_found"
+  },
+  {
+    "name": "Clobetasol Propionate",
+    "CID": 32798,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C25H32ClFO5",
+    "MolecularWeight": "467.0",
+    "IUPACName": "[(8S,9R,10S,11S,13S,14S,16S,17R)-17-(2-chloroacetyl)-9-fluoro-11-hydroxy-10,13,16-trimethyl-3-oxo-6,7,8,11,12,14,15,16-octahydrocyclopenta[a]phenanthren-17-yl] propanoate",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/32798/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/32798",
+    "status": "found"
   },
   {
     "name": "Clomiphene citrate",
@@ -3731,6 +4019,14 @@
   },
   {
     "name": "Combined herbal extract of dangkak",
+    "status": "not_found"
+  },
+  {
+    "name": "Combined oral contraceptive pill",
+    "status": "not_found"
+  },
+  {
+    "name": "Combined oral contraceptives",
     "status": "not_found"
   },
   {
@@ -4412,6 +4708,10 @@
     "sdf_3d": "compound_images/3d_structures/73568.sdf"
   },
   {
+    "name": "Corn kernel extract (Zea mays)",
+    "status": "not_found"
+  },
+  {
     "name": "Corni Fructus (산수유)",
     "status": "not_found"
   },
@@ -4421,6 +4721,10 @@
   },
   {
     "name": "Cornus officinalis (CO)",
+    "status": "not_found"
+  },
+  {
+    "name": "Corticosteroids",
     "status": "not_found"
   },
   {
@@ -4540,6 +4844,10 @@
   },
   {
     "name": "Cuscuta reflexa Roxb. petroleum ether extract",
+    "status": "not_found"
+  },
+  {
+    "name": "CuxO nanozyme",
     "status": "not_found"
   },
   {
@@ -4730,6 +5038,18 @@
     "sdf_3d": "compound_images/3d_structures/6253.sdf"
   },
   {
+    "name": "D-panthenol",
+    "CID": 131204,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C9H19NO4",
+    "MolecularWeight": "205.25",
+    "IUPACName": "(2R)-2,4-dihydroxy-N-(3-hydroxypropyl)-3,3-dimethylbutanamide",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/131204/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/131204",
+    "status": "found"
+  },
+  {
     "name": "DHT",
     "CID": 10635,
     "SMILES": "C[C@]12CCC(=O)C[C@@H]1CC[C@@H]3[C@@H]2CC[C@]4([C@H]3CC[C@@H]4O)C",
@@ -4859,6 +5179,18 @@
     "status": "not_found"
   },
   {
+    "name": "Degarelix",
+    "CID": 16136245,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C82H103ClN18O16",
+    "MolecularWeight": "1632.3",
+    "IUPACName": "(4S)-N-[4-[(2S)-2-[[(2S)-2-[[(2R)-2-[[(2R)-2-[[(2R)-2-acetamido-3-naphthalen-2-ylpropanoyl]amino]-3-(4-chlorophenyl)propanoyl]amino]-3-pyridin-3-ylpropanoyl]amino]-3-hydroxypropanoyl]amino]-3-[[(2R)-1-[[(2S)-1-[[(2S)-1-[(2S)-2-[[(2R)-1-amino-1-oxopropan-2-yl]carbamoyl]pyrrolidin-1-yl]-1-oxo-6-(propan-2-ylamino)hexan-2-yl]amino]-4-methyl-1-oxopentan-2-yl]amino]-3-[4-(carbamoylamino)phenyl]-1-oxopropan-2-yl]amino]-3-oxopropyl]phenyl]-2,6-dioxo-1,3-diazinane-4-carboxamide",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/16136245/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/16136245",
+    "status": "found"
+  },
+  {
     "name": "Dehydroeburicoic acid",
     "CID": 15250826,
     "SMILES": "CC(C)C(=C)CC[C@H]([C@H]1CC[C@@]2([C@@]1(CC=C3C2=CC[C@@H]4[C@@]3(CC[C@@H](C4(C)C)O)C)C)C)C(=O)O",
@@ -4907,6 +5239,10 @@
     "sdf_3d": "compound_images/3d_structures/5743.sdf"
   },
   {
+    "name": "Dexamethasone (DEX)",
+    "status": "not_found"
+  },
+  {
     "name": "Dexpanthenol",
     "CID": 131204,
     "SMILES": "CC(C)(CO)C(O)C(=O)NCCCO",
@@ -4939,8 +5275,24 @@
     "sdf_3d": "compound_images/3d_structures/62698.sdf"
   },
   {
+    "name": "Diadzin",
+    "status": "not_found"
+  },
+  {
     "name": "Diamond nanoparticles",
     "status": "not_found"
+  },
+  {
+    "name": "Diane-35",
+    "CID": 107694,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C44H53ClO6",
+    "MolecularWeight": "713.3",
+    "IUPACName": "[(1S,2S,5R,11R,12S,15R,16S)-15-acetyl-9-chloro-2,16-dimethyl-6-oxo-15-pentacyclo[9.7.0.02,8.03,5.012,16]octadeca-7,9-dienyl] acetate;(8R,9S,13S,14S,17R)-17-ethynyl-13-methyl-7,8,9,11,12,14,15,16-octahydro-6H-cyclopenta[a]phenanthrene-3,17-diol",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/107694/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/107694",
+    "status": "found"
   },
   {
     "name": "Diarylheptanoids",
@@ -4994,6 +5346,18 @@
   {
     "name": "Dictamnus dasycarpus bark)",
     "status": "not_found"
+  },
+  {
+    "name": "Dienogest",
+    "CID": 68861,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C20H25NO2",
+    "MolecularWeight": "311.4",
+    "IUPACName": "2-[(8S,13S,14S,17R)-17-hydroxy-13-methyl-3-oxo-1,2,6,7,8,11,12,14,15,16-decahydrocyclopenta[a]phenanthren-17-yl]acetonitrile",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/68861/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/68861",
+    "status": "found"
   },
   {
     "name": "Diethyl 2",
@@ -5141,6 +5505,18 @@
     "2d_pubchem_path": "compound_images/452110.png",
     "image_2d": "compound_images/2d_structures/452110.png",
     "sdf_3d": "compound_images/3d_structures/452110.sdf"
+  },
+  {
+    "name": "Diphencyprone",
+    "CID": 65057,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C15H10O",
+    "MolecularWeight": "206.24",
+    "IUPACName": "2,3-diphenylcycloprop-2-en-1-one",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/65057/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/65057",
+    "status": "found"
   },
   {
     "name": "Diphencyprone (DPCP)",
@@ -5363,6 +5739,10 @@
     "sdf_3d": "compound_images/3d_structures/EGCG_(Epigallocatechin_gallate).sdf"
   },
   {
+    "name": "EGCG (epigallocatechin-3-gallate)",
+    "status": "not_found"
+  },
+  {
     "name": "EGF",
     "status": "not_found"
   },
@@ -5473,6 +5853,10 @@
     "2d_pubchem_path": "compound_images/3009.png",
     "image_2d": "compound_images/2d_structures/3009.png",
     "sdf_3d": "compound_images/3d_structures/3009.sdf"
+  },
+  {
+    "name": "Egg Phosphatidylcholine",
+    "status": "not_found"
   },
   {
     "name": "Eggplant extract",
@@ -5825,6 +6209,18 @@
     "sdf_3d": "compound_images/3d_structures/5991.sdf"
   },
   {
+    "name": "Ethinylestradiol",
+    "CID": 5991,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C20H24O2",
+    "MolecularWeight": "296.4",
+    "IUPACName": "(8R,9S,13S,14S,17R)-17-ethynyl-13-methyl-7,8,9,11,12,14,15,16-octahydro-6H-cyclopenta[a]phenanthrene-3,17-diol",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5991/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5991",
+    "status": "found"
+  },
+  {
     "name": "Ethocyn",
     "CID": 131801058,
     "SMILES": "CCC(CCCC[C@H]1CC[C@H]2[C@@H]1CC(=O)C2)OCC",
@@ -5841,6 +6237,10 @@
   },
   {
     "name": "Ethyl 2-(2-(1-naphthoyl)-8-fluoro-1",
+    "status": "not_found"
+  },
+  {
+    "name": "Ethyl acetate fraction (EAF)",
     "status": "not_found"
   },
   {
@@ -5927,6 +6327,18 @@
     "2d_pubchem_path": "compound_images/135389305.png",
     "image_2d": "compound_images/2d_structures/135389305.png",
     "sdf_3d": "compound_images/3d_structures/135389305.sdf"
+  },
+  {
+    "name": "Exemestane",
+    "CID": 60198,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C20H24O2",
+    "MolecularWeight": "296.4",
+    "IUPACName": "(8R,9S,10R,13S,14S)-10,13-dimethyl-6-methylidene-7,8,9,11,12,14,15,16-octahydrocyclopenta[a]phenanthrene-3,17-dione",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/60198/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/60198",
+    "status": "found"
   },
   {
     "name": "Exosome-derived miRNA-29a-3p",
@@ -6115,6 +6527,14 @@
     "sdf_3d": "compound_images/3d_structures/Finasteride_0.25%_(topical).sdf"
   },
   {
+    "name": "Finasteride C-18 amide N-polimod conjugate",
+    "status": "not_found"
+  },
+  {
+    "name": "Finasteride-Citric Acid ion-pair",
+    "status": "not_found"
+  },
+  {
     "name": "Finasteride-loaded microspheres",
     "status": "found",
     "SMILES": "CC12CCC3C(C1CCC2C(=O)NC(C)(C)C)CCC4=CC(=O)CCC34C",
@@ -6131,6 +6551,18 @@
   {
     "name": "Flavonoid glycosides",
     "status": "not_found"
+  },
+  {
+    "name": "Fluocinolone",
+    "CID": 91488,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C21H26F2O6",
+    "MolecularWeight": "412.4",
+    "IUPACName": "(6S,8S,9R,10S,11S,13S,14S,16R,17S)-6,9-difluoro-11,16,17-trihydroxy-17-(2-hydroxyacetyl)-10,13-dimethyl-6,7,8,11,12,14,15,16-octahydrocyclopenta[a]phenanthren-3-one",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/91488/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/91488",
+    "status": "found"
   },
   {
     "name": "Fluorouracil",
@@ -6267,6 +6699,18 @@
   {
     "name": "Fucoidan extract",
     "status": "not_found"
+  },
+  {
+    "name": "Fucosterol",
+    "CID": 5281328,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C29H48O",
+    "MolecularWeight": "412.7",
+    "IUPACName": "(3S,8S,9S,10R,13R,14S,17R)-10,13-dimethyl-17-[(E,2R)-5-propan-2-ylhept-5-en-2-yl]-2,3,4,7,8,9,11,12,14,15,16,17-dodecahydro-1H-cyclopenta[a]phenanthren-3-ol",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5281328/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5281328",
+    "status": "found"
   },
   {
     "name": "Fulvic acid",
@@ -6450,7 +6894,23 @@
     "sdf_3d": "compound_images/3d_structures/5280961.sdf"
   },
   {
+    "name": "Genistin",
+    "CID": 5281377,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C21H20O10",
+    "MolecularWeight": "432.4",
+    "IUPACName": "5-hydroxy-3-(4-hydroxyphenyl)-7-[(2S,3R,4S,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxychromen-4-one",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5281377/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5281377",
+    "status": "found"
+  },
+  {
     "name": "Geranin",
+    "status": "not_found"
+  },
+  {
+    "name": "Ginger",
     "status": "not_found"
   },
   {
@@ -6483,6 +6943,10 @@
   },
   {
     "name": "Ginseng fermented extract",
+    "status": "not_found"
+  },
+  {
+    "name": "Ginseng powder",
     "status": "not_found"
   },
   {
@@ -6605,6 +7069,18 @@
     "status": "not_found"
   },
   {
+    "name": "Glycyrrhetinic acid",
+    "CID": 10114,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C30H46O4",
+    "MolecularWeight": "470.7",
+    "IUPACName": "(2S,4aS,6aR,6aS,6bR,8aR,10S,12aS,14bR)-10-hydroxy-2,4a,6a,6b,9,9,12a-heptamethyl-13-oxo-3,4,5,6,6a,7,8,8a,10,11,12,14b-dodecahydro-1H-picene-2-carboxylic acid",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/10114/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/10114",
+    "status": "found"
+  },
+  {
     "name": "Glycyrrhiza glabra",
     "status": "not_found"
   },
@@ -6627,6 +7103,18 @@
   {
     "name": "Glycyrrhizae Radix et Rhizoma (Gan Cao)",
     "status": "not_found"
+  },
+  {
+    "name": "Glycyrrhizin",
+    "CID": 14982,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C42H62O16",
+    "MolecularWeight": "822.9",
+    "IUPACName": "(2S,3S,4S,5R,6R)-6-[(2S,3R,4S,5S,6S)-2-[[(3S,4aR,6aR,6bS,8aS,11S,12aR,14aR,14bS)-11-carboxy-4,4,6a,6b,8a,11,14b-heptamethyl-14-oxo-2,3,4a,5,6,7,8,9,10,12,12a,14a-dodecahydro-1H-picen-3-yl]oxy]-6-carboxy-4,5-dihydroxyoxan-3-yl]oxy-3,4,5-trihydroxyoxane-2-carboxylic acid",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/14982/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/14982",
+    "status": "found"
   },
   {
     "name": "Goji berry",
@@ -6656,6 +7144,10 @@
     "sdf_3d": "compound_images/3d_structures/16118392.sdf"
   },
   {
+    "name": "Gonadotropin releasing hormone (GnRH) agonist",
+    "status": "not_found"
+  },
+  {
     "name": "Grapeseed",
     "status": "not_found"
   },
@@ -6677,6 +7169,10 @@
   },
   {
     "name": "Green tea leaf extract",
+    "status": "not_found"
+  },
+  {
+    "name": "Green tea polyphenols",
     "status": "not_found"
   },
   {
@@ -6758,6 +7254,14 @@
     "status": "not_found"
   },
   {
+    "name": "HDAC1-overexpressing dermal papilla cell-derived extracellular vesicles",
+    "status": "not_found"
+  },
+  {
+    "name": "Hair Rise™ Microemulsion",
+    "status": "not_found"
+  },
+  {
     "name": "Hair follicle-derived mesenchymal stem cells (HF-MSCs)",
     "status": "not_found"
   },
@@ -6801,6 +7305,10 @@
     "status": "not_found"
   },
   {
+    "name": "Hemp extract",
+    "status": "not_found"
+  },
+  {
     "name": "Henatinib",
     "CID": 25116064,
     "SMILES": "CC1=C(NC2=C1C(=O)N(CCC2)C[C@@H](CN3CCOCC3)O)/C=C\\4/C5=C(C=CC(=C5)F)NC4=O",
@@ -6834,6 +7342,18 @@
   {
     "name": "Herbal extracts (Aralia elata",
     "status": "not_found"
+  },
+  {
+    "name": "Hesperidin",
+    "CID": 10621,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C28H34O15",
+    "MolecularWeight": "610.6",
+    "IUPACName": "(2S)-5-hydroxy-2-(3-hydroxy-4-methoxyphenyl)-7-[(2S,3R,4S,5S,6R)-3,4,5-trihydroxy-6-[[(2R,3R,4R,5R,6S)-3,4,5-trihydroxy-6-methyloxan-2-yl]oxymethyl]oxan-2-yl]oxy-2,3-dihydrochromen-4-one",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/10621/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/10621",
+    "status": "found"
   },
   {
     "name": "Hexane extract of Dendropanax morbifera (DMHE)",
@@ -6897,6 +7417,14 @@
     "status": "not_found"
   },
   {
+    "name": "Hormonal intrauterine devices",
+    "status": "not_found"
+  },
+  {
+    "name": "Horsetail",
+    "status": "not_found"
+  },
+  {
     "name": "Horsetail (Equisetum arvense L.) extract",
     "status": "not_found"
   },
@@ -6941,6 +7469,10 @@
     "status": "not_found"
   },
   {
+    "name": "Human follicle stem cells (HFSCs)",
+    "status": "not_found"
+  },
+  {
     "name": "Human mesenchymal stem cell culture medium",
     "status": "not_found"
   },
@@ -6957,7 +7489,15 @@
     "status": "not_found"
   },
   {
+    "name": "Hyaluronic acid (cHA)",
+    "status": "not_found"
+  },
+  {
     "name": "Hyaluronic acid liposome",
+    "status": "not_found"
+  },
+  {
+    "name": "Hyaluronic acid microneedles",
     "status": "not_found"
   },
   {
@@ -7024,6 +7564,10 @@
     "sdf_3d": "compound_images/3d_structures/6443665.sdf"
   },
   {
+    "name": "Hyperbranched Polymer Dots (HPD)",
+    "status": "not_found"
+  },
+  {
     "name": "Hypericum leaf fermented extract",
     "status": "not_found"
   },
@@ -7053,6 +7597,10 @@
   },
   {
     "name": "IGF-II",
+    "status": "not_found"
+  },
+  {
+    "name": "IGFBP-rP1",
     "status": "not_found"
   },
   {
@@ -7205,6 +7753,10 @@
     "status": "not_found"
   },
   {
+    "name": "Implants",
+    "status": "not_found"
+  },
+  {
     "name": "Indazole derivatives (99A-99E)",
     "status": "not_found"
   },
@@ -7245,6 +7797,14 @@
     "2d_pubchem_path": "compound_images/9796068.png",
     "image_2d": "compound_images/2d_structures/9796068.png",
     "sdf_3d": "compound_images/3d_structures/9796068.sdf"
+  },
+  {
+    "name": "Injectable platelet-rich fibrin (i-PRF)",
+    "status": "not_found"
+  },
+  {
+    "name": "Injections",
+    "status": "not_found"
   },
   {
     "name": "Insulin",
@@ -7312,6 +7872,22 @@
     "2d_pubchem_path": "compound_images/23925.png",
     "image_2d": "compound_images/2d_structures/23925.png",
     "sdf_3d": "compound_images/3d_structures/23925.sdf"
+  },
+  {
+    "name": "Iron supplementation",
+    "status": "not_found"
+  },
+  {
+    "name": "Isoflavones",
+    "CID": 72304,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C15H10O2",
+    "MolecularWeight": "222.24",
+    "IUPACName": "3-phenylchromen-4-one",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/72304/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/72304",
+    "status": "found"
   },
   {
     "name": "Isomyl laurate",
@@ -7564,6 +8140,18 @@
     "status": "not_found"
   },
   {
+    "name": "Kopexil",
+    "CID": 10197687,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C4H6N4O",
+    "MolecularWeight": "126.12",
+    "IUPACName": "3-hydroxy-2-iminopyrimidin-4-amine",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/10197687/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/10197687",
+    "status": "found"
+  },
+  {
     "name": "L-685",
     "status": "not_found"
   },
@@ -7773,6 +8361,18 @@
     "sdf_3d": "compound_images/3d_structures/5311221.sdf"
   },
   {
+    "name": "Latanoprost acid",
+    "CID": 6441636,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C23H34O5",
+    "MolecularWeight": "390.5",
+    "IUPACName": "(Z)-7-[(1R,2R,3R,5S)-3,5-dihydroxy-2-[(3R)-3-hydroxy-5-phenylpentyl]cyclopentyl]hept-5-enoic acid",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/6441636/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/6441636",
+    "status": "found"
+  },
+  {
     "name": "Lavender Oil",
     "status": "not_found"
   },
@@ -7843,6 +8443,18 @@
     "status": "not_found"
   },
   {
+    "name": "Letrozole",
+    "CID": 3902,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C17H11N5",
+    "MolecularWeight": "285.30",
+    "IUPACName": "4-[(4-cyanophenyl)-(1,2,4-triazol-1-yl)methyl]benzonitrile",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/3902/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/3902",
+    "status": "found"
+  },
+  {
     "name": "Leukocyte-Poor PRP (LP-PRP)",
     "status": "not_found"
   },
@@ -7856,6 +8468,10 @@
   },
   {
     "name": "Licorice extract",
+    "status": "not_found"
+  },
+  {
+    "name": "Licorice root extract (Glycyrrhiza glabra)",
     "status": "not_found"
   },
   {
@@ -8120,6 +8736,18 @@
     "status": "not_found"
   },
   {
+    "name": "ML-7",
+    "CID": 4216,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C15H17IN2O2S",
+    "MolecularWeight": "416.3",
+    "IUPACName": "1-(5-iodonaphthalen-1-yl)sulfonyl-1,4-diazepane",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/4216/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/4216",
+    "status": "found"
+  },
+  {
     "name": "MNX@Arg-CLAVs",
     "status": "not_found"
   },
@@ -8133,6 +8761,10 @@
   },
   {
     "name": "MSM (Methyl Sulfonyl Methane)",
+    "status": "not_found"
+  },
+  {
+    "name": "MT-C6",
     "status": "not_found"
   },
   {
@@ -8315,11 +8947,27 @@
     "status": "not_found"
   },
   {
+    "name": "Menthol",
+    "CID": 1254,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C10H20O",
+    "MolecularWeight": "156.26",
+    "IUPACName": "5-methyl-2-propan-2-ylcyclohexan-1-ol",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/1254/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/1254",
+    "status": "found"
+  },
+  {
     "name": "Menthol (멘톨)",
     "status": "not_found"
   },
   {
     "name": "Mesenchymal Stem Cells (MSCs)",
+    "status": "not_found"
+  },
+  {
+    "name": "Mesoporous polydopamine nanoparticles",
     "status": "not_found"
   },
   {
@@ -8354,6 +9002,34 @@
     "sdf_3d": "compound_images/3d_structures/4091.sdf"
   },
   {
+    "name": "Methacrylate arginine (MeArg)",
+    "status": "not_found"
+  },
+  {
+    "name": "Methacrylate gelatin",
+    "status": "not_found"
+  },
+  {
+    "name": "Methacrylate hyaluronic acid (MeHA)",
+    "status": "not_found"
+  },
+  {
+    "name": "Methanolic leaf extract of Allamanda cathartica",
+    "status": "not_found"
+  },
+  {
+    "name": "Methotrexate",
+    "CID": 126941,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C20H22N8O5",
+    "MolecularWeight": "454.4",
+    "IUPACName": "(2S)-2-[[4-[(2,4-diaminopteridin-6-yl)methyl-methylamino]benzoyl]amino]pentanedioic acid",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/126941/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/126941",
+    "status": "found"
+  },
+  {
     "name": "Methyl gallate",
     "CID": 7428,
     "SMILES": "COC(=O)C1=CC(=C(C(=C1)O)O)O",
@@ -8382,6 +9058,22 @@
     "2d_pubchem_path": "compound_images/261000.png",
     "image_2d": "compound_images/2d_structures/261000.png",
     "sdf_3d": "compound_images/3d_structures/261000.sdf"
+  },
+  {
+    "name": "Metronidazole",
+    "CID": 4173,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C6H9N3O3",
+    "MolecularWeight": "171.15",
+    "IUPACName": "2-(2-methyl-5-nitroimidazol-1-yl)ethanol",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/4173/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/4173",
+    "status": "found"
+  },
+  {
+    "name": "Microemulsion formulation with natural substances",
+    "status": "not_found"
   },
   {
     "name": "Microhelenin C",
@@ -8435,6 +9127,10 @@
     "sdf_3d": "compound_images/3d_structures/4201.sdf"
   },
   {
+    "name": "Minoxidil (MDX)",
+    "status": "not_found"
+  },
+  {
     "name": "Minoxidil (MIN)",
     "status": "found",
     "SMILES": "NC1=CC(N)=NC(=N1)N1CCCCC1",
@@ -8463,6 +9159,18 @@
     "3d_sdf_path": "compound_images/3d_structures/Minoxidil (Positive control).sdf",
     "image_2d": "compound_images/2d_structures/Minoxidil_(Positive_control).png",
     "sdf_3d": "compound_images/3d_structures/Minoxidil_(Positive_control).sdf"
+  },
+  {
+    "name": "Minoxidil (oral",
+    "status": "not_found"
+  },
+  {
+    "name": "Minoxidil (oral)",
+    "status": "not_found"
+  },
+  {
+    "name": "Minoxidil (topical)",
+    "status": "not_found"
   },
   {
     "name": "Minoxidil (미녹시딜)",
@@ -8555,6 +9263,22 @@
     "sdf_3d": "compound_images/3d_structures/165001.sdf"
   },
   {
+    "name": "Mito-Activator Complex (MiAc)",
+    "status": "not_found"
+  },
+  {
+    "name": "MitoQ",
+    "CID": 11388331,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C38H47O7PS",
+    "MolecularWeight": "678.8",
+    "IUPACName": "10-(4,5-dimethoxy-2-methyl-3,6-dioxocyclohexa-1,4-dien-1-yl)decyl-triphenylphosphanium;methanesulfonate",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/11388331/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/11388331",
+    "status": "found"
+  },
+  {
     "name": "Mixed extract of Glehnia littoralis and Andrographis paniculata",
     "status": "not_found"
   },
@@ -8564,6 +9288,10 @@
   },
   {
     "name": "Modified CTLA4",
+    "status": "not_found"
+  },
+  {
+    "name": "Modified Changfa Zirong Powder (MCFZRS)",
     "status": "not_found"
   },
   {
@@ -8786,6 +9514,10 @@
     "sdf_3d": "compound_images/3d_structures/176157.sdf"
   },
   {
+    "name": "NFKBIZ siRNA",
+    "status": "not_found"
+  },
+  {
     "name": "Nano liposome-microbubble complex",
     "status": "not_found"
   },
@@ -8798,11 +9530,19 @@
     "status": "not_found"
   },
   {
+    "name": "Nanolipogel (NLG)",
+    "status": "not_found"
+  },
+  {
     "name": "Nanoparticles containing double-stranded oligonucleotide",
     "status": "not_found"
   },
   {
     "name": "Nanoparticles formed by self-assembly",
+    "status": "not_found"
+  },
+  {
+    "name": "Nanostructured Lipid Carriers (NLC)",
     "status": "not_found"
   },
   {
@@ -8823,6 +9563,18 @@
     "2d_pubchem_path": "compound_images/439246.png",
     "image_2d": "compound_images/2d_structures/439246.png",
     "sdf_3d": "compound_images/3d_structures/439246.sdf"
+  },
+  {
+    "name": "Naringin",
+    "CID": 442428,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C27H32O14",
+    "MolecularWeight": "580.5",
+    "IUPACName": "(2S)-7-[(2S,3R,4S,5S,6R)-4,5-dihydroxy-6-(hydroxymethyl)-3-[(2S,3R,4R,5R,6S)-3,4,5-trihydroxy-6-methyloxan-2-yl]oxyoxan-2-yl]oxy-5-hydroxy-2-(4-hydroxyphenyl)-2,3-dihydrochromen-4-one",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/442428/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/442428",
+    "status": "found"
   },
   {
     "name": "Natural eutectic solvent (천연 공융 용매)",
@@ -8860,6 +9612,10 @@
     "status": "not_found"
   },
   {
+    "name": "Nepenthes kampotiana Lecomte ethanol extract (Nk-EE)",
+    "status": "not_found"
+  },
+  {
     "name": "Niacin",
     "CID": 938,
     "SMILES": "C1=CC(=CN=C1)C(=O)O",
@@ -8877,6 +9633,18 @@
   {
     "name": "Niacin (Nicotinamide/Nicotinic Acid)",
     "status": "not_found"
+  },
+  {
+    "name": "Niacinamide",
+    "CID": 936,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C6H6N2O",
+    "MolecularWeight": "122.12",
+    "IUPACName": "pyridine-3-carboxamide",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/936/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/936",
+    "status": "found"
   },
   {
     "name": "Nicotinamide",
@@ -8924,6 +9692,30 @@
     "sdf_3d": "compound_images/3d_structures/90480033.sdf"
   },
   {
+    "name": "Nicotinamide adenine dinucleotide",
+    "CID": 5892,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C21H27N7O14P2",
+    "MolecularWeight": "663.4",
+    "IUPACName": "[[(2R,3S,4R,5R)-5-(6-aminopurin-9-yl)-3,4-dihydroxyoxolan-2-yl]methoxy-hydroxyphosphoryl] [(2R,3S,4R,5R)-5-(3-carbamoylpyridin-1-ium-1-yl)-3,4-dihydroxyoxolan-2-yl]methyl phosphate",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/5892/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/5892",
+    "status": "found"
+  },
+  {
+    "name": "Nicotinamide riboside chloride",
+    "CID": 90480033,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C11H15ClN2O5",
+    "MolecularWeight": "290.70",
+    "IUPACName": "1-[(2R,3R,4S,5R)-3,4-dihydroxy-5-(hydroxymethyl)oxolan-2-yl]pyridin-1-ium-3-carboxamide chloride",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/90480033/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/90480033",
+    "status": "found"
+  },
+  {
     "name": "Nicotinic acid amide",
     "CID": 936,
     "SMILES": "C1=CC(=CN=C1)C(=O)N",
@@ -8937,6 +9729,10 @@
     "2d_pubchem_path": "compound_images/936.png",
     "image_2d": "compound_images/2d_structures/936.png",
     "sdf_3d": "compound_images/3d_structures/936.sdf"
+  },
+  {
+    "name": "Nigella sativa seed oil",
+    "status": "not_found"
   },
   {
     "name": "Nilutamide",
@@ -9014,6 +9810,10 @@
     "sdf_3d": "compound_images/3d_structures/145068.sdf"
   },
   {
+    "name": "Nitric oxide donor",
+    "status": "not_found"
+  },
+  {
     "name": "Nitric oxide donors",
     "status": "not_found"
   },
@@ -9079,6 +9879,10 @@
     "sdf_3d": "compound_images/3d_structures/9838394.sdf"
   },
   {
+    "name": "Nourkrin",
+    "status": "not_found"
+  },
+  {
     "name": "Novel peptide (SEQ ID NO: 1)",
     "status": "not_found"
   },
@@ -9106,12 +9910,28 @@
     "sdf_3d": "compound_images/3d_structures/4567.sdf"
   },
   {
+    "name": "O-acylmenthols",
+    "status": "not_found"
+  },
+  {
     "name": "Oat fermented oil",
     "status": "not_found"
   },
   {
     "name": "Oaze helmet",
     "status": "not_found"
+  },
+  {
+    "name": "Obacunone",
+    "CID": 119041,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C26H30O7",
+    "MolecularWeight": "454.5",
+    "IUPACName": "(1R,2R,4S,7S,8S,11R,12R,18R)-7-(furan-3-yl)-1,8,12,17,17-pentamethyl-3,6,16-trioxapentacyclo[9.9.0.02,4.02,8.012,18]icos-13-ene-5,15,20-trione",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/119041/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/119041",
+    "status": "found"
   },
   {
     "name": "Oblimersen",
@@ -9131,6 +9951,10 @@
     "2d_pubchem_path": "compound_images/68406.png",
     "image_2d": "compound_images/2d_structures/68406.png",
     "sdf_3d": "compound_images/3d_structures/68406.sdf"
+  },
+  {
+    "name": "Oestrogestative drugs",
+    "status": "not_found"
   },
   {
     "name": "Olaparib",
@@ -9184,6 +10008,18 @@
   {
     "name": "Olive oil",
     "status": "not_found"
+  },
+  {
+    "name": "Omeprazole",
+    "CID": 4594,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C17H19N3O3S",
+    "MolecularWeight": "345.4",
+    "IUPACName": "6-methoxy-2-[(4-methoxy-3,5-dimethyl-2-pyridinyl)methylsulfinyl]-1H-benzimidazole",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/4594/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/4594",
+    "status": "found"
   },
   {
     "name": "Onion skin extract (양파껍질 추출물)",
@@ -9307,6 +10143,10 @@
     "2d_pubchem_path": "compound_images/9887053.png",
     "image_2d": "compound_images/2d_structures/9887053.png",
     "sdf_3d": "compound_images/3d_structures/9887053.sdf"
+  },
+  {
+    "name": "Oxidized sodium alginate",
+    "status": "not_found"
   },
   {
     "name": "Oxyresveratrol",
@@ -9660,6 +10500,10 @@
     "status": "not_found"
   },
   {
+    "name": "Panax notoginseng saponins (PNS)",
+    "status": "not_found"
+  },
+  {
     "name": "Panthenol",
     "CID": 4678,
     "SMILES": "CC(C)(CO)C(O)C(=O)NCCCO",
@@ -9738,6 +10582,30 @@
     "status": "not_found"
   },
   {
+    "name": "Peficitinib",
+    "CID": 57928403,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C18H22N4O2",
+    "MolecularWeight": "326.4",
+    "IUPACName": "4-[[(1R,3S)-5-hydroxy-2-adamantyl]amino]-1H-pyrrolo[2,3-b]pyridine-5-carboxamide",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/57928403/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/57928403",
+    "status": "found"
+  },
+  {
+    "name": "Pentamidine",
+    "CID": 4735,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C19H24N4O2",
+    "MolecularWeight": "340.4",
+    "IUPACName": "4-[5-(4-carbamimidoylphenoxy)pentoxy]benzenecarboximidamide",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/4735/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/4735",
+    "status": "found"
+  },
+  {
     "name": "Pentylene glycol",
     "CID": 93000,
     "SMILES": "CCCC(CO)O",
@@ -9754,6 +10622,10 @@
   },
   {
     "name": "Peppermint Oil",
+    "status": "not_found"
+  },
+  {
+    "name": "Peppermint extract",
     "status": "not_found"
   },
   {
@@ -9969,11 +10841,19 @@
     "sdf_3d": "compound_images/3d_structures/9547096.sdf"
   },
   {
+    "name": "Phospholipid-Bile Salt Mixed Micelles",
+    "status": "not_found"
+  },
+  {
     "name": "Phospholipids (animal-derived)",
     "status": "not_found"
   },
   {
     "name": "Physalis peruviana extract (골든베리 추출물)",
+    "status": "not_found"
+  },
+  {
+    "name": "Phytochemicals from Allamanda cathartica",
     "status": "not_found"
   },
   {
@@ -10109,6 +10989,10 @@
     "status": "not_found"
   },
   {
+    "name": "Platelet-rich Plasma (PRP)",
+    "status": "not_found"
+  },
+  {
     "name": "Platelet-rich fibrin (PRF)",
     "status": "not_found"
   },
@@ -10117,11 +11001,27 @@
     "status": "not_found"
   },
   {
+    "name": "Platelet-rich plasma lysate",
+    "status": "not_found"
+  },
+  {
     "name": "Platycardia cumen",
     "status": "not_found"
   },
   {
+    "name": "Platycladi cacumen-derived nanovesicles",
+    "status": "not_found"
+  },
+  {
     "name": "Platycladus orientalis (측백엽)",
+    "status": "not_found"
+  },
+  {
+    "name": "Platycladus orientalis aqueous extract",
+    "status": "not_found"
+  },
+  {
+    "name": "Platycladus orientalis polysaccharides (POP)",
     "status": "not_found"
   },
   {
@@ -10138,6 +11038,14 @@
   },
   {
     "name": "Pleuropterus multiorus extract (하수오 추출물)",
+    "status": "not_found"
+  },
+  {
+    "name": "Policosanol",
+    "status": "not_found"
+  },
+  {
+    "name": "Policosanol from Chinese wax",
     "status": "not_found"
   },
   {
@@ -10476,6 +11384,10 @@
     "status": "not_found"
   },
   {
+    "name": "Prostaquinon",
+    "status": "not_found"
+  },
+  {
     "name": "Protease",
     "CID": 3086051,
     "SMILES": "CCCCCCCCC1CC(=O)N[C@H](C(=O)N[C@@H](C(=O)N[C@@H](C(=O)N2CCC[C@H]2C(=O)N[C@H](C(=O)N[C@@H](C(=O)N[C@H](C(=O)N1)[C@@H](C)O)CO)CCC(=O)O)CC(=O)N)CC3=CC=C(C=C3)O)CC(=O)N",
@@ -10491,8 +11403,24 @@
     "sdf_3d": "compound_images/3d_structures/3086051.sdf"
   },
   {
+    "name": "Proteins derived from stressed mesenchymal stem cells (PDSSCs)",
+    "status": "not_found"
+  },
+  {
     "name": "Prunus persica (도인)",
     "status": "not_found"
+  },
+  {
+    "name": "Psoralen",
+    "CID": 6199,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C11H6O3",
+    "MolecularWeight": "186.16",
+    "IUPACName": "furo[3,2-g]chromen-7-one",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/6199/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/6199",
+    "status": "found"
   },
   {
     "name": "Pueraria lobata (갈근)",
@@ -10562,6 +11490,26 @@
     "2d_pubchem_path": "compound_images/1045.png",
     "image_2d": "compound_images/2d_structures/1045.png",
     "sdf_3d": "compound_images/3d_structures/1045.sdf"
+  },
+  {
+    "name": "Pyridoxine",
+    "CID": 1054,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C8H11NO3",
+    "MolecularWeight": "169.18",
+    "IUPACName": "4,5-bis(hydroxymethyl)-2-methylpyridin-3-ol",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/1054/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/1054",
+    "status": "found"
+  },
+  {
+    "name": "QR678 Neo",
+    "status": "not_found"
+  },
+  {
+    "name": "QR678 Nexo™",
+    "status": "not_found"
   },
   {
     "name": "Quercetin",
@@ -10700,6 +11648,18 @@
     "sdf_3d": "compound_images/3d_structures/132981.sdf"
   },
   {
+    "name": "RU486",
+    "CID": 55245,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C29H35NO2",
+    "MolecularWeight": "429.6",
+    "IUPACName": "(8S,11R,13S,14S,17S)-11-[4-(dimethylamino)phenyl]-17-hydroxy-13-methyl-17-prop-1-ynyl-1,2,6,7,8,11,12,14,15,16-decahydrocyclopenta[a]phenanthren-3-one",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/55245/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/55245",
+    "status": "found"
+  },
+  {
     "name": "RU58642",
     "CID": 9840708,
     "SMILES": "CC1(C(=O)N(C(=O)N1CC#N)C2=CC(=C(C=C2)C#N)C(F)(F)F)C",
@@ -10821,6 +11781,10 @@
   },
   {
     "name": "Red ginseng oil",
+    "status": "not_found"
+  },
+  {
+    "name": "Red laser (photobiomodulation)",
     "status": "not_found"
   },
   {
@@ -10971,6 +11935,10 @@
     "status": "not_found"
   },
   {
+    "name": "Rice bran extract (Oryza sativa)",
+    "status": "not_found"
+  },
+  {
     "name": "Rice bran fermented product",
     "status": "not_found"
   },
@@ -11025,6 +11993,10 @@
     "status": "not_found"
   },
   {
+    "name": "Roasted ginger peel powder",
+    "status": "not_found"
+  },
+  {
     "name": "Rogaine 2%",
     "status": "not_found"
   },
@@ -11068,6 +12040,10 @@
     "status": "not_found"
   },
   {
+    "name": "Rosemary extract",
+    "status": "not_found"
+  },
+  {
     "name": "Rosemary extract (Rosmarinus officinalis L.)",
     "status": "not_found"
   },
@@ -11081,6 +12057,10 @@
   },
   {
     "name": "Rosemary oil (로즈마리오일)",
+    "status": "not_found"
+  },
+  {
+    "name": "Rosmarinus officinalis leaf extract",
     "status": "not_found"
   },
   {
@@ -11605,7 +12585,15 @@
     "status": "not_found"
   },
   {
+    "name": "Shallot bulb extract (Allium ascalonicum)",
+    "status": "not_found"
+  },
+  {
     "name": "Shaoyao Gancao granule (SGG)",
+    "status": "not_found"
+  },
+  {
+    "name": "Shen-Ying-Yang-Zhen formula",
     "status": "not_found"
   },
   {
@@ -11634,6 +12622,18 @@
   {
     "name": "Silanodiol salicylate",
     "status": "not_found"
+  },
+  {
+    "name": "Simvastatin",
+    "CID": 54454,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C25H38O5",
+    "MolecularWeight": "418.6",
+    "IUPACName": "[(1S,3R,7S,8S,8aR)-8-[2-[(2R,4R)-4-hydroxy-6-oxooxan-2-yl]ethyl]-3,7-dimethyl-1,2,3,7,8,8a-hexahydronaphthalen-1-yl] 2,2-dimethylbutanoate",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/54454/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/54454",
+    "status": "found"
   },
   {
     "name": "Siraitiae Fructus (Luo Han Guo)",
@@ -11684,6 +12684,18 @@
     "status": "not_found"
   },
   {
+    "name": "Sodium Cholate",
+    "CID": 23668194,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C24H39NaO5",
+    "MolecularWeight": "430.6",
+    "IUPACName": "sodium (4R)-4-[(3R,5S,7R,8R,9S,10S,12S,13R,14S,17R)-3,7,12-trihydroxy-10,13-dimethyl-2,3,4,5,6,7,8,9,11,12,14,15,16,17-tetradecahydro-1H-cyclopenta[a]phenanthren-17-yl]pentanoate",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/23668194/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/23668194",
+    "status": "found"
+  },
+  {
     "name": "Sodium citrate",
     "CID": 6224,
     "SMILES": "C(C(=O)[O-])C(CC(=O)[O-])(C(=O)[O-])O.[Na+].[Na+].[Na+]",
@@ -11697,6 +12709,10 @@
     "2d_pubchem_path": "compound_images/6224.png",
     "image_2d": "compound_images/2d_structures/6224.png",
     "sdf_3d": "compound_images/3d_structures/6224.sdf"
+  },
+  {
+    "name": "Sodium hyaluronate",
+    "status": "not_found"
   },
   {
     "name": "Sodium hydroxide",
@@ -11821,6 +12837,10 @@
     "status": "not_found"
   },
   {
+    "name": "Soybean extract (Glycine max)",
+    "status": "not_found"
+  },
+  {
     "name": "Soybean oil",
     "status": "not_found"
   },
@@ -11913,6 +12933,18 @@
     "status": "not_found"
   },
   {
+    "name": "Standardized capsicum extract (Capsicum annuum L.)",
+    "status": "not_found"
+  },
+  {
+    "name": "Standardized rosemary extract (Rosmarinus officinalis L.)",
+    "status": "not_found"
+  },
+  {
+    "name": "Statins",
+    "status": "not_found"
+  },
+  {
     "name": "Stauntonia hexaphylla extract",
     "status": "not_found"
   },
@@ -12001,6 +13033,10 @@
     "status": "not_found"
   },
   {
+    "name": "Stryphnodendron adstringens extract",
+    "status": "not_found"
+  },
+  {
     "name": "Suberic acid esters",
     "status": "not_found"
   },
@@ -12066,6 +13102,10 @@
     "sdf_3d": "compound_images/3d_structures/52920501.sdf"
   },
   {
+    "name": "Sulfobutylether-β-cyclodextrin",
+    "status": "not_found"
+  },
+  {
     "name": "Sulforaphane",
     "CID": 5350,
     "SMILES": "CS(=O)CCCCN=C=S",
@@ -12113,6 +13153,10 @@
   },
   {
     "name": "Synthetic Laminin 511 E8 fragment",
+    "status": "not_found"
+  },
+  {
+    "name": "Systemic minoxidil",
     "status": "not_found"
   },
   {
@@ -12390,6 +13434,10 @@
     "status": "not_found"
   },
   {
+    "name": "Tea polyphenols",
+    "status": "not_found"
+  },
+  {
     "name": "Tea tree essential oil (티트리에션셜오일)",
     "status": "not_found"
   },
@@ -12400,6 +13448,18 @@
   {
     "name": "Tectona grandis L.f (teak) leaf extract",
     "status": "not_found"
+  },
+  {
+    "name": "Teicoplanin",
+    "CID": 133065662,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C88H97Cl2N9O33",
+    "MolecularWeight": "1879.7",
+    "IUPACName": "(1S,2R,19R,22R,34S,37R,40R,52S)-2-[(2R,3R,4R,5S,6R)-3-acetamido-4,5-dihydroxy-6-(hydroxymethyl)oxan-2-yl]oxy-22-amino-5,15-dichloro-64-[(2S,3R,4R,5S,6R)-3-(decanoylamino)-4,5-dihydroxy-6-(hydroxymethyl)oxan-2-yl]oxy-26,31,44,49-tetrahydroxy-21,35,38,54,56,59-hexaoxo-47-[(3S,4S,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxy-7,13,28-trioxa-20,36,39,53,55,58-hexazaundecacyclo[38.14.2.23,6.214,17.219,34.18,12.123,27.129,33.141,45.010,37.046,51]hexahexaconta-3,5,8,10,12(64),14,16,23(61),24,26,29(60),30,32,41(57),42,44,46(51),47,49,62,65-henicosaene-52-carboxylic acid",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/133065662/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/133065662",
+    "status": "found"
   },
   {
     "name": "Telatinib",
@@ -12533,6 +13593,10 @@
     "3d_sdf_path": "compound_images/3d_structures/Testosterone-binding Affibody.sdf",
     "image_2d": "compound_images/2d_structures/Testosterone-binding_Affibody.png",
     "sdf_3d": "compound_images/3d_structures/Testosterone-binding_Affibody.sdf"
+  },
+  {
+    "name": "Tetrahydrocannabivarin (THCV)",
+    "status": "not_found"
   },
   {
     "name": "Thalidomide",
@@ -12700,6 +13764,18 @@
     "status": "not_found"
   },
   {
+    "name": "Topical booster",
+    "status": "not_found"
+  },
+  {
+    "name": "Topical corticosteroid",
+    "status": "not_found"
+  },
+  {
+    "name": "Topical corticosteroids",
+    "status": "not_found"
+  },
+  {
     "name": "Topical finasteride",
     "status": "found",
     "SMILES": "CC12CCC3C(C1CCC2C(=O)NC(C)(C)C)CCC4=CC(=O)CCC34C",
@@ -12708,6 +13784,14 @@
     "3d_sdf_path": "compound_images/3d_structures/Topical finasteride.sdf",
     "image_2d": "compound_images/2d_structures/Topical_finasteride.png",
     "sdf_3d": "compound_images/3d_structures/Topical_finasteride.sdf"
+  },
+  {
+    "name": "Topical minoxidil",
+    "status": "not_found"
+  },
+  {
+    "name": "Topical steroids",
+    "status": "not_found"
   },
   {
     "name": "Toremifene",
@@ -12842,6 +13926,10 @@
     "sdf_3d": "compound_images/3d_structures/6421.sdf"
   },
   {
+    "name": "TrichoSol",
+    "status": "not_found"
+  },
+  {
     "name": "Trichoderma atroviride SW-1 culture extract",
     "status": "not_found"
   },
@@ -12867,6 +13955,10 @@
     "2d_pubchem_path": "compound_images/5920.png",
     "image_2d": "compound_images/2d_structures/5920.png",
     "sdf_3d": "compound_images/3d_structures/5920.sdf"
+  },
+  {
+    "name": "Trimax-360 Serum",
+    "status": "not_found"
   },
   {
     "name": "Trimethoprim",
@@ -12944,6 +14036,10 @@
   },
   {
     "name": "VISTA polypeptide",
+    "status": "not_found"
+  },
+  {
+    "name": "Vaginal rings",
     "status": "not_found"
   },
   {
@@ -13090,6 +14186,10 @@
     "status": "not_found"
   },
   {
+    "name": "Virgin coconut oil",
+    "status": "not_found"
+  },
+  {
     "name": "Viscozyme",
     "status": "not_found"
   },
@@ -13206,6 +14306,18 @@
   {
     "name": "Vitamin E (Tocopherol)",
     "status": "not_found"
+  },
+  {
+    "name": "Vitamin E succinate",
+    "CID": 20353,
+    "SMILES": "",
+    "IsomericSMILES": "",
+    "MolecularFormula": "C33H54O5",
+    "MolecularWeight": "530.8",
+    "IUPACName": "4-oxo-4-[[(2R)-2,5,7,8-tetramethyl-2-[(4R,8R)-4,8,12-trimethyltridecyl]-3,4-dihydrochromen-6-yl]oxy]butanoic acid",
+    "image_url": "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/20353/PNG?image_size=300x300",
+    "pubchem_url": "https://pubchem.ncbi.nlm.nih.gov/compound/20353",
+    "status": "found"
   },
   {
     "name": "Vitamins (A",
@@ -13334,6 +14446,10 @@
     "sdf_3d": "compound_images/3d_structures/9860439.sdf"
   },
   {
+    "name": "Whole ginger powder",
+    "status": "not_found"
+  },
+  {
     "name": "Wnt3a",
     "status": "not_found"
   },
@@ -13416,6 +14532,10 @@
   },
   {
     "name": "Yuzu seed oil",
+    "status": "not_found"
+  },
+  {
+    "name": "ZIF-8 nanoparticles",
     "status": "not_found"
   },
   {
@@ -13698,6 +14818,10 @@
     "status": "not_found"
   },
   {
+    "name": "low-dose)",
+    "status": "not_found"
+  },
+  {
     "name": "mRNA",
     "CID": 135566486,
     "SMILES": "C1=CN(C(=O)NC1=O)[C@H]2[C@@H]([C@@H]([C@H](O2)COP(=O)(O)O[C@@H]3[C@H](O[C@H]([C@@H]3O)N4C=NC5=C(N=CN=C54)N)CO[P+](=O)O)OP(=O)(O)OC[C@@H]6[C@H]([C@H]([C@@H](O6)N7C=NC8=C7N=C(NC8=O)N)O)O)O",
@@ -13745,7 +14869,15 @@
     "status": "not_found"
   },
   {
+    "name": "microRNA-21",
+    "status": "not_found"
+  },
+  {
     "name": "pDNA Gas6 plasmid",
+    "status": "not_found"
+  },
+  {
+    "name": "pH-responsive hybrid nanoparticles (SNP_EAF_SA)",
     "status": "not_found"
   },
   {
@@ -13816,6 +14948,18 @@
   },
   {
     "name": "β-sitosterol",
+    "status": "not_found"
+  },
+  {
+    "name": "γ-cyclodextrin-modified potassium metal-organic frameworks (MOFs)",
+    "status": "not_found"
+  },
+  {
+    "name": "γ-oryzanol",
+    "status": "not_found"
+  },
+  {
+    "name": "γ-tocotrienol",
     "status": "not_found"
   },
   {
@@ -14059,128 +15203,5 @@
   {
     "name": "흑지마",
     "status": "not_found"
-  },
-  {
-    "name": "GT20029 (AR PROTAC Degrader)",
-    "SMILES": "",
-    "status": "new_2025",
-    "mechanism": "AR PROTAC Degrader (topical)",
-    "phase": "Phase 2 completed (2025)",
-    "company": "Kintor Pharma",
-    "target": "Androgen Receptor",
-    "notes": "Phase 2: 0.5% QD +16.80 hairs/cm² vs placebo. No sexual AEs. Phase 3 planned."
-  },
-  {
-    "name": "KX-826 (Pyrilutamide)",
-    "SMILES": "CC1=CC(=CC(=C1)NC(=O)C1=CC=C(C=C1)C(F)(F)F)C(=O)NC1CCCC1",
-    "status": "found",
-    "mechanism": "Topical AR antagonist",
-    "phase": "Phase 2 completed",
-    "company": "Kintor Pharma",
-    "target": "Androgen Receptor",
-    "notes": "First-in-class topical AR antagonist for AGA and acne.",
-    "2d_image_path": "compound_images/2d_structures/KX-826 (Pyrilutamide).png",
-    "3d_sdf_path": "compound_images/3d_structures/KX-826 (Pyrilutamide).sdf",
-    "image_2d": "compound_images/2d_structures/KX-826_(Pyrilutamide).png",
-    "sdf_3d": "compound_images/3d_structures/KX-826_(Pyrilutamide).sdf"
-  },
-  {
-    "name": "PP405 (Stem Cell Reactivator)",
-    "SMILES": "",
-    "status": "new_2025",
-    "mechanism": "Hair follicle stem cell reactivation",
-    "phase": "Phase 2a (2025)",
-    "company": "Pelage Pharmaceuticals",
-    "target": "HFSC dormancy",
-    "notes": "Topical small molecule, reactivates dormant HFSCs. 60 patients enrolled."
-  },
-  {
-    "name": "VDPHL01 (Extended-release Oral Minoxidil)",
-    "SMILES": "NC1=CC(N)=NC(=N1)N1CCCCC1",
-    "status": "found",
-    "mechanism": "Extended-release oral minoxidil",
-    "phase": "Phase 2",
-    "company": "Veradermics",
-    "target": "K+ channel / vasodilator",
-    "notes": "+47.3 hairs/cm² at 4 months, 90.5% improved. Cardiac risk mitigated.",
-    "2d_image_path": "compound_images/2d_structures/VDPHL01 (Extended-release Oral Minoxidil).png",
-    "3d_sdf_path": "compound_images/3d_structures/VDPHL01 (Extended-release Oral Minoxidil).sdf",
-    "image_2d": "compound_images/2d_structures/VDPHL01_(Extended-release_Oral_Minoxidil).png",
-    "sdf_3d": "compound_images/3d_structures/VDPHL01_(Extended-release_Oral_Minoxidil).sdf"
-  },
-  {
-    "name": "ABS-201 (Anti-PRLR Antibody)",
-    "SMILES": "",
-    "status": "new_2025",
-    "mechanism": "Anti-prolactin receptor antibody (AI-designed)",
-    "phase": "Phase 1/2a (HEADLINE trial, 2025)",
-    "company": "Absci Corporation",
-    "target": "Prolactin Receptor (PRLR)",
-    "notes": "First AI-designed antibody for AGA. Generative AI platform."
-  },
-  {
-    "name": "EX104 (Engineered Exosomes: WNT10B+VEGFA+FGF7)",
-    "SMILES": "",
-    "status": "new_2025",
-    "mechanism": "Multi-growth factor exosome delivery",
-    "phase": "Preclinical",
-    "company": "Academic",
-    "target": "Wnt/VEGF/FGF pathways",
-    "notes": "HEK-293 engineered exosomes expressing WNT10B, VEGFA, FGF7. Comparable to minoxidil."
-  },
-  {
-    "name": "Anti-CXCL12 Antibody",
-    "SMILES": "",
-    "status": "new_2025",
-    "mechanism": "CXCL12 neutralizing antibody",
-    "phase": "Preclinical",
-    "company": "Academic",
-    "target": "CXCL12/SDF-1",
-    "notes": "Monthly/bimonthly SC injection. Dual AGA+AA potential. Reverses fibroimmune remodeling."
-  },
-  {
-    "name": "SM04554 (Coactosin)",
-    "SMILES": "CC1=CC(=CC=C1)C1=CC=C(C=C1)CN1C=C(C(=O)N=N1)C1=CC=CC=C1",
-    "status": "found",
-    "mechanism": "Wnt pathway activator",
-    "phase": "Phase 2",
-    "company": "Biosplice (formerly Samumed)",
-    "target": "Wnt/β-catenin",
-    "notes": "Promotes Ki67 expression in hair bulb. Positive clinical results.",
-    "2d_image_path": "compound_images/2d_structures/SM04554 (Coactosin).png",
-    "3d_sdf_path": "compound_images/3d_structures/SM04554 (Coactosin).sdf",
-    "image_2d": "compound_images/2d_structures/SM04554_(Coactosin).png",
-    "sdf_3d": "compound_images/3d_structures/SM04554_(Coactosin).sdf"
-  },
-  {
-    "name": "VDPHL01 (ER Oral Minoxidil)",
-    "SMILES": "NC1=CC(N)=NC(=N1)N1CCCCC1",
-    "status": "found",
-    "mechanism": "Extended-release oral minoxidil",
-    "phase": "Phase 2",
-    "company": "Veradermics",
-    "target": "K+ channel",
-    "2d_image_path": "compound_images/2d_structures/VDPHL01 (ER Oral Minoxidil).png",
-    "3d_sdf_path": "compound_images/3d_structures/VDPHL01 (ER Oral Minoxidil).sdf",
-    "image_2d": "compound_images/2d_structures/VDPHL01_(ER_Oral_Minoxidil).png",
-    "sdf_3d": "compound_images/3d_structures/VDPHL01_(ER_Oral_Minoxidil).sdf"
-  },
-  {
-    "name": "ABS-201 (Anti-PRLR Ab, AI-designed)",
-    "SMILES": "",
-    "status": "new_2025",
-    "mechanism": "Anti-prolactin receptor antibody",
-    "phase": "Phase 1/2a (2025)",
-    "company": "Absci Corp",
-    "target": "Prolactin Receptor (PRLR)"
-  },
-  {
-    "name": "EX104 (Engineered Exosomes)",
-    "SMILES": "",
-    "status": "new_2025",
-    "mechanism": "WNT10B+VEGFA+FGF7 exosome delivery",
-    "phase": "Preclinical",
-    "company": "Academic",
-    "target": "Wnt/VEGF/FGF"
   }
 ]
