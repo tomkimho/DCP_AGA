@@ -1,0 +1,217 @@
+[
+  {
+    "patent_number": "US4596812",
+    "patent_title": "Topical minoxidil composition for hair growth",
+    "patent_date": "1986-06-24",
+    "inventor_name": "Upjohn",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-03-10 08:38:01",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US5547957",
+    "patent_title": "Method of treating androgenic alopecia with finasteride",
+    "patent_date": "1996-08-20",
+    "inventor_name": "Merck",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-03-10 08:38:01",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US6787544",
+    "patent_title": "Treatment of androgenic alopecia with 5alpha-reductase inhibitors",
+    "patent_date": "2004-09-07",
+    "inventor_name": "GlaxoSmithKline",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-03-10 08:38:01",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US20200069602",
+    "patent_title": "Topical compositions of dutasteride for treatment of androgenetic alopecia",
+    "patent_date": "2020-03-05",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-03-10 08:38:01",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US20210177768",
+    "patent_title": "Clascoterone and minoxidil combination therapy for androgenetic alopecia",
+    "patent_date": "2021-06-17",
+    "inventor_name": "Cassiopea",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-03-10 08:38:01",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US11376233",
+    "patent_title": "Microneedle patch for treatment of hair loss",
+    "patent_date": "2022-07-05",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-03-10 08:38:01",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US20230181481",
+    "patent_title": "JAK inhibitor compositions for treatment of alopecia",
+    "patent_date": "2023-06-15",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-03-10 08:38:01",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US20230355556",
+    "patent_title": "Androgen receptor degraders for treatment of hair loss",
+    "patent_date": "2023-11-09",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-03-10 08:38:01",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US20240016767",
+    "patent_title": "Nanoparticle formulations for follicular drug delivery",
+    "patent_date": "2024-01-18",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-03-10 08:38:01",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US20240122895",
+    "patent_title": "Exosome compositions for hair regeneration",
+    "patent_date": "2024-04-18",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-03-10 08:38:01",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "WO2024089124",
+    "patent_title": "Topical formulation comprising finasteride nanoparticles",
+    "patent_date": "2024-05-02",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-03-10 08:38:01",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US20240307327",
+    "patent_title": "Stem cell derived extracellular vesicles for hair growth",
+    "patent_date": "2024-09-19",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-03-10 08:38:01",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "WO2024198765",
+    "patent_title": "CRISPR-based gene therapy for androgenetic alopecia",
+    "patent_date": "2024-10-03",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-03-10 08:38:01",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US20250012345",
+    "patent_title": "AI-designed 5-alpha reductase inhibitor compounds",
+    "patent_date": "2025-01-09",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-03-10 08:38:01",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "WO2025034567",
+    "patent_title": "Dissolving microneedle system for scalp drug delivery",
+    "patent_date": "2025-02-20",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-03-10 08:38:01",
+    "has_pdf": false
+  },
+  {
+    "pmid": "41791530",
+    "title": "Hormonal Contraceptives: Part II- Use and Relevance in Clinical Dermatology.",
+    "authors": "Singal A, Zhou MH, Driscoll MS, Grant-Kels JM, Murase JE, et al.",
+    "abstract": "Combined oral contraceptives (COC) decrease androgen levels by inhibiting androgen production and increasing sex hormone binding globulin. COC can therefore be used in the treatment of androgen-mediated dermatologic conditions. Hormonal contraceptives may also contribute to some dermatologic diseases through interactions with estrogen and/or progesterone receptors. In part two of this continuing medical education article, we discuss evidence regarding the mechanism and efficacy of hormonal contraceptives as therapeutics for acne, hirsutism, and hair loss, and review potential dermatologic SE of hormonal contraceptives to guide dermatologists in utilizing this therapy in their practices.",
+    "journal": "J Am Acad Dermatol",
+    "pub_date": "2026 Mar 4",
+    "doi": "10.1016/j.jaad.2026.02.105",
+    "pmc_id": null,
+    "collected_date": "2026-03-10T08:37:10.761464",
+    "pdf_downloaded": false,
+    "download_source": "none"
+  },
+  {
+    "pmid": "41789941",
+    "title": "Serum ferritin and hair iron content in correlation to hair diameter and density: a case-control study.",
+    "authors": "Debinta AA, Budianti WK, Hardjodipuro A, Menaldi SL, Dewi DK, et al.",
+    "abstract": "Androgenetic alopecia (AGA) is the most common non-scarring hair loss disorder in men due to susceptibility to testosterone. AGA causes cosmetic disturbances that affect confidence and quality of life. The correlation between low ferritin serum levels and AGA has been sufficiently proven in women but not in men. Thus, this study evaluated this correlation in Indonesian men. This case-control study included 33 men with AGA and 33 non-alopecia controls. Serum ferritin and hair iron levels were analyzed for differences using the Mann-Whitney U test. Their correlations with hair diameter and density were assessed using the Spearman correlation test. Serum ferritin (AGA vs. control, median: 222 vs. 232 ng/mL; p=0.758) and total hair iron levels (22.65 vs. 39.67 ng/mL; p=0.102) showed no significant differences between the groups. However, in men with milder AGA (grade <4), total hair iron level and hair diameter showed significant weak positive correlations (r=0.312, p=0.033). In the non-alopecia group, serum ferritin and total hair iron levels showed a significant weak negative correlation (r=-0.387, p=0.026). Hair iron levels were positively correlated with hair diameter in men with early AGA, suggesting a potential role in promoting hair thickness and highlighting its promise as a target for adjuvant therapy.",
+    "journal": "Dermatol Reports",
+    "pub_date": "2026 Mar 6",
+    "doi": "10.4081/dr.2026.10109",
+    "pmc_id": null,
+    "collected_date": "2026-03-10T08:37:19.273218",
+    "pdf_downloaded": false,
+    "download_source": "none"
+  },
+  {
+    "pmid": "41779894",
+    "title": "Recyclable Polymerizable Deep Eutectic Solvent-Based Three-Dimensional-Printed Dissolving Microneedles with pH-Responsive Delivery of ZIF-8-Loaded Minoxidil for Hair Loss Therapy.",
+    "authors": "Aminov N, Liu H, Meng D, Zhu L, Guo X, et al.",
+    "abstract": "Hair loss remains a prevalent dermatological concern with limited options for targeted, sustained transdermal therapy. Conventional topical formulations of minoxidil (MXD) suffer from poor skin penetration, rapid clearance, and low patient compliance. To address these limitations, we developed a three-dimensional-printed, dissolving microneedle (MN) system featuring a novel layered design: a recyclable polymerizable deep eutectic solvent (PDES) base and detachable, pH-responsive tips loaded with MXD-encapsulated ZIF-8 nanoparticles. This design allows for rapid insertion and dissolution of the drug-loaded needle tips, enabling the sustainable recovery and reuse of the PDES base through a simple ethanol-based regeneration protocol. The MNs exhibited excellent print fidelity, mechanical integrity (>50 mN fracture force), and skin penetration capability, along with minimal cytotoxicity and hemolysis. In vitro and in vivo evaluations confirmed pH-triggered drug release and potent hair regrowth performance in a cyclophosphamide-induced alopecia mouse model. Histological analysis revealed enhanced hair follicle density and demonstrated minimal systemic toxicity, highlighting its safety profile. Overall, this layered dissolving-recyclable MN platform for pH-triggered delivery of ZIF-8-encapsulated MXD represents a promising, sustainable strategy for transdermal delivery to treat hair loss.",
+    "journal": "ACS Appl Mater Interfaces",
+    "pub_date": "2026 Mar 4",
+    "doi": "10.1021/acsami.6c01834",
+    "pmc_id": null,
+    "collected_date": "2026-03-10T08:37:27.976234",
+    "pdf_downloaded": false,
+    "download_source": "none"
+  },
+  {
+    "pmid": "41779360",
+    "title": "Targeting Endogenous Wnt Antagonists for Therapy Development in AGA: a Focus on DKKs and sFRPs.",
+    "authors": "Wang Z, Bai H, Wang S, Wang S, Yuan C, et al.",
+    "abstract": "Androgenetic alopecia(AGA) is the most common form of hair loss worldwide. By middle age, approximately two-thirds of men and 40% of women are affected. The pathophysiology of AGA involves complex interactions among genetic predisposition, androgen sensitivity, and dysregulation of the hair follicles (HFs) cycle. Among the key regulatory pathways, the Wnt/β-catenin signaling pathway plays a central role in maintaining homeostasis of hair follicle stem cell (HFSCs) and dermal papilla cells (DPCs), as well as in promoting the transition to the anagen phase. Endogenous Wnt inhibitors, such as dickkopfs (DKKs) and secreted frizzled-related proteins (sFRPs), are upregulated under the influence of dihydrotestosterone and can modulate canonical Wnt signaling in DPCs and HFSCs via paracrine mechanisms, potentially contributing to the development of AGA. Targeted inhibition of these endogenous negative regulators may therefore represent a promising therapeutic strategy for AGA. This review summarizes current insights into the role of Wnt signaling in hair follicle biology, the characteristics and functions of DKKs and sFRPs in AGA, and their potential as therapeutic targets.",
+    "journal": "Stem Cell Rev Rep",
+    "pub_date": "2026 Mar 4",
+    "doi": "10.1007/s12015-026-11095-8",
+    "pmc_id": null,
+    "collected_date": "2026-03-10T08:37:33.385221",
+    "pdf_downloaded": false,
+    "download_source": "none"
+  },
+  {
+    "pmid": "41662901",
+    "title": "Teicoplanin alleviates androgenetic alopecia through inhibition of androgen receptor expression and enhancing dermal papilla cell proliferation.",
+    "authors": "Zhou Y, Lin Q, Wang S, Guan J, Wang Y, et al.",
+    "abstract": "Androgenetic alopecia (AGA) is a prevalent form of hair loss primarily driven by androgen receptor (AR) signaling. Currently, therapeutic options for AGA are limited. In this study, we conducted structure-based virtual screening of 3014 known compounds and identified teicoplanin, a glycopeptide antibiotic, as having potent binding affinity for the AR ligand-binding domain along with inhibition of protein expression. To investigate the potential therapeutic effects of teicoplanin on AGA, we performed both in vitro and in vivo experiments. In vitro, treatment with teicoplanin resulted in dose-dependent enhancement of human dermal papilla cell proliferation, while AR protein levels decreased. Additionally, dihydrotestosterone (DHT) induced AGA mice were treated with teicoplanin (5 mg/kg low dose and 10 mg/kg high dose) or vehicle as a control for 17 days. Results showed that subcutaneous administration of teicoplanin significantly improved hair regrowth in high dose group (average coverage: 52.3% ± 8.8% in the teicoplanin high dose group vs. 10.5% ± 3.6% in AGA group). Furthermore, hair follicles in the teicoplanin-treated group were notably larger than those in the AGA group. Immunofluorescent analysis revealed that teicoplanin treatment significantly increased Ki-67 staining, a marker of cellular proliferation, while reducing AR staining intensity. Real-time quantitative reverse transcription polymerase chain reaction and Western blotting analyses demonstrated that teicoplanin downregulated AR and its downstream target gene, transmembrane protease serine 2, by 66% and 35%, while promoting AR ubiquitination and proteasomal degradation. Concurrently, teicoplanin enhanced β-catenin expression and upregulated vascular endothelial growth factor-A mRNA. Our findings suggest that teicoplanin may serve as a promising candidate for the treatment of AGA.",
+    "journal": "Eur J Pharmacol",
+    "pub_date": "2026 Mar 10",
+    "doi": "10.1016/j.ejphar.2026.178592",
+    "pmc_id": null,
+    "collected_date": "2026-03-10T08:37:51.255762",
+    "pdf_downloaded": false,
+    "download_source": "none"
+  }
+]

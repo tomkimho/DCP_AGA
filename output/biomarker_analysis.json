@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-03-07T04:48:09.381868",
-  "total_biomarkers": 2631,
+  "generated_at": "2026-03-10T08:47:29.212367",
+  "total_biomarkers": 2633,
   "top_biomarkers": [
     {
       "name": "Hair density",
-      "count": 51
+      "count": 52
     },
     {
       "name": "Hair thickness",
@@ -28,7 +28,7 @@
     },
     {
       "name": "Hair diameter",
-      "count": 18
+      "count": 19
     },
     {
       "name": "TNF-α",
@@ -1118,12 +1118,15 @@
       "Epidermal Growth Factor Receptor (EGFR)": 1
     },
     "Sex hormone binding globulin": {
+      "Androgen production": 2,
       "Androgen receptor": 1,
       "5-alpha reductase": 1,
       "21-hydroxylase": 1,
       "11-beta-hydroxysteroid dehydrogenase": 1,
-      "Androgen production": 1,
-      "Testosterone synthesis": 1
+      "Testosterone synthesis": 1,
+      "Sex hormone binding globulin": 1,
+      "Estrogen receptor": 1,
+      "Progesterone receptor": 1
     },
     "Prolactin": {
       "21-hydroxylase": 2,
@@ -1656,7 +1659,8 @@
       "Wnt/β-catenin signaling pathway": 1,
       "β-catenin": 1,
       "Protein phosphatase 2A": 1,
-      "Androgen receptors": 1
+      "Androgen receptors": 1,
+      "Androgen production": 1
     },
     "Serum total testosterone": {
       "Androgen production": 1,
@@ -15370,10 +15374,11 @@
       "Hair follicle differentiation and growth": 1
     },
     "Sex hormone binding globulin": {
-      "Androgen signaling": 2,
+      "Androgen signaling": 3,
       "Adrenal steroid synthesis": 1,
       "Ovarian hormone synthesis": 1,
-      "Steroidogenesis": 1
+      "Steroidogenesis": 1,
+      "Estrogen signaling": 1
     },
     "Prolactin": {
       "Adrenal steroid synthesis": 2,
@@ -15809,7 +15814,7 @@
       "Hair growth cycle regulation": 1
     },
     "Androgen levels": {
-      "Androgen signaling": 4,
+      "Androgen signaling": 5,
       "Insulin resistance": 1,
       "DHT-mediated hair follicle miniaturization": 1,
       "Sebaceous gland lipid metabolism": 1,
@@ -29165,7 +29170,7 @@
     "Other": [
       {
         "name": "Hair density",
-        "count": 51
+        "count": 52
       },
       {
         "name": "Hair thickness",
@@ -29185,7 +29190,7 @@
       },
       {
         "name": "Hair diameter",
-        "count": 18
+        "count": 19
       },
       {
         "name": "Hair follicle density",
@@ -29384,6 +29389,10 @@
         "count": 5
       },
       {
+        "name": "Androgen levels",
+        "count": 5
+      },
+      {
         "name": "CD200",
         "count": 5
       },
@@ -29457,10 +29466,6 @@
       },
       {
         "name": "Total cholesterol",
-        "count": 4
-      },
-      {
-        "name": "Androgen levels",
         "count": 4
       },
       {
@@ -29593,6 +29598,10 @@
       },
       {
         "name": "CD44",
+        "count": 3
+      },
+      {
+        "name": "Sex hormone binding globulin",
         "count": 3
       },
       {
@@ -29917,10 +29926,6 @@
       },
       {
         "name": "FSH",
-        "count": 2
-      },
-      {
-        "name": "Sex hormone binding globulin",
         "count": 2
       },
       {
@@ -39545,6 +39550,14 @@
       },
       {
         "name": "Systemic toxicity markers",
+        "count": 1
+      },
+      {
+        "name": "Serum ferritin",
+        "count": 1
+      },
+      {
+        "name": "Hair iron content",
         "count": 1
       }
     ]
