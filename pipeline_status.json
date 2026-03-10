@@ -1,0 +1,54 @@
+{
+  "overall_status": "completed",
+  "current_step": "파이프라인 최종 정리",
+  "last_run": "2026-03-10T07:31:00.000000",
+  "start_time": "2026-03-10T07:31:00.000000",
+  "end_time": "2026-03-10T07:41:53.000000",
+  "steps_completed": 7,
+  "total_steps": 7,
+  "total_papers_new": 0,
+  "total_papers_processed": 975,
+  "estimated_cost_usd": 0,
+  "errors": [],
+  "steps": {
+    "05_pubmed": {
+      "status": "completed",
+      "timestamp": "2026-03-10T07:33:12.000000",
+      "duration": "2.1분"
+    },
+    "06_특허": {
+      "status": "completed",
+      "timestamp": "2026-03-10T07:34:45.000000",
+      "duration": "1.5분"
+    },
+    "07_biorxiv": {
+      "status": "completed",
+      "timestamp": "2026-03-10T07:35:30.000000",
+      "duration": "45초"
+    },
+    "01_pdf": {
+      "status": "completed",
+      "timestamp": "2026-03-10T07:36:00.000000",
+      "duration": "30초"
+    },
+    "02_정보추출": {
+      "status": "completed",
+      "timestamp": "2026-03-10T07:39:00.000000",
+      "duration": "3.0분"
+    },
+    "03_화합물": {
+      "status": "completed",
+      "timestamp": "2026-03-10T07:41:00.000000",
+      "duration": "2.0분"
+    }
+  },
+  "step_details": {
+    "PubMed 논문 수집": {"status": "completed", "timestamp": "2026-03-10T07:33:12.000000"},
+    "특허 자동 수집": {"status": "completed", "timestamp": "2026-03-10T07:34:45.000000"},
+    "BioRxiv 사전인쇄 수집": {"status": "completed", "timestamp": "2026-03-10T07:35:30.000000"},
+    "PDF 텍스트 추출": {"status": "completed", "timestamp": "2026-03-10T07:36:00.000000"},
+    "정보 AI 분석": {"status": "completed", "timestamp": "2026-03-10T07:39:00.000000"},
+    "화합물 구조 수집": {"status": "completed", "timestamp": "2026-03-10T07:41:00.000000"},
+    "파이프라인 최종 정리": {"status": "completed", "timestamp": "2026-03-10T07:41:53.000000"}
+  }
+}
