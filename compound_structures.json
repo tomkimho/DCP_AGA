@@ -1161,6 +1161,10 @@
     "status": "not_found"
   },
   {
+    "name": "AAV-aFGF",
+    "status": "not_found"
+  },
+  {
     "name": "ABR-215050",
     "CID": 54682876,
     "SMILES": "CN1C2=C(C(=CC=C2)OC)C(=C(C1=O)C(=O)N(C)C3=CC=C(C=C3)C(F)(F)F)O",
@@ -3581,6 +3585,10 @@
     "status": "not_found"
   },
   {
+    "name": "Cerium oxide nanoparticles",
+    "status": "not_found"
+  },
+  {
     "name": "Cetirizine",
     "CID": 2678,
     "SMILES": "OC(=O)COCC1=CC=C(C=C1)C(CN1CCNCC1)C1=CC=CC=C1Cl",
@@ -3899,6 +3907,10 @@
     "3d_sdf_path": "compound_images/3d_structures/Clascoterone (Cortexolone-17α-propionate).sdf",
     "image_2d": "compound_images/2d_structures/Clascoterone_(Cortexolone-17α-propionate).png",
     "sdf_3d": "compound_images/3d_structures/Clascoterone_(Cortexolone-17α-propionate).sdf"
+  },
+  {
+    "name": "ClickMNP (bioorthogonal click-engineered microneedle patch)",
+    "status": "not_found"
   },
   {
     "name": "Clindamycin",
@@ -7250,6 +7262,10 @@
     "sdf_3d": "compound_images/3d_structures/3547.sdf"
   },
   {
+    "name": "HA-DBCO (dibenzocyclooctyne-modified hyaluronic acid)",
+    "status": "not_found"
+  },
+  {
     "name": "HD-AFSCs (Human Intra- and Extra-Dermal Adipose Tissue-Derived Hair Follicle Stem Cells)",
     "status": "not_found"
   },
@@ -10263,6 +10279,10 @@
   },
   {
     "name": "PLGA-DUT/siAR@DPCM NPs",
+    "status": "not_found"
+  },
+  {
+    "name": "PLGA-N3 (azide-functionalized poly(lactide-co-glycolide))",
     "status": "not_found"
   },
   {

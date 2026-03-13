@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-12T20:53:03.131012",
-  "total_biomarkers": 2633,
+  "generated_at": "2026-03-13T20:43:12.532179",
+  "total_biomarkers": 2644,
   "top_biomarkers": [
     {
       "name": "Hair density",
@@ -163,6 +163,10 @@
       "count": 8
     },
     {
+      "name": "Triglycerides",
+      "count": 8
+    },
+    {
       "name": "IGF-1",
       "count": 8
     },
@@ -184,10 +188,6 @@
     },
     {
       "name": "LH",
-      "count": 7
-    },
-    {
-      "name": "Triglycerides",
       "count": 7
     },
     {
@@ -3782,6 +3782,11 @@
       "Growth factors in platelet-rich plasma": 1,
       "Hair follicle regeneration": 1
     },
+    "Pro-inflammatory cytokines": {
+      "TLR2": 1,
+      "NLRP3": 1,
+      "Innate immune pathways": 1
+    },
     "Th1": {
       "Hypothalamic-pituitary-adrenal (HPA) axis": 1,
       "T helper cells (Th1/Th2)": 1,
@@ -3895,7 +3900,7 @@
     },
     "DHT": {
       "5α-Reductase Type 2": 2,
-      "5α-Reductase": 1,
+      "5α-Reductase": 2,
       "5α-Reductase (5-alpha reductase)": 1,
       "Androgen signaling": 1,
       "5-alpha-reductase": 1,
@@ -8976,7 +8981,9 @@
       "5α-Reductase": 1,
       "Hair follicle stem cells": 1,
       "Dermal papilla": 1,
-      "5-alpha Reductase": 1
+      "5-alpha Reductase": 1,
+      "Acidic Fibroblast Growth Factor (aFGF)": 1,
+      "Hair follicle regeneration pathway": 1
     },
     "DHT suppression": {
       "5-alpha-reductase Type I": 1,
@@ -14534,6 +14541,60 @@
     "Systemic toxicity markers": {
       "Hair follicle growth": 1,
       "Transdermal delivery": 1
+    },
+    "Hair follicle regeneration indices": {
+      "Acidic Fibroblast Growth Factor (aFGF)": 1,
+      "Hair follicle regeneration pathway": 1
+    },
+    "De novo folliculogenesis indices": {
+      "Acidic Fibroblast Growth Factor (aFGF)": 1,
+      "Hair follicle regeneration pathway": 1
+    },
+    "Dermal angiogenesis markers": {
+      "Acidic Fibroblast Growth Factor (aFGF)": 1,
+      "Hair follicle regeneration pathway": 1
+    },
+    "Fibroblast proliferation markers": {
+      "Acidic Fibroblast Growth Factor (aFGF)": 1,
+      "Hair follicle regeneration pathway": 1
+    },
+    "p16": {
+      "5α-Reductase": 1,
+      "Leptin Receptor": 1,
+      "Reactive Oxygen Species": 1,
+      "p16/pRb senescence markers": 1
+    },
+    "pRb": {
+      "5α-Reductase": 1,
+      "Leptin Receptor": 1,
+      "Reactive Oxygen Species": 1,
+      "p16/pRb senescence markers": 1
+    },
+    "ROS": {
+      "5α-Reductase": 1,
+      "Leptin Receptor": 1,
+      "Reactive Oxygen Species": 1,
+      "p16/pRb senescence markers": 1
+    },
+    "Cutibacterium acnes enrichment": {
+      "TLR2": 1,
+      "NLRP3": 1,
+      "Innate immune pathways": 1
+    },
+    "Malassezia abundance": {
+      "TLR2": 1,
+      "NLRP3": 1,
+      "Innate immune pathways": 1
+    },
+    "Scalp sebum composition": {
+      "TLR2": 1,
+      "NLRP3": 1,
+      "Innate immune pathways": 1
+    },
+    "Palmitic acid": {
+      "TLR2": 1,
+      "NLRP3": 1,
+      "Innate immune pathways": 1
     }
   },
   "biomarker_pathways": {
@@ -17834,7 +17895,8 @@
       "Toll-like receptor (TLR) signaling": 1,
       "Pattern recognition receptor (PAMP) signaling": 1,
       "Innate immune response": 1,
-      "Adaptive immune response": 1
+      "Adaptive immune response": 1,
+      "TLR2 signaling": 1
     },
     "Th1": {
       "Toll-like receptor (TLR) signaling": 1,
@@ -17942,7 +18004,7 @@
       "Testosterone to DHT conversion": 1
     },
     "DHT": {
-      "Androgen signaling": 3,
+      "Androgen signaling": 4,
       "Androgen signaling pathway": 2,
       "5α-Reductase pathway": 1,
       "DHT metabolism": 1,
@@ -22911,7 +22973,8 @@
       "Androgen signaling": 2,
       "Wnt/β-catenin signaling": 1,
       "Wound healing pathway": 1,
-      "Hair cycle regulation": 1
+      "Hair cycle regulation": 1,
+      "FGF signaling": 1
     },
     "DHT suppression": {
       "Androgen signaling": 1,
@@ -29008,6 +29071,72 @@
     "Systemic toxicity markers": {
       "Transdermal delivery pathway": 1,
       "Hair follicle regeneration": 1
+    },
+    "Hair follicle regeneration indices": {
+      "FGF signaling": 1,
+      "Hair follicle cycling (anagen phase)": 1,
+      "Dermal angiogenesis": 1,
+      "Fibroblast proliferation": 1
+    },
+    "De novo folliculogenesis indices": {
+      "FGF signaling": 1,
+      "Hair follicle cycling (anagen phase)": 1,
+      "Dermal angiogenesis": 1,
+      "Fibroblast proliferation": 1
+    },
+    "Dermal angiogenesis markers": {
+      "FGF signaling": 1,
+      "Hair follicle cycling (anagen phase)": 1,
+      "Dermal angiogenesis": 1,
+      "Fibroblast proliferation": 1
+    },
+    "Fibroblast proliferation markers": {
+      "FGF signaling": 1,
+      "Hair follicle cycling (anagen phase)": 1,
+      "Dermal angiogenesis": 1,
+      "Fibroblast proliferation": 1
+    },
+    "p16": {
+      "Androgen signaling": 1,
+      "Oxidative stress pathway": 1,
+      "Cellular senescence pathway": 1,
+      "p16/pRb pathway": 1
+    },
+    "pRb": {
+      "Androgen signaling": 1,
+      "Oxidative stress pathway": 1,
+      "Cellular senescence pathway": 1,
+      "p16/pRb pathway": 1
+    },
+    "ROS": {
+      "Androgen signaling": 1,
+      "Oxidative stress pathway": 1,
+      "Cellular senescence pathway": 1,
+      "p16/pRb pathway": 1
+    },
+    "Cutibacterium acnes enrichment": {
+      "TLR2 signaling": 1,
+      "NLRP3 signaling": 1,
+      "Innate immune activation": 1,
+      "Lipid metabolism": 1
+    },
+    "Malassezia abundance": {
+      "TLR2 signaling": 1,
+      "NLRP3 signaling": 1,
+      "Innate immune activation": 1,
+      "Lipid metabolism": 1
+    },
+    "Scalp sebum composition": {
+      "TLR2 signaling": 1,
+      "NLRP3 signaling": 1,
+      "Innate immune activation": 1,
+      "Lipid metabolism": 1
+    },
+    "Palmitic acid": {
+      "TLR2 signaling": 1,
+      "NLRP3 signaling": 1,
+      "Innate immune activation": 1,
+      "Lipid metabolism": 1
     }
   },
   "categories": {
@@ -29144,7 +29273,7 @@
       },
       {
         "name": "DHT",
-        "count": 6
+        "count": 7
       },
       {
         "name": "Cortisol",
@@ -29164,6 +29293,10 @@
     "Oxidative Stress": [
       {
         "name": "Catalase",
+        "count": 1
+      },
+      {
+        "name": "ROS",
         "count": 1
       }
     ],
@@ -29277,6 +29410,10 @@
         "count": 8
       },
       {
+        "name": "Triglycerides",
+        "count": 8
+      },
+      {
         "name": "Hair density (hairs",
         "count": 8
       },
@@ -29290,10 +29427,6 @@
       },
       {
         "name": "LH",
-        "count": 7
-      },
-      {
-        "name": "Triglycerides",
         "count": 7
       },
       {
@@ -29801,6 +29934,10 @@
         "count": 3
       },
       {
+        "name": "Anagen phase duration",
+        "count": 3
+      },
+      {
         "name": "Serum testosterone level",
         "count": 3
       },
@@ -30162,6 +30299,10 @@
       },
       {
         "name": "Vellus hair rate",
+        "count": 2
+      },
+      {
+        "name": "Pro-inflammatory cytokines",
         "count": 2
       },
       {
@@ -30654,10 +30795,6 @@
       },
       {
         "name": "CD4+ T cell infiltration",
-        "count": 2
-      },
-      {
-        "name": "Anagen phase duration",
         "count": 2
       },
       {
@@ -32530,10 +32667,6 @@
       },
       {
         "name": "IFN-alpha",
-        "count": 1
-      },
-      {
-        "name": "Pro-inflammatory cytokines",
         "count": 1
       },
       {
@@ -39558,6 +39691,46 @@
       },
       {
         "name": "Hair iron content",
+        "count": 1
+      },
+      {
+        "name": "Hair follicle regeneration indices",
+        "count": 1
+      },
+      {
+        "name": "De novo folliculogenesis indices",
+        "count": 1
+      },
+      {
+        "name": "Dermal angiogenesis markers",
+        "count": 1
+      },
+      {
+        "name": "Fibroblast proliferation markers",
+        "count": 1
+      },
+      {
+        "name": "p16",
+        "count": 1
+      },
+      {
+        "name": "pRb",
+        "count": 1
+      },
+      {
+        "name": "Cutibacterium acnes enrichment",
+        "count": 1
+      },
+      {
+        "name": "Malassezia abundance",
+        "count": 1
+      },
+      {
+        "name": "Scalp sebum composition",
+        "count": 1
+      },
+      {
+        "name": "Palmitic acid",
         "count": 1
       }
     ]

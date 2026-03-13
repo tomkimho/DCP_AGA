@@ -213,5 +213,44 @@
     "collected_date": "2026-03-10T08:37:51.255762",
     "pdf_downloaded": false,
     "download_source": "none"
+  },
+  {
+    "pmid": "41823643",
+    "title": "Scalp Microbiome Alterations in Androgenetic Alopecia: Patterns and Emerging Mechanistic Insights.",
+    "authors": "Gupta AK, Teasell EM, Liddy A, Economopoulos V",
+    "abstract": "Androgenetic alopecia (AGA), the most common cause of hair loss in men and women, involves progressive follicular miniaturization and reduced hair density. Emerging evidence implicates the scalp microbiome as a potential modifier of this process. Preliminary evidence suggests alterations in microbial communities in patients with AGA compared to the general population, with the most robust finding being an enrichment of Cutibacterium acnes, particularly in males. Increases in Malassezia and reductions in Lawsonella and Corynebacterium have also been described, though results are less consistent across studies, while Staphylococcus displays variable patterns. These microbial shifts parallel alterations in scalp sebum composition, such as elevated triglycerides and palmitic acid, that may favor growth of lipophilic microbes. Mechanistic insights from in vitro studies and related inflammatory skin conditions indicate that C. acnes and Malassezia spp. are capable of generating free fatty acids and activating innate immune pathways, such as TLR2- and NLRP3-associated signaling, leading to pro-inflammatory cytokine production, potentially contributing to follicular stem cell apoptosis and hair follicle miniaturization. Although findings remain heterogenous, emerging evidence suggests microbial-lipid-immune interactions may contribute to AGA pathogenesis, providing a rationale for exploring treatments like ketoconazole or other lipid-modulating interventions.",
+    "journal": "Int J Dermatol",
+    "pub_date": "2026 Mar 13",
+    "doi": "10.1111/ijd.70365",
+    "pmc_id": null,
+    "collected_date": "2026-03-13T20:40:34.524915",
+    "pdf_downloaded": false,
+    "download_source": "none"
+  },
+  {
+    "pmid": "41821572",
+    "title": "Oxidative Stress and Hormone-Regulated Dermal Papilla Cell-Targeted Nanomodulators: Reverse Cellular Senescence for Androgenetic Alopecia Therapy.",
+    "authors": "Lan L, Zhou Q, Pan S, Liu H, Du Y, et al.",
+    "abstract": "Androgenetic alopecia (AGA), a prevalent form of hair loss disorder, is pathologically characterized by dermal papilla cell (DPC) senescence driven by the dual pathogenic effects of excessive dihydrotestosterone accumulation and reactive-oxygen-species-mediated oxidative stress. Current clinical treatment strategies are challenged by poor hair follicle targeting, short retention times, and limited efficacy due to single-pathway interventions. To address these limitations, we developed a DPC-targeted, dual-functional finasteride/cerium oxide nanoparticle (L-LP-Fi/CeNP) drug delivery system designed to synergistically counteract DPC senescence through concurrent dihydrotestosterone inhibition and reactive oxygen species scavenging. By actively targeting the DPC-specific surface marker leptin receptor, this system notable enhanced cutaneous penetration depth and prolonged intrafollicular drug retention. Within the pathological microenvironment, the combined action of finasteride and CeNPs down-regulated senescence markers (p16/pRb) via dual-pathway synergy, effectively reversing cellular senescence and restoring the hair-inductive capacity of DPCs. In AGA mouse models, L-LP-Fi/CeNPs exhibited hair regenerative efficacy comparable to, and in some aspects modestly improved over, that of minoxidil, the current clinical standard treatment. This study presents a novel targeted therapeutic strategy combining small-molecule drug synergism with nanotechnology, which offers a promising prospect for AGA treatment.",
+    "journal": "Biomater Res",
+    "pub_date": "2026",
+    "doi": "10.34133/bmr.0333",
+    "pmc_id": "12976380",
+    "collected_date": "2026-03-13T20:40:44.748225",
+    "pdf_downloaded": false,
+    "download_source": "none"
+  },
+  {
+    "pmid": "41821498",
+    "title": "Bioorthogonal Click-Engineered Microneedle Patch Enables Adeno-Associated Virus-Mediated Dermal Acidic Fibroblast Growth Factor Expression for Hair Loss Treatment.",
+    "authors": "Zhou A, Zhang Y, Chen W, Ren J, Ning X",
+    "abstract": "Hair loss is a prevalent dermatological disorder with limited durable therapies. Although acidic fibroblast growth factor (aFGF) promotes hair regeneration, its poor bioavailability and rapid degradation constrain efficacy. Here, we report a bioorthogonal click-engineered microneedle patch (ClickMNP) that enables efficient intradermal delivery of adeno-associated virus encoding aFGF (AAV-aFGF) for localized, sustained transgene expression. ClickMNP is constructed by synthesizing dibenzocyclooctyne-modified hyaluronic acid (HA-DBCO) that undergoes strain-promoted azide-alkyne cycloaddition (SPAAC) with an azide-functionalized poly(lactide-co-glycolide) (PLGA-N3) microneedle matrix, forming a cross-linked hydrogel network on the microneedle surface that immobilizes AAV while retaining infectivity, thereby creating a chemically robust, biologically active microneedle-virus interface for dermal gene transfer. Following intradermal application, ClickMNP breaches the stratum corneum and establishes a sustained viral depot that drives prolonged aFGF expression, addressing the low exposure and rapid clearance inherent to protein administration. In murine alopecia models, a single ClickMNP administration accelerates hair-follicle regeneration, enhances dermal angiogenesis, and prolongs anagen, outperforming free AAV-aFGF and recombinant aFGF controls. The platform preserves follicle viability and sustains regrowth across repeated depilation cycles, yielding native-like follicular architecture with increased indices of de novo folliculogenesis. Biocompatibility assessment indicates favorable local tolerability, and transcriptomic analysis reveals upregulation of pathways associated with fibroblast proliferation, angiogenesis, and follicular cycling, consistent with the observed phenotype. Collectively, ClickMNP establishes a versatile bioorthogonal microneedle-virus interface strategy that combines chemical engineering with gene therapy, offering a transformative solution for hair loss and broader cutaneous indications.",
+    "journal": "ACS Nano",
+    "pub_date": "2026 Mar 13",
+    "doi": "10.1021/acsnano.5c21849",
+    "pmc_id": null,
+    "collected_date": "2026-03-13T20:40:55.621950",
+    "pdf_downloaded": false,
+    "download_source": "none"
   }
 ]
