@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-19T20:57:16.787055",
-  "total_biomarkers": 2644,
+  "generated_at": "2026-03-20T20:49:53.893370",
+  "total_biomarkers": 2656,
   "top_biomarkers": [
     {
       "name": "Hair density",
@@ -55,16 +55,16 @@
       "count": 16
     },
     {
+      "name": "β-catenin expression",
+      "count": 14
+    },
+    {
       "name": "Anagen",
       "count": 14
     },
     {
       "name": "Hair follicle length",
       "count": 14
-    },
-    {
-      "name": "β-catenin expression",
-      "count": 13
     },
     {
       "name": "Hair growth rate",
@@ -330,10 +330,10 @@
       "Androgen Receptor (AR)": 2,
       "Dermal papilla cells": 2,
       "Androgen Receptor": 2,
+      "Wnt/β-catenin signaling": 2,
       "Activin": 1,
       "Follistatin": 1,
-      "TGF-β superfamily": 1,
-      "Noggin (BMP antagonist)": 1
+      "TGF-β superfamily": 1
     },
     "FGF7 expression": {
       "Activin": 1,
@@ -343,7 +343,10 @@
     "Wnt5a expression": {
       "Activin": 1,
       "Follistatin": 1,
-      "TGF-β superfamily": 1
+      "TGF-β superfamily": 1,
+      "TLR4": 1,
+      "NF-κB": 1,
+      "Wnt/β-catenin signaling": 1
     },
     "LEF1 expression": {
       "Activin": 1,
@@ -14595,6 +14598,66 @@
       "TLR2": 1,
       "NLRP3": 1,
       "Innate immune pathways": 1
+    },
+    "Vegfa mRNA": {
+      "TLR4": 1,
+      "NF-κB": 1,
+      "Wnt/β-catenin signaling": 1
+    },
+    "Fgfr mRNA": {
+      "TLR4": 1,
+      "NF-κB": 1,
+      "Wnt/β-catenin signaling": 1
+    },
+    "Igf1 mRNA": {
+      "TLR4": 1,
+      "NF-κB": 1,
+      "Wnt/β-catenin signaling": 1
+    },
+    "Lef1 mRNA": {
+      "TLR4": 1,
+      "NF-κB": 1,
+      "Wnt/β-catenin signaling": 1
+    },
+    "TLR4 expression": {
+      "TLR4": 1,
+      "NF-κB": 1,
+      "Wnt/β-catenin signaling": 1
+    },
+    "NF-κB expression": {
+      "TLR4": 1,
+      "NF-κB": 1,
+      "Wnt/β-catenin signaling": 1
+    },
+    "IL-6 levels": {
+      "TLR4": 1,
+      "NF-κB": 1,
+      "Wnt/β-catenin signaling": 1
+    },
+    "IL-17 levels": {
+      "TLR4": 1,
+      "NF-κB": 1,
+      "Wnt/β-catenin signaling": 1
+    },
+    "IL-23 levels": {
+      "TLR4": 1,
+      "NF-κB": 1,
+      "Wnt/β-catenin signaling": 1
+    },
+    "TNFα levels": {
+      "TLR4": 1,
+      "NF-κB": 1,
+      "Wnt/β-catenin signaling": 1
+    },
+    "Lactobacillus abundance": {
+      "TLR4": 1,
+      "NF-κB": 1,
+      "Wnt/β-catenin signaling": 1
+    },
+    "Proteus abundance": {
+      "TLR4": 1,
+      "NF-κB": 1,
+      "Wnt/β-catenin signaling": 1
     }
   },
   "biomarker_pathways": {
@@ -14708,7 +14771,7 @@
       "FGF7/Wnt5a/LEF1/VCAN pathway": 1
     },
     "β-catenin expression": {
-      "Wnt/β-catenin signaling": 9,
+      "Wnt/β-catenin signaling": 10,
       "TGF-β signaling": 2,
       "Wnt/β-catenin signaling pathway": 2,
       "VEGF signaling": 2,
@@ -14722,7 +14785,7 @@
       "FGF7/Wnt5a/LEF1/VCAN pathway": 1
     },
     "Wnt5a expression": {
-      "Wnt/β-catenin signaling": 1,
+      "Wnt/β-catenin signaling": 2,
       "Activin signaling": 1,
       "TGF-β signaling": 1,
       "SMAD2 phosphorylation": 1,
@@ -29137,6 +29200,66 @@
       "NLRP3 signaling": 1,
       "Innate immune activation": 1,
       "Lipid metabolism": 1
+    },
+    "Vegfa mRNA": {
+      "TLR4/NF-κB signaling": 1,
+      "Wnt/β-catenin signaling": 1,
+      "Inflammatory cytokine signaling": 1
+    },
+    "Fgfr mRNA": {
+      "TLR4/NF-κB signaling": 1,
+      "Wnt/β-catenin signaling": 1,
+      "Inflammatory cytokine signaling": 1
+    },
+    "Igf1 mRNA": {
+      "TLR4/NF-κB signaling": 1,
+      "Wnt/β-catenin signaling": 1,
+      "Inflammatory cytokine signaling": 1
+    },
+    "Lef1 mRNA": {
+      "TLR4/NF-κB signaling": 1,
+      "Wnt/β-catenin signaling": 1,
+      "Inflammatory cytokine signaling": 1
+    },
+    "TLR4 expression": {
+      "TLR4/NF-κB signaling": 1,
+      "Wnt/β-catenin signaling": 1,
+      "Inflammatory cytokine signaling": 1
+    },
+    "NF-κB expression": {
+      "TLR4/NF-κB signaling": 1,
+      "Wnt/β-catenin signaling": 1,
+      "Inflammatory cytokine signaling": 1
+    },
+    "IL-6 levels": {
+      "TLR4/NF-κB signaling": 1,
+      "Wnt/β-catenin signaling": 1,
+      "Inflammatory cytokine signaling": 1
+    },
+    "IL-17 levels": {
+      "TLR4/NF-κB signaling": 1,
+      "Wnt/β-catenin signaling": 1,
+      "Inflammatory cytokine signaling": 1
+    },
+    "IL-23 levels": {
+      "TLR4/NF-κB signaling": 1,
+      "Wnt/β-catenin signaling": 1,
+      "Inflammatory cytokine signaling": 1
+    },
+    "TNFα levels": {
+      "TLR4/NF-κB signaling": 1,
+      "Wnt/β-catenin signaling": 1,
+      "Inflammatory cytokine signaling": 1
+    },
+    "Lactobacillus abundance": {
+      "TLR4/NF-κB signaling": 1,
+      "Wnt/β-catenin signaling": 1,
+      "Inflammatory cytokine signaling": 1
+    },
+    "Proteus abundance": {
+      "TLR4/NF-κB signaling": 1,
+      "Wnt/β-catenin signaling": 1,
+      "Inflammatory cytokine signaling": 1
     }
   },
   "categories": {
@@ -29334,16 +29457,16 @@
         "count": 16
       },
       {
+        "name": "β-catenin expression",
+        "count": 14
+      },
+      {
         "name": "Anagen",
         "count": 14
       },
       {
         "name": "Hair follicle length",
         "count": 14
-      },
-      {
-        "name": "β-catenin expression",
-        "count": 13
       },
       {
         "name": "Hair growth rate",
@@ -29987,6 +30110,10 @@
       },
       {
         "name": "Terminal hair proportion",
+        "count": 2
+      },
+      {
+        "name": "Wnt5a expression",
         "count": 2
       },
       {
@@ -31079,10 +31206,6 @@
       },
       {
         "name": "FGF7 expression",
-        "count": 1
-      },
-      {
-        "name": "Wnt5a expression",
         "count": 1
       },
       {
@@ -39731,6 +39854,54 @@
       },
       {
         "name": "Palmitic acid",
+        "count": 1
+      },
+      {
+        "name": "Vegfa mRNA",
+        "count": 1
+      },
+      {
+        "name": "Fgfr mRNA",
+        "count": 1
+      },
+      {
+        "name": "Igf1 mRNA",
+        "count": 1
+      },
+      {
+        "name": "Lef1 mRNA",
+        "count": 1
+      },
+      {
+        "name": "TLR4 expression",
+        "count": 1
+      },
+      {
+        "name": "NF-κB expression",
+        "count": 1
+      },
+      {
+        "name": "IL-6 levels",
+        "count": 1
+      },
+      {
+        "name": "IL-17 levels",
+        "count": 1
+      },
+      {
+        "name": "IL-23 levels",
+        "count": 1
+      },
+      {
+        "name": "TNFα levels",
+        "count": 1
+      },
+      {
+        "name": "Lactobacillus abundance",
+        "count": 1
+      },
+      {
+        "name": "Proteus abundance",
         "count": 1
       }
     ]

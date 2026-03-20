@@ -252,5 +252,18 @@
     "collected_date": "2026-03-13T20:40:55.621950",
     "pdf_downloaded": false,
     "download_source": "none"
+  },
+  {
+    "pmid": "41849050",
+    "title": "Skin bacteriota ameliorates androgenetic alopecia via harmonizing skin immuno inflammatory balance.",
+    "authors": "Cao Y, Wu X, Huang Z, Xu C, Ge Z, et al.",
+    "abstract": "UNLABELLED: The human skin is the largest heterogeneous organ that protects the body from pathogens such as bacteria, fungi, mites, and viruses. The coexistence of skin microorganisms associated with the host helps maintain tissue integrity and immune homeostasis. This study aimed to investigate the effect of the skin microbiome on hair growth in androgenic alopecia (AGA) model mice. The dihydrotestosterone induced AGA model mice were engaged in this study. The ABF (Antibiotic-Free) and ABT (Antibiotic-Treated) mice were topically administrated with ddH2O and antibiotics, respectively. Seven days later, the three of mice in the ABF and ABT group were co-housed. Compared to ABF mice, ABT mice exhibited sparse hair, thinner skin, and fewer hair follicles, all of which has been improved in the Co-housed ABF/ABT mice. The translational expression of β-catenin and Wnt5a, as well as the mRNA levels of Vegfa, Fgfr, Igf1, and Lef1 decreased in ABT mice but recovered in ABF/ABT mice. Increased the expression of TLR4 and NF-κB, IL-6, and the mRNA levels of Il-17 levels in ABT mice compared to ABF mice indicated inflammation in dorsal skin. Cohousing notably affected Il-6, Il-17, Il-23, and Tnfα levels. The 16S rDNA sequencing results and the correlative analysis indicated that the relative abundance of Lactobacillus and Proteus might be the key genus influencing the immuno-inflammatory balance. Our findings suggest that restoring the dorsal skin bacteriota promotes hair growth in AGA model mice. This improvement is likely mediated by the modulation of the skin’s inflammatory microenvironment. Importance. This study highlights the critical role of skin bacteriota in modulating immuno-inflammatory balance in AGA, suggesting that restoration of bacteriota may contribute to the amelioration of DHT-induced hair loss by regulating TLR4/NF-κB pathways, which offers a novel insight for bacterial -based therapies. GRAPHICAL ABSTRACT: [Image: see text] SUPPLEMENTARY INFORMATION: The online version contains supplementary material available at 10.1007/s42770-026-01911-1.",
+    "journal": "Braz J Microbiol",
+    "pub_date": "2026 Mar 18",
+    "doi": "10.1007/s42770-026-01911-1",
+    "pmc_id": "13000086",
+    "collected_date": "2026-03-20T20:38:18.351179",
+    "pdf_downloaded": false,
+    "download_source": "none"
   }
 ]
