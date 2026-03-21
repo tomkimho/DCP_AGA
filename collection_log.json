@@ -265,5 +265,18 @@
     "collected_date": "2026-03-20T20:38:18.351179",
     "pdf_downloaded": false,
     "download_source": "none"
+  },
+  {
+    "pmid": "41861882",
+    "title": "Recombinant Filaggrin-2 microneedles reverse androgenetic alopecia by rescuing mitochondrial dysfunction in dermal papilla cells.",
+    "authors": "Chang R, Hao J, Huang Z, Zhang X, Li Z, et al.",
+    "abstract": "Androgenetic alopecia (AGA) is characterized by dihydrotestosterone (DHT)-induced damage to dermal papilla cells (DPCs), leading to hair follicle miniaturization. Current therapies (minoxidil, finasteride) are limited by single-target mechanisms, poor skin penetration, and systemic side effects, highlighting an urgent need for innovative treatments. In this study, we identified DHT-mediated downregulation of Filaggrin 2 (FLG2) in DPCs as a key contributor to AGA pathogenesis. To address this, we developed recombinant FLG2 (rFLG2) delivered via hyaluronic acid microneedle systems (HA/MNs), designated as rFLG2@HA/MNs, which effectively promoted hair follicle regeneration and mitigated DHT-induced DPCs damage. In an AGA mouse model, rFLG2@HA/MNs significantly enhanced hair follicle density and prolonged the anagen phase. Additionally, rFLG2@HA/MNs facilitated the regeneration of undamaged hair follicles and accelerated wound healing in full-thickness defect models, addressing the comorbidity of AGA with scalp barrier disruption. Mechanistically, DHT downregulates FLG2 expression in DPCs; exogenous rFLG2 then rescued DHT-impaired DPCs viability, migration, and adhesion by activating the MAPK/Erk signaling pathway, rebalancing Bcl-2/Bax expression, and restoring mitochondrial function. These findings underscore the therapeutic potential of rFLG2 in hair regeneration, establishing FLG2 as a critical target for AGA treatment and offering a comprehensive strategy to combat DHT-induced DPCs dysfunction.",
+    "journal": "Int J Biol Macromol",
+    "pub_date": "2026 Mar 18",
+    "doi": "10.1016/j.ijbiomac.2026.151522",
+    "pmc_id": null,
+    "collected_date": "2026-03-21T20:33:08.105154",
+    "pdf_downloaded": false,
+    "download_source": "none"
   }
 ]

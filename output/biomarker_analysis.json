@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-20T20:49:53.893370",
-  "total_biomarkers": 2656,
+  "generated_at": "2026-03-21T20:42:55.606415",
+  "total_biomarkers": 2658,
   "top_biomarkers": [
     {
       "name": "Hair density",
@@ -35,16 +35,16 @@
       "count": 18
     },
     {
+      "name": "Hair follicle density",
+      "count": 17
+    },
+    {
       "name": "Ki-67",
       "count": 17
     },
     {
       "name": "VEGF",
       "count": 17
-    },
-    {
-      "name": "Hair follicle density",
-      "count": 16
     },
     {
       "name": "Cyclin D1",
@@ -8986,7 +8986,10 @@
       "Dermal papilla": 1,
       "5-alpha Reductase": 1,
       "Acidic Fibroblast Growth Factor (aFGF)": 1,
-      "Hair follicle regeneration pathway": 1
+      "Hair follicle regeneration pathway": 1,
+      "Filaggrin-2 (FLG2)": 1,
+      "MAPK/Erk signaling pathway": 1,
+      "Mitochondrial function": 1
     },
     "DHT suppression": {
       "5-alpha-reductase Type I": 1,
@@ -14658,6 +14661,16 @@
       "TLR4": 1,
       "NF-κB": 1,
       "Wnt/β-catenin signaling": 1
+    },
+    "Filaggrin-2 (FLG2) expression": {
+      "Filaggrin-2 (FLG2)": 1,
+      "MAPK/Erk signaling pathway": 1,
+      "Mitochondrial function": 1
+    },
+    "DPC viability and mitochondrial function": {
+      "Filaggrin-2 (FLG2)": 1,
+      "MAPK/Erk signaling pathway": 1,
+      "Mitochondrial function": 1
     }
   },
   "biomarker_pathways": {
@@ -29260,6 +29273,16 @@
       "TLR4/NF-κB signaling": 1,
       "Wnt/β-catenin signaling": 1,
       "Inflammatory cytokine signaling": 1
+    },
+    "Filaggrin-2 (FLG2) expression": {
+      "MAPK/Erk signaling": 1,
+      "Bcl-2/Bax apoptotic pathway": 1,
+      "Mitochondrial dysfunction pathway": 1
+    },
+    "DPC viability and mitochondrial function": {
+      "MAPK/Erk signaling": 1,
+      "Bcl-2/Bax apoptotic pathway": 1,
+      "Mitochondrial dysfunction pathway": 1
     }
   },
   "categories": {
@@ -29450,7 +29473,7 @@
       },
       {
         "name": "Hair follicle density",
-        "count": 16
+        "count": 17
       },
       {
         "name": "Cyclin D1",
@@ -29821,6 +29844,10 @@
         "count": 4
       },
       {
+        "name": "Anagen phase duration",
+        "count": 4
+      },
+      {
         "name": "Serum calcium levels",
         "count": 4
       },
@@ -30054,10 +30081,6 @@
       },
       {
         "name": "ACTH",
-        "count": 3
-      },
-      {
-        "name": "Anagen phase duration",
         "count": 3
       },
       {
@@ -39902,6 +39925,14 @@
       },
       {
         "name": "Proteus abundance",
+        "count": 1
+      },
+      {
+        "name": "Filaggrin-2 (FLG2) expression",
+        "count": 1
+      },
+      {
+        "name": "DPC viability and mitochondrial function",
         "count": 1
       }
     ]

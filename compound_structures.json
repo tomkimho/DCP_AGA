@@ -11764,6 +11764,10 @@
     "status": "not_found"
   },
   {
+    "name": "Recombinant Filaggrin-2 (rFLG2)",
+    "status": "not_found"
+  },
+  {
     "name": "Recombinant human collagen XVII fragment (rhCOL17p)",
     "status": "not_found"
   },
@@ -14898,6 +14902,10 @@
   },
   {
     "name": "pH-responsive hybrid nanoparticles (SNP_EAF_SA)",
+    "status": "not_found"
+  },
+  {
+    "name": "rFLG2@HA/MNs (rFLG2 with hyaluronic acid microneedles)",
     "status": "not_found"
   },
   {
