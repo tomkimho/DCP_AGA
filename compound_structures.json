@@ -961,6 +961,10 @@
     "status": "not_found"
   },
   {
+    "name": "5-Alpha Reductase Inhibitors",
+    "status": "not_found"
+  },
+  {
     "name": "5-Fluorouracil",
     "CID": 3385,
     "SMILES": "C1=C(C(=O)NC(=O)N1)F",
