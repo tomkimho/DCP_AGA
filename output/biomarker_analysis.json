@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-23T20:48:48.126820",
-  "total_biomarkers": 2658,
+  "generated_at": "2026-03-24T21:02:17.824743",
+  "total_biomarkers": 2662,
   "top_biomarkers": [
     {
       "name": "Hair density",
@@ -6944,7 +6944,8 @@
     },
     "Target area hair count (TAHC)": {
       "5-alpha reductase": 1,
-      "Androgen receptor": 1
+      "Androgen receptor": 1,
+      "5a-Reductase Type 2": 1
     },
     "Anagen-to-telogen ratio (A": {
       "5-alpha reductase": 1,
@@ -14671,6 +14672,18 @@
       "Filaggrin-2 (FLG2)": 1,
       "MAPK/Erk signaling pathway": 1,
       "Mitochondrial function": 1
+    },
+    "Target area hair width (TAHW)": {
+      "5a-Reductase Type 2": 1
+    },
+    "Terminal-to-vellus hair ratio": {
+      "5a-Reductase Type 2": 1
+    },
+    "Male Hair Growth Questionnaire (MHGQ)": {
+      "5a-Reductase Type 2": 1
+    },
+    "Physician Global Assessment (PGA)": {
+      "5a-Reductase Type 2": 1
     }
   },
   "biomarker_pathways": {
@@ -29283,6 +29296,22 @@
       "MAPK/Erk signaling": 1,
       "Bcl-2/Bax apoptotic pathway": 1,
       "Mitochondrial dysfunction pathway": 1
+    },
+    "Target area hair width (TAHW)": {
+      "Androgen receptor signaling": 1,
+      "DHT-mediated hair follicle miniaturization": 1
+    },
+    "Terminal-to-vellus hair ratio": {
+      "Androgen receptor signaling": 1,
+      "DHT-mediated hair follicle miniaturization": 1
+    },
+    "Male Hair Growth Questionnaire (MHGQ)": {
+      "Androgen receptor signaling": 1,
+      "DHT-mediated hair follicle miniaturization": 1
+    },
+    "Physician Global Assessment (PGA)": {
+      "Androgen receptor signaling": 1,
+      "DHT-mediated hair follicle miniaturization": 1
     }
   },
   "categories": {
@@ -30793,6 +30822,10 @@
       },
       {
         "name": "p53 expression",
+        "count": 2
+      },
+      {
+        "name": "Target area hair count (TAHC)",
         "count": 2
       },
       {
@@ -34249,10 +34282,6 @@
       },
       {
         "name": "ki67 immunoreactivity",
-        "count": 1
-      },
-      {
-        "name": "Target area hair count (TAHC)",
         "count": 1
       },
       {
@@ -39933,6 +39962,22 @@
       },
       {
         "name": "DPC viability and mitochondrial function",
+        "count": 1
+      },
+      {
+        "name": "Target area hair width (TAHW)",
+        "count": 1
+      },
+      {
+        "name": "Terminal-to-vellus hair ratio",
+        "count": 1
+      },
+      {
+        "name": "Male Hair Growth Questionnaire (MHGQ)",
+        "count": 1
+      },
+      {
+        "name": "Physician Global Assessment (PGA)",
         "count": 1
       }
     ]
