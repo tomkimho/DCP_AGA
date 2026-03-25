@@ -317,5 +317,18 @@
     "collected_date": "2026-03-24T20:48:49.999179",
     "pdf_downloaded": false,
     "download_source": "none"
+  },
+  {
+    "pmid": "41692280",
+    "title": "Hair follicle-targeted baicalin nanocrystal delivery using microneedles for long-acting treatment of androgenetic alopecia.",
+    "authors": "Xiong S, Ying W, Xiao T, Liu Z, Fu H, et al.",
+    "abstract": "Androgenetic alopecia (AGA) is the most prevalent hair loss with conventional drug treatments necessitating prolonged compliance. However, current treatments are limited by side effects, frequent dosing, and the stratum corneum (SC) barrier with topical administration. Baicalin (BA) is a natural ingredient showing promise in treating AGA, but its poor water solubility and low bioavailability limit its clinical application. To address the challenges of BA solubility, skin barrier, and patient compliance, we combined BA nanocrystals (BA-NCs) with dissolving microneedles (MNs) to develop a drug delivery system, BA-NCs@MNs, for effective and long-acting treatment of AGA. The BA-NCs notably increased BA solubility by approximately 30-fold, facilitated cellular uptake, and reversed the abnormal mRNA expressions in dihydrotestosterone-induced hair follicle-associated cells. Furthermore, BA-NCs@MNs effectively overcame the SC barrier, improving BA penetration and skin retention by 6.93- and 11.6-fold, respectively, and most importantly, facilitated preferential delivery and accumulation at hair follicle sites. In an AGA mouse model, BA-NCs@MNs with only one dose every three days showed comparable therapeutic efficacy to commercial minoxidil (5 % w/v) with daily dose. This system mechanistically promoted hair follicle regeneration through remodeling the microenvironment by reducing 5α-reductase and androgen level, upregulating the expression of β-catenin, promoting pericapillary angiogenesis, elevating hair follicle stem cell markers, and relieving oxidative stress. Taken together, BA-NCs@MNs is a synergistic and long-acting approach for treating AGA.",
+    "journal": "Int J Pharm",
+    "pub_date": "2026 Mar 25",
+    "doi": "10.1016/j.ijpharm.2026.126675",
+    "pmc_id": null,
+    "collected_date": "2026-03-25T20:44:25.707004",
+    "pdf_downloaded": false,
+    "download_source": "none"
   }
 ]
