@@ -330,5 +330,18 @@
     "collected_date": "2026-03-25T20:44:25.707004",
     "pdf_downloaded": false,
     "download_source": "none"
+  },
+  {
+    "pmid": "41887578",
+    "title": "Adjunctive Approaches for Androgenetic Alopecia: A Clinical Review of Nutritional, Light-Based, Topical, and Lifestyle Interventions.",
+    "authors": "Podolsky AS, Iorizzo M, Lo Sicco KI, Tosti A, Shapiro J, et al.",
+    "abstract": "Androgenetic alopecia (AGA) is a chronic, progressive condition with limited Food and Drug Administration-approved treatments. Therefore, there is increasing interest in adjunctive options among patients and physicians. This clinical review synthesizes and critically appraises current evidence on nutritional supplements and nutraceuticals, light-based therapies, topical agents, and lifestyle modifications to guide their integration into evidence-based AGA management. Mechanistic and histologic studies indicate that inflammatory, oxidative, and microvascular alterations may contribute to follicular miniaturization, supporting interest in adjunctive strategies that promote scalp homeostasis. Among reviewed interventions, some demonstrate modest benefit, whereas many others lack adequate data. Significant gaps persist, including small sample sizes, heterogeneous methodologies, limited long-term safety data, and inconsistent outcome measures. Social media and direct-to-consumer hair loss companies remain major sources of AGA misinformation, underscoring the need for high-quality digital patient education and physician-guided resource curation. Future independently funded randomized controlled trials and mechanistic studies are essential to define optimal use parameters and support evidence-based, individualized, multimodal AGA therapy for patients.",
+    "journal": "J Am Acad Dermatol",
+    "pub_date": "2026 Mar 24",
+    "doi": "10.1016/j.jaad.2026.03.061",
+    "pmc_id": null,
+    "collected_date": "2026-03-27T20:43:54.071909",
+    "pdf_downloaded": false,
+    "download_source": "none"
   }
 ]
