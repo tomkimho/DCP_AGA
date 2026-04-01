@@ -984,6 +984,10 @@
     "status": "not_found"
   },
   {
+    "name": "5-alpha-reductase inhibitors",
+    "status": "not_found"
+  },
+  {
     "name": "5-azacitidine",
     "CID": 9444,
     "SMILES": "C1=NC(=NC(=O)N1[C@H]2[C@@H]([C@@H]([C@H](O2)CO)O)O)N",
@@ -12993,6 +12997,10 @@
     "3d_sdf_path": "compound_images/3d_structures/Stem cell membrane-loaded minoxidil nanoparticles (STCM-MXD-NPs).sdf",
     "image_2d": "compound_images/2d_structures/Stem_cell_membrane-loaded_minoxidil_nanoparticles_.png",
     "sdf_3d": "compound_images/3d_structures/Stem_cell_membrane-loaded_minoxidil_nanoparticles_.sdf"
+  },
+  {
+    "name": "Stemoxydine",
+    "status": "not_found"
   },
   {
     "name": "Stephania tetrandra",
