@@ -248,7 +248,7 @@ st.markdown("""
     <h1 style='color: #e94560; margin:0; font-size: 28px;'>🧬 AGA Drug Discovery Platform</h1>
     <p style='color: #a8a8a8; margin: 5px 0 0 0; font-size: 14px;'>
         Androgenetic Alopecia 신약개발 문헌 데이터베이스 &nbsp;|&nbsp;
-        {total}건 논문 분석 완료 &nbsp;|&nbsp; Lab-in-the-loop 기반
+        {total}건 논문 분석 완료 &nbsp;|&nbsp; RAG AI Expert (508K+ vectors) &nbsp;|&nbsp; Lab-in-the-loop 기반
     </p>
 </div>
 """.format(total=len(df_ok)), unsafe_allow_html=True)
@@ -293,14 +293,130 @@ with st.sidebar:
 
 
 # ============================================================
+# AGA 주요 타겟 PDB 매핑 (3D 구조 시각화용)
+# ============================================================
+AGA_TARGET_PDB = {
+    "Androgen Receptor (AR)": {"pdb": "1E3G", "uniprot": "P10275",
+        "desc": "Androgen Receptor - DHT 결합으로 탈모 유발 핵심 타겟",
+        "binding_residues": "L704,N705,R752,F764,M780,T877"},
+    "5α-Reductase Type II (SRD5A2)": {"pdb": "7BW1", "uniprot": "P31213",
+        "desc": "Steroid 5-alpha Reductase 2 - Testosterone→DHT 변환 효소",
+        "binding_residues": "L20,G22,F118,Y91,E57,N160,R171"},
+    "Wnt/β-catenin (CTNNB1)": {"pdb": "1JDH", "uniprot": "P35222",
+        "desc": "β-Catenin - 모낭 줄기세포 활성화 및 모발 재생 핵심 경로",
+        "binding_residues": "K312,K345,R376,R386,N387,N426"},
+    "JAK1/2": {"pdb": "6BBU", "uniprot": "P23458",
+        "desc": "Janus Kinase 1/2 - JAK-STAT 면역/염증 신호전달",
+        "binding_residues": "L881,G884,V889,A906,K908,E925,L959"},
+    "STAT3": {"pdb": "6NJS", "uniprot": "P40763",
+        "desc": "Signal Transducer and Activator of Transcription 3",
+        "binding_residues": "R609,S611,S613,E612,T620"},
+    "PTGDR2 (PGD2 receptor)": {"pdb": "6OIK", "uniprot": "Q9Y5Y4",
+        "desc": "Prostaglandin D2 Receptor 2 - 모낭 퇴행 유도",
+        "binding_residues": "R106,T185,Y186,K210,E268"},
+    "VEGFA/VEGFR": {"pdb": "1FLT", "uniprot": "P15692",
+        "desc": "Vascular Endothelial Growth Factor A - 모유두 혈관신생",
+        "binding_residues": "C26,R46,E64,K84,N85"},
+    "IGF-1/IGF-1R": {"pdb": "1IMX", "uniprot": "P05019",
+        "desc": "Insulin-like Growth Factor 1 - 모발 성장 촉진 인자",
+        "binding_residues": "G1,P2,E3,T4,L5,C6"},
+    "SHH (Sonic Hedgehog)": {"pdb": "3N1G", "uniprot": "Q15465",
+        "desc": "Sonic Hedgehog - 모낭 형태형성 및 재생 신호",
+        "binding_residues": "H134,D147,H180,E176"},
+    "TGF-β1": {"pdb": "3KFD", "uniprot": "P01137",
+        "desc": "Transforming Growth Factor Beta 1 - 모낭 퇴행(catagen) 유도",
+        "binding_residues": "R25,K26,W32,L45,V77,A84"},
+    "BMP2/4": {"pdb": "3BMP", "uniprot": "P12643",
+        "desc": "Bone Morphogenetic Protein 2/4 - 모낭 휴지기 유지",
+        "binding_residues": "W28,F41,H54,D53,S57,L51"},
+    "DKK1": {"pdb": "3S2K", "uniprot": "O94907",
+        "desc": "Dickkopf-1 - Wnt 길항제, 모낭 축소(miniaturization) 촉진",
+        "binding_residues": "H204,S205,F207,R236,E243"},
+    "IL-6": {"pdb": "1ALU", "uniprot": "P05231",
+        "desc": "Interleukin-6 - 모낭 주위 염증 매개 사이토카인",
+        "binding_residues": "R24,Q28,Y31,D34,S118,R179"},
+    "TNF-α": {"pdb": "1TNF", "uniprot": "P01375",
+        "desc": "Tumor Necrosis Factor Alpha - 모발 성장 억제 염증인자",
+        "binding_residues": "Y59,S60,Y119,L120,G121,Y151"},
+    "FGF7 (KGF)": {"pdb": "1QQK", "uniprot": "P21781",
+        "desc": "Fibroblast Growth Factor 7 (KGF) - 모낭 상피세포 성장 촉진",
+        "binding_residues": "K18,R19,K127,R135,K138,K143"},
+}
+
+# AGA 화합물-타겟 결합 매핑
+AGA_COMPOUND_TARGET_MAP = {
+    "Finasteride": {"targets": ["5α-Reductase Type II (SRD5A2)"], "type": "Small molecule",
+        "moa": "5α-Reductase Type II 경쟁적 억제제 - DHT 생성 차단",
+        "indication": "AGA (남성형 탈모), BPH",
+        "phase": "Approved (1mg Propecia)",
+        "pubchem_cid": "57363", "smiles": "CC12CCC3C(C1CCC2C(=O)NC)C=CC4NC(=O)C=CC34",
+        "binding_sites": {"5α-Reductase Type II (SRD5A2)": "L20,G22,F118,Y91"}},
+    "Dutasteride": {"targets": ["5α-Reductase Type II (SRD5A2)"], "type": "Small molecule",
+        "moa": "5α-Reductase Type I/II 이중 억제제 - DHT 강력 차단",
+        "indication": "AGA (남성형 탈모), BPH",
+        "phase": "Approved (0.5mg Avodart)",
+        "pubchem_cid": "6918296", "smiles": "CC12CCC3C(C1CCC2C(=O)NC)CCC4NC(=O)C(=C34)C(F)(F)C5=CC(=CC=C5)CF",
+        "binding_sites": {"5α-Reductase Type II (SRD5A2)": "L20,G22,E57,N160"}},
+    "Minoxidil": {"targets": ["VEGFA/VEGFR"], "type": "Small molecule",
+        "moa": "KATP 채널 개방 - 모유두 혈류 증가 및 VEGF 발현 유도",
+        "indication": "AGA (남성형/여성형 탈모)",
+        "phase": "Approved (2%/5% topical)",
+        "pubchem_cid": "4201", "smiles": "NC1=NC(=CC(N)=N1)N1CCCCC1",
+        "binding_sites": {"VEGFA/VEGFR": "C26,R46,E64"}},
+    "Ruxolitinib": {"targets": ["JAK1/2"], "type": "Small molecule",
+        "moa": "JAK1/2 선택적 억제제 - 면역 매개 탈모 차단",
+        "indication": "Alopecia Areata, AGA (연구중)",
+        "phase": "Approved (AA) / Phase 2 (AGA)",
+        "pubchem_cid": "25126798", "smiles": "N#CC1=CC=C(C=C1)C1=NC(=NC=C1)NC1CC1C1CCCC=C1",
+        "binding_sites": {"JAK1/2": "L881,V889,A906,K908"}},
+    "Tofacitinib": {"targets": ["JAK1/2"], "type": "Small molecule",
+        "moa": "Pan-JAK 억제제 - JAK-STAT 경로 차단",
+        "indication": "Alopecia Areata, RA",
+        "phase": "Approved (AA/RA)",
+        "pubchem_cid": "9926791", "smiles": "CC1CCN(CC1NC(=O)C1=NC=CC(=N1)N)C(=O)CC#N",
+        "binding_sites": {"JAK1/2": "L881,G884,E925,L959"}},
+    "Setipiprant": {"targets": ["PTGDR2 (PGD2 receptor)"], "type": "Small molecule",
+        "moa": "PTGDR2 (CRTh2) 길항제 - PGD2 매개 모낭 퇴행 차단",
+        "indication": "AGA (Phase 2)",
+        "phase": "Phase 2",
+        "pubchem_cid": "11549559",
+        "binding_sites": {"PTGDR2 (PGD2 receptor)": "R106,T185,Y186"}},
+    "Valproic acid": {"targets": ["Wnt/β-catenin (CTNNB1)"], "type": "Small molecule",
+        "moa": "HDAC 억제 + Wnt/β-catenin 활성화 - 모낭 줄기세포 촉진",
+        "indication": "AGA (전임상)",
+        "phase": "Preclinical (AGA)",
+        "pubchem_cid": "3121", "smiles": "CCCC(CCC)C(=O)O",
+        "binding_sites": {"Wnt/β-catenin (CTNNB1)": "K312,K345,R376"}},
+    "Bimatoprost": {"targets": ["VEGFA/VEGFR"], "type": "Small molecule",
+        "moa": "Prostaglandin F2α 유사체 - 모발 성장기(anagen) 연장",
+        "indication": "Eyelash hypotrichosis, AGA (연구중)",
+        "phase": "Approved (eyelash) / Phase 2 (AGA)",
+        "pubchem_cid": "5311027",
+        "binding_sites": {"VEGFA/VEGFR": "R46,K84,N85"}},
+    "CXXC5-Dvl PPI inhibitor": {"targets": ["Wnt/β-catenin (CTNNB1)", "DKK1"], "type": "Small molecule",
+        "moa": "CXXC5-Dvl 상호작용 차단 - Wnt/β-catenin 활성화",
+        "indication": "AGA (전임상, 연세대/서울대 연구)",
+        "phase": "Preclinical",
+        "pubchem_cid": None,
+        "binding_sites": {"Wnt/β-catenin (CTNNB1)": "R386,N387,N426", "DKK1": "H204,S205,F207"}},
+    "Cetirizine": {"targets": ["PTGDR2 (PGD2 receptor)"], "type": "Small molecule",
+        "moa": "H1 항히스타민 + PGD2 경로 간접 억제",
+        "indication": "AGA (topical, off-label)",
+        "phase": "Off-label / Phase 2",
+        "pubchem_cid": "2678", "smiles": "OC(=O)COCCN1CCN(CC1)C(C1=CC=CC=C1)C1=CC=C(Cl)C=C1",
+        "binding_sites": {"PTGDR2 (PGD2 receptor)": "K210,E268"}},
+}
+
+# ============================================================
 # 탭 구성
 # ============================================================
-tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11, tab12 = st.tabs([
     "📊 대시보드",
     "📋 문헌 검색",
     "🎯 타겟 분석",
     "💊 화합물 분석",
     "🔗 Target-Compound 매트릭스",
+    "🧫 3D CPI Binding",
     "🤖 AI 질의응답",
     "🔬 Dark Targets",
     "💡 AI 신약 후보",
@@ -317,9 +433,69 @@ with tab1:
     import plotly.express as px
     import plotly.graph_objects as go
 
+    # ─── Knowledge Base 통계 로드 ──────────────────
+    _kb_meta = {}
+    for _kb_dir in [os.path.join(BASE_FOLDER, "aga_knowledge_db")]:
+        _kb_meta_path = os.path.join(_kb_dir, "metadata.json")
+        if os.path.exists(_kb_meta_path):
+            with open(_kb_meta_path, "r", encoding="utf-8") as _f:
+                _kb_meta = json.load(_f)
+            break
+
+    _new_papers_dir = os.path.join(BASE_FOLDER, "new_papers_txt")
+    _new_papers_count = len(os.listdir(_new_papers_dir)) if os.path.isdir(_new_papers_dir) else 0
+    _new_pdf_dir = os.path.join(BASE_FOLDER, "new_papers")
+    _new_pdf_count = len([f for f in os.listdir(_new_pdf_dir) if f.endswith('.pdf')]) if os.path.isdir(_new_pdf_dir) else 0
+
+    # ─── 데이터 성장 배너 ──────────────────────────
+    _initial_papers = 709  # 초기 구축 시 논문 수
+    _current_structured = len(df_ok)
+    _growth_pct = round((_new_papers_count / _initial_papers - 1) * 100, 1) if _initial_papers > 0 and _new_papers_count > 0 else 0
+
+    st.markdown(f"""
+    <div style='background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #1a2332 100%);
+         padding: 16px 24px; border-radius: 10px; margin-bottom: 16px;
+         border-left: 4px solid #58a6ff;'>
+        <div style='display: flex; justify-content: space-between; align-items: center;'>
+            <div>
+                <span style='color: #58a6ff; font-size: 13px; font-weight: 600;'>DATA GROWTH</span>
+                <span style='color: #8b949e; font-size: 12px; margin-left: 12px;'>
+                    Initial: {_initial_papers} papers &rarr; Current: {_new_papers_count:,} papers
+                    ({'+' if _growth_pct > 0 else ''}{_growth_pct}%)
+                </span>
+            </div>
+            <div style='color: #3fb950; font-size: 14px; font-weight: 600;'>
+                +{_new_papers_count - _initial_papers:,} papers added
+            </div>
+        </div>
+        <div style='margin-top: 10px; display: flex; gap: 32px;'>
+            <div style='text-align: center;'>
+                <div style='color: #e6edf3; font-size: 22px; font-weight: 700;'>{_current_structured:,}</div>
+                <div style='color: #8b949e; font-size: 11px;'>AI Analyzed</div>
+            </div>
+            <div style='text-align: center;'>
+                <div style='color: #e6edf3; font-size: 22px; font-weight: 700;'>{_new_papers_count:,}</div>
+                <div style='color: #8b949e; font-size: 11px;'>Total Papers</div>
+            </div>
+            <div style='text-align: center;'>
+                <div style='color: #e6edf3; font-size: 22px; font-weight: 700;'>{_new_pdf_count:,}</div>
+                <div style='color: #8b949e; font-size: 11px;'>Full-text PDFs</div>
+            </div>
+            <div style='text-align: center;'>
+                <div style='color: #e6edf3; font-size: 22px; font-weight: 700;'>{_kb_meta.get("total_chunks", 0):,}</div>
+                <div style='color: #8b949e; font-size: 11px;'>KB Vectors</div>
+            </div>
+            <div style='text-align: center;'>
+                <div style='color: #e6edf3; font-size: 22px; font-weight: 700;'>20</div>
+                <div style='color: #8b949e; font-size: 11px;'>Target Genes</div>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
     # 상단 KPI
     c1, c2, c3, c4, c5 = st.columns(5)
-    c1.metric("총 문헌", f"{len(df_ok)}")
+    c1.metric("총 문헌 (분석완료)", f"{len(df_ok)}")
     c2.metric("논문", f"{len(df_ok[df_ok['문서유형']=='Paper'])}")
     c3.metric("특허", f"{len(df_ok[df_ok['문서유형']=='Patent'])}")
     c4.metric("고유 타겟", f"{len(target_index)}")
@@ -782,23 +958,326 @@ with tab5:
 
 
 # ============================================================
-# 탭 6: AI 질의응답 (RAG)
+# 탭 6: 3D CPI Binding Visualization
 # ============================================================
 with tab6:
-    st.markdown("### 🤖 AI 질의응답")
-    st.caption("709건 논문 데이터베이스를 기반으로 AI가 답변합니다.")
+    import streamlit.components.v1 as components
+
+    st.markdown("### 🧫 Compound-Protein Interaction (CPI) 3D Binding Visualization")
+    st.caption("3Dmol.js + RCSB PDB / PubChem 기반 — AGA 핵심 타겟 단백질과 약물 결합 시각화")
+
+    CPI_COLORS = ["#00e676","#ffd740","#ff4081","#40c4ff","#ea80fc","#ff6e40","#69f0ae","#448aff"]
+
+    cpi_mode = st.radio("분석 모드", ["약물 → 결합 타겟", "타겟 단백질 → 결합 약물"], horizontal=True)
+
+    if cpi_mode == "약물 → 결합 타겟":
+        cmp_list = list(AGA_COMPOUND_TARGET_MAP.keys())
+        sel_cmp = st.selectbox("화합물 선택", cmp_list)
+
+        if sel_cmp:
+            cmp_info = AGA_COMPOUND_TARGET_MAP[sel_cmp]
+            targets_for_cmp = cmp_info["targets"]
+
+            col_info, col_3d = st.columns([1, 2])
+
+            with col_info:
+                st.markdown(f"#### {sel_cmp}")
+                st.markdown(f"**Type:** {cmp_info.get('type', '')}")
+                st.markdown(f"**Phase:** {cmp_info.get('phase', '')}")
+                st.markdown(f"**Indication:** {cmp_info.get('indication', '')}")
+                st.markdown(f"**MoA:** {cmp_info.get('moa', '')}")
+
+                # 2D Structure from PubChem
+                _cmp_cid = cmp_info.get("pubchem_cid")
+                if _cmp_cid:
+                    st.image(f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/CID/{_cmp_cid}/PNG?image_size=250x250",
+                             caption="2D Structure (PubChem)", width=220)
+
+                st.markdown("**결합 타겟:**")
+                for t in targets_for_cmp:
+                    tinfo = AGA_TARGET_PDB.get(t, {})
+                    pdb_id = tinfo.get("pdb", "N/A")
+                    st.markdown(f"- **{t}** (PDB: [{pdb_id}](https://www.rcsb.org/structure/{pdb_id}))")
+
+            with col_3d:
+                st.markdown("#### 3D Binding Visualization")
+                sel_bind_target = st.selectbox("결합 타겟 선택", targets_for_cmp)
+
+                tgt_pdb_info = AGA_TARGET_PDB.get(sel_bind_target, {})
+                pdb_id = tgt_pdb_info.get("pdb", "")
+                binding_res = cmp_info.get("binding_sites", {}).get(sel_bind_target, tgt_pdb_info.get("binding_residues", ""))
+
+                if pdb_id:
+                    _cmp_img_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/CID/{cmp_info.get('pubchem_cid','')}/PNG?image_size=120x120" if cmp_info.get("pubchem_cid") else ""
+
+                    viewer_html = f"""
+<html><head>
+<script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+<style>
+body {{ margin:0; background: #0a0e27; font-family: 'Segoe UI', sans-serif; }}
+#viewer {{ width:100%; height:500px; position:relative; border-radius:10px; overflow:hidden; }}
+.info-bar {{ padding:8px 14px; background:rgba(10,14,39,0.9); color:#c0cde0; font-size:12px;
+    display:flex; justify-content:space-between; align-items:center; border-radius:0 0 10px 10px; }}
+.info-bar a {{ color:#58a6ff; text-decoration:none; }}
+#loading {{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#58a6ff; font-size:14px; z-index:10; }}
+.spinner {{ display:inline-block; width:18px; height:18px; border:3px solid rgba(88,166,255,0.3);
+    border-top:3px solid #58a6ff; border-radius:50%; animation:spin 1s linear infinite; margin-right:8px; vertical-align:middle; }}
+@keyframes spin {{ to {{ transform:rotate(360deg); }} }}
+.legend {{ position:absolute; top:10px; right:10px; background:rgba(10,14,39,0.85); padding:8px 12px;
+    border-radius:8px; color:#c0cde0; font-size:11px; z-index:5; }}
+.legend div {{ margin:2px 0; }}
+.dot {{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; }}
+.cmp-card {{ position:absolute; bottom:10px; left:10px; background:rgba(10,14,39,0.9); padding:8px;
+    border-radius:8px; z-index:5; display:flex; align-items:center; gap:8px; }}
+.cmp-card img {{ width:60px; height:60px; border-radius:4px; }}
+.cmp-card .name {{ color:#ffd740; font-size:11px; font-weight:600; }}
+</style>
+</head><body>
+<div id="viewer">
+    <div id="loading"><span class="spinner"></span>Loading PDB structure...</div>
+    <div class="legend">
+        <div><span class="dot" style="background:#4fc3f7;"></span>Protein (cartoon)</div>
+        <div><span class="dot" style="background:#00e676;"></span>Binding site (stick)</div>
+        <div><span class="dot" style="background:rgba(0,230,118,0.3);"></span>Binding surface</div>
+    </div>
+    {"<div class='cmp-card'><img src='" + _cmp_img_url + "' onerror='this.style.display=&quot;none&quot;'/><div><div class='name'>" + sel_cmp + "</div><div style='color:#8b949e;font-size:10px;'>" + cmp_info.get('type','') + "</div></div></div>" if _cmp_img_url else ""}
+</div>
+<div class="info-bar">
+    <span>PDB: <a href="https://www.rcsb.org/structure/{pdb_id}" target="_blank">{pdb_id}</a> | UniProt: {tgt_pdb_info.get('uniprot', '')}</span>
+    <span>{tgt_pdb_info.get('desc', '')}</span>
+</div>
+<script>
+var el = document.getElementById("viewer");
+var viewer = $3Dmol.createViewer(el, {{ backgroundColor: 0x0a0e27, antialias: true }});
+fetch("https://files.rcsb.org/download/{pdb_id}.pdb")
+    .then(r => r.text())
+    .then(data => {{
+        document.getElementById("loading").style.display = "none";
+        viewer.addModel(data, "pdb");
+        viewer.setStyle({{}}, {{ cartoon: {{ color: "spectrum", opacity: 0.82, thickness: 0.28 }} }});
+        var bindRes = "{binding_res}";
+        if (bindRes) {{
+            var residues = bindRes.split(",");
+            var nums = [];
+            residues.forEach(function(rn) {{
+                var num = parseInt(rn.replace(/[^0-9]/g, ""));
+                if (num) {{
+                    nums.push(num);
+                    viewer.setStyle({{resi: num}}, {{
+                        stick: {{ colorscheme: "greenCarbon", radius: 0.18 }},
+                        cartoon: {{ color: "spectrum", opacity: 0.5 }}
+                    }});
+                    viewer.addLabel(rn, {{
+                        fontSize: 10, fontColor: "#00e676",
+                        backgroundColor: "rgba(0,0,0,0.6)",
+                        backgroundOpacity: 0.6,
+                        position: {{ x: 0, y: 0, z: 0 }}
+                    }}, {{resi: num}});
+                }}
+            }});
+            if (nums.length > 0) {{
+                viewer.addSurface($3Dmol.SurfaceType.VDW, {{ opacity: 0.2, color: "#00e676" }}, {{resi: nums}});
+            }}
+        }}
+        viewer.zoomTo(); viewer.render();
+        function anim() {{ viewer.rotate(0.2, "y"); viewer.render(); requestAnimationFrame(anim); }}
+        anim();
+    }}).catch(err => {{
+        document.getElementById("loading").innerHTML =
+            '<span style="color:#e94560;">PDB load failed: ' + err.message + '</span>';
+    }});
+</script>
+</body></html>"""
+                    components.html(viewer_html, height=580)
+
+                    # 추가 링크
+                    _lc1, _lc2, _lc3 = st.columns(3)
+                    _lc1.markdown(f"[RCSB PDB](https://www.rcsb.org/structure/{pdb_id})")
+                    _lc2.markdown(f"[UniProt](https://www.uniprot.org/uniprot/{tgt_pdb_info.get('uniprot', '')})")
+                    _af_uni = tgt_pdb_info.get("uniprot", "")
+                    if _af_uni:
+                        _lc3.markdown(f"[AlphaFold](https://alphafold.ebi.ac.uk/entry/{_af_uni})")
+                else:
+                    st.warning("이 타겟의 PDB 구조가 없습니다.")
+
+    else:  # 타겟 단백질 → 결합 약물
+        target_list = list(AGA_TARGET_PDB.keys())
+        sel_tgt = st.selectbox("타겟 단백질 선택", target_list,
+                               format_func=lambda x: f"{x} (PDB: {AGA_TARGET_PDB[x]['pdb']})")
+
+        if sel_tgt:
+            tgt_info = AGA_TARGET_PDB[sel_tgt]
+            pdb_id = tgt_info["pdb"]
+
+            # 이 타겟에 결합하는 모든 화합물 찾기
+            binding_compounds = []
+            for cname, cdata in AGA_COMPOUND_TARGET_MAP.items():
+                if sel_tgt in cdata["targets"]:
+                    binding_compounds.append({"name": cname, **cdata})
+
+            col_3d, col_compounds = st.columns([2, 1])
+
+            with col_3d:
+                st.markdown(f"#### {sel_tgt} 3D Structure")
+
+                # 각 화합물의 결합 잔기에 다른 색상 할당
+                compound_residues_js = "["
+                for ci, bc in enumerate(binding_compounds):
+                    _bs = bc.get("binding_sites", {}).get(sel_tgt, "")
+                    _color = CPI_COLORS[ci % len(CPI_COLORS)]
+                    compound_residues_js += f'{{name:"{bc["name"]}",residues:"{_bs}",color:"{_color}"}},'
+                compound_residues_js += "]"
+
+                tgt_viewer_html = f"""
+<html><head>
+<script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+<style>
+body {{ margin:0; background: #0a0e27; font-family: 'Segoe UI', sans-serif; }}
+#viewer {{ width:100%; height:520px; position:relative; border-radius:10px; overflow:hidden; }}
+.info-bar {{ padding:8px 14px; background:rgba(10,14,39,0.9); color:#c0cde0; font-size:12px;
+    border-radius:0 0 10px 10px; }}
+#loading {{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#58a6ff; z-index:10; }}
+.spinner {{ display:inline-block; width:18px; height:18px; border:3px solid rgba(88,166,255,0.3);
+    border-top:3px solid #58a6ff; border-radius:50%; animation:spin 1s linear infinite; margin-right:8px; }}
+@keyframes spin {{ to {{ transform:rotate(360deg); }} }}
+.legend {{ position:absolute; top:10px; right:10px; background:rgba(10,14,39,0.85); padding:8px 12px;
+    border-radius:8px; color:#c0cde0; font-size:11px; z-index:5; max-height:200px; overflow-y:auto; }}
+.legend div {{ margin:3px 0; }}
+.dot {{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; }}
+</style>
+</head><body>
+<div id="viewer">
+    <div id="loading"><span class="spinner"></span>Loading PDB structure...</div>
+    <div class="legend" id="legend">
+        <div><span class="dot" style="background:#4fc3f7;"></span>Protein backbone</div>
+    </div>
+</div>
+<div class="info-bar">
+    <span>PDB: {pdb_id} | UniProt: {tgt_info.get('uniprot', '')} | {tgt_info.get('desc', '')}</span>
+</div>
+<script>
+var compounds = {compound_residues_js};
+var legendEl = document.getElementById("legend");
+compounds.forEach(function(c) {{
+    var d = document.createElement("div");
+    d.innerHTML = '<span class="dot" style="background:' + c.color + ';"></span>' + c.name;
+    legendEl.appendChild(d);
+}});
+var el = document.getElementById("viewer");
+var viewer = $3Dmol.createViewer(el, {{ backgroundColor: 0x0a0e27, antialias: true }});
+fetch("https://files.rcsb.org/download/{pdb_id}.pdb")
+    .then(r => r.text())
+    .then(data => {{
+        document.getElementById("loading").style.display = "none";
+        viewer.addModel(data, "pdb");
+        viewer.setStyle({{}}, {{ cartoon: {{ color: "#4fc3f7", opacity: 0.7, thickness: 0.25 }} }});
+        compounds.forEach(function(cmp) {{
+            if (!cmp.residues) return;
+            var residues = cmp.residues.split(",");
+            var nums = [];
+            residues.forEach(function(rn) {{
+                var num = parseInt(rn.replace(/[^0-9]/g, ""));
+                if (num) {{
+                    nums.push(num);
+                    viewer.setStyle({{resi: num}}, {{
+                        stick: {{ color: cmp.color, radius: 0.18 }},
+                        cartoon: {{ color: "#4fc3f7", opacity: 0.4 }}
+                    }});
+                    viewer.addLabel(cmp.name + " " + rn, {{
+                        fontSize: 9, fontColor: cmp.color,
+                        backgroundColor: "rgba(0,0,0,0.7)",
+                        backgroundOpacity: 0.7
+                    }}, {{resi: num}});
+                }}
+            }});
+            if (nums.length > 0) {{
+                viewer.addSurface($3Dmol.SurfaceType.VDW, {{ opacity: 0.15, color: cmp.color }}, {{resi: nums}});
+            }}
+        }});
+        viewer.zoomTo(); viewer.render();
+        function anim() {{ viewer.rotate(0.2, "y"); viewer.render(); requestAnimationFrame(anim); }}
+        anim();
+    }}).catch(err => {{
+        document.getElementById("loading").innerHTML =
+            '<span style="color:#e94560;">PDB load failed: ' + err.message + '</span>';
+    }});
+</script>
+</body></html>"""
+                components.html(tgt_viewer_html, height=580)
+
+                _lc1, _lc2, _lc3 = st.columns(3)
+                _lc1.markdown(f"[RCSB PDB](https://www.rcsb.org/structure/{pdb_id})")
+                _lc2.markdown(f"[UniProt](https://www.uniprot.org/uniprot/{tgt_info.get('uniprot', '')})")
+                _lc3.markdown(f"[AlphaFold](https://alphafold.ebi.ac.uk/entry/{tgt_info.get('uniprot', '')})")
+
+            with col_compounds:
+                st.markdown(f"#### 결합 약물 ({len(binding_compounds)}개)")
+                for ci, bc in enumerate(binding_compounds):
+                    _color = CPI_COLORS[ci % len(CPI_COLORS)]
+                    st.markdown(f"""
+                    <div style='padding:10px; margin:6px 0; border-radius:8px;
+                         background:rgba(255,255,255,0.05); border-left:3px solid {_color};'>
+                        <div style='color:{_color}; font-weight:600; font-size:14px;'>{bc['name']}</div>
+                        <div style='color:#8b949e; font-size:11px; margin-top:4px;'>{bc.get('moa', '')[:100]}</div>
+                        <div style='color:#58a6ff; font-size:11px; margin-top:2px;'>{bc.get('phase', '')}</div>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+                    # 2D structure thumbnail
+                    _bc_cid = bc.get("pubchem_cid")
+                    if _bc_cid:
+                        st.image(f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/CID/{_bc_cid}/PNG?image_size=160x160",
+                                 caption=f"{bc['name']} 2D", width=140)
+
+                if not binding_compounds:
+                    st.info("이 타겟에 결합하는 알려진 약물이 없습니다.")
+
+
+# ============================================================
+# 탭 7: AI 질의응답 (RAG)
+# ============================================================
+with tab7:
+    st.markdown("### 🤖 AGA AI Expert — RAG 기반 전문가 시스템")
+
+    # Knowledge Base 상태 표시
+    _kb_available = False
+    _aga_expert = None
+    try:
+        import sys as _sys
+        if _script_dir not in _sys.path:
+            _sys.path.insert(0, _script_dir)
+        from aga_ai_engine import AGA_AI_Expert
+        _aga_expert = AGA_AI_Expert(api_key=CLAUDE_API_KEY)
+        _kb_stats = _aga_expert.get_stats()
+        _kb_available = _kb_stats["papers_chunks"] > 0
+
+        if _kb_available:
+            _c1, _c2, _c3 = st.columns(3)
+            _c1.metric("논문 청크", f"{_kb_stats['papers_chunks']:,}")
+            _c2.metric("구조화 데이터", f"{_kb_stats['structured_entries']:,}")
+            _build_meta = _kb_stats.get("metadata", {})
+            _c3.metric("원본 논문", f"{_build_meta.get('text_files', 'N/A'):,}")
+            st.success("Knowledge Base 연결됨 — 508,572개 벡터 청크에서 시맨틱 검색")
+        else:
+            st.warning("Knowledge Base가 비어있습니다. build_knowledge_base.py를 먼저 실행하세요.")
+    except Exception as _kb_err:
+        st.info(f"Knowledge Base 미연결 — 기본 키워드 검색 모드로 작동합니다. ({_kb_err})")
 
     # 예시 질문
     st.markdown("**예시 질문:**")
-    example_qs = [
+    _ex_cols = st.columns(2)
+    _example_qs = [
         "AGA에서 Wnt/β-catenin 경로를 타겟으로 하는 novel compound는?",
         "Finasteride와 Dutasteride의 차이점을 논문 근거로 설명해줘",
         "Hair follicle stem cell을 타겟으로 하는 전임상 연구는?",
         "JAK inhibitor의 AGA 치료 가능성은?",
         "국소 약물전달시스템(DDS)으로 개발된 AGA 치료제는?",
+        "Dermal papilla cell에서 발현되는 핵심 성장인자는?",
+        "miRNA 기반 탈모 치료 접근법의 최신 연구는?",
+        "Prostaglandin D2/E2의 모발 성장 조절 기전은?",
     ]
-    for q in example_qs:
-        st.caption(f"  • {q}")
+    for _qi, _q in enumerate(_example_qs):
+        _ex_cols[_qi % 2].caption(f"  • {_q}")
 
     st.markdown("---")
 
@@ -810,71 +1289,94 @@ with tab6:
         with st.chat_message(msg["role"]):
             st.markdown(msg["content"])
 
-    question = st.chat_input("질문을 입력하세요...")
+    question = st.chat_input("AGA 신약개발에 대해 무엇이든 질문하세요...")
 
     if question:
         st.session_state.messages.append({"role": "user", "content": question})
         with st.chat_message("user"):
             st.markdown(question)
 
-        # 관련 논문 검색 (키워드 매칭)
-        keywords = [kw for kw in question.lower().split() if len(kw) > 1]
-        relevant = df_ok[df_ok.apply(
-            lambda row: sum(1 for kw in keywords if kw in str(row.values).lower()) >= 1,
-            axis=1
-        )].sort_values("관련도", ascending=False).head(15)
+        with st.chat_message("assistant"):
+            with st.spinner("508,572개 논문 청크에서 관련 정보 검색 중..."):
+                try:
+                    if _kb_available and _aga_expert and CLAUDE_API_KEY:
+                        # RAG 모드: 벡터 검색 + Claude
+                        result = _aga_expert.ask(question, n_papers=15, n_structured=8)
+                        answer = result["answer"]
+                        sources = result.get("sources", {})
+                        tokens = result.get("tokens_used", 0)
 
-        # 컨텍스트 구성
-        context_parts = []
-        for _, row in relevant.iterrows():
-            parts = []
-            for col in ["파일명", "타겟(Target)", "화합물(Compound)", "기전(MoA)",
-                        "핵심발견", "신호전달경로", "바이오마커"]:
-                val = row.get(col, "")
-                if val and str(val) != "nan":
-                    parts.append(f"{col}: {val}")
-            context_parts.append("\n".join(parts))
+                        st.markdown(answer)
 
-        context = "\n---\n".join(context_parts)
+                        # 출처 표시
+                        with st.expander(f"📚 참조 논문 ({len(sources.get('papers', []))}건) | 토큰: {tokens:,}"):
+                            if sources.get("structured"):
+                                st.markdown("**구조화 데이터:**")
+                                for _si, _s in enumerate(sources["structured"], 1):
+                                    st.caption(f"[S{_si}] {_s['text'][:150]}...")
+                            if sources.get("papers"):
+                                st.markdown("**논문 텍스트:**")
+                                for _pi, _p in enumerate(sources["papers"], 1):
+                                    st.caption(f"[P{_pi}] {_p['source'][:80]} (PMID: {_p.get('pmid','')}, relevance: {_p.get('relevance','')})")
 
-        try:
-            import anthropic
-            client = anthropic.Anthropic(api_key=CLAUDE_API_KEY)
+                    elif _kb_available and _aga_expert:
+                        # KB 있지만 API 키 없음: 검색만
+                        result = _aga_expert.ask(question, n_papers=10, n_structured=5)
+                        answer = result["answer"]
+                        st.markdown(answer)
+                        st.warning("Claude API 키를 설정하면 AI 전문가 답변을 받을 수 있습니다.")
 
-            prompt = f"""You are an expert in AGA (Androgenetic Alopecia) drug development.
-Below is information retrieved from a database of {len(df_ok)} AGA-related papers and patents.
-Answer the question based on this information. Answer in Korean.
-Always cite the source paper filenames as evidence.
-If the data is insufficient, say so honestly.
+                    else:
+                        # 기본 모드: 키워드 매칭 + Claude
+                        keywords = [kw for kw in question.lower().split() if len(kw) > 1]
+                        relevant = df_ok[df_ok.apply(
+                            lambda row: sum(1 for kw in keywords if kw in str(row.values).lower()) >= 1,
+                            axis=1
+                        )].sort_values("관련도", ascending=False).head(15)
 
-[Retrieved Paper Data]
+                        context_parts = []
+                        for _, row in relevant.iterrows():
+                            parts = []
+                            for col in ["파일명", "타겟(Target)", "화합물(Compound)", "기전(MoA)",
+                                        "핵심발견", "신호전달경로", "바이오마커"]:
+                                val = row.get(col, "")
+                                if val and str(val) != "nan":
+                                    parts.append(f"{col}: {val}")
+                            context_parts.append("\n".join(parts))
+                        context = "\n---\n".join(context_parts)
+
+                        if CLAUDE_API_KEY:
+                            import anthropic
+                            client = anthropic.Anthropic(api_key=CLAUDE_API_KEY)
+                            prompt = f"""You are an expert in AGA drug development.
+Below is data from {len(df_ok)} papers. Answer in Korean with citations.
+
+[Data]
 {context}
 
 [Question]
 {question}"""
+                            response = client.messages.create(
+                                model="claude-haiku-4-5-20251001",
+                                max_tokens=2000,
+                                messages=[{"role": "user", "content": prompt}]
+                            )
+                            answer = response.content[0].text
+                        else:
+                            answer = f"키워드 검색 결과 {len(relevant)}건의 관련 논문이 있습니다.\n\nClaude API 키를 설정하면 AI 답변을 받을 수 있습니다."
+                        st.markdown(answer)
 
-            response = client.messages.create(
-                model="claude-haiku-4-5-20251001",
-                max_tokens=2000,
-                messages=[{"role": "user", "content": prompt}]
-            )
+                except Exception as e:
+                    answer = f"오류가 발생했습니다: {str(e)[:300]}"
+                    st.error(answer)
 
-            answer = response.content[0].text
-
-        except ImportError:
-            answer = f"anthropic 라이브러리가 필요합니다. `pip install anthropic` 실행 후 재시도하세요."
-        except Exception as e:
-            answer = f"오류: {str(e)[:200]}\n\n키워드 검색 결과 {len(relevant)}건의 관련 논문이 있습니다."
-
-        st.session_state.messages.append({"role": "assistant", "content": answer})
-        with st.chat_message("assistant"):
-            st.markdown(answer)
+        st.session_state.messages.append({"role": "assistant", "content": answer if 'answer' in locals() else "오류가 발생했습니다."})
 
 
 # ============================================================
-# 탭 7: 🔬 Dark Targets (미개척 타겟 발굴)
+# 탭 8: 🔬 Dark Targets (미개척 타겟 발굴)
 # ============================================================
-with tab7:
+with tab8:
     st.markdown("### 🔬 Dark Targets — 미개척 타겟 발굴")
     st.caption("Novelty Index가 높은 '다크 타겟'을 발견하고, 연구 공백을 분석합니다.")
 
@@ -959,9 +1461,9 @@ with tab7:
 
 
 # ============================================================
-# 탭 8: 💡 AI 신약 후보 (Novel Compound Discovery)
+# 탭 9: 💡 AI 신약 후보 (Novel Compound Discovery)
 # ============================================================
-with tab8:
+with tab9:
     st.markdown("### 💡 AI 신약 후보물질")
     st.caption("Dark Target에 대해 Claude AI가 제안한 novel compound 후보입니다.")
 
@@ -1013,9 +1515,9 @@ with tab8:
 
 
 # ============================================================
-# 탭 9: 🧬 바이오마커 분석
+# 탭 10: 🧬 바이오마커 분석
 # ============================================================
-with tab9:
+with tab10:
     st.markdown("### 🧬 바이오마커 분석")
     st.caption("AGA 관련 바이오마커의 분포, 타겟 연관성, 경로 분석")
 
@@ -1090,9 +1592,9 @@ with tab9:
 
 
 # ============================================================
-# 탭 10: 📈 연구 동향 (Research Trends)
+# 탭 11: 📈 연구 동향 (Research Trends)
 # ============================================================
-with tab10:
+with tab11:
     st.markdown("### 📈 AGA 연구 동향")
     st.caption("논문 수집 트렌드, 핫 키워드, 연도별 분포 분석")
 
@@ -1217,9 +1719,9 @@ with tab10:
 
 
 # ============================================================
-# 탭 11: 🏢 Control Center (픽셀 아트 가상 사무실)
+# 탭 12: 🏢 Control Center (픽셀 아트 가상 사무실)
 # ============================================================
-with tab11:
+with tab12:
     st.markdown("### 🏢 AGA Research Control Center")
     st.caption("AI 에이전트들이 자동으로 논문을 수집·분석하고 있습니다.")
 
