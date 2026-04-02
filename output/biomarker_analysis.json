@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-01T20:54:22.743502",
-  "total_biomarkers": 2663,
+  "generated_at": "2026-04-02T20:40:30.451114",
+  "total_biomarkers": 2671,
   "top_biomarkers": [
     {
       "name": "Hair density",
@@ -2021,13 +2021,16 @@
       "Tissue regeneration": 1
     },
     "Hair shaft thickness": {
+      "Angiogenesis": 2,
       "bFGF (Basic Fibroblast Growth Factor)": 1,
       "Fibroblast signaling": 1,
-      "Angiogenesis": 1,
       "Tissue regeneration": 1,
       "Sebum production": 1,
       "Lipid metabolism": 1,
-      "Hair follicle differentiation": 1
+      "Hair follicle differentiation": 1,
+      "Hair follicle stem cells": 1,
+      "Oxidative stress pathways": 1,
+      "Inflammatory pathways": 1
     },
     "PCNA (Proliferating Cell Nuclear Antigen)": {
       "Androgen Receptor (AR)": 3,
@@ -13784,7 +13787,10 @@
       "SAHH": 1,
       "Wnt/β-catenin signaling pathway": 1,
       "DKK1": 1,
-      "SFRP2": 1
+      "SFRP2": 1,
+      "Melanocyte": 1,
+      "Hair follicle stem cells": 1,
+      "Fibrosis-related pathways": 1
     },
     "Wnt signaling key factors": {
       "lncRNA H19": 1,
@@ -14688,6 +14694,52 @@
     "AGA grade": {
       "Prolyl 4-hydroxylase": 1,
       "Hypoxia-Inducible Factor 1-alpha": 1
+    },
+    "Hair-covered area": {
+      "Hair follicle stem cells": 1,
+      "Oxidative stress pathways": 1,
+      "Inflammatory pathways": 1,
+      "Angiogenesis": 1
+    },
+    "Follicular morphology": {
+      "Hair follicle stem cells": 1,
+      "Oxidative stress pathways": 1,
+      "Inflammatory pathways": 1,
+      "Angiogenesis": 1
+    },
+    "Follicular stem cell proliferation": {
+      "Hair follicle stem cells": 1,
+      "Oxidative stress pathways": 1,
+      "Inflammatory pathways": 1,
+      "Angiogenesis": 1
+    },
+    "Perifollicular oxidative stress": {
+      "Hair follicle stem cells": 1,
+      "Oxidative stress pathways": 1,
+      "Inflammatory pathways": 1,
+      "Angiogenesis": 1
+    },
+    "Perifollicular inflammation": {
+      "Hair follicle stem cells": 1,
+      "Oxidative stress pathways": 1,
+      "Inflammatory pathways": 1,
+      "Angiogenesis": 1
+    },
+    "Microvessel density": {
+      "Hair follicle stem cells": 1,
+      "Oxidative stress pathways": 1,
+      "Inflammatory pathways": 1,
+      "Angiogenesis": 1
+    },
+    "Pigment loss markers": {
+      "Melanocyte": 1,
+      "Hair follicle stem cells": 1,
+      "Fibrosis-related pathways": 1
+    },
+    "Melanocyte depletion": {
+      "Melanocyte": 1,
+      "Hair follicle stem cells": 1,
+      "Fibrosis-related pathways": 1
     }
   },
   "biomarker_pathways": {
@@ -16363,8 +16415,8 @@
       "Blood supply enhancement": 1
     },
     "Hair shaft thickness": {
+      "Angiogenesis pathway": 2,
       "FGF signaling": 1,
-      "Angiogenesis pathway": 1,
       "Tissue regeneration": 1,
       "Blood supply enhancement": 1,
       "Lipid metabolism": 1
@@ -28532,7 +28584,10 @@
     },
     "Senescence markers": {
       "Wnt/β-catenin signaling": 1,
-      "miR-29a regulation": 1
+      "miR-29a regulation": 1,
+      "Oxidative stress": 1,
+      "Melanocyte depletion signaling": 1,
+      "Stem cell exhaustion": 1
     },
     "Wnt signaling key factors": {
       "Wnt/β-catenin signaling": 1,
@@ -29320,6 +29375,56 @@
     "AGA grade": {
       "Hypoxia-Inducible Factor 1-alpha signaling": 1,
       "Hair cycle regulation": 1
+    },
+    "Hair-covered area": {
+      "Oxidative stress pathway": 1,
+      "Inflammatory pathway": 1,
+      "Angiogenesis pathway": 1,
+      "Hair follicle stem cell proliferation": 1
+    },
+    "Follicular morphology": {
+      "Oxidative stress pathway": 1,
+      "Inflammatory pathway": 1,
+      "Angiogenesis pathway": 1,
+      "Hair follicle stem cell proliferation": 1
+    },
+    "Follicular stem cell proliferation": {
+      "Oxidative stress pathway": 1,
+      "Inflammatory pathway": 1,
+      "Angiogenesis pathway": 1,
+      "Hair follicle stem cell proliferation": 1
+    },
+    "Perifollicular oxidative stress": {
+      "Oxidative stress pathway": 1,
+      "Inflammatory pathway": 1,
+      "Angiogenesis pathway": 1,
+      "Hair follicle stem cell proliferation": 1
+    },
+    "Perifollicular inflammation": {
+      "Oxidative stress pathway": 1,
+      "Inflammatory pathway": 1,
+      "Angiogenesis pathway": 1,
+      "Hair follicle stem cell proliferation": 1
+    },
+    "Microvessel density": {
+      "Oxidative stress pathway": 1,
+      "Inflammatory pathway": 1,
+      "Angiogenesis pathway": 1,
+      "Hair follicle stem cell proliferation": 1
+    },
+    "Pigment loss markers": {
+      "Oxidative stress": 1,
+      "Melanocyte depletion signaling": 1,
+      "Stem cell exhaustion": 1,
+      "Fibrosis pathway": 1,
+      "Immunosenescence": 1
+    },
+    "Melanocyte depletion": {
+      "Oxidative stress": 1,
+      "Melanocyte depletion signaling": 1,
+      "Stem cell exhaustion": 1,
+      "Fibrosis pathway": 1,
+      "Immunosenescence": 1
     }
   },
   "categories": {
@@ -29941,6 +30046,10 @@
         "count": 3
       },
       {
+        "name": "Hair shaft thickness",
+        "count": 3
+      },
+      {
         "name": "Fibrinogen",
         "count": 3
       },
@@ -30334,10 +30443,6 @@
       },
       {
         "name": "5α-DHT production",
-        "count": 2
-      },
-      {
-        "name": "Hair shaft thickness",
         "count": 2
       },
       {
@@ -31206,6 +31311,10 @@
       },
       {
         "name": "CD31",
+        "count": 2
+      },
+      {
+        "name": "Senescence markers",
         "count": 2
       },
       {
@@ -39281,10 +39390,6 @@
         "count": 1
       },
       {
-        "name": "Senescence markers",
-        "count": 1
-      },
-      {
         "name": "Wnt signaling key factors",
         "count": 1
       },
@@ -39990,6 +40095,38 @@
       },
       {
         "name": "AGA grade",
+        "count": 1
+      },
+      {
+        "name": "Hair-covered area",
+        "count": 1
+      },
+      {
+        "name": "Follicular morphology",
+        "count": 1
+      },
+      {
+        "name": "Follicular stem cell proliferation",
+        "count": 1
+      },
+      {
+        "name": "Perifollicular oxidative stress",
+        "count": 1
+      },
+      {
+        "name": "Perifollicular inflammation",
+        "count": 1
+      },
+      {
+        "name": "Microvessel density",
+        "count": 1
+      },
+      {
+        "name": "Pigment loss markers",
+        "count": 1
+      },
+      {
+        "name": "Melanocyte depletion",
         "count": 1
       }
     ]
