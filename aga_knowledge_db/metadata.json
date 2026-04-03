@@ -1,0 +1,10 @@
+{
+  "created": "2026-04-03T19:01:41.630313",
+  "structured_entries": 978,
+  "text_files": 23386,
+  "total_chunks": 509051,
+  "failed": 0,
+  "chunk_size": 1500,
+  "chunk_overlap": 300,
+  "build_time_minutes": 0.2
+}
