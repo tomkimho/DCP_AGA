@@ -69,9 +69,12 @@ class PubMedPaperCollector:
         self.request_interval = 1.0 / self.rate_limit
         self.last_request_time = 0
 
-        # 폴더 설정
-        self.new_papers_folder = os.path.join(self.base_folder, "new_papers")
-        self.new_papers_txt_folder = os.path.join(self.base_folder, "new_papers_txt")
+        # 폴더 설정 — 날짜별 하위 폴더 사용
+        self._date_str = datetime.now().strftime("%Y-%m-%d")
+        self.new_papers_root = os.path.join(self.base_folder, "new_papers")
+        self.new_papers_txt_root = os.path.join(self.base_folder, "new_papers_txt")
+        self.new_papers_folder = os.path.join(self.new_papers_root, self._date_str)
+        self.new_papers_txt_folder = os.path.join(self.new_papers_txt_root, self._date_str)
         self.collection_log_path = os.path.join(self.base_folder, "collection_log.json")
         self.pipeline_status_path = os.path.join(self.base_folder, "pipeline_status.json")
 
@@ -425,8 +428,11 @@ class PubMedPaperCollector:
         pdf_filename = self._make_safe_filename(pmid, title)
         pdf_path = os.path.join(self.new_papers_folder, pdf_filename)
 
-        # 이미 다운로드된 PDF가 있으면 건너뜀
+        # 이미 다운로드된 PDF가 있으면 건너뜀 (날짜 폴더 + 루트 모두 확인)
         if os.path.exists(pdf_path) and os.path.getsize(pdf_path) > 1000:
+            return True, "cached"
+        root_pdf = os.path.join(self.new_papers_root, pdf_filename)
+        if os.path.exists(root_pdf) and os.path.getsize(root_pdf) > 1000:
             return True, "cached"
 
         # ── 소스 1: PubMed Central (PMC) ──────────────────────

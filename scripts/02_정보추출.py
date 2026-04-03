@@ -203,12 +203,17 @@ def main():
 
     # txt 파일 목록 (기존 + 새로 수집된 논문)
     txt_files = sorted([f for f in os.listdir(TXT_FOLDER) if f.endswith('.txt') and not f.startswith('_')])
-    # APPEND 모드에서는 new_papers_txt 폴더도 포함
+    # APPEND 모드에서는 new_papers_txt 폴더도 포함 (날짜별 하위 폴더 재귀 탐색)
     if APPEND_MODE and os.path.isdir(NEW_PAPERS_TXT):
-        new_txts = sorted([f for f in os.listdir(NEW_PAPERS_TXT) if f.endswith('.txt') and not f.startswith('_')])
+        new_txts = sorted([
+            os.path.relpath(os.path.join(root, f), NEW_PAPERS_TXT)
+            for root, dirs, files in os.walk(NEW_PAPERS_TXT)
+            for f in files
+            if f.endswith('.txt') and not f.startswith('_')
+        ])
         txt_files = txt_files + new_txts
         if new_txts:
-            print(f"  APPEND 모드: 새 논문 {len(new_txts)}건 추가됨")
+            print(f"  APPEND 모드: 새 논문 {len(new_txts)}건 추가됨 (하위 폴더 포함)")
     total = len(txt_files)
 
     print("=" * 60)

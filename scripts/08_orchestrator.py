@@ -173,17 +173,17 @@ class PipelineOrchestrator:
         self.start_time = None
 
     def _count_new_papers(self) -> int:
-        """new_papers/ 폴더의 PDF 파일 수"""
+        """new_papers/ 폴더의 PDF 파일 수 (날짜별 하위 폴더 포함)"""
         if not os.path.isdir(NEW_PAPERS_FOLDER):
             return 0
-        return len([f for f in os.listdir(NEW_PAPERS_FOLDER) if f.endswith('.pdf')])
+        return sum(1 for _, _, files in os.walk(NEW_PAPERS_FOLDER) for f in files if f.endswith('.pdf'))
 
     def _count_new_txt(self) -> int:
-        """new_papers_txt/ 폴더의 TXT 파일 수"""
+        """new_papers_txt/ 폴더의 TXT 파일 수 (날짜별 하위 폴더 포함)"""
         txt_folder = os.path.join(BASE_FOLDER, "new_papers_txt")
         if not os.path.isdir(txt_folder):
             return 0
-        return len([f for f in os.listdir(txt_folder) if f.endswith('.txt')])
+        return sum(1 for _, _, files in os.walk(txt_folder) for f in files if f.endswith('.txt'))
 
     def run(self):
         """전체 파이프라인 실행"""
