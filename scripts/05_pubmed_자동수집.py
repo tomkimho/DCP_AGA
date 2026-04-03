@@ -49,7 +49,7 @@ class PubMedPaperCollector:
     # CORE API 설정 (무료, API key 있으면 더 빠름)
     CORE_API_URL = "https://api.core.ac.uk/v3"
 
-    def __init__(self, base_folder: str, days_back: int = 7, max_results: int = 500):
+    def __init__(self, base_folder: str, days_back: int = 30, max_results: int = 500):
         """
         Args:
             base_folder: 문헌데이터_탈모 폴더 경로
@@ -127,11 +127,26 @@ class PubMedPaperCollector:
         self.last_request_time = time.time()
 
     def _build_search_query(self) -> str:
-        """PubMed 검색 쿼리 구성"""
+        """PubMed 검색 쿼리 구성 — 넓은 범위로 AGA 관련 논문 수집"""
         query = (
-            "(androgenetic alopecia[Title/Abstract] OR male pattern baldness[Title/Abstract] "
-            "OR AGA hair loss[Title/Abstract] OR hair loss treatment[Title/Abstract]) "
-            "AND (drug OR compound OR target OR inhibitor OR mechanism OR pathway)"
+            "("
+            "androgenetic alopecia[Title/Abstract] OR "
+            "male pattern baldness[Title/Abstract] OR "
+            "female pattern hair loss[Title/Abstract] OR "
+            "AGA hair[Title/Abstract] OR "
+            "hair loss treatment[Title/Abstract] OR "
+            "hair follicle[Title/Abstract] OR "
+            "dermal papilla[Title/Abstract] OR "
+            "hair growth[Title/Abstract] OR "
+            "alopecia drug[Title/Abstract] OR "
+            "minoxidil[Title/Abstract] OR "
+            "finasteride[Title/Abstract] OR "
+            "dutasteride hair[Title/Abstract] OR "
+            "hair follicle stem cell[Title/Abstract] OR "
+            "Wnt hair[Title/Abstract] OR "
+            "DHT hair[Title/Abstract] OR "
+            "5-alpha reductase hair[Title/Abstract]"
+            ")"
         )
         return query
 
@@ -771,8 +786,8 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(description="PubMed AGA 논문 자동 수집")
-    parser.add_argument("--days", type=int, default=7,
-                       help="검색 기간 (일). 기본값: 7일")
+    parser.add_argument("--days", type=int, default=30,
+                       help="검색 기간 (일). 기본값: 30일")
     parser.add_argument("--all", action="store_true",
                        help="과거 논문 전체 검색 (최근 30년)")
     parser.add_argument("--years", type=int, default=None,

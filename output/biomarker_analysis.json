@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-04-02T20:40:30.451114",
-  "total_biomarkers": 2671,
+  "generated_at": "2026-03-10T20:42:02.460088",
+  "total_biomarkers": 2633,
   "top_biomarkers": [
     {
       "name": "Hair density",
-      "count": 53
+      "count": 52
     },
     {
       "name": "Hair thickness",
@@ -28,15 +28,11 @@
     },
     {
       "name": "Hair diameter",
-      "count": 20
+      "count": 19
     },
     {
       "name": "TNF-α",
       "count": 18
-    },
-    {
-      "name": "Hair follicle density",
-      "count": 17
     },
     {
       "name": "Ki-67",
@@ -47,6 +43,10 @@
       "count": 17
     },
     {
+      "name": "Hair follicle density",
+      "count": 16
+    },
+    {
       "name": "Cyclin D1",
       "count": 16
     },
@@ -55,16 +55,16 @@
       "count": 16
     },
     {
-      "name": "β-catenin expression",
-      "count": 14
-    },
-    {
       "name": "Anagen",
       "count": 14
     },
     {
       "name": "Hair follicle length",
       "count": 14
+    },
+    {
+      "name": "β-catenin expression",
+      "count": 13
     },
     {
       "name": "Hair growth rate",
@@ -163,10 +163,6 @@
       "count": 8
     },
     {
-      "name": "Triglycerides",
-      "count": 8
-    },
-    {
       "name": "IGF-1",
       "count": 8
     },
@@ -188,6 +184,10 @@
     },
     {
       "name": "LH",
+      "count": 7
+    },
+    {
+      "name": "Triglycerides",
       "count": 7
     },
     {
@@ -330,10 +330,10 @@
       "Androgen Receptor (AR)": 2,
       "Dermal papilla cells": 2,
       "Androgen Receptor": 2,
-      "Wnt/β-catenin signaling": 2,
       "Activin": 1,
       "Follistatin": 1,
-      "TGF-β superfamily": 1
+      "TGF-β superfamily": 1,
+      "Noggin (BMP antagonist)": 1
     },
     "FGF7 expression": {
       "Activin": 1,
@@ -343,10 +343,7 @@
     "Wnt5a expression": {
       "Activin": 1,
       "Follistatin": 1,
-      "TGF-β superfamily": 1,
-      "TLR4": 1,
-      "NF-κB": 1,
-      "Wnt/β-catenin signaling": 1
+      "TGF-β superfamily": 1
     },
     "LEF1 expression": {
       "Activin": 1,
@@ -2021,16 +2018,13 @@
       "Tissue regeneration": 1
     },
     "Hair shaft thickness": {
-      "Angiogenesis": 2,
       "bFGF (Basic Fibroblast Growth Factor)": 1,
       "Fibroblast signaling": 1,
+      "Angiogenesis": 1,
       "Tissue regeneration": 1,
       "Sebum production": 1,
       "Lipid metabolism": 1,
-      "Hair follicle differentiation": 1,
-      "Hair follicle stem cells": 1,
-      "Oxidative stress pathways": 1,
-      "Inflammatory pathways": 1
+      "Hair follicle differentiation": 1
     },
     "PCNA (Proliferating Cell Nuclear Antigen)": {
       "Androgen Receptor (AR)": 3,
@@ -3788,11 +3782,6 @@
       "Growth factors in platelet-rich plasma": 1,
       "Hair follicle regeneration": 1
     },
-    "Pro-inflammatory cytokines": {
-      "TLR2": 1,
-      "NLRP3": 1,
-      "Innate immune pathways": 1
-    },
     "Th1": {
       "Hypothalamic-pituitary-adrenal (HPA) axis": 1,
       "T helper cells (Th1/Th2)": 1,
@@ -3906,7 +3895,7 @@
     },
     "DHT": {
       "5α-Reductase Type 2": 2,
-      "5α-Reductase": 2,
+      "5α-Reductase": 1,
       "5α-Reductase (5-alpha reductase)": 1,
       "Androgen signaling": 1,
       "5-alpha-reductase": 1,
@@ -6947,8 +6936,7 @@
     },
     "Target area hair count (TAHC)": {
       "5-alpha reductase": 1,
-      "Androgen receptor": 1,
-      "5a-Reductase Type 2": 1
+      "Androgen receptor": 1
     },
     "Anagen-to-telogen ratio (A": {
       "5-alpha reductase": 1,
@@ -8988,12 +8976,7 @@
       "5α-Reductase": 1,
       "Hair follicle stem cells": 1,
       "Dermal papilla": 1,
-      "5-alpha Reductase": 1,
-      "Acidic Fibroblast Growth Factor (aFGF)": 1,
-      "Hair follicle regeneration pathway": 1,
-      "Filaggrin-2 (FLG2)": 1,
-      "MAPK/Erk signaling pathway": 1,
-      "Mitochondrial function": 1
+      "5-alpha Reductase": 1
     },
     "DHT suppression": {
       "5-alpha-reductase Type I": 1,
@@ -13787,10 +13770,7 @@
       "SAHH": 1,
       "Wnt/β-catenin signaling pathway": 1,
       "DKK1": 1,
-      "SFRP2": 1,
-      "Melanocyte": 1,
-      "Hair follicle stem cells": 1,
-      "Fibrosis-related pathways": 1
+      "SFRP2": 1
     },
     "Wnt signaling key factors": {
       "lncRNA H19": 1,
@@ -14554,192 +14534,6 @@
     "Systemic toxicity markers": {
       "Hair follicle growth": 1,
       "Transdermal delivery": 1
-    },
-    "Hair follicle regeneration indices": {
-      "Acidic Fibroblast Growth Factor (aFGF)": 1,
-      "Hair follicle regeneration pathway": 1
-    },
-    "De novo folliculogenesis indices": {
-      "Acidic Fibroblast Growth Factor (aFGF)": 1,
-      "Hair follicle regeneration pathway": 1
-    },
-    "Dermal angiogenesis markers": {
-      "Acidic Fibroblast Growth Factor (aFGF)": 1,
-      "Hair follicle regeneration pathway": 1
-    },
-    "Fibroblast proliferation markers": {
-      "Acidic Fibroblast Growth Factor (aFGF)": 1,
-      "Hair follicle regeneration pathway": 1
-    },
-    "p16": {
-      "5α-Reductase": 1,
-      "Leptin Receptor": 1,
-      "Reactive Oxygen Species": 1,
-      "p16/pRb senescence markers": 1
-    },
-    "pRb": {
-      "5α-Reductase": 1,
-      "Leptin Receptor": 1,
-      "Reactive Oxygen Species": 1,
-      "p16/pRb senescence markers": 1
-    },
-    "ROS": {
-      "5α-Reductase": 1,
-      "Leptin Receptor": 1,
-      "Reactive Oxygen Species": 1,
-      "p16/pRb senescence markers": 1
-    },
-    "Cutibacterium acnes enrichment": {
-      "TLR2": 1,
-      "NLRP3": 1,
-      "Innate immune pathways": 1
-    },
-    "Malassezia abundance": {
-      "TLR2": 1,
-      "NLRP3": 1,
-      "Innate immune pathways": 1
-    },
-    "Scalp sebum composition": {
-      "TLR2": 1,
-      "NLRP3": 1,
-      "Innate immune pathways": 1
-    },
-    "Palmitic acid": {
-      "TLR2": 1,
-      "NLRP3": 1,
-      "Innate immune pathways": 1
-    },
-    "Vegfa mRNA": {
-      "TLR4": 1,
-      "NF-κB": 1,
-      "Wnt/β-catenin signaling": 1
-    },
-    "Fgfr mRNA": {
-      "TLR4": 1,
-      "NF-κB": 1,
-      "Wnt/β-catenin signaling": 1
-    },
-    "Igf1 mRNA": {
-      "TLR4": 1,
-      "NF-κB": 1,
-      "Wnt/β-catenin signaling": 1
-    },
-    "Lef1 mRNA": {
-      "TLR4": 1,
-      "NF-κB": 1,
-      "Wnt/β-catenin signaling": 1
-    },
-    "TLR4 expression": {
-      "TLR4": 1,
-      "NF-κB": 1,
-      "Wnt/β-catenin signaling": 1
-    },
-    "NF-κB expression": {
-      "TLR4": 1,
-      "NF-κB": 1,
-      "Wnt/β-catenin signaling": 1
-    },
-    "IL-6 levels": {
-      "TLR4": 1,
-      "NF-κB": 1,
-      "Wnt/β-catenin signaling": 1
-    },
-    "IL-17 levels": {
-      "TLR4": 1,
-      "NF-κB": 1,
-      "Wnt/β-catenin signaling": 1
-    },
-    "IL-23 levels": {
-      "TLR4": 1,
-      "NF-κB": 1,
-      "Wnt/β-catenin signaling": 1
-    },
-    "TNFα levels": {
-      "TLR4": 1,
-      "NF-κB": 1,
-      "Wnt/β-catenin signaling": 1
-    },
-    "Lactobacillus abundance": {
-      "TLR4": 1,
-      "NF-κB": 1,
-      "Wnt/β-catenin signaling": 1
-    },
-    "Proteus abundance": {
-      "TLR4": 1,
-      "NF-κB": 1,
-      "Wnt/β-catenin signaling": 1
-    },
-    "Filaggrin-2 (FLG2) expression": {
-      "Filaggrin-2 (FLG2)": 1,
-      "MAPK/Erk signaling pathway": 1,
-      "Mitochondrial function": 1
-    },
-    "DPC viability and mitochondrial function": {
-      "Filaggrin-2 (FLG2)": 1,
-      "MAPK/Erk signaling pathway": 1,
-      "Mitochondrial function": 1
-    },
-    "Target area hair width (TAHW)": {
-      "5a-Reductase Type 2": 1
-    },
-    "Terminal-to-vellus hair ratio": {
-      "5a-Reductase Type 2": 1
-    },
-    "Male Hair Growth Questionnaire (MHGQ)": {
-      "5a-Reductase Type 2": 1
-    },
-    "Physician Global Assessment (PGA)": {
-      "5a-Reductase Type 2": 1
-    },
-    "AGA grade": {
-      "Prolyl 4-hydroxylase": 1,
-      "Hypoxia-Inducible Factor 1-alpha": 1
-    },
-    "Hair-covered area": {
-      "Hair follicle stem cells": 1,
-      "Oxidative stress pathways": 1,
-      "Inflammatory pathways": 1,
-      "Angiogenesis": 1
-    },
-    "Follicular morphology": {
-      "Hair follicle stem cells": 1,
-      "Oxidative stress pathways": 1,
-      "Inflammatory pathways": 1,
-      "Angiogenesis": 1
-    },
-    "Follicular stem cell proliferation": {
-      "Hair follicle stem cells": 1,
-      "Oxidative stress pathways": 1,
-      "Inflammatory pathways": 1,
-      "Angiogenesis": 1
-    },
-    "Perifollicular oxidative stress": {
-      "Hair follicle stem cells": 1,
-      "Oxidative stress pathways": 1,
-      "Inflammatory pathways": 1,
-      "Angiogenesis": 1
-    },
-    "Perifollicular inflammation": {
-      "Hair follicle stem cells": 1,
-      "Oxidative stress pathways": 1,
-      "Inflammatory pathways": 1,
-      "Angiogenesis": 1
-    },
-    "Microvessel density": {
-      "Hair follicle stem cells": 1,
-      "Oxidative stress pathways": 1,
-      "Inflammatory pathways": 1,
-      "Angiogenesis": 1
-    },
-    "Pigment loss markers": {
-      "Melanocyte": 1,
-      "Hair follicle stem cells": 1,
-      "Fibrosis-related pathways": 1
-    },
-    "Melanocyte depletion": {
-      "Melanocyte": 1,
-      "Hair follicle stem cells": 1,
-      "Fibrosis-related pathways": 1
     }
   },
   "biomarker_pathways": {
@@ -14853,7 +14647,7 @@
       "FGF7/Wnt5a/LEF1/VCAN pathway": 1
     },
     "β-catenin expression": {
-      "Wnt/β-catenin signaling": 10,
+      "Wnt/β-catenin signaling": 9,
       "TGF-β signaling": 2,
       "Wnt/β-catenin signaling pathway": 2,
       "VEGF signaling": 2,
@@ -14867,7 +14661,7 @@
       "FGF7/Wnt5a/LEF1/VCAN pathway": 1
     },
     "Wnt5a expression": {
-      "Wnt/β-catenin signaling": 2,
+      "Wnt/β-catenin signaling": 1,
       "Activin signaling": 1,
       "TGF-β signaling": 1,
       "SMAD2 phosphorylation": 1,
@@ -16415,8 +16209,8 @@
       "Blood supply enhancement": 1
     },
     "Hair shaft thickness": {
-      "Angiogenesis pathway": 2,
       "FGF signaling": 1,
+      "Angiogenesis pathway": 1,
       "Tissue regeneration": 1,
       "Blood supply enhancement": 1,
       "Lipid metabolism": 1
@@ -18040,8 +17834,7 @@
       "Toll-like receptor (TLR) signaling": 1,
       "Pattern recognition receptor (PAMP) signaling": 1,
       "Innate immune response": 1,
-      "Adaptive immune response": 1,
-      "TLR2 signaling": 1
+      "Adaptive immune response": 1
     },
     "Th1": {
       "Toll-like receptor (TLR) signaling": 1,
@@ -18149,7 +17942,7 @@
       "Testosterone to DHT conversion": 1
     },
     "DHT": {
-      "Androgen signaling": 4,
+      "Androgen signaling": 3,
       "Androgen signaling pathway": 2,
       "5α-Reductase pathway": 1,
       "DHT metabolism": 1,
@@ -23118,8 +22911,7 @@
       "Androgen signaling": 2,
       "Wnt/β-catenin signaling": 1,
       "Wound healing pathway": 1,
-      "Hair cycle regulation": 1,
-      "FGF signaling": 1
+      "Hair cycle regulation": 1
     },
     "DHT suppression": {
       "Androgen signaling": 1,
@@ -28584,10 +28376,7 @@
     },
     "Senescence markers": {
       "Wnt/β-catenin signaling": 1,
-      "miR-29a regulation": 1,
-      "Oxidative stress": 1,
-      "Melanocyte depletion signaling": 1,
-      "Stem cell exhaustion": 1
+      "miR-29a regulation": 1
     },
     "Wnt signaling key factors": {
       "Wnt/β-catenin signaling": 1,
@@ -29219,212 +29008,6 @@
     "Systemic toxicity markers": {
       "Transdermal delivery pathway": 1,
       "Hair follicle regeneration": 1
-    },
-    "Hair follicle regeneration indices": {
-      "FGF signaling": 1,
-      "Hair follicle cycling (anagen phase)": 1,
-      "Dermal angiogenesis": 1,
-      "Fibroblast proliferation": 1
-    },
-    "De novo folliculogenesis indices": {
-      "FGF signaling": 1,
-      "Hair follicle cycling (anagen phase)": 1,
-      "Dermal angiogenesis": 1,
-      "Fibroblast proliferation": 1
-    },
-    "Dermal angiogenesis markers": {
-      "FGF signaling": 1,
-      "Hair follicle cycling (anagen phase)": 1,
-      "Dermal angiogenesis": 1,
-      "Fibroblast proliferation": 1
-    },
-    "Fibroblast proliferation markers": {
-      "FGF signaling": 1,
-      "Hair follicle cycling (anagen phase)": 1,
-      "Dermal angiogenesis": 1,
-      "Fibroblast proliferation": 1
-    },
-    "p16": {
-      "Androgen signaling": 1,
-      "Oxidative stress pathway": 1,
-      "Cellular senescence pathway": 1,
-      "p16/pRb pathway": 1
-    },
-    "pRb": {
-      "Androgen signaling": 1,
-      "Oxidative stress pathway": 1,
-      "Cellular senescence pathway": 1,
-      "p16/pRb pathway": 1
-    },
-    "ROS": {
-      "Androgen signaling": 1,
-      "Oxidative stress pathway": 1,
-      "Cellular senescence pathway": 1,
-      "p16/pRb pathway": 1
-    },
-    "Cutibacterium acnes enrichment": {
-      "TLR2 signaling": 1,
-      "NLRP3 signaling": 1,
-      "Innate immune activation": 1,
-      "Lipid metabolism": 1
-    },
-    "Malassezia abundance": {
-      "TLR2 signaling": 1,
-      "NLRP3 signaling": 1,
-      "Innate immune activation": 1,
-      "Lipid metabolism": 1
-    },
-    "Scalp sebum composition": {
-      "TLR2 signaling": 1,
-      "NLRP3 signaling": 1,
-      "Innate immune activation": 1,
-      "Lipid metabolism": 1
-    },
-    "Palmitic acid": {
-      "TLR2 signaling": 1,
-      "NLRP3 signaling": 1,
-      "Innate immune activation": 1,
-      "Lipid metabolism": 1
-    },
-    "Vegfa mRNA": {
-      "TLR4/NF-κB signaling": 1,
-      "Wnt/β-catenin signaling": 1,
-      "Inflammatory cytokine signaling": 1
-    },
-    "Fgfr mRNA": {
-      "TLR4/NF-κB signaling": 1,
-      "Wnt/β-catenin signaling": 1,
-      "Inflammatory cytokine signaling": 1
-    },
-    "Igf1 mRNA": {
-      "TLR4/NF-κB signaling": 1,
-      "Wnt/β-catenin signaling": 1,
-      "Inflammatory cytokine signaling": 1
-    },
-    "Lef1 mRNA": {
-      "TLR4/NF-κB signaling": 1,
-      "Wnt/β-catenin signaling": 1,
-      "Inflammatory cytokine signaling": 1
-    },
-    "TLR4 expression": {
-      "TLR4/NF-κB signaling": 1,
-      "Wnt/β-catenin signaling": 1,
-      "Inflammatory cytokine signaling": 1
-    },
-    "NF-κB expression": {
-      "TLR4/NF-κB signaling": 1,
-      "Wnt/β-catenin signaling": 1,
-      "Inflammatory cytokine signaling": 1
-    },
-    "IL-6 levels": {
-      "TLR4/NF-κB signaling": 1,
-      "Wnt/β-catenin signaling": 1,
-      "Inflammatory cytokine signaling": 1
-    },
-    "IL-17 levels": {
-      "TLR4/NF-κB signaling": 1,
-      "Wnt/β-catenin signaling": 1,
-      "Inflammatory cytokine signaling": 1
-    },
-    "IL-23 levels": {
-      "TLR4/NF-κB signaling": 1,
-      "Wnt/β-catenin signaling": 1,
-      "Inflammatory cytokine signaling": 1
-    },
-    "TNFα levels": {
-      "TLR4/NF-κB signaling": 1,
-      "Wnt/β-catenin signaling": 1,
-      "Inflammatory cytokine signaling": 1
-    },
-    "Lactobacillus abundance": {
-      "TLR4/NF-κB signaling": 1,
-      "Wnt/β-catenin signaling": 1,
-      "Inflammatory cytokine signaling": 1
-    },
-    "Proteus abundance": {
-      "TLR4/NF-κB signaling": 1,
-      "Wnt/β-catenin signaling": 1,
-      "Inflammatory cytokine signaling": 1
-    },
-    "Filaggrin-2 (FLG2) expression": {
-      "MAPK/Erk signaling": 1,
-      "Bcl-2/Bax apoptotic pathway": 1,
-      "Mitochondrial dysfunction pathway": 1
-    },
-    "DPC viability and mitochondrial function": {
-      "MAPK/Erk signaling": 1,
-      "Bcl-2/Bax apoptotic pathway": 1,
-      "Mitochondrial dysfunction pathway": 1
-    },
-    "Target area hair width (TAHW)": {
-      "Androgen receptor signaling": 1,
-      "DHT-mediated hair follicle miniaturization": 1
-    },
-    "Terminal-to-vellus hair ratio": {
-      "Androgen receptor signaling": 1,
-      "DHT-mediated hair follicle miniaturization": 1
-    },
-    "Male Hair Growth Questionnaire (MHGQ)": {
-      "Androgen receptor signaling": 1,
-      "DHT-mediated hair follicle miniaturization": 1
-    },
-    "Physician Global Assessment (PGA)": {
-      "Androgen receptor signaling": 1,
-      "DHT-mediated hair follicle miniaturization": 1
-    },
-    "AGA grade": {
-      "Hypoxia-Inducible Factor 1-alpha signaling": 1,
-      "Hair cycle regulation": 1
-    },
-    "Hair-covered area": {
-      "Oxidative stress pathway": 1,
-      "Inflammatory pathway": 1,
-      "Angiogenesis pathway": 1,
-      "Hair follicle stem cell proliferation": 1
-    },
-    "Follicular morphology": {
-      "Oxidative stress pathway": 1,
-      "Inflammatory pathway": 1,
-      "Angiogenesis pathway": 1,
-      "Hair follicle stem cell proliferation": 1
-    },
-    "Follicular stem cell proliferation": {
-      "Oxidative stress pathway": 1,
-      "Inflammatory pathway": 1,
-      "Angiogenesis pathway": 1,
-      "Hair follicle stem cell proliferation": 1
-    },
-    "Perifollicular oxidative stress": {
-      "Oxidative stress pathway": 1,
-      "Inflammatory pathway": 1,
-      "Angiogenesis pathway": 1,
-      "Hair follicle stem cell proliferation": 1
-    },
-    "Perifollicular inflammation": {
-      "Oxidative stress pathway": 1,
-      "Inflammatory pathway": 1,
-      "Angiogenesis pathway": 1,
-      "Hair follicle stem cell proliferation": 1
-    },
-    "Microvessel density": {
-      "Oxidative stress pathway": 1,
-      "Inflammatory pathway": 1,
-      "Angiogenesis pathway": 1,
-      "Hair follicle stem cell proliferation": 1
-    },
-    "Pigment loss markers": {
-      "Oxidative stress": 1,
-      "Melanocyte depletion signaling": 1,
-      "Stem cell exhaustion": 1,
-      "Fibrosis pathway": 1,
-      "Immunosenescence": 1
-    },
-    "Melanocyte depletion": {
-      "Oxidative stress": 1,
-      "Melanocyte depletion signaling": 1,
-      "Stem cell exhaustion": 1,
-      "Fibrosis pathway": 1,
-      "Immunosenescence": 1
     }
   },
   "categories": {
@@ -29561,7 +29144,7 @@
       },
       {
         "name": "DHT",
-        "count": 7
+        "count": 6
       },
       {
         "name": "Cortisol",
@@ -29582,16 +29165,12 @@
       {
         "name": "Catalase",
         "count": 1
-      },
-      {
-        "name": "ROS",
-        "count": 1
       }
     ],
     "Other": [
       {
         "name": "Hair density",
-        "count": 53
+        "count": 52
       },
       {
         "name": "Hair thickness",
@@ -29611,19 +29190,15 @@
       },
       {
         "name": "Hair diameter",
-        "count": 20
+        "count": 19
       },
       {
         "name": "Hair follicle density",
-        "count": 17
+        "count": 16
       },
       {
         "name": "Cyclin D1",
         "count": 16
-      },
-      {
-        "name": "β-catenin expression",
-        "count": 14
       },
       {
         "name": "Anagen",
@@ -29632,6 +29207,10 @@
       {
         "name": "Hair follicle length",
         "count": 14
+      },
+      {
+        "name": "β-catenin expression",
+        "count": 13
       },
       {
         "name": "Hair growth rate",
@@ -29698,10 +29277,6 @@
         "count": 8
       },
       {
-        "name": "Triglycerides",
-        "count": 8
-      },
-      {
         "name": "Hair density (hairs",
         "count": 8
       },
@@ -29715,6 +29290,10 @@
       },
       {
         "name": "LH",
+        "count": 7
+      },
+      {
+        "name": "Triglycerides",
         "count": 7
       },
       {
@@ -29986,10 +29565,6 @@
         "count": 4
       },
       {
-        "name": "Anagen phase duration",
-        "count": 4
-      },
-      {
         "name": "Serum calcium levels",
         "count": 4
       },
@@ -30043,10 +29618,6 @@
       },
       {
         "name": "Transepidermal water loss (TEWL)",
-        "count": 3
-      },
-      {
-        "name": "Hair shaft thickness",
         "count": 3
       },
       {
@@ -30282,10 +29853,6 @@
         "count": 2
       },
       {
-        "name": "Wnt5a expression",
-        "count": 2
-      },
-      {
         "name": "Laminin",
         "count": 2
       },
@@ -30446,6 +30013,10 @@
         "count": 2
       },
       {
+        "name": "Hair shaft thickness",
+        "count": 2
+      },
+      {
         "name": "DKK-1 (Dickkopf-1)",
         "count": 2
       },
@@ -30591,10 +30162,6 @@
       },
       {
         "name": "Vellus hair rate",
-        "count": 2
-      },
-      {
-        "name": "Pro-inflammatory cytokines",
         "count": 2
       },
       {
@@ -30938,10 +30505,6 @@
         "count": 2
       },
       {
-        "name": "Target area hair count (TAHC)",
-        "count": 2
-      },
-      {
         "name": "CTGF",
         "count": 2
       },
@@ -31091,6 +30654,10 @@
       },
       {
         "name": "CD4+ T cell infiltration",
+        "count": 2
+      },
+      {
+        "name": "Anagen phase duration",
         "count": 2
       },
       {
@@ -31314,10 +30881,6 @@
         "count": 2
       },
       {
-        "name": "Senescence markers",
-        "count": 2
-      },
-      {
         "name": "Hair follicle size",
         "count": 2
       },
@@ -31379,6 +30942,10 @@
       },
       {
         "name": "FGF7 expression",
+        "count": 1
+      },
+      {
+        "name": "Wnt5a expression",
         "count": 1
       },
       {
@@ -32966,6 +32533,10 @@
         "count": 1
       },
       {
+        "name": "Pro-inflammatory cytokines",
+        "count": 1
+      },
+      {
         "name": "Th2 response markers",
         "count": 1
       },
@@ -34399,6 +33970,10 @@
       },
       {
         "name": "ki67 immunoreactivity",
+        "count": 1
+      },
+      {
+        "name": "Target area hair count (TAHC)",
         "count": 1
       },
       {
@@ -39390,6 +38965,10 @@
         "count": 1
       },
       {
+        "name": "Senescence markers",
+        "count": 1
+      },
+      {
         "name": "Wnt signaling key factors",
         "count": 1
       },
@@ -39979,154 +39558,6 @@
       },
       {
         "name": "Hair iron content",
-        "count": 1
-      },
-      {
-        "name": "Hair follicle regeneration indices",
-        "count": 1
-      },
-      {
-        "name": "De novo folliculogenesis indices",
-        "count": 1
-      },
-      {
-        "name": "Dermal angiogenesis markers",
-        "count": 1
-      },
-      {
-        "name": "Fibroblast proliferation markers",
-        "count": 1
-      },
-      {
-        "name": "p16",
-        "count": 1
-      },
-      {
-        "name": "pRb",
-        "count": 1
-      },
-      {
-        "name": "Cutibacterium acnes enrichment",
-        "count": 1
-      },
-      {
-        "name": "Malassezia abundance",
-        "count": 1
-      },
-      {
-        "name": "Scalp sebum composition",
-        "count": 1
-      },
-      {
-        "name": "Palmitic acid",
-        "count": 1
-      },
-      {
-        "name": "Vegfa mRNA",
-        "count": 1
-      },
-      {
-        "name": "Fgfr mRNA",
-        "count": 1
-      },
-      {
-        "name": "Igf1 mRNA",
-        "count": 1
-      },
-      {
-        "name": "Lef1 mRNA",
-        "count": 1
-      },
-      {
-        "name": "TLR4 expression",
-        "count": 1
-      },
-      {
-        "name": "NF-κB expression",
-        "count": 1
-      },
-      {
-        "name": "IL-6 levels",
-        "count": 1
-      },
-      {
-        "name": "IL-17 levels",
-        "count": 1
-      },
-      {
-        "name": "IL-23 levels",
-        "count": 1
-      },
-      {
-        "name": "TNFα levels",
-        "count": 1
-      },
-      {
-        "name": "Lactobacillus abundance",
-        "count": 1
-      },
-      {
-        "name": "Proteus abundance",
-        "count": 1
-      },
-      {
-        "name": "Filaggrin-2 (FLG2) expression",
-        "count": 1
-      },
-      {
-        "name": "DPC viability and mitochondrial function",
-        "count": 1
-      },
-      {
-        "name": "Target area hair width (TAHW)",
-        "count": 1
-      },
-      {
-        "name": "Terminal-to-vellus hair ratio",
-        "count": 1
-      },
-      {
-        "name": "Male Hair Growth Questionnaire (MHGQ)",
-        "count": 1
-      },
-      {
-        "name": "Physician Global Assessment (PGA)",
-        "count": 1
-      },
-      {
-        "name": "AGA grade",
-        "count": 1
-      },
-      {
-        "name": "Hair-covered area",
-        "count": 1
-      },
-      {
-        "name": "Follicular morphology",
-        "count": 1
-      },
-      {
-        "name": "Follicular stem cell proliferation",
-        "count": 1
-      },
-      {
-        "name": "Perifollicular oxidative stress",
-        "count": 1
-      },
-      {
-        "name": "Perifollicular inflammation",
-        "count": 1
-      },
-      {
-        "name": "Microvessel density",
-        "count": 1
-      },
-      {
-        "name": "Pigment loss markers",
-        "count": 1
-      },
-      {
-        "name": "Melanocyte depletion",
         "count": 1
       }
     ]

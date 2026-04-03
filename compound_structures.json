@@ -961,10 +961,6 @@
     "status": "not_found"
   },
   {
-    "name": "5-Alpha Reductase Inhibitors",
-    "status": "not_found"
-  },
-  {
     "name": "5-Fluorouracil",
     "CID": 3385,
     "SMILES": "C1=C(C(=O)NC(=O)N1)F",
@@ -981,10 +977,6 @@
   },
   {
     "name": "5-alpha reductase inhibitors",
-    "status": "not_found"
-  },
-  {
-    "name": "5-alpha-reductase inhibitors",
     "status": "not_found"
   },
   {
@@ -1166,10 +1158,6 @@
   },
   {
     "name": "9β-lanost-28-oic acid",
-    "status": "not_found"
-  },
-  {
-    "name": "AAV-aFGF",
     "status": "not_found"
   },
   {
@@ -3593,10 +3581,6 @@
     "status": "not_found"
   },
   {
-    "name": "Cerium oxide nanoparticles",
-    "status": "not_found"
-  },
-  {
     "name": "Cetirizine",
     "CID": 2678,
     "SMILES": "OC(=O)COCC1=CC=C(C=C1)C(CN1CCNCC1)C1=CC=CC=C1Cl",
@@ -3915,10 +3899,6 @@
     "3d_sdf_path": "compound_images/3d_structures/Clascoterone (Cortexolone-17α-propionate).sdf",
     "image_2d": "compound_images/2d_structures/Clascoterone_(Cortexolone-17α-propionate).png",
     "sdf_3d": "compound_images/3d_structures/Clascoterone_(Cortexolone-17α-propionate).sdf"
-  },
-  {
-    "name": "ClickMNP (bioorthogonal click-engineered microneedle patch)",
-    "status": "not_found"
   },
   {
     "name": "Clindamycin",
@@ -7270,10 +7250,6 @@
     "sdf_3d": "compound_images/3d_structures/3547.sdf"
   },
   {
-    "name": "HA-DBCO (dibenzocyclooctyne-modified hyaluronic acid)",
-    "status": "not_found"
-  },
-  {
     "name": "HD-AFSCs (Human Intra- and Extra-Dermal Adipose Tissue-Derived Hair Follicle Stem Cells)",
     "status": "not_found"
   },
@@ -10290,10 +10266,6 @@
     "status": "not_found"
   },
   {
-    "name": "PLGA-N3 (azide-functionalized poly(lactide-co-glycolide))",
-    "status": "not_found"
-  },
-  {
     "name": "PNA (Peptide Nucleic Acid) modified nucleotides",
     "status": "not_found"
   },
@@ -11053,10 +11025,6 @@
     "status": "not_found"
   },
   {
-    "name": "Platycladus orientalis-derived extracellular vesicles (PO-EVs)",
-    "status": "not_found"
-  },
-  {
     "name": "Platycodon Grandiflorum extract",
     "status": "not_found"
   },
@@ -11773,10 +11741,6 @@
   },
   {
     "name": "Recombinant DKK1",
-    "status": "not_found"
-  },
-  {
-    "name": "Recombinant Filaggrin-2 (rFLG2)",
     "status": "not_found"
   },
   {
@@ -13001,10 +12965,6 @@
     "3d_sdf_path": "compound_images/3d_structures/Stem cell membrane-loaded minoxidil nanoparticles (STCM-MXD-NPs).sdf",
     "image_2d": "compound_images/2d_structures/Stem_cell_membrane-loaded_minoxidil_nanoparticles_.png",
     "sdf_3d": "compound_images/3d_structures/Stem_cell_membrane-loaded_minoxidil_nanoparticles_.sdf"
-  },
-  {
-    "name": "Stemoxydine",
-    "status": "not_found"
   },
   {
     "name": "Stephania tetrandra",
@@ -14918,10 +14878,6 @@
   },
   {
     "name": "pH-responsive hybrid nanoparticles (SNP_EAF_SA)",
-    "status": "not_found"
-  },
-  {
-    "name": "rFLG2@HA/MNs (rFLG2 with hyaluronic acid microneedles)",
     "status": "not_found"
   },
   {
