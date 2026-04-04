@@ -410,7 +410,7 @@ AGA_COMPOUND_TARGET_MAP = {
 # ============================================================
 # 탭 구성
 # ============================================================
-tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11, tab12 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11, tab12, tab13 = st.tabs([
     "📊 대시보드",
     "📋 문헌 검색",
     "🎯 타겟 분석",
@@ -422,6 +422,7 @@ tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11, tab12 = st.t
     "💡 AI 신약 후보",
     "🧬 바이오마커",
     "📈 연구 동향",
+    "⚡ AGA-성기능장애 공동타겟",
     "🏢 Control Center",
 ])
 
@@ -697,6 +698,76 @@ with tab3:
             st_dist = t_papers["연구유형"].value_counts()
             for stype, cnt in st_dist.items():
                 st.write(f"- {stype}: {cnt}건")
+
+        # ─── 3D 단백질 구조 ──────────────────────────
+        st.markdown("---")
+        st.markdown("#### 🧬 3D 단백질 구조")
+
+        # 선택된 타겟과 PDB 매핑 찾기
+        _matched_pdb = None
+        _matched_pdb_key = None
+        for pdb_key, pdb_info in AGA_TARGET_PDB.items():
+            # 타겟 이름이 PDB 키에 포함되거나 PDB 키가 타겟 이름에 포함되는지 확인
+            if (selected_target.lower() in pdb_key.lower() or
+                pdb_key.split(" (")[0].lower() in selected_target.lower() or
+                selected_target.split(" ")[0].lower() in pdb_key.lower()):
+                _matched_pdb = pdb_info
+                _matched_pdb_key = pdb_key
+                break
+
+        if _matched_pdb:
+            _pdb_id = _matched_pdb["pdb"]
+            _col3d, _colinfo = st.columns([2, 1])
+
+            with _col3d:
+                _html_3d = f"""
+                <div style="position:relative; width:100%; height:420px; background:#0a0e27; border-radius:10px; overflow:hidden;">
+                <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+                <div id="target3d" style="width:100%; height:380px;"></div>
+                <div style="text-align:center; padding:4px; color:#8b949e; font-size:11px;">
+                    PDB: <a href="https://www.rcsb.org/structure/{_pdb_id}" target="_blank" style="color:#58a6ff;">{_pdb_id}</a>
+                    | UniProt: <a href="https://www.uniprot.org/uniprot/{_matched_pdb.get('uniprot','')}" target="_blank" style="color:#58a6ff;">{_matched_pdb.get('uniprot','')}</a>
+                    | {_matched_pdb.get('desc','')}
+                </div>
+                </div>
+                <script>
+                var el = document.getElementById("target3d");
+                var viewer = $3Dmol.createViewer(el, {{ backgroundColor: 0x0a0e27, antialias: true }});
+                fetch("https://files.rcsb.org/download/{_pdb_id}.pdb")
+                  .then(r => r.text())
+                  .then(data => {{
+                    viewer.addModel(data, "pdb");
+                    viewer.setStyle({{}}, {{cartoon: {{color: "spectrum", opacity: 0.85}}}});
+                    var bindRes = "{_matched_pdb.get('binding_residues', '')}";
+                    if (bindRes) {{
+                        var nums = bindRes.split(",").map(s => parseInt(s.replace(/[^0-9]/g, ""))).filter(n => !isNaN(n));
+                        if (nums.length > 0) {{
+                            viewer.addStyle({{resi: nums}}, {{stick: {{colorscheme: "orangeCarbon", radius: 0.15}}}});
+                            viewer.addSurface($3Dmol.SurfaceType.VDW, {{opacity: 0.2, color: "#e94560"}}, {{resi: nums}});
+                        }}
+                    }}
+                    viewer.zoomTo();
+                    viewer.spin("y", 0.5);
+                    viewer.render();
+                  }});
+                </script>
+                """
+                st.components.v1.html(_html_3d, height=460)
+
+            with _colinfo:
+                st.markdown(f"**{_matched_pdb_key}**")
+                st.caption(_matched_pdb.get("desc", ""))
+                st.markdown(f"- **PDB ID:** [{_pdb_id}](https://www.rcsb.org/structure/{_pdb_id})")
+                st.markdown(f"- **UniProt:** [{_matched_pdb.get('uniprot','')}](https://www.uniprot.org/uniprot/{_matched_pdb.get('uniprot','')})")
+                _af_uni = _matched_pdb.get("uniprot", "")
+                if _af_uni:
+                    st.markdown(f"- **AlphaFold:** [{_af_uni}](https://alphafold.ebi.ac.uk/entry/{_af_uni})")
+                br = _matched_pdb.get("binding_residues", "")
+                if br:
+                    st.markdown(f"- **Binding Residues:** `{br}`")
+                    st.caption("(3D 뷰에서 빨간 surface로 표시)")
+        else:
+            st.caption(f"ℹ️ '{selected_target}'의 PDB 3D 구조가 매핑되어 있지 않습니다.")
 
         # 핵심 발견
         st.markdown("#### 핵심 발견 (고관련도 순)")
@@ -1738,9 +1809,374 @@ with tab11:
 
 
 # ============================================================
-# 탭 12: 🏢 Control Center (픽셀 아트 가상 사무실)
+# 탭 12: ⚡ AGA-성기능장애 공동 타겟/바이오마커
 # ============================================================
 with tab12:
+    import plotly.express as px
+    import plotly.graph_objects as go
+
+    st.markdown("### ⚡ AGA-성기능장애 공동 타겟 & 바이오마커 발굴")
+    st.caption("AGA(탈모) 치료제의 성기능 부작용 메커니즘 분석 — 5α-Reductase 억제제(Finasteride/Dutasteride)를 중심으로")
+
+    # ─── 공동 타겟 데이터 ──────────────────────────
+    SHARED_TARGETS = {
+        "5α-Reductase (SRD5A1/2)": {
+            "pdb": "7BW1", "uniprot": "P31213",
+            "aga_role": "Testosterone → DHT 변환 효소. AGA에서 DHT가 모낭 miniaturization 유발",
+            "sd_role": "DHT는 음경 해면체 NO/cGMP 경로 유지, 전립선 기능 조절에 필수. 억제 시 발기부전 유발 가능",
+            "drugs": ["Finasteride (1mg)", "Dutasteride (0.5mg)"],
+            "mechanism": "Type II 억제 → 혈중 DHT 60-70% 감소 → 모낭 보호 but 해면체 기능 저하",
+            "evidence": "Post-Finasteride Syndrome (PFS): 복용 중단 후에도 지속되는 성기능장애",
+            "category": "Enzyme",
+            "color": "#e94560",
+        },
+        "Androgen Receptor (AR)": {
+            "pdb": "1E3G", "uniprot": "P10275",
+            "aga_role": "DHT 결합 → 모유두세포 apoptosis, 모낭 축소 신호 전달",
+            "sd_role": "음경 해면체 평활근, 전립선 상피세포의 정상 기능 유지. AR signaling 저하 → 발기부전, 사정장애",
+            "drugs": ["Enzalutamide", "Bicalutamide", "Abiraterone"],
+            "mechanism": "AR antagonism → AGA 개선 but 성기능 전반 저하",
+            "evidence": "전립선암 ADT(Androgen Deprivation Therapy) 환자 80%+ 성기능장애 보고",
+            "category": "Nuclear Receptor",
+            "color": "#ff6b35",
+        },
+        "PDE5 (Phosphodiesterase 5)": {
+            "pdb": "1TBF", "uniprot": "O76074",
+            "aga_role": "모유두 혈관 확장 → 모낭 영양공급. Minoxidil과 유사 메커니즘 (혈류 개선)",
+            "sd_role": "cGMP 분해 효소. PDE5 억제 → cGMP 축적 → 해면체 평활근 이완 → 발기 유지",
+            "drugs": ["Sildenafil (Viagra)", "Tadalafil (Cialis)", "Vardenafil (Levitra)"],
+            "mechanism": "PDE5i → NO/cGMP ↑ → 혈관 확장 (발기 + 모낭 혈류 동시 개선 가능)",
+            "evidence": "Tadalafil daily (5mg)가 BPH+ED 동시 치료. 두피 혈류 개선 AGA 임상 시도 중",
+            "category": "Enzyme",
+            "color": "#4ecdc4",
+        },
+        "Nitric Oxide Synthase (NOS/eNOS)": {
+            "pdb": "4D1O", "uniprot": "P29474",
+            "aga_role": "NO 생성 → 모유두 혈관확장, 모낭 성장기(anagen) 촉진. Minoxidil의 핵심 작용점",
+            "sd_role": "해면체 신경 말단 NO 방출 → cGMP 생성 → 발기 핵심 신호. eNOS 저하 = ED",
+            "drugs": ["Minoxidil (간접)", "L-Arginine", "L-Citrulline"],
+            "mechanism": "NO pathway는 모발 성장과 발기 기능 모두의 공통 필수 경로",
+            "evidence": "eNOS knockout mice: 탈모 + ED 동시 발현",
+            "category": "Enzyme",
+            "color": "#45b7d1",
+        },
+        "TGF-β1": {
+            "pdb": "3KFD", "uniprot": "P01137",
+            "aga_role": "모낭 퇴행기(catagen) 유도, 모유두세포 apoptosis 촉진",
+            "sd_role": "해면체 섬유화(fibrosis) 유발 → 평활근 대체 → 정맥 폐쇄 부전 → ED",
+            "drugs": ["Pirfenidone", "Losartan (간접)"],
+            "mechanism": "TGF-β1 과발현 → 모낭 위축 + 해면체 섬유화 (공통 조직 리모델링)",
+            "evidence": "Peyronie's disease(음경 섬유화)와 AGA 동시 이환율 높음",
+            "category": "Growth Factor",
+            "color": "#96ceb4",
+        },
+        "Testosterone / DHT": {
+            "pdb": None, "uniprot": None,
+            "aga_role": "DHT가 모낭 AR 활성화 → miniaturization. 핵심 병인 호르몬",
+            "sd_role": "Testosterone: 성욕(libido), 발기기능, 정자생성에 필수. DHT: 전립선 성장 조절",
+            "drugs": ["TRT (Testosterone Replacement)", "Finasteride", "Dutasteride"],
+            "mechanism": "5ARI로 DHT 억제 → AGA 치료 but T/DHT 균형 파괴 → 성기능장애",
+            "evidence": "Finasteride 복용자 2-5% 성기능장애 보고. 일부에서 복용 중단 후에도 지속(PFS)",
+            "category": "Hormone",
+            "color": "#ffeaa7",
+        },
+        "Wnt/β-catenin": {
+            "pdb": "1JDH", "uniprot": "P35222",
+            "aga_role": "모낭 줄기세포 활성화, 모발 신생(neogenesis) 핵심 경로",
+            "sd_role": "해면체 평활근 재생, 전립선 상피세포 분화에 관여",
+            "drugs": ["Valproic acid", "CXXC5-Dvl PPI inhibitor", "Lithium"],
+            "mechanism": "Wnt 활성화 → 모낭 재생 + 해면체 조직 항상성 유지",
+            "evidence": "Wnt agonist가 해면체 평활근 재생 촉진 (전임상)",
+            "category": "Signaling Pathway",
+            "color": "#dfe6e9",
+        },
+        "JAK-STAT Pathway": {
+            "pdb": "6BBU", "uniprot": "P23458",
+            "aga_role": "면역세포 매개 모낭 공격(Alopecia Areata). AGA에서도 미세염증 기여",
+            "sd_role": "전립선 염증, 해면체 염증 → ED. JAK 억제제가 항염증으로 ED 개선 가능성",
+            "drugs": ["Ruxolitinib", "Tofacitinib", "Baricitinib"],
+            "mechanism": "JAK-STAT 억제 → 모낭 주위 & 해면체 염증 동시 완화",
+            "evidence": "Ruxolitinib topical이 AA 치료 승인. ED 동반 환자에서 효과 관찰 사례",
+            "category": "Signaling Pathway",
+            "color": "#a29bfe",
+        },
+        "VEGF/VEGFR": {
+            "pdb": "1FLT", "uniprot": "P15692",
+            "aga_role": "모유두 혈관신생(angiogenesis) → 모낭 영양공급. Minoxidil 작용 경로",
+            "sd_role": "해면체 혈관내피 기능 유지. VEGF 저하 → 해면체 혈류 부족 → ED",
+            "drugs": ["Minoxidil", "Bevacizumab (anti-VEGF, ED 유발)"],
+            "mechanism": "VEGF signaling이 모낭과 해면체 모두에서 혈관 항상성 유지",
+            "evidence": "항암 anti-VEGF 치료 환자에서 탈모 + ED 동시 발생",
+            "category": "Growth Factor",
+            "color": "#fd79a8",
+        },
+        "IL-6 / TNF-α (Inflammatory Cytokines)": {
+            "pdb": "1ALU", "uniprot": "P05231",
+            "aga_role": "모낭 주위 미세염증(perifollicular inflammation) → 모낭 퇴행 촉진",
+            "sd_role": "해면체 내피세포 손상, eNOS 발현 억제 → NO 감소 → ED",
+            "drugs": ["Anti-IL-6 (Tocilizumab)", "Anti-TNF-α (Adalimumab)"],
+            "mechanism": "만성 저등급 염증이 모낭 위축과 혈관내피 기능장애를 동시에 유발",
+            "evidence": "MetS(대사증후군) 환자에서 AGA+ED 동시 이환율 현저히 높음",
+            "category": "Cytokine",
+            "color": "#fab1a0",
+        },
+    }
+
+    SHARED_BIOMARKERS = [
+        {"name": "혈중 DHT", "type": "Hormonal", "aga": "↑ 두피 → 모낭 축소", "sd": "↓ 전신 → 성기능저하",
+         "clinical": "5ARI 복용 후 60-70% 감소. 모니터링 필수"},
+        {"name": "Free Testosterone", "type": "Hormonal", "aga": "→ DHT 전구체", "sd": "↓ → 성욕감퇴, ED",
+         "clinical": "5ARI 복용 시 Free T 변화 모니터링"},
+        {"name": "eNOS 활성도", "type": "Enzymatic", "aga": "↓ → 모유두 혈류 감소", "sd": "↓ → 해면체 NO 감소 → ED",
+         "clinical": "FMD(Flow-Mediated Dilation) 검사로 간접 평가"},
+        {"name": "PDE5 발현", "type": "Enzymatic", "aga": "모유두 혈관 긴장도 조절", "sd": "해면체 cGMP 분해 조절",
+         "clinical": "PDE5i 반응성 예측 바이오마커"},
+        {"name": "TGF-β1", "type": "Growth Factor", "aga": "↑ → catagen 유도", "sd": "↑ → 해면체 섬유화",
+         "clinical": "혈청/조직 TGF-β1로 섬유화 진행 평가"},
+        {"name": "IL-6 / hs-CRP", "type": "Inflammatory", "aga": "↑ → 미세염증", "sd": "↑ → 내피기능장애",
+         "clinical": "만성 염증 바이오마커. MetS 동반 시 특히 유용"},
+        {"name": "IIEF-5 Score", "type": "Clinical", "aga": "N/A (간접 모니터링)", "sd": "발기기능 정량 평가",
+         "clinical": "5ARI 처방 전후 IIEF-5 비교 필수"},
+        {"name": "SHBG (Sex Hormone-Binding Globulin)", "type": "Hormonal", "aga": "Free T 조절", "sd": "↑ → Free T ↓ → 성기능 저하",
+         "clinical": "호르몬 패널에 포함. 5ARI 영향 모니터링"},
+        {"name": "Neurosteroid Panel (Allopregnanolone)", "type": "Neurological", "aga": "5α-Reductase 관여", "sd": "↓ → 우울, 성욕감퇴 (PFS 핵심)",
+         "clinical": "PFS 진단 후보 바이오마커. CSF/혈청 측정"},
+    ]
+
+    # ─── 개요 카드 ──────────────────────────
+    st.markdown("""
+    <div style='background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+         padding: 20px; border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #e94560;'>
+        <h4 style='color: #e94560; margin:0 0 8px 0;'>왜 AGA와 성기능장애를 함께 연구하는가?</h4>
+        <p style='color: #eee; font-size: 14px; line-height: 1.7; margin:0;'>
+        AGA 1차 치료제인 <b>Finasteride</b>와 <b>Dutasteride</b>는 5α-Reductase를 억제하여 DHT 생성을 차단합니다.
+        그러나 DHT는 모낭뿐 아니라 <b>음경 해면체, 전립선, 신경스테로이드 합성</b>에도 핵심 역할을 합니다.<br>
+        복용자의 2-5%에서 <b>발기부전, 성욕감퇴, 사정장애</b>가 보고되며, 일부에서는 복용 중단 후에도
+        증상이 지속되는 <b>Post-Finasteride Syndrome(PFS)</b>이 발생합니다.<br><br>
+        이 탭에서는 AGA와 성기능장애의 <b>공유 분자 타겟</b>과 <b>바이오마커</b>를 분석하여,
+        <b>성기능 부작용 없는 차세대 AGA 치료제</b> 개발 전략을 도출합니다.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # ─── 공동 타겟 개수 KPI ──────────────────────────
+    _cat_counts = {}
+    for t, info in SHARED_TARGETS.items():
+        cat = info["category"]
+        _cat_counts[cat] = _cat_counts.get(cat, 0) + 1
+
+    kpi_cols = st.columns(5)
+    kpi_cols[0].metric("공동 타겟", f"{len(SHARED_TARGETS)}개")
+    kpi_cols[1].metric("공동 바이오마커", f"{len(SHARED_BIOMARKERS)}개")
+    kpi_cols[2].metric("관련 약물", f"{sum(len(v['drugs']) for v in SHARED_TARGETS.values())}종")
+    kpi_cols[3].metric("Enzyme 타겟", f"{_cat_counts.get('Enzyme', 0)}개")
+    kpi_cols[4].metric("Pathway 타겟", f"{_cat_counts.get('Signaling Pathway', 0)}개")
+
+    st.markdown("---")
+
+    # ─── 공동 타겟 네트워크 시각화 ──────────────────
+    st.markdown("#### 🕸️ AGA ↔ 성기능장애 공동 타겟 네트워크")
+
+    # Sankey Diagram
+    labels = ["AGA (탈모)"] + list(SHARED_TARGETS.keys()) + ["성기능장애 (ED)"]
+    source_idx = []
+    target_idx = []
+    values = []
+    colors = []
+
+    for i, (tname, tinfo) in enumerate(SHARED_TARGETS.items()):
+        mid_idx = i + 1
+        # AGA → Target
+        source_idx.append(0)
+        target_idx.append(mid_idx)
+        values.append(len(tinfo["drugs"]) + 1)
+        colors.append(tinfo["color"])
+        # Target → SD
+        source_idx.append(mid_idx)
+        target_idx.append(len(SHARED_TARGETS) + 1)
+        values.append(len(tinfo["drugs"]) + 1)
+        colors.append(tinfo["color"])
+
+    fig_sankey = go.Figure(data=[go.Sankey(
+        node=dict(
+            pad=15, thickness=20,
+            label=labels,
+            color=["#e94560"] + [v["color"] for v in SHARED_TARGETS.values()] + ["#4ecdc4"],
+        ),
+        link=dict(source=source_idx, target=target_idx, value=values, color=colors),
+    )])
+    fig_sankey.update_layout(
+        title="AGA ← 공동 타겟 → 성기능장애 (Sankey Diagram)",
+        height=500, font=dict(size=12),
+        paper_bgcolor="#0d1117", plot_bgcolor="#0d1117",
+        font_color="#e6edf3",
+    )
+    st.plotly_chart(fig_sankey, use_container_width=True)
+
+    # ─── 타겟 상세 카드 ──────────────────────────
+    st.markdown("---")
+    st.markdown("#### 🎯 공동 타겟 상세 분석")
+
+    sel_shared = st.selectbox("공동 타겟 선택", list(SHARED_TARGETS.keys()),
+                              format_func=lambda x: f"{x} ({SHARED_TARGETS[x]['category']})")
+
+    if sel_shared:
+        sinfo = SHARED_TARGETS[sel_shared]
+
+        # 2열: 정보 + 3D 구조
+        col_detail, col_3d = st.columns([1, 1])
+
+        with col_detail:
+            st.markdown(f"""
+            <div style='background: #161b22; padding: 16px; border-radius: 10px; border-left: 4px solid {sinfo["color"]};'>
+                <h4 style='color: {sinfo["color"]}; margin:0 0 10px 0;'>{sel_shared}</h4>
+                <p style='color: #8b949e; font-size: 12px;'>Category: {sinfo["category"]}
+                {f' | PDB: {sinfo["pdb"]}' if sinfo["pdb"] else ''}
+                {f' | UniProt: {sinfo["uniprot"]}' if sinfo["uniprot"] else ''}</p>
+            </div>
+            """, unsafe_allow_html=True)
+
+            st.markdown("##### AGA에서의 역할")
+            st.info(sinfo["aga_role"])
+
+            st.markdown("##### 성기능장애에서의 역할")
+            st.warning(sinfo["sd_role"])
+
+            st.markdown("##### 작용 메커니즘 (교차점)")
+            st.success(sinfo["mechanism"])
+
+            st.markdown("##### 근거 (Evidence)")
+            st.caption(sinfo["evidence"])
+
+            st.markdown("##### 관련 약물")
+            for drug in sinfo["drugs"]:
+                st.markdown(f"- 💊 **{drug}**")
+
+        with col_3d:
+            if sinfo["pdb"]:
+                st.markdown(f"##### {sel_shared} 3D 단백질 구조")
+                pdb_id = sinfo["pdb"]
+                _viewer_html = f"""
+                <div style="position:relative; width:100%; height:480px; background:#0a0e27; border-radius:10px; overflow:hidden;">
+                <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+                <div id="shared3d" style="width:100%; height:440px;"></div>
+                <div style="text-align:center; padding:4px; color:#8b949e; font-size:11px;">
+                    PDB: <a href="https://www.rcsb.org/structure/{pdb_id}" target="_blank" style="color:#58a6ff;">{pdb_id}</a>
+                    {f' | UniProt: <a href="https://www.uniprot.org/uniprot/{sinfo["uniprot"]}" target="_blank" style="color:#58a6ff;">{sinfo["uniprot"]}</a>' if sinfo["uniprot"] else ''}
+                </div>
+                </div>
+                <script>
+                var el = document.getElementById("shared3d");
+                var viewer = $3Dmol.createViewer(el, {{ backgroundColor: 0x0a0e27, antialias: true }});
+                fetch("https://files.rcsb.org/download/{pdb_id}.pdb")
+                  .then(r => r.text())
+                  .then(data => {{
+                    viewer.addModel(data, "pdb");
+                    viewer.setStyle({{}}, {{cartoon: {{color: "spectrum", opacity: 0.85}}}});
+                    viewer.addSurface($3Dmol.SurfaceType.VDW, {{opacity: 0.12, color: "{sinfo['color']}"}});
+                    viewer.zoomTo();
+                    viewer.spin("y", 0.5);
+                    viewer.render();
+                  }});
+                </script>
+                """
+                st.components.v1.html(_viewer_html, height=520)
+
+                _lc1, _lc2, _lc3 = st.columns(3)
+                _lc1.markdown(f"[🔗 RCSB PDB](https://www.rcsb.org/structure/{pdb_id})")
+                if sinfo["uniprot"]:
+                    _lc2.markdown(f"[🔗 UniProt](https://www.uniprot.org/uniprot/{sinfo['uniprot']})")
+                    _lc3.markdown(f"[🔗 AlphaFold](https://alphafold.ebi.ac.uk/entry/{sinfo['uniprot']})")
+            else:
+                st.info(f"{sel_shared}는 호르몬/대사체로 단일 단백질 구조가 아닙니다.")
+                st.markdown("관련 수용체(AR)의 3D 구조를 참조하세요.")
+
+    # ─── 공동 바이오마커 테이블 ──────────────────────
+    st.markdown("---")
+    st.markdown("#### 🧬 공동 바이오마커 패널")
+    st.caption("AGA 치료 시 성기능 부작용 모니터링을 위한 바이오마커")
+
+    bm_df = pd.DataFrame(SHARED_BIOMARKERS)
+    bm_df.columns = ["바이오마커", "유형", "AGA 의의", "성기능장애 의의", "임상적 활용"]
+
+    st.dataframe(bm_df, use_container_width=True, height=400,
+                 column_config={
+                     "바이오마커": st.column_config.TextColumn("바이오마커", width="medium"),
+                     "유형": st.column_config.TextColumn("유형", width="small"),
+                     "AGA 의의": st.column_config.TextColumn("AGA", width="large"),
+                     "성기능장애 의의": st.column_config.TextColumn("성기능장애", width="large"),
+                     "임상적 활용": st.column_config.TextColumn("임상 활용", width="large"),
+                 })
+
+    # ─── 치료 전략 제안 ──────────────────────────
+    st.markdown("---")
+    st.markdown("#### 💡 차세대 AGA 치료 전략 (성기능 부작용 최소화)")
+
+    strategies = [
+        {"전략": "Topical 5ARI (두피 국소 투여)",
+         "원리": "Finasteride/Dutasteride를 나노캐리어(리포좀, PLGA)로 모낭 표적 전달 → 전신 DHT 영향 최소화",
+         "장점": "모낭 DHT만 선택적 억제, 혈중 DHT 유지 → 성기능 보존",
+         "근거": "Topical Finasteride 0.25% Phase 3: 두피 DHT 40% ↓, 혈중 DHT 불변",
+         "단계": "Phase 3"},
+        {"전략": "Selective AR Modulators (SARMs for scalp)",
+         "원리": "모낭 AR만 선택적 길항 → 해면체/전립선 AR 기능 유지",
+         "장점": "조직 선택적 안드로겐 조절",
+         "근거": "GT-0918 (Proxalutamide) 탈모 적응증 연구 중",
+         "단계": "Preclinical"},
+        {"전략": "Wnt Agonist + PDE5i 병용",
+         "원리": "Wnt 활성화(모낭 재생) + PDE5i(혈류 개선) → 모발 성장 + 발기기능 동시 개선",
+         "장점": "5ARI 없이 모발 성장 촉진 + 성기능 보호",
+         "근거": "Valproic acid(Wnt) + Tadalafil(PDE5i) 전임상 시너지 확인",
+         "단계": "Preclinical"},
+        {"전략": "JAK Inhibitor (Topical)",
+         "원리": "모낭 주위 미세염증 억제 → 모낭 보호, 해면체 염증도 완화",
+         "장점": "호르몬 경로 비의존적 → 성기능 부작용 없음",
+         "근거": "Ruxolitinib cream (AA 승인), AGA Phase 2 진행 중",
+         "단계": "Phase 2"},
+        {"전략": "Neurosteroid 보충 (PFS 대응)",
+         "원리": "Allopregnanolone 보충 → 5ARI로 감소된 neurosteroid 복원",
+         "장점": "PFS 증상(우울, 성기능장애) 직접 개선",
+         "근거": "Brexanolone (allopregnanolone) FDA 승인 (PPD). PFS 적용 연구 중",
+         "단계": "Phase 1 (PFS)"},
+    ]
+
+    for i, s in enumerate(strategies, 1):
+        with st.expander(f"전략 {i}: {s['전략']} ({s['단계']})", expanded=(i <= 2)):
+            st.markdown(f"**원리:** {s['원리']}")
+            st.markdown(f"**장점:** {s['장점']}")
+            st.markdown(f"**근거:** {s['근거']}")
+
+    # ─── 데이터 내보내기 ──────────────────────────
+    st.markdown("---")
+    report_text = f"""# AGA-성기능장애 공동 타겟 분석 보고서
+생성일: {datetime.now().strftime('%Y-%m-%d')}
+
+## 공동 타겟 ({len(SHARED_TARGETS)}개)
+"""
+    for tname, tinfo in SHARED_TARGETS.items():
+        report_text += f"""
+### {tname} ({tinfo['category']})
+- **AGA 역할:** {tinfo['aga_role']}
+- **성기능장애 역할:** {tinfo['sd_role']}
+- **메커니즘:** {tinfo['mechanism']}
+- **근거:** {tinfo['evidence']}
+- **관련 약물:** {', '.join(tinfo['drugs'])}
+"""
+
+    report_text += f"""
+## 공동 바이오마커 ({len(SHARED_BIOMARKERS)}개)
+"""
+    for bm in SHARED_BIOMARKERS:
+        report_text += f"- **{bm['name']}** ({bm['type']}): AGA={bm['aga']} / SD={bm['sd']} / 활용={bm['clinical']}\n"
+
+    st.download_button("📥 공동타겟 보고서 다운로드 (.md)",
+                      report_text, "AGA_SD_shared_targets_report.md", "text/markdown")
+
+
+# ============================================================
+# 탭 13: 🏢 Control Center (픽셀 아트 가상 사무실)
+# ============================================================
+with tab13:
     st.markdown("### 🏢 AGA Research Control Center")
     st.caption("AI 에이전트들이 자동으로 논문을 수집·분석하고 있습니다.")
 
