@@ -442,7 +442,7 @@ with tab1:
                 _kb_meta = json.load(_f)
             break
 
-    # 모든 논문 디렉토리 통합 카운트 (AGA + 성기능장애)
+    # 논문 카운트: 로컬 디렉토리 우선, 없으면 metadata.json 사용 (Streamlit Cloud)
     _txt_dirs = [
         os.path.join(BASE_FOLDER, "new_papers_txt"),
         os.path.join(BASE_FOLDER, "txt_추출결과"),
@@ -452,16 +452,19 @@ with tab1:
         os.path.join(BASE_FOLDER, "new_papers"),
         os.path.join(BASE_FOLDER, "성기능장애", "pdf"),
     ]
-    _new_papers_count = sum(
+    _local_txt_count = sum(
         sum(1 for f in files if f.endswith('.txt'))
         for d in _txt_dirs if os.path.isdir(d)
         for _, _, files in os.walk(d)
     )
-    _new_pdf_count = sum(
+    _local_pdf_count = sum(
         sum(1 for f in files if f.endswith('.pdf'))
         for d in _pdf_dirs if os.path.isdir(d)
         for _, _, files in os.walk(d)
     )
+    # Streamlit Cloud에서는 디렉토리가 없으므로 metadata.json 사용
+    _new_papers_count = _local_txt_count if _local_txt_count > 0 else _kb_meta.get("text_files", 0)
+    _new_pdf_count = _local_pdf_count if _local_pdf_count > 0 else _kb_meta.get("pdf_files", 10281)
 
     # ─── 데이터 성장 배너 ──────────────────────────
     _initial_papers = 709  # 초기 구축 시 논문 수

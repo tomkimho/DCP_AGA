@@ -6,5 +6,6 @@
   "failed": 0,
   "chunk_size": 1500,
   "chunk_overlap": 300,
-  "build_time_minutes": 1.4
+  "build_time_minutes": 1.4,
+  "pdf_files": 10309
 }
