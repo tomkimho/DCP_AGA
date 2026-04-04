@@ -454,7 +454,7 @@ AGA_COMPOUND_TARGET_MAP = {
 # ============================================================
 # 탭 구성
 # ============================================================
-tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11, tab12, tab13 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11, tab12, tab13, tab14 = st.tabs([
     "📊 대시보드",
     "📋 문헌 검색",
     "🎯 타겟 분석",
@@ -468,6 +468,7 @@ tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8, tab9, tab10, tab11, tab12, tab13
     "📈 연구 동향",
     "⚡ AGA-성기능장애 공동타겟",
     "🏢 Control Center",
+    "🎯 자체 타깃 검증",
 ])
 
 
@@ -2271,6 +2272,147 @@ with tab13:
     st.markdown("### 🏢 AGA Research Control Center")
     st.caption("AI 에이전트들이 자동으로 논문을 수집·분석하고 있습니다.")
 
+    # ── 자동 수집 버튼 & 스냅샷 기록 ─────────────────────
+    import subprocess as _subp
+
+    _snap_path = os.path.join(BASE_FOLDER, "aga_knowledge_db", "snapshot_history.json")
+    _kb_meta_path = os.path.join(BASE_FOLDER, "aga_knowledge_db", "metadata.json")
+
+    def _load_snapshots():
+        if os.path.exists(_snap_path):
+            try:
+                with open(_snap_path, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except Exception:
+                return []
+        return []
+
+    def _save_snapshots(snaps):
+        try:
+            os.makedirs(os.path.dirname(_snap_path), exist_ok=True)
+            with open(_snap_path, "w", encoding="utf-8") as f:
+                json.dump(snaps, f, ensure_ascii=False, indent=2)
+        except Exception:
+            pass
+
+    def _current_snapshot():
+        total_chunks = 0
+        if os.path.exists(_kb_meta_path):
+            try:
+                with open(_kb_meta_path, "r", encoding="utf-8") as f:
+                    m = json.load(f)
+                total_chunks = int(m.get("total_chunks", 0))
+            except Exception:
+                pass
+        return {
+            "date": datetime.now().strftime("%Y-%m-%d"),
+            "time": datetime.now().strftime("%H:%M:%S"),
+            "ai_analyzed": int(len(df_ok)),
+            "total_chunks": int(total_chunks),
+        }
+
+    def _record_snapshot_if_new():
+        """오늘 스냅샷이 없거나 값이 변했으면 추가"""
+        snaps = _load_snapshots()
+        cur = _current_snapshot()
+        if snaps:
+            last = snaps[-1]
+            if (last.get("date") == cur["date"]
+                and last.get("ai_analyzed") == cur["ai_analyzed"]
+                and last.get("total_chunks") == cur["total_chunks"]):
+                return snaps
+            # 같은 날짜에 값이 바뀐 경우 업데이트(교체)
+            if last.get("date") == cur["date"]:
+                snaps[-1] = cur
+                _save_snapshots(snaps)
+                return snaps
+        snaps.append(cur)
+        _save_snapshots(snaps)
+        return snaps
+
+    snapshots = _record_snapshot_if_new()
+
+    # 수집 버튼 UI
+    bc1, bc2 = st.columns([1, 3])
+    with bc1:
+        collect_clicked = st.button("🚀 자동 수집 시작", type="primary", use_container_width=True)
+    with bc2:
+        st.caption("PubMed/특허/bioRxiv → PDF 추출 → AI 분석 → Foundation Model 반영")
+
+    if collect_clicked:
+        # 실행 전 스냅샷 저장
+        before = _current_snapshot()
+        orch_path = os.path.join(BASE_FOLDER, "scripts", "08_orchestrator.py")
+        log_dir = os.path.join(BASE_FOLDER, "logs")
+        os.makedirs(log_dir, exist_ok=True)
+        log_file_path = os.path.join(log_dir, f"auto_collect_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
+
+        if os.path.exists(orch_path):
+            try:
+                # 백그라운드 실행 (오케스트레이터 + KB 재빌드)
+                py = sys.executable or "python3"
+                cmd = (
+                    f'"{py}" "{orch_path}" > "{log_file_path}" 2>&1 && '
+                    f'"{py}" "{os.path.join(BASE_FOLDER, "scripts", "build_knowledge_base.py")}" >> "{log_file_path}" 2>&1'
+                )
+                _subp.Popen(cmd, shell=True, cwd=BASE_FOLDER,
+                           stdout=_subp.DEVNULL, stderr=_subp.DEVNULL,
+                           start_new_session=True)
+                st.success(f"✅ 수집 파이프라인이 백그라운드에서 시작되었습니다.\n\n"
+                          f"📝 로그: `{os.path.basename(log_file_path)}`\n\n"
+                          f"완료 후 페이지를 새로고침하면 증가분이 표시됩니다.")
+            except Exception as e:
+                st.error(f"실행 실패: {e}")
+                st.info("Streamlit Cloud 환경에서는 로컬 실행이 제한될 수 있습니다. "
+                       "GitHub Actions `workflow_dispatch`로 수동 트리거하거나 로컬에서 실행하세요.")
+        else:
+            st.error(f"오케스트레이터를 찾을 수 없습니다: {orch_path}")
+
+    # ── 성장 비교 카드 (4/3 100 >> 4/4 200 스타일) ──
+    if len(snapshots) >= 2:
+        last = snapshots[-1]
+        prev = snapshots[-2]
+
+        def _mmdd(d):
+            try:
+                p = d.split("-")
+                return f"{int(p[1])}/{int(p[2])}"
+            except Exception:
+                return d
+
+        d1 = _mmdd(prev.get("date", ""))
+        d2 = _mmdd(last.get("date", ""))
+        a1 = prev.get("ai_analyzed", 0)
+        a2 = last.get("ai_analyzed", 0)
+        c1 = prev.get("total_chunks", 0)
+        c2 = last.get("total_chunks", 0)
+        diff_a = a2 - a1
+        diff_c = c2 - c1
+        sign_a = f"+{diff_a}" if diff_a >= 0 else str(diff_a)
+        sign_c = f"+{diff_c:,}" if diff_c >= 0 else f"{diff_c:,}"
+        color_a = "#4CAF50" if diff_a > 0 else ("#9E9E9E" if diff_a == 0 else "#F44336")
+        color_c = "#4CAF50" if diff_c > 0 else ("#9E9E9E" if diff_c == 0 else "#F44336")
+
+        st.markdown(f"""
+        <div style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+                    border-radius: 12px; padding: 18px; margin: 12px 0;
+                    border: 1px solid rgba(233, 69, 96, 0.3);">
+          <div style="color: #888; font-size: 12px; margin-bottom: 8px;">📈 Foundation Model 성장</div>
+          <div style="color: #fff; font-size: 20px; font-weight: bold;">
+            🧬 AI 분석 논문: {d1} {a1:,} &nbsp;&raquo;&raquo;&nbsp; {d2} {a2:,}개
+            <span style="color: {color_a}; font-size: 16px; margin-left: 8px;">({sign_a})</span>
+          </div>
+          <div style="color: #fff; font-size: 16px; margin-top: 6px;">
+            🧠 Vector Chunks: {d1} {c1:,} &nbsp;&raquo;&raquo;&nbsp; {d2} {c2:,}
+            <span style="color: {color_c}; font-size: 14px; margin-left: 8px;">({sign_c})</span>
+          </div>
+        </div>
+        """, unsafe_allow_html=True)
+    elif len(snapshots) == 1:
+        s = snapshots[0]
+        st.info(f"📊 현재 상태 저장됨: {s['date']} | AI 분석 {s['ai_analyzed']:,}건 | "
+               f"{s['total_chunks']:,} chunks · 수집 후 다시 방문하면 증가분이 표시됩니다.")
+
     # pipeline_status.json 로딩
     pipeline_status = {}
     for d in _search_dirs:
@@ -2575,6 +2717,330 @@ with tab13:
 
         매일 오후 3시(KST)에 자동으로 새 논문을 수집하고 분석합니다.
         """)
+
+
+# ============================================================
+# 탭 14: 🎯 자체 타깃 검증 (내부 발굴 보고서 업로드 → RAG 검증)
+# ============================================================
+with tab14:
+    st.markdown("### 🎯 자체 발굴 타깃 검증")
+    st.caption("문헌이 아닌 내부에서 직접 발굴한 타깃 보고서를 업로드하면, "
+               "Foundation Model(22K+ 논문 RAG)로 자동 검증·보완합니다.")
+
+    _custom_dir = os.path.join(BASE_FOLDER, "custom_targets")
+    os.makedirs(_custom_dir, exist_ok=True)
+
+    # 입력 방식 선택
+    input_mode = st.radio(
+        "입력 방식",
+        ["📄 보고서 업로드 (PDF/DOCX/TXT/MD)", "📝 직접 입력"],
+        horizontal=True,
+        label_visibility="collapsed",
+    )
+
+    report_text = ""
+    report_source = ""
+
+    if input_mode.startswith("📄"):
+        up = st.file_uploader(
+            "보고서 업로드",
+            type=["pdf", "docx", "txt", "md"],
+            help="내부 발굴 타깃 보고서 파일",
+            label_visibility="collapsed",
+        )
+        if up is not None:
+            report_source = up.name
+            try:
+                name_lower = up.name.lower()
+                raw = up.read()
+                if name_lower.endswith(".pdf"):
+                    try:
+                        import pdfplumber
+                        import io as _io
+                        with pdfplumber.open(_io.BytesIO(raw)) as _pdf:
+                            pages = [(p.extract_text() or "") for p in _pdf.pages]
+                        report_text = "\n\n".join(pages).strip()
+                    except ImportError:
+                        st.error("pdfplumber가 필요합니다: `pip install pdfplumber`")
+                elif name_lower.endswith(".docx"):
+                    try:
+                        from docx import Document
+                        import io as _io
+                        doc = Document(_io.BytesIO(raw))
+                        report_text = "\n".join(p.text for p in doc.paragraphs).strip()
+                    except ImportError:
+                        st.error("python-docx가 필요합니다: `pip install python-docx`")
+                else:
+                    report_text = raw.decode("utf-8", errors="ignore").strip()
+            except Exception as e:
+                st.error(f"파일 읽기 실패: {e}")
+
+            if report_text:
+                st.success(f"✅ `{up.name}` 로드 완료 ({len(report_text):,} 문자)")
+                with st.expander("미리보기 (앞 1,000자)"):
+                    st.text(report_text[:1000])
+    else:
+        col_a, col_b = st.columns(2)
+        with col_a:
+            _t_name = st.text_input("타깃명", placeholder="예: PRLR, IGFBP5, HSPB1")
+            _t_moa = st.text_area("가설 MoA / 기전", height=80,
+                                  placeholder="예: PRLR 신호 저해로 DHT 독립적 모낭 위축 억제...")
+            _t_pathway = st.text_input("관련 신호전달경로",
+                                       placeholder="예: JAK2/STAT5, AR, Wnt/β-catenin")
+        with col_b:
+            _t_evidence = st.text_area("내부 발굴 근거", height=80,
+                                       placeholder="예: 자체 RNA-seq에서 AGA 환자 모낭 2.3배 up-regulated...")
+            _t_compound = st.text_input("제안 화합물/modality",
+                                        placeholder="예: small-molecule antagonist, siRNA, mAb")
+            _t_biomarker = st.text_input("예상 바이오마커",
+                                         placeholder="예: 혈중 prolactin, phospho-STAT5")
+        if any([_t_name, _t_moa, _t_evidence]):
+            report_source = f"manual_{_t_name or 'target'}"
+            report_text = (
+                f"Target: {_t_name}\n"
+                f"Mechanism of Action: {_t_moa}\n"
+                f"Pathway: {_t_pathway}\n"
+                f"Internal Evidence: {_t_evidence}\n"
+                f"Proposed Compound/Modality: {_t_compound}\n"
+                f"Biomarker: {_t_biomarker}\n"
+            )
+
+    # 검증 실행
+    st.markdown("---")
+    run = st.button("🔬 자동 검증 실행", type="primary", disabled=not report_text)
+
+    if run and report_text:
+        # 1) Knowledge Base 연결
+        _expert = None
+        try:
+            import sys as _sys_v
+            _script_dir_v = os.path.join(BASE_FOLDER, "scripts")
+            if _script_dir_v not in _sys_v.path:
+                _sys_v.path.insert(0, _script_dir_v)
+            from aga_ai_engine import AGA_AI_Expert
+            _expert = AGA_AI_Expert(api_key=CLAUDE_API_KEY)
+        except Exception as _ee:
+            st.error(f"Knowledge Base 연결 실패: {_ee}")
+
+        verification_result = {
+            "source": report_source,
+            "timestamp": datetime.now().isoformat(),
+            "entities": {},
+            "evidence_papers": [],
+            "evidence_structured": [],
+            "verification": "",
+        }
+
+        # 2) Claude로 엔티티 추출
+        entities = {}
+        if CLAUDE_API_KEY:
+            try:
+                import anthropic as _anth
+                _client = _anth.Anthropic(api_key=CLAUDE_API_KEY)
+                _trim = report_text[:12000]
+                extract_prompt = f"""Extract structured entities from this internal target discovery report. Respond ONLY in valid JSON.
+
+Fields:
+- targets: list of drug targets (gene/protein names)
+- compounds: list of proposed compounds/modalities
+- mechanism_of_action: 1-2 sentence MoA summary (Korean)
+- pathways: list of signaling pathways
+- cell_types: list of cell lines/models mentioned
+- biomarkers: list of biomarkers
+- key_claims: list of 3-5 core scientific claims (Korean, each 1 sentence)
+
+Report:
+{_trim}
+"""
+                with st.spinner("🧬 보고서에서 핵심 엔티티 추출 중..."):
+                    _msg = _client.messages.create(
+                        model="claude-haiku-4-5-20251001",
+                        max_tokens=1500,
+                        messages=[{"role": "user", "content": extract_prompt}],
+                    )
+                    _txt = _msg.content[0].text.strip()
+                    if _txt.startswith("```"):
+                        _txt = _txt.split("```")[1]
+                        if _txt.startswith("json"):
+                            _txt = _txt[4:]
+                    entities = json.loads(_txt)
+                    verification_result["entities"] = entities
+            except Exception as _e:
+                st.warning(f"엔티티 추출 실패 (계속 진행): {str(_e)[:200]}")
+
+        if entities:
+            st.markdown("#### 📋 추출된 핵심 엔티티")
+            e1, e2 = st.columns(2)
+            with e1:
+                st.markdown(f"**🎯 타깃:** {', '.join(entities.get('targets', []) or ['-'])}")
+                st.markdown(f"**💊 화합물:** {', '.join(entities.get('compounds', []) or ['-'])}")
+                st.markdown(f"**🧪 경로:** {', '.join(entities.get('pathways', []) or ['-'])}")
+                st.markdown(f"**🔬 모델:** {', '.join(entities.get('cell_types', []) or ['-'])}")
+            with e2:
+                st.markdown(f"**📊 바이오마커:** {', '.join(entities.get('biomarkers', []) or ['-'])}")
+                st.markdown(f"**⚙️ MoA:** {entities.get('mechanism_of_action', '-')}")
+            if entities.get("key_claims"):
+                st.markdown("**핵심 주장:**")
+                for _ci, _claim in enumerate(entities["key_claims"], 1):
+                    st.caption(f"{_ci}. {_claim}")
+
+        # 3) Foundation Model RAG 검증
+        papers_hits, struct_hits = [], []
+        if _expert:
+            try:
+                query_parts = []
+                if entities:
+                    query_parts += (entities.get("targets") or [])
+                    query_parts += (entities.get("compounds") or [])
+                    query_parts += (entities.get("pathways") or [])
+                    if entities.get("mechanism_of_action"):
+                        query_parts.append(entities["mechanism_of_action"])
+                if not query_parts:
+                    query_parts = [report_text[:500]]
+                query = " ".join(str(x) for x in query_parts)[:1500]
+
+                with st.spinner("🔎 Foundation Model에서 근거 검색 중 (22K+ 논문)..."):
+                    rag = _expert.retrieve(query, n_papers=15, n_structured=8)
+                papers_hits = rag.get("papers", []) or []
+                struct_hits = rag.get("structured", []) or []
+                verification_result["evidence_papers"] = [
+                    {"source": p.get("source", ""), "pmid": p.get("pmid", ""),
+                     "text": (p.get("text", "") or "")[:500]}
+                    for p in papers_hits
+                ]
+                verification_result["evidence_structured"] = [
+                    {"source": s.get("source", ""),
+                     "text": (s.get("text", "") or "")[:500]}
+                    for s in struct_hits
+                ]
+            except Exception as _re:
+                st.warning(f"RAG 검색 실패: {str(_re)[:200]}")
+
+        # 4) Claude로 검증 리포트 생성
+        verification_md = ""
+        if CLAUDE_API_KEY and (papers_hits or struct_hits):
+            try:
+                evidence_text = ""
+                for i, p in enumerate(papers_hits[:12], 1):
+                    evidence_text += f"\n[P{i}] {p.get('source','')} (PMID:{p.get('pmid','')})\n{(p.get('text','') or '')[:400]}\n"
+                for i, s in enumerate(struct_hits[:8], 1):
+                    evidence_text += f"\n[S{i}] {s.get('source','')}\n{(s.get('text','') or '')[:300]}\n"
+
+                verify_prompt = f"""당신은 AGA 신약개발 전문가입니다. 내부에서 발굴된 타깃 보고서를 Foundation Model(22K+ 논문 Knowledge Base)에서 검색된 근거로 검증하세요.
+
+[내부 보고서]
+{report_text[:8000]}
+
+[추출된 엔티티]
+{json.dumps(entities, ensure_ascii=False, indent=2) if entities else "N/A"}
+
+[Knowledge Base 검색 결과]
+{evidence_text[:10000]}
+
+아래 형식의 한국어 검증 리포트를 Markdown으로 작성하세요:
+
+## ✅ 지지 근거 (Supporting Evidence)
+- 보고서의 주장을 뒷받침하는 KB 근거를 [P#]/[S#] 인용으로 나열
+
+## ⚠️ 상충·주의 근거 (Conflicting / Caveats)
+- 보고서와 상충되거나 반대 결과가 있는 근거
+
+## 🆕 미확보 영역 (Evidence Gaps)
+- KB에서 검증되지 않은 주장과 그 이유
+
+## 💡 보완 제안 (Recommendations)
+- 추가 확인 실험, 추가 타깃, 관련 문헌 검색 키워드 3-5개
+- AGA-성기능장애 공동 타깃 관점에서의 시사점(해당하는 경우)
+
+## 🔢 신뢰도 평가
+- 전반 신뢰도: (높음/중간/낮음) + 1-2줄 사유
+- KB 근거 논문수: {len(papers_hits)}건, 구조화 데이터: {len(struct_hits)}건
+"""
+                with st.spinner("🤖 Claude가 검증 리포트 작성 중..."):
+                    _vmsg = _client.messages.create(
+                        model="claude-haiku-4-5-20251001",
+                        max_tokens=3000,
+                        messages=[{"role": "user", "content": verify_prompt}],
+                    )
+                    verification_md = _vmsg.content[0].text
+                    verification_result["verification"] = verification_md
+            except Exception as _ve:
+                st.error(f"검증 리포트 생성 실패: {str(_ve)[:200]}")
+
+        # 5) 결과 표시
+        if verification_md:
+            st.markdown("---")
+            st.markdown("#### 🧾 Foundation Model 검증 리포트")
+            st.markdown(verification_md)
+        elif not (papers_hits or struct_hits):
+            st.info("Knowledge Base에서 관련 근거를 찾지 못했습니다. 완전히 새로운 타깃일 수 있습니다 (novelty 높음).")
+
+        # 6) 근거 테이블
+        if papers_hits or struct_hits:
+            st.markdown("---")
+            st.markdown("#### 📚 참조 근거 테이블")
+            ev_rows = []
+            for i, p in enumerate(papers_hits, 1):
+                ev_rows.append({
+                    "번호": f"P{i}", "유형": "논문",
+                    "출처": (p.get("source") or "")[:80],
+                    "PMID": p.get("pmid", ""),
+                    "발췌": (p.get("text", "") or "")[:200],
+                })
+            for i, s in enumerate(struct_hits, 1):
+                ev_rows.append({
+                    "번호": f"S{i}", "유형": "구조화",
+                    "출처": (s.get("source") or "")[:80],
+                    "PMID": "",
+                    "발췌": (s.get("text", "") or "")[:200],
+                })
+            st.dataframe(pd.DataFrame(ev_rows), use_container_width=True, height=360)
+
+        # 7) AGA-SD 공동 타깃 교차 체크
+        try:
+            ent_targets = [str(t).upper() for t in (entities.get("targets") or [])]
+            if ent_targets and "SHARED_TARGETS" in globals():
+                overlap = [k for k in SHARED_TARGETS.keys() if k.upper() in ent_targets]
+                if overlap:
+                    st.success(f"⚡ **AGA-성기능장애 공동 타깃 매칭:** {', '.join(overlap)} "
+                              f"— '⚡ 공동타겟' 탭에서 상세 정보 확인 가능")
+        except Exception:
+            pass
+
+        # 8) 저장
+        try:
+            fname = f"verify_{datetime.now().strftime('%Y%m%d_%H%M%S')}_{(report_source or 'report')[:40]}.json"
+            fname = "".join(c if c.isalnum() or c in "._-" else "_" for c in fname)
+            save_path = os.path.join(_custom_dir, fname)
+            with open(save_path, "w", encoding="utf-8") as _f:
+                json.dump(verification_result, _f, ensure_ascii=False, indent=2)
+            st.caption(f"💾 검증 결과 저장: `custom_targets/{fname}`")
+
+            if verification_md:
+                st.download_button(
+                    "📥 검증 리포트 다운로드 (.md)",
+                    verification_md,
+                    file_name=fname.replace(".json", ".md"),
+                    mime="text/markdown",
+                )
+        except Exception as _se:
+            st.caption(f"(저장 실패: {str(_se)[:100]})")
+
+    # 이전 검증 이력
+    st.markdown("---")
+    with st.expander("📂 이전 검증 이력", expanded=False):
+        try:
+            files = sorted(
+                [f for f in os.listdir(_custom_dir) if f.endswith(".json")],
+                reverse=True,
+            )[:20]
+            if files:
+                for f in files:
+                    st.caption(f"• `{f}`")
+            else:
+                st.caption("아직 검증된 보고서가 없습니다.")
+        except Exception:
+            st.caption("이력을 읽을 수 없습니다.")
 
 
 # ============================================================
