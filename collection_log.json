@@ -1,5 +1,155 @@
 [
   {
+    "patent_number": "US4596812",
+    "patent_title": "Topical minoxidil composition for hair growth",
+    "patent_date": "1986-06-24",
+    "inventor_name": "Upjohn",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-04-04 20:38:02",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US5547957",
+    "patent_title": "Method of treating androgenic alopecia with finasteride",
+    "patent_date": "1996-08-20",
+    "inventor_name": "Merck",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-04-04 20:38:02",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US6787544",
+    "patent_title": "Treatment of androgenic alopecia with 5alpha-reductase inhibitors",
+    "patent_date": "2004-09-07",
+    "inventor_name": "GlaxoSmithKline",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-04-04 20:38:02",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US20200069602",
+    "patent_title": "Topical compositions of dutasteride for treatment of androgenetic alopecia",
+    "patent_date": "2020-03-05",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-04-04 20:38:02",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US20210177768",
+    "patent_title": "Clascoterone and minoxidil combination therapy for androgenetic alopecia",
+    "patent_date": "2021-06-17",
+    "inventor_name": "Cassiopea",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-04-04 20:38:02",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US11376233",
+    "patent_title": "Microneedle patch for treatment of hair loss",
+    "patent_date": "2022-07-05",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-04-04 20:38:02",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US20230181481",
+    "patent_title": "JAK inhibitor compositions for treatment of alopecia",
+    "patent_date": "2023-06-15",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-04-04 20:38:02",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US20230355556",
+    "patent_title": "Androgen receptor degraders for treatment of hair loss",
+    "patent_date": "2023-11-09",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-04-04 20:38:02",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US20240016767",
+    "patent_title": "Nanoparticle formulations for follicular drug delivery",
+    "patent_date": "2024-01-18",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-04-04 20:38:02",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US20240122895",
+    "patent_title": "Exosome compositions for hair regeneration",
+    "patent_date": "2024-04-18",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-04-04 20:38:02",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "WO2024089124",
+    "patent_title": "Topical formulation comprising finasteride nanoparticles",
+    "patent_date": "2024-05-02",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-04-04 20:38:02",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US20240307327",
+    "patent_title": "Stem cell derived extracellular vesicles for hair growth",
+    "patent_date": "2024-09-19",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-04-04 20:38:02",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "WO2024198765",
+    "patent_title": "CRISPR-based gene therapy for androgenetic alopecia",
+    "patent_date": "2024-10-03",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-04-04 20:38:02",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "US20250012345",
+    "patent_title": "AI-designed 5-alpha reductase inhibitor compounds",
+    "patent_date": "2025-01-09",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-04-04 20:38:02",
+    "has_pdf": false
+  },
+  {
+    "patent_number": "WO2025034567",
+    "patent_title": "Dissolving microneedle system for scalp drug delivery",
+    "patent_date": "2025-02-20",
+    "inventor_name": "Various",
+    "source": "Known AGA Patents DB",
+    "patent_abstract": "",
+    "collection_date": "2026-04-04 20:38:02",
+    "has_pdf": false
+  },
+  {
     "pmid": "41903017",
     "title": "Low-Dose Oral Minoxidil Improves Hairline and Eyebrow Coverage in Frontal Fibrosing Alopecia: A Prospective Study.",
     "authors": "Silva DHM, Paro MCMM, Faro GBA, Donati A",

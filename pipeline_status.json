@@ -1,8 +1,107 @@
 {
   "agent": "paper_searcher",
   "status": "idle",
-  "last_run": "2026-04-03T09:52:21.321203",
+  "last_run": "2026-04-04T20:37:57.307044",
   "papers_found": 0,
   "papers_downloaded": 0,
-  "papers_skipped": 0
+  "papers_skipped": 0,
+  "overall_status": "completed",
+  "start_time": "2026-04-04T20:37:57.307044",
+  "errors": [],
+  "steps_completed": 8,
+  "total_steps": 8,
+  "current_step": "파이프라인 최종 정리",
+  "step_details": {
+    "PubMed 논문 수집": {
+      "status": "completed",
+      "timestamp": "2026-04-04T20:37:57.886811",
+      "details": {}
+    },
+    "특허 자동 수집": {
+      "status": "completed",
+      "timestamp": "2026-04-04T20:38:02.238243",
+      "details": {}
+    },
+    "BioRxiv 사전인쇄 수집": {
+      "status": "completed",
+      "timestamp": "2026-04-04T20:40:58.821389",
+      "details": {}
+    },
+    "PDF 텍스트 추출": {
+      "status": "completed",
+      "timestamp": "2026-04-04T20:40:59.363055",
+      "details": {}
+    },
+    "정보 AI 분석": {
+      "status": "completed",
+      "timestamp": "2026-04-04T20:41:00.708079",
+      "details": {}
+    },
+    "화합물 구조 수집": {
+      "status": "completed",
+      "timestamp": "2026-04-04T20:41:01.368895",
+      "details": {}
+    },
+    "바이오마커 분석": {
+      "status": "completed",
+      "timestamp": "2026-04-04T20:41:02.291440",
+      "details": {}
+    },
+    "파이프라인 최종 정리": {
+      "status": "completed",
+      "timestamp": "2026-04-04T20:41:02.293013",
+      "details": {}
+    }
+  },
+  "steps": {
+    "05_pubmed": {
+      "status": "completed",
+      "timestamp": "2026-04-04T20:37:57.886811",
+      "details": {}
+    },
+    "06_특허": {
+      "status": "completed",
+      "timestamp": "2026-04-04T20:38:02.238243",
+      "details": {}
+    },
+    "07_biorxiv": {
+      "status": "completed",
+      "timestamp": "2026-04-04T20:40:58.821389",
+      "details": {}
+    },
+    "01_pdf": {
+      "status": "completed",
+      "timestamp": "2026-04-04T20:40:59.363055",
+      "details": {}
+    },
+    "02_정보추출": {
+      "status": "completed",
+      "timestamp": "2026-04-04T20:41:00.708079",
+      "details": {}
+    },
+    "03_화합물": {
+      "status": "completed",
+      "timestamp": "2026-04-04T20:41:01.368895",
+      "details": {}
+    },
+    "12_바이오마커": {
+      "status": "completed",
+      "timestamp": "2026-04-04T20:41:02.291440",
+      "details": {}
+    },
+    "파이프라인 최종 정리": {
+      "status": "completed",
+      "timestamp": "2026-04-04T20:41:02.293013",
+      "details": {}
+    }
+  },
+  "total_papers_new": 50,
+  "total_papers_processed": 0,
+  "estimated_cost_usd": 0.0,
+  "collection_stats": {
+    "total": 50,
+    "pdf_downloaded": 1,
+    "abstract_only": 15
+  },
+  "end_time": "2026-04-04T20:41:02.293304"
 }
