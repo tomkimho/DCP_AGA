@@ -721,36 +721,60 @@ with tab3:
 
             with _col3d:
                 _html_3d = f"""
-                <div style="position:relative; width:100%; height:420px; background:#0a0e27; border-radius:10px; overflow:hidden;">
-                <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
-                <div id="target3d" style="width:100%; height:380px;"></div>
-                <div style="text-align:center; padding:4px; color:#8b949e; font-size:11px;">
-                    PDB: <a href="https://www.rcsb.org/structure/{_pdb_id}" target="_blank" style="color:#58a6ff;">{_pdb_id}</a>
-                    | UniProt: <a href="https://www.uniprot.org/uniprot/{_matched_pdb.get('uniprot','')}" target="_blank" style="color:#58a6ff;">{_matched_pdb.get('uniprot','')}</a>
+                <!DOCTYPE html>
+                <html><head>
+                <style>
+                  body {{ margin:0; padding:0; background:#0a0e27; overflow:hidden; }}
+                  #container {{ width:100%; height:420px; position:relative; }}
+                  #viewer {{ width:100%; height:380px; }}
+                  #info {{ text-align:center; padding:6px; color:#8b949e; font-size:11px; }}
+                  #info a {{ color:#58a6ff; }}
+                  #loading {{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#58a6ff; font-size:14px; }}
+                </style>
+                </head><body>
+                <div id="container">
+                  <div id="viewer"></div>
+                  <div id="loading">⏳ Loading 3D structure...</div>
+                  <div id="info">
+                    PDB: <a href="https://www.rcsb.org/structure/{_pdb_id}" target="_blank">{_pdb_id}</a>
+                    | UniProt: <a href="https://www.uniprot.org/uniprot/{_matched_pdb.get('uniprot','')}" target="_blank">{_matched_pdb.get('uniprot','')}</a>
                     | {_matched_pdb.get('desc','')}
+                  </div>
                 </div>
-                </div>
+                <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
                 <script>
-                var el = document.getElementById("target3d");
-                var viewer = $3Dmol.createViewer(el, {{ backgroundColor: 0x0a0e27, antialias: true }});
-                fetch("https://files.rcsb.org/download/{_pdb_id}.pdb")
-                  .then(r => r.text())
-                  .then(data => {{
-                    viewer.addModel(data, "pdb");
-                    viewer.setStyle({{}}, {{cartoon: {{color: "spectrum", opacity: 0.85}}}});
-                    var bindRes = "{_matched_pdb.get('binding_residues', '')}";
-                    if (bindRes) {{
-                        var nums = bindRes.split(",").map(s => parseInt(s.replace(/[^0-9]/g, ""))).filter(n => !isNaN(n));
+                function initViewer() {{
+                  if (typeof $3Dmol === 'undefined') {{
+                    setTimeout(initViewer, 200);
+                    return;
+                  }}
+                  var el = document.getElementById("viewer");
+                  var viewer = $3Dmol.createViewer(el, {{ backgroundColor: 0x0a0e27, antialias: true }});
+                  fetch("https://files.rcsb.org/download/{_pdb_id}.pdb")
+                    .then(function(r) {{ return r.text(); }})
+                    .then(function(data) {{
+                      document.getElementById("loading").style.display = "none";
+                      viewer.addModel(data, "pdb");
+                      viewer.setStyle({{}}, {{cartoon: {{color: "spectrum", opacity: 0.85}}}});
+                      var bindRes = "{_matched_pdb.get('binding_residues', '')}";
+                      if (bindRes) {{
+                        var nums = bindRes.split(",").map(function(s) {{ return parseInt(s.replace(/[^0-9]/g, "")); }}).filter(function(n) {{ return !isNaN(n); }});
                         if (nums.length > 0) {{
-                            viewer.addStyle({{resi: nums}}, {{stick: {{colorscheme: "orangeCarbon", radius: 0.15}}}});
-                            viewer.addSurface($3Dmol.SurfaceType.VDW, {{opacity: 0.2, color: "#e94560"}}, {{resi: nums}});
+                          viewer.addStyle({{resi: nums}}, {{stick: {{colorscheme: "orangeCarbon", radius: 0.15}}}});
+                          viewer.addSurface($3Dmol.SurfaceType.VDW, {{opacity: 0.2, color: "#e94560"}}, {{resi: nums}});
                         }}
-                    }}
-                    viewer.zoomTo();
-                    viewer.spin("y", 0.5);
-                    viewer.render();
-                  }});
+                      }}
+                      viewer.zoomTo();
+                      viewer.spin("y", 0.5);
+                      viewer.render();
+                    }})
+                    .catch(function(err) {{
+                      document.getElementById("loading").innerHTML = "❌ PDB load failed: " + err.message;
+                    }});
+                }}
+                initViewer();
                 </script>
+                </body></html>
                 """
                 st.components.v1.html(_html_3d, height=460)
 
@@ -2057,28 +2081,51 @@ with tab12:
                 st.markdown(f"##### {sel_shared} 3D 단백질 구조")
                 pdb_id = sinfo["pdb"]
                 _viewer_html = f"""
-                <div style="position:relative; width:100%; height:480px; background:#0a0e27; border-radius:10px; overflow:hidden;">
+                <!DOCTYPE html>
+                <html><head>
+                <style>
+                  body {{ margin:0; padding:0; background:#0a0e27; overflow:hidden; }}
+                  #viewer {{ width:100%; height:440px; }}
+                  #info {{ text-align:center; padding:6px; color:#8b949e; font-size:11px; }}
+                  #info a {{ color:#58a6ff; }}
+                  #loading {{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#58a6ff; font-size:14px; }}
+                </style>
+                </head><body>
+                <div style="position:relative; width:100%; height:480px;">
+                  <div id="viewer"></div>
+                  <div id="loading">⏳ Loading 3D structure...</div>
+                  <div id="info">
+                    PDB: <a href="https://www.rcsb.org/structure/{pdb_id}" target="_blank">{pdb_id}</a>
+                    {f' | UniProt: <a href="https://www.uniprot.org/uniprot/{sinfo["uniprot"]}" target="_blank">{sinfo["uniprot"]}</a>' if sinfo["uniprot"] else ''}
+                  </div>
+                </div>
                 <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
-                <div id="shared3d" style="width:100%; height:440px;"></div>
-                <div style="text-align:center; padding:4px; color:#8b949e; font-size:11px;">
-                    PDB: <a href="https://www.rcsb.org/structure/{pdb_id}" target="_blank" style="color:#58a6ff;">{pdb_id}</a>
-                    {f' | UniProt: <a href="https://www.uniprot.org/uniprot/{sinfo["uniprot"]}" target="_blank" style="color:#58a6ff;">{sinfo["uniprot"]}</a>' if sinfo["uniprot"] else ''}
-                </div>
-                </div>
                 <script>
-                var el = document.getElementById("shared3d");
-                var viewer = $3Dmol.createViewer(el, {{ backgroundColor: 0x0a0e27, antialias: true }});
-                fetch("https://files.rcsb.org/download/{pdb_id}.pdb")
-                  .then(r => r.text())
-                  .then(data => {{
-                    viewer.addModel(data, "pdb");
-                    viewer.setStyle({{}}, {{cartoon: {{color: "spectrum", opacity: 0.85}}}});
-                    viewer.addSurface($3Dmol.SurfaceType.VDW, {{opacity: 0.12, color: "{sinfo['color']}"}});
-                    viewer.zoomTo();
-                    viewer.spin("y", 0.5);
-                    viewer.render();
-                  }});
+                function initViewer() {{
+                  if (typeof $3Dmol === 'undefined') {{
+                    setTimeout(initViewer, 200);
+                    return;
+                  }}
+                  var el = document.getElementById("viewer");
+                  var viewer = $3Dmol.createViewer(el, {{ backgroundColor: 0x0a0e27, antialias: true }});
+                  fetch("https://files.rcsb.org/download/{pdb_id}.pdb")
+                    .then(function(r) {{ return r.text(); }})
+                    .then(function(data) {{
+                      document.getElementById("loading").style.display = "none";
+                      viewer.addModel(data, "pdb");
+                      viewer.setStyle({{}}, {{cartoon: {{color: "spectrum", opacity: 0.85}}}});
+                      viewer.addSurface($3Dmol.SurfaceType.VDW, {{opacity: 0.12, color: "{sinfo['color']}"}});
+                      viewer.zoomTo();
+                      viewer.spin("y", 0.5);
+                      viewer.render();
+                    }})
+                    .catch(function(err) {{
+                      document.getElementById("loading").innerHTML = "❌ PDB load failed: " + err.message;
+                    }});
+                }}
+                initViewer();
                 </script>
+                </body></html>
                 """
                 st.components.v1.html(_viewer_html, height=520)
 
