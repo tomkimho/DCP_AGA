@@ -442,10 +442,26 @@ with tab1:
                 _kb_meta = json.load(_f)
             break
 
-    _new_papers_dir = os.path.join(BASE_FOLDER, "new_papers_txt")
-    _new_papers_count = sum(1 for _, _, files in os.walk(_new_papers_dir) for f in files if f.endswith('.txt')) if os.path.isdir(_new_papers_dir) else 0
-    _new_pdf_dir = os.path.join(BASE_FOLDER, "new_papers")
-    _new_pdf_count = sum(1 for _, _, files in os.walk(_new_pdf_dir) for f in files if f.endswith('.pdf')) if os.path.isdir(_new_pdf_dir) else 0
+    # 모든 논문 디렉토리 통합 카운트 (AGA + 성기능장애)
+    _txt_dirs = [
+        os.path.join(BASE_FOLDER, "new_papers_txt"),
+        os.path.join(BASE_FOLDER, "txt_추출결과"),
+        os.path.join(BASE_FOLDER, "성기능장애", "txt"),
+    ]
+    _pdf_dirs = [
+        os.path.join(BASE_FOLDER, "new_papers"),
+        os.path.join(BASE_FOLDER, "성기능장애", "pdf"),
+    ]
+    _new_papers_count = sum(
+        sum(1 for f in files if f.endswith('.txt'))
+        for d in _txt_dirs if os.path.isdir(d)
+        for _, _, files in os.walk(d)
+    )
+    _new_pdf_count = sum(
+        sum(1 for f in files if f.endswith('.pdf'))
+        for d in _pdf_dirs if os.path.isdir(d)
+        for _, _, files in os.walk(d)
+    )
 
     # ─── 데이터 성장 배너 ──────────────────────────
     _initial_papers = 709  # 초기 구축 시 논문 수
