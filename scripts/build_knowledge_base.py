@@ -91,8 +91,9 @@ def extract_pmid(filename):
 
 
 def load_structured_data():
-    """AGA_data.xlsx에서 구조화 데이터 로드"""
+    """AGA_data.xlsx + AGA_문헌분류_결과.xlsx 구조화 데이터 로드 (파일명 dedupe)"""
     entries = []
+    seen_files = set()
     for excel_path in EXCEL_FILES:
         if os.path.exists(excel_path):
             log(f"구조화 데이터 로드: {os.path.basename(excel_path)}")
@@ -101,6 +102,9 @@ def load_structured_data():
             headers = [cell.value for cell in next(ws.iter_rows(min_row=1, max_row=1))]
             for row in ws.iter_rows(min_row=2, values_only=True):
                 entry = dict(zip(headers, row))
+                fname = str(entry.get("파일명", "") or "").strip()
+                if fname and fname in seen_files:
+                    continue  # 동일 파일명은 먼저 읽힌 Excel 것을 유지
                 # 구조화 텍스트 생성
                 parts = []
                 if entry.get("타겟(Target)"):
@@ -121,11 +125,13 @@ def load_structured_data():
                     text = " | ".join(parts)
                     entries.append({
                         "text": text,
-                        "source": entry.get("파일명", "unknown"),
+                        "source": fname or "unknown",
                         "doc_type": entry.get("문서유형", "unknown"),
                         "research_type": entry.get("연구유형", "unknown"),
                         "type": "structured"
                     })
+                    if fname:
+                        seen_files.add(fname)
             wb.close()
             log(f"  -> 누적 {len(entries)}건 구조화 데이터 로드 완료")
     return entries

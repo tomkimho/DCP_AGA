@@ -48,17 +48,19 @@ _search_dirs = [
 _search_dirs = list(dict.fromkeys(_search_dirs))
 
 EXCEL_PATH = None
+EXCEL_PATHS = []  # 발견된 모든 엑셀 파일(두 개 모두 로드)
 BASE_FOLDER = _search_dirs[0]
 for d in _search_dirs:
     if not os.path.isdir(d):
         continue
     for name in EXCEL_NAMES:
         candidate = os.path.join(d, name)
-        if os.path.exists(candidate):
-            EXCEL_PATH = candidate
-            BASE_FOLDER = d
-            break
-    if EXCEL_PATH:
+        if os.path.exists(candidate) and candidate not in EXCEL_PATHS:
+            EXCEL_PATHS.append(candidate)
+            if EXCEL_PATH is None:
+                EXCEL_PATH = candidate
+                BASE_FOLDER = d
+    if EXCEL_PATHS:
         break
 
 if EXCEL_PATH is None:
@@ -139,11 +141,24 @@ def normalize_target(name):
 # ============================================================
 @st.cache_data
 def load_data():
-    if not os.path.exists(EXCEL_PATH):
+    # 발견된 모든 엑셀 파일(AGA_data.xlsx + AGA_문헌분류_결과.xlsx) 병합
+    paths = EXCEL_PATHS if EXCEL_PATHS else ([EXCEL_PATH] if EXCEL_PATH and os.path.exists(EXCEL_PATH) else [])
+    if not paths:
         return None
-    df = pd.read_excel(EXCEL_PATH)
+    dfs = []
+    for p in paths:
+        try:
+            dfs.append(pd.read_excel(p))
+        except Exception:
+            continue
+    if not dfs:
+        return None
+    df = pd.concat(dfs, ignore_index=True)
+    # 파일명 기준 중복 제거(동일 논문이 두 파일에 모두 있는 경우)
+    if "파일명" in df.columns:
+        df = df.drop_duplicates(subset=["파일명"], keep="first").reset_index(drop=True)
     # 관련도를 숫자로 변환
-    df["관련도"] = pd.to_numeric(df["관련도(1-5)"], errors="coerce").fillna(0).astype(int)
+    df["관련도"] = pd.to_numeric(df.get("관련도(1-5)"), errors="coerce").fillna(0).astype(int)
     return df
 
 
@@ -238,6 +253,21 @@ np_data = load_natural_products()
 # 성공 데이터만 사용
 df_ok = df[df["처리상태"] == "성공"].copy()
 
+# KB 벡터 수 동적 로드
+def _kb_vector_count():
+    try:
+        meta_path = os.path.join(BASE_FOLDER, "aga_knowledge_db", "metadata.json")
+        if os.path.exists(meta_path):
+            with open(meta_path, "r", encoding="utf-8") as f:
+                m = json.load(f)
+            return int(m.get("total_chunks", 0))
+    except Exception:
+        pass
+    return 0
+
+_kb_vec = _kb_vector_count()
+_kb_vec_label = f"{_kb_vec/1000:.0f}K+ vectors" if _kb_vec >= 1000 else "vectors"
+
 
 # ============================================================
 # 헤더
@@ -248,10 +278,10 @@ st.markdown("""
     <h1 style='color: #e94560; margin:0; font-size: 28px;'>🧬 AGA Drug Discovery Platform</h1>
     <p style='color: #a8a8a8; margin: 5px 0 0 0; font-size: 14px;'>
         Androgenetic Alopecia 신약개발 문헌 데이터베이스 &nbsp;|&nbsp;
-        {total}건 논문 분석 완료 &nbsp;|&nbsp; RAG AI Expert (508K+ vectors) &nbsp;|&nbsp; Lab-in-the-loop 기반
+        {total:,}건 논문 분석 완료 &nbsp;|&nbsp; RAG AI Expert ({kbvec}) &nbsp;|&nbsp; Lab-in-the-loop 기반
     </p>
 </div>
-""".format(total=len(df_ok)), unsafe_allow_html=True)
+""".format(total=len(df_ok), kbvec=_kb_vec_label), unsafe_allow_html=True)
 
 
 # ============================================================
