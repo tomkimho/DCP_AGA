@@ -288,21 +288,35 @@ st.markdown("""
 # 사이드바: 글로벌 필터
 # ============================================================
 with st.sidebar:
-    st.markdown("### 🔍 필터")
+    # 필터 전체를 접을 수 있는 익스팬더로 감싸기 (기본: 펼침)
+    with st.expander("🔍 필터", expanded=True):
+        # 연구 유형
+        study_types = sorted(df_ok["연구유형"].dropna().unique().tolist())
+        with st.expander("연구 유형", expanded=False):
+            selected_studies = st.multiselect(
+                "연구 유형", study_types, default=study_types,
+                label_visibility="collapsed"
+            )
 
-    # 연구 유형
-    study_types = sorted(df_ok["연구유형"].dropna().unique().tolist())
-    selected_studies = st.multiselect("연구 유형", study_types, default=study_types)
+        # 문서 유형
+        doc_types = sorted(df_ok["문서유형"].dropna().unique().tolist())
+        with st.expander("문서 유형", expanded=False):
+            selected_docs = st.multiselect(
+                "문서 유형", doc_types, default=doc_types,
+                label_visibility="collapsed"
+            )
 
-    # 문서 유형
-    doc_types = sorted(df_ok["문서유형"].dropna().unique().tolist())
-    selected_docs = st.multiselect("문서 유형", doc_types, default=doc_types)
+        # 관련도
+        with st.expander("최소 관련도", expanded=False):
+            min_rel = st.slider("최소 관련도", 1, 5, 1, label_visibility="collapsed")
 
-    # 관련도
-    min_rel = st.slider("최소 관련도", 1, 5, 1)
-
-    # 키워드 필터
-    keyword_filter = st.text_input("키워드 필터", placeholder="예: Wnt, minoxidil, DHT...")
+        # 키워드 필터
+        with st.expander("키워드 필터", expanded=False):
+            keyword_filter = st.text_input(
+                "키워드 필터",
+                placeholder="예: Wnt, minoxidil, DHT...",
+                label_visibility="collapsed"
+            )
 
     st.markdown("---")
 
