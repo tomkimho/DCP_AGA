@@ -12,6 +12,17 @@ __pycache__/
 scripts/fix_smiles*.py
 scripts/aga_data_collector.py
 
+# Knowledge Base (대용량 벡터DB)
+aga_knowledge_db/*.sqlite3
+aga_knowledge_db/*/
+
+# 성기능장애 논문
+성기능장애/
+
+# new_papers 원본
+new_papers/
+new_papers_txt/
+
 # 로그
 logs/
 

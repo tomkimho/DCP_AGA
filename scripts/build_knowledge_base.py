@@ -36,6 +36,7 @@ BASE_DIR = os.path.dirname(SCRIPT_DIR)
 TXT_DIRS = [
     os.path.join(BASE_DIR, "new_papers_txt"),
     os.path.join(BASE_DIR, "txt_추출결과"),
+    os.path.join(BASE_DIR, "성기능장애", "txt"),   # 성기능장애 논문 초록
 ]
 EXCEL_FILES = [
     os.path.join(BASE_DIR, "AGA_data.xlsx"),
