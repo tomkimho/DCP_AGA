@@ -1,11 +1,11 @@
 {
-  "created": "2026-04-04T12:55:11.102767",
+  "created": "2026-04-05T05:53:35.052997",
   "structured_entries": 978,
-  "text_files": 24775,
-  "total_chunks": 516580,
+  "text_files": 25269,
+  "total_chunks": 517654,
   "failed": 0,
   "chunk_size": 1500,
   "chunk_overlap": 300,
-  "build_time_minutes": 1.4,
-  "pdf_files": 10309
+  "build_time_minutes": 0.2,
+  "pdf_files": 11065
 }

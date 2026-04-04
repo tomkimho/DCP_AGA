@@ -34,9 +34,13 @@ except ImportError as e:
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(SCRIPT_DIR)
 TXT_DIRS = [
+    os.path.join(BASE_DIR, "논문정리", "txt", "AGA"),        # AGA 논문 통합
+    os.path.join(BASE_DIR, "논문정리", "txt", "성기능장애"),   # 성기능장애 논문 통합
+    os.path.join(BASE_DIR, "논문정리", "txt", "특허"),        # 특허 문헌
+    # fallback (기존 경로, 논문정리 폴더 없는 환경용)
     os.path.join(BASE_DIR, "new_papers_txt"),
     os.path.join(BASE_DIR, "txt_추출결과"),
-    os.path.join(BASE_DIR, "성기능장애", "txt"),   # 성기능장애 논문 초록
+    os.path.join(BASE_DIR, "성기능장애", "txt"),
 ]
 EXCEL_FILES = [
     os.path.join(BASE_DIR, "AGA_data.xlsx"),
