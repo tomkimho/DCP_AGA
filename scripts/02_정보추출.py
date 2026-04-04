@@ -44,6 +44,7 @@ CLAUDE_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 BASE_FOLDER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TXT_FOLDER = os.path.join(BASE_FOLDER, "txt_추출결과")
 NEW_PAPERS_TXT = os.path.join(BASE_FOLDER, "new_papers_txt")  # 새 논문 텍스트 (자동수집용)
+SD_PAPERS_TXT = os.path.join(BASE_FOLDER, "성기능장애", "txt")  # 성기능장애 논문
 
 # 결과 저장 경로
 RESULT_EXCEL = os.path.join(BASE_FOLDER, "AGA_문헌분류_결과.xlsx")
@@ -54,20 +55,23 @@ APPEND_MODE = os.environ.get("APPEND_MODE", "false").lower() == "true"
 # ─────────────────────────────────────────────────────────
 
 # Claude에게 보낼 프롬프트 (영어로 작성하여 인코딩 문제 방지)
-EXTRACTION_PROMPT = """You are an expert in AGA (Androgenetic Alopecia) drug development.
+EXTRACTION_PROMPT = """You are an expert in AGA (Androgenetic Alopecia) drug development AND sexual dysfunction (erectile dysfunction, post-finasteride syndrome).
 Read the paper/patent text below, and extract the following information in JSON format.
+
+Context: AGA treatments (Finasteride, Dutasteride) can cause sexual dysfunction side effects.
+We study both AGA and sexual dysfunction to find shared molecular targets and safer therapies.
 
 Items to extract:
 1. document_type: "Paper" or "Patent" or "Review" or "Other"
 2. study_type: "Clinical" or "Preclinical" or "In vitro" or "In silico" or "Review" or "Patent"
-3. targets: list of drug targets (e.g. ["5a-Reductase Type 2", "Androgen Receptor"])
-4. compounds: list of compound/drug names (e.g. ["Finasteride", "Dutasteride"])
+3. targets: list of drug targets (e.g. ["5a-Reductase Type 2", "Androgen Receptor", "PDE5", "eNOS"])
+4. compounds: list of compound/drug names (e.g. ["Finasteride", "Sildenafil", "Tadalafil"])
 5. mechanism_of_action: key mechanism description (1-2 sentences, in Korean)
-6. pathways: related signaling pathways (e.g. ["Wnt/beta-catenin", "AR signaling"])
-7. cell_types: cell lines or animal models used (e.g. ["Dermal papilla cells", "C3H mouse"])
+6. pathways: related signaling pathways (e.g. ["Wnt/beta-catenin", "AR signaling", "NO/cGMP", "TGF-beta"])
+7. cell_types: cell lines or animal models used (e.g. ["Dermal papilla cells", "Cavernous smooth muscle", "C3H mouse"])
 8. key_findings: key findings (1-3 sentences, in Korean)
-9. biomarkers: biomarkers (if any)
-10. relevance_score: relevance to AGA drug development (1-5, 5=highly relevant)
+9. biomarkers: biomarkers (if any, e.g. ["DHT", "IIEF-5", "eNOS", "TGF-beta1"])
+10. relevance_score: relevance to AGA drug development OR sexual dysfunction research (1-5, 5=highly relevant)
 
 Respond ONLY with valid JSON. Do not include any other text.
 For unknown items, use empty list [] or empty string "".
@@ -203,7 +207,7 @@ def main():
 
     # txt 파일 목록 (기존 + 새로 수집된 논문)
     txt_files = sorted([f for f in os.listdir(TXT_FOLDER) if f.endswith('.txt') and not f.startswith('_')])
-    # APPEND 모드에서는 new_papers_txt 폴더도 포함 (날짜별 하위 폴더 재귀 탐색)
+    # APPEND 모드에서는 new_papers_txt + 성기능장애/txt 폴더도 포함
     if APPEND_MODE and os.path.isdir(NEW_PAPERS_TXT):
         new_txts = sorted([
             os.path.relpath(os.path.join(root, f), NEW_PAPERS_TXT)
@@ -214,6 +218,13 @@ def main():
         txt_files = txt_files + new_txts
         if new_txts:
             print(f"  APPEND 모드: 새 논문 {len(new_txts)}건 추가됨 (하위 폴더 포함)")
+
+    # 성기능장애 논문도 항상 포함
+    if os.path.isdir(SD_PAPERS_TXT):
+        sd_txts = sorted([f for f in os.listdir(SD_PAPERS_TXT) if f.endswith('.txt') and not f.startswith('_')])
+        txt_files = txt_files + sd_txts
+        if sd_txts:
+            print(f"  성기능장애 논문: {len(sd_txts)}건 추가됨")
     total = len(txt_files)
 
     print("=" * 60)
@@ -241,7 +252,23 @@ def main():
             if filename in processed:
                 continue
 
-            txt_path = os.path.join(TXT_FOLDER, filename)
+            # 여러 폴더에서 txt 파일 찾기
+            txt_path = None
+            for _search_dir in [TXT_FOLDER, NEW_PAPERS_TXT, SD_PAPERS_TXT]:
+                _candidate = os.path.join(_search_dir, filename)
+                if os.path.exists(_candidate):
+                    txt_path = _candidate
+                    break
+                # 하위 폴더도 검색
+                for _root, _dirs, _files in os.walk(_search_dir):
+                    if filename in _files or os.path.basename(filename) in _files:
+                        txt_path = os.path.join(_root, os.path.basename(filename))
+                        break
+                if txt_path:
+                    break
+            if not txt_path or not os.path.exists(txt_path):
+                print(f"  [{i}/{total}] 파일 없음: {filename[:50]}... → 건너뜀")
+                continue
             with open(txt_path, "r", encoding="utf-8") as f:
                 text = f.read()
 

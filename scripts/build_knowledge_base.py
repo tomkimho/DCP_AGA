@@ -127,8 +127,7 @@ def load_structured_data():
                         "type": "structured"
                     })
             wb.close()
-            log(f"  -> {len(entries)}건 구조화 데이터 로드 완료")
-            break
+            log(f"  -> 누적 {len(entries)}건 구조화 데이터 로드 완료")
     return entries
 
 
