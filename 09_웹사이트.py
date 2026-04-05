@@ -2546,7 +2546,8 @@ with tab13:
         _fs_txt_count = 0
         _fs_pdf_count = 0
         _fs_newer_than_kb = 0
-        if os.path.isdir(_kb_txt_dir):
+        _local_folder_exists = os.path.isdir(_kb_txt_dir)
+        if _local_folder_exists:
             for _root, _, _files in os.walk(_kb_txt_dir):
                 for _fn in _files:
                     _fs_txt_count += 1
@@ -2563,10 +2564,19 @@ with tab13:
             _kb_meta_now = json.load(_mf)
         _kb_text_in = int(_kb_meta_now.get("text_files", 0))
         _kb_chunks_in = int(_kb_meta_now.get("total_chunks", 0))
+        _kb_pdf_in = int(_kb_meta_now.get("pdf_files", 0))
 
-        _sync_status = _fs_txt_count - _kb_text_in  # >0 이면 미반영 파일 존재
-        _sync_color = "#4CAF50" if _sync_status <= 0 else "#FF9800"
-        _sync_label = "✅ 최신 상태" if _sync_status <= 0 else f"⚠️ {_sync_status:,}개 미반영"
+        # Streamlit Cloud처럼 논문정리 폴더가 배포되지 않은 환경에서는 KB metadata 값을 신뢰
+        if not _local_folder_exists:
+            _fs_txt_count = _kb_text_in  # 배포 환경에서는 KB = 파일시스템으로 간주
+            _fs_pdf_count = _kb_pdf_in
+            _sync_status = 0
+            _sync_color = "#2196F3"
+            _sync_label = "☁️ Cloud 모드 (KB 기준 표시)"
+        else:
+            _sync_status = _fs_txt_count - _kb_text_in  # >0 이면 미반영 파일 존재
+            _sync_color = "#4CAF50" if _sync_status <= 0 else "#FF9800"
+            _sync_label = "✅ 최신 상태" if _sync_status <= 0 else f"⚠️ {_sync_status:,}개 미반영"
 
         st.markdown(f"""
 <div style="background:linear-gradient(135deg,#0f1628 0%,#1a2340 100%);
@@ -2611,6 +2621,45 @@ with tab13:
                                     help="수집은 스킵하고 현재 파일 시스템 상태만 KB에 반영 (build_knowledge_base.py)")
     with bc3:
         st.caption("🚀 전체 파이프라인 / 🔄 파일은 있는데 KB만 업데이트")
+
+    # ── 📂 수집 폴더 바로가기 버튼 ──
+    st.markdown("##### 📂 수집 폴더 바로가기")
+    fb1, fb2, fb3, fb4, fb5 = st.columns(5)
+    _folder_targets = [
+        (fb1, "📄 PDF 전체", os.path.join(BASE_FOLDER, "논문정리", "pdf")),
+        (fb2, "📝 TXT 전체", os.path.join(BASE_FOLDER, "논문정리", "txt")),
+        (fb3, "🔬 AGA 논문", os.path.join(BASE_FOLDER, "논문정리", "txt", "AGA")),
+        (fb4, "📜 특허", os.path.join(BASE_FOLDER, "논문정리", "txt", "특허")),
+        (fb5, "🧬 성기능장애", os.path.join(BASE_FOLDER, "논문정리", "txt", "성기능장애")),
+    ]
+    for _col, _label, _path in _folder_targets:
+        with _col:
+            _exists = os.path.isdir(_path)
+            _cnt = 0
+            if _exists:
+                try:
+                    for _r, _, _fs in os.walk(_path):
+                        _cnt += len(_fs)
+                except Exception:
+                    pass
+            _btn_label = f"{_label}\n({_cnt:,}개)" if _exists else f"{_label}\n(cloud)"
+            if st.button(_btn_label, key=f"folder_{_label}", use_container_width=True,
+                        disabled=not _exists,
+                        help=_path if _exists else "로컬에서만 열 수 있습니다 (Streamlit Cloud 환경)"):
+                try:
+                    import platform as _plat
+                    sysname = _plat.system()
+                    if sysname == "Darwin":
+                        _subp.Popen(["open", _path])
+                    elif sysname == "Windows":
+                        _subp.Popen(["explorer", _path])
+                    else:
+                        _subp.Popen(["xdg-open", _path])
+                    st.success(f"✅ 폴더 열림: `{_path}`")
+                except Exception as _fe:
+                    st.error(f"폴더 열기 실패: {_fe}")
+                    st.code(_path, language=None)
+    st.caption("💡 클릭 시 Finder/Explorer에서 폴더가 열립니다 (로컬 실행 환경 전용)")
 
     if collect_clicked:
         # 실행 전 스냅샷 저장
@@ -2665,13 +2714,45 @@ with tab13:
     if st.session_state.get("collecting"):
         _log_path = st.session_state.get("collect_log_path", "")
         last_lines = []
+        all_log_lines = []
         if _log_path and os.path.exists(_log_path):
             try:
                 with open(_log_path, "r", encoding="utf-8", errors="ignore") as _lf:
                     _all = _lf.readlines()
-                last_lines = [ln.rstrip() for ln in _all[-12:] if ln.strip()]
+                all_log_lines = [ln.rstrip() for ln in _all if ln.strip()]
+                last_lines = all_log_lines[-12:]
             except Exception:
                 pass
+
+        # 실시간 카운터 — 로그에서 PDF/TXT/Abstract 숫자 추출
+        import re as _re_mon
+        _pdf_c = _txt_c = _abs_c = _papers_c = _patents_c = 0
+        _cost = ""
+        for _ln in all_log_lines:
+            m = _re_mon.search(r"PDF[:\s]*(\d+)[^0-9]+TXT[:\s]*(\d+)", _ln, _re_mon.I)
+            if m:
+                _pdf_c = max(_pdf_c, int(m.group(1)))
+                _txt_c = max(_txt_c, int(m.group(2)))
+            m2 = _re_mon.search(r"Abstract[:\s]*(\d+)", _ln, _re_mon.I)
+            if m2:
+                _abs_c = max(_abs_c, int(m2.group(1)))
+            m3 = _re_mon.search(r"총\s*(\d+)\s*건", _ln)
+            if m3:
+                _papers_c = max(_papers_c, int(m3.group(1)))
+            m4 = _re_mon.search(r"특허[^0-9]*(\d+)", _ln)
+            if m4:
+                _patents_c = max(_patents_c, int(m4.group(1)))
+            mc = _re_mon.search(r"\$\s*(\d+\.?\d*)", _ln)
+            if mc:
+                _cost = f"${mc.group(1)}"
+
+        # 실시간 카운터 표시
+        rc1, rc2, rc3, rc4, rc5 = st.columns(5)
+        rc1.metric("📄 PDF 다운로드", f"{_pdf_c:,}")
+        rc2.metric("📝 TXT 추출", f"{_txt_c:,}")
+        rc3.metric("📑 Abstract", f"{_abs_c:,}")
+        rc4.metric("📚 총 수집", f"{_papers_c:,}")
+        rc5.metric("💰 예상 비용", _cost or "-")
 
         # 현재 단계 감지
         joined = "\n".join(last_lines).lower()
