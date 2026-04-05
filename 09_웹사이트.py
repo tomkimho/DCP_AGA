@@ -2850,16 +2850,25 @@ body{background:#0b0b14;font-family:'Courier New',monospace;color:#fff;padding:6
         """
         del _
 
-        _rc1, _rc2, _rc3 = st.columns([1, 1, 4])
+        _rc1, _rc2, _rc3, _rc4 = st.columns([1.2, 1, 1, 3])
         with _rc1:
+            auto_refresh = st.checkbox("🔁 자동 갱신 (3초)", value=True, key="auto_refresh_collect")
+        with _rc2:
             if st.button("🔄 새로고침", key="refresh_collect"):
                 st.rerun()
-        with _rc2:
+        with _rc3:
             if st.button("✖️ 숨기기", key="hide_collect"):
                 st.session_state["collecting"] = False
                 st.rerun()
-        with _rc3:
-            st.caption(f"📝 로그: `{os.path.basename(_log_path) if _log_path else '-'}`")
+        with _rc4:
+            st.caption(f"📝 `{os.path.basename(_log_path) if _log_path else '-'}`")
+
+        # 자동 새로고침 (meta refresh 주입)
+        if auto_refresh:
+            st.markdown(
+                '<meta http-equiv="refresh" content="3">',
+                unsafe_allow_html=True,
+            )
 
     # ── 성장 비교 카드 (4/3 100 >> 4/4 200 스타일) ──
     if len(snapshots) >= 2:
@@ -2943,8 +2952,49 @@ body{background:#0b0b14;font-family:'Courier New',monospace;color:#fff;padding:6
          "role": "Streamlit 배포 관리", "desk_color": "#00BCD4"},
     ]
 
+    # 현재 수집 로그에서 활성 에이전트 감지 (session_state collecting 플래그 사용)
+    _live_log_lines = []
+    _live_joined = ""
+    if st.session_state.get("collecting"):
+        _live_log_path = st.session_state.get("collect_log_path", "")
+        if _live_log_path and os.path.exists(_live_log_path):
+            try:
+                with open(_live_log_path, "r", encoding="utf-8", errors="ignore") as _lf2:
+                    _all2 = _lf2.readlines()
+                _live_log_lines = [ln.rstrip() for ln in _all2[-30:] if ln.strip()]
+                _live_joined = "\n".join(_live_log_lines).lower()
+            except Exception:
+                pass
+
+    # 에이전트 id → 로그 키워드 매핑
+    _log_keywords = {
+        "paper_searcher": ["pubmed", "biorxiv", "수집", "scout", "05_pubmed"],
+        "patent_searcher": ["patent", "특허", "uspto", "epo", "06_"],
+        "text_extractor": ["pdf", "extract", "text", "01_pdf"],
+        "claude_analyzer": ["claude", "analyz", "haiku", "02_정보", "02_ext"],
+        "compound_fetcher": ["compound", "pubchem", "smiles", "03_화합"],
+        "deploy_manager": ["deploy", "streamlit", "build_knowledge", "chunk", "embedding"],
+    }
+
+    def _log_active(agent_id):
+        if not _live_joined:
+            return False
+        kws = _log_keywords.get(agent_id, [])
+        return any(k in _live_joined for k in kws)
+
     # 에이전트 상태 결정
     def get_agent_status(agent_id):
+        # 1) 실시간 로그 감지 우선
+        if st.session_state.get("collecting"):
+            if _log_active(agent_id):
+                return "working"
+            # 수집 중이지만 이 에이전트는 아직 시작 안 함
+            if not _live_joined:
+                # 로그가 아직 안 쓰였음 — 첫 에이전트(scout)만 시작 중으로 표시
+                return "working" if agent_id == "paper_searcher" else "idle"
+            return "idle"
+
+        # 2) 파이프라인 상태 파일
         overall = pipeline_status.get("overall_status", "idle")
         current = pipeline_status.get("current_step", "")
         agent_stat = pipeline_status.get(agent_id, {})
@@ -2952,7 +3002,6 @@ body{background:#0b0b14;font-family:'Courier New',monospace;color:#fff;padding:6
         if isinstance(agent_stat, dict):
             return agent_stat.get("status", "idle")
 
-        # 오케스트레이터 상태에서 유추
         step_map = {
             "paper_searcher": "05_pubmed",
             "patent_searcher": "06_특허",
@@ -2967,12 +3016,32 @@ body{background:#0b0b14;font-family:'Courier New',monospace;color:#fff;padding:6
 
     # 상태별 애니메이션 CSS
     status_styles = {
-        "working": ("⚡ 작업 중", "#4CAF50", "pulse 1.5s ease-in-out infinite"),
-        "searching": ("🔍 검색 중", "#2196F3", "pulse 1.5s ease-in-out infinite"),
+        "working": ("⚡ 작업 중", "#4CAF50", "pulse 1.2s ease-in-out infinite"),
+        "searching": ("🔍 검색 중", "#2196F3", "pulse 1.2s ease-in-out infinite"),
         "completed": ("✅ 완료", "#8BC34A", "none"),
         "idle": ("💤 대기 중", "#9E9E9E", "none"),
         "error": ("❌ 오류", "#F44336", "shake 0.5s ease-in-out infinite"),
     }
+
+    # 전체 진행률 (실시간 수집 중일 때)
+    if st.session_state.get("collecting") and _live_joined:
+        # 완료된 단계 추정
+        _phase_done = 0
+        _phase_total = 6
+        if any(k in _live_joined for k in ["05_pubmed", "pubmed", "biorxiv"]):
+            _phase_done = max(_phase_done, 1)
+        if any(k in _live_joined for k in ["06_", "patent", "특허"]):
+            _phase_done = max(_phase_done, 2)
+        if any(k in _live_joined for k in ["01_pdf", "pdf extract", "extract"]):
+            _phase_done = max(_phase_done, 3)
+        if any(k in _live_joined for k in ["02_", "claude", "analyz"]):
+            _phase_done = max(_phase_done, 4)
+        if any(k in _live_joined for k in ["03_", "compound", "pubchem"]):
+            _phase_done = max(_phase_done, 5)
+        if any(k in _live_joined for k in ["build_knowledge", "chunk", "embedding", "phase"]):
+            _phase_done = max(_phase_done, 6)
+        st.progress(_phase_done / _phase_total,
+                   text=f"🔴 LIVE · 진행 단계 {_phase_done}/{_phase_total}")
 
     # CSS 애니메이션
     st.markdown("""
@@ -3072,20 +3141,43 @@ body{background:#0b0b14;font-family:'Courier New',monospace;color:#fff;padding:6
     row2 = st.columns(3)
     all_cols = row1 + row2
 
+    # 각 에이전트의 최신 활동 로그 한 줄 뽑기
+    def _latest_activity(agent_id):
+        if not _live_log_lines:
+            return ""
+        kws = _log_keywords.get(agent_id, [])
+        for ln in reversed(_live_log_lines):
+            low = ln.lower()
+            if any(k in low for k in kws):
+                return ln[:80]
+        return ""
+
     for i, agent in enumerate(agents):
         with all_cols[i]:
             status = get_agent_status(agent["id"])
             status_label, status_color, anim = status_styles.get(status, status_styles["idle"])
             icon_class = "working" if status in ("working", "searching") else ""
+            activity = _latest_activity(agent["id"]) if status == "working" else ""
+            activity_html = (
+                f'<div style="color:#00ff41;font-size:10px;font-family:monospace;'
+                f'margin-top:6px;padding:3px 6px;background:rgba(0,255,65,0.08);'
+                f'border-left:2px solid #00ff41;border-radius:2px;'
+                f'white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">▶ {activity}</div>'
+                if activity else ""
+            )
+            glow = (f"box-shadow: 0 0 18px {agent['desk_color']}60, 0 0 4px {agent['desk_color']}; "
+                    f"border-color: {agent['desk_color']};") if status == "working" else \
+                   f"border-color: {agent['desk_color']}40;"
 
             st.markdown(f"""
-            <div class="agent-desk" style="border-color: {agent['desk_color']}40;">
+            <div class="agent-desk" style="{glow}">
                 <span class="agent-icon {icon_class}">{agent['icon']}</span>
                 <div class="agent-name">{agent['name']}</div>
                 <div class="agent-role">{agent['role']}</div>
-                <span class="status-badge" style="background: {status_color}20; color: {status_color};">
+                <span class="status-badge" style="background: {status_color}20; color: {status_color}; animation: {anim};">
                     {status_label}
                 </span>
+                {activity_html}
             </div>
             """, unsafe_allow_html=True)
 
