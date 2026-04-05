@@ -3454,36 +3454,233 @@ body{background:#0b0b14;font-family:'Courier New',monospace;color:#fff;padding:6
         else:
             st.caption(f"⬜ {step_label}")
 
-    # ── 최근 활동 로그 ──
+    # ── 📅 날짜별 수집 통계 ──────────────────────
     st.markdown("---")
-    st.markdown("#### 📊 최근 수집 활동")
+    st.markdown("#### 📅 날짜별 신규 수집 현황")
 
-    if collection_log:
-        # 최근 20건 표시
-        recent = sorted(
-            [p for p in collection_log if isinstance(p, dict) and p.get("collected_date")],
-            key=lambda x: x.get("collected_date", ""),
-            reverse=True
-        )[:20]
+    # collection_log 정규화: 논문/특허 필드가 다름
+    def _normalize_entry(e):
+        if not isinstance(e, dict):
+            return None
+        if "pmid" in e:
+            return {
+                "type": "논문",
+                "date": str(e.get("collected_date", ""))[:10],
+                "id": e.get("pmid", ""),
+                "title": e.get("title", "") or "",
+                "source": e.get("download_source") or e.get("journal") or "PubMed",
+                "pdf": bool(e.get("pdf_downloaded") or e.get("pdf_path")),
+                "extra": e.get("doi", ""),
+            }
+        if "patent_number" in e:
+            return {
+                "type": "특허",
+                "date": str(e.get("collection_date", ""))[:10],
+                "id": e.get("patent_number", ""),
+                "title": e.get("patent_title", "") or "",
+                "source": e.get("source", "Patent DB"),
+                "pdf": bool(e.get("has_pdf")),
+                "extra": e.get("inventor_name", ""),
+            }
+        return {
+            "type": "기타",
+            "date": str(e.get("collected_date") or e.get("date") or "")[:10],
+            "id": "",
+            "title": str(e.get("title", "") or e.get("name", ""))[:200],
+            "source": e.get("source", ""),
+            "pdf": False,
+            "extra": "",
+        }
 
-        if recent:
-            log_rows = []
-            for p in recent:
-                log_rows.append({
-                    "수집일": p.get("collected_date", "")[:10],
-                    "출처": p.get("source", "PubMed"),
-                    "제목": (p.get("title", "") or "")[:80],
-                    "PDF": "✅" if p.get("pdf_path") else "❌",
+    normalized = [x for x in (_normalize_entry(e) for e in (collection_log or [])) if x]
+
+    if normalized:
+        # 날짜별 집계
+        from collections import defaultdict as _dd
+        date_stats = _dd(lambda: {"논문": 0, "특허": 0, "기타": 0, "PDF": 0})
+        for n in normalized:
+            d = n["date"] or "날짜없음"
+            date_stats[d][n["type"]] += 1
+            if n["pdf"]:
+                date_stats[d]["PDF"] += 1
+
+        stats_rows = []
+        for d in sorted(date_stats.keys(), reverse=True):
+            v = date_stats[d]
+            total = v["논문"] + v["특허"] + v["기타"]
+            stats_rows.append({
+                "수집일": d,
+                "논문": v["논문"],
+                "특허": v["특허"],
+                "기타": v["기타"],
+                "총계": total,
+                "PDF 다운로드": v["PDF"],
+            })
+        stats_df = pd.DataFrame(stats_rows)
+
+        # 상단 요약 메트릭
+        total_papers = sum(v["논문"] for v in date_stats.values())
+        total_patents = sum(v["특허"] for v in date_stats.values())
+        total_pdf = sum(v["PDF"] for v in date_stats.values())
+        total_all = total_papers + total_patents
+
+        dm1, dm2, dm3, dm4, dm5 = st.columns(5)
+        dm1.metric("📊 총 신규 수집", f"{total_all:,}")
+        dm2.metric("📄 논문", f"{total_papers:,}")
+        dm3.metric("📜 특허", f"{total_patents:,}")
+        dm4.metric("💾 PDF 확보", f"{total_pdf:,}")
+        dm5.metric("📆 수집 일수", f"{len([d for d in date_stats if d != '날짜없음']):,}")
+
+        # 날짜별 테이블
+        st.dataframe(
+            stats_df,
+            use_container_width=True,
+            hide_index=True,
+            column_config={
+                "총계": st.column_config.NumberColumn(format="%d"),
+                "PDF 다운로드": st.column_config.NumberColumn(format="%d"),
+            },
+        )
+
+        # 날짜별 차트
+        try:
+            import plotly.graph_objects as _go
+            chart_df = stats_df[stats_df["수집일"] != "날짜없음"].sort_values("수집일")
+            if not chart_df.empty:
+                fig = _go.Figure()
+                fig.add_trace(_go.Bar(name="논문", x=chart_df["수집일"], y=chart_df["논문"],
+                                     marker_color="#2196F3"))
+                fig.add_trace(_go.Bar(name="특허", x=chart_df["수집일"], y=chart_df["특허"],
+                                     marker_color="#FF9800"))
+                fig.add_trace(_go.Bar(name="기타", x=chart_df["수집일"], y=chart_df["기타"],
+                                     marker_color="#9E9E9E"))
+                fig.update_layout(
+                    barmode="stack", height=300,
+                    title="날짜별 수집 현황",
+                    xaxis_title="수집일", yaxis_title="건수",
+                    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+                )
+                st.plotly_chart(fig, use_container_width=True)
+        except Exception:
+            pass
+
+        # ── 📋 전체 수집 파일 리스트 ──
+        st.markdown("---")
+        st.markdown("#### 📋 수집된 파일 리스트")
+
+        fc1, fc2, fc3 = st.columns([1.5, 1.5, 3])
+        with fc1:
+            type_filter = st.multiselect(
+                "유형 필터",
+                options=["논문", "특허", "기타"],
+                default=["논문", "특허", "기타"],
+                key="file_type_filter",
+            )
+        with fc2:
+            available_dates = sorted(
+                [d for d in date_stats.keys() if d != "날짜없음"],
+                reverse=True,
+            )
+            date_filter = st.multiselect(
+                "날짜 필터",
+                options=available_dates,
+                default=available_dates,
+                key="file_date_filter",
+            )
+        with fc3:
+            search_term = st.text_input(
+                "🔍 제목/ID 검색",
+                placeholder="키워드 입력...",
+                key="file_search",
+            )
+
+        filtered = [
+            n for n in normalized
+            if n["type"] in type_filter
+            and (n["date"] in date_filter or (not date_filter and n["date"] == "날짜없음"))
+        ]
+        if search_term:
+            st_low = search_term.lower()
+            filtered = [
+                n for n in filtered
+                if st_low in n["title"].lower() or st_low in str(n["id"]).lower()
+            ]
+
+        st.caption(f"🗂️ {len(filtered):,}건 표시 중 (전체 {len(normalized):,}건)")
+
+        if filtered:
+            file_rows = []
+            for n in sorted(filtered, key=lambda x: (x["date"], x["type"]), reverse=True):
+                file_rows.append({
+                    "수집일": n["date"] or "-",
+                    "유형": ("📄 논문" if n["type"] == "논문"
+                            else "📜 특허" if n["type"] == "특허" else "📁 기타"),
+                    "ID": str(n["id"])[:30],
+                    "제목": n["title"][:120],
+                    "출처": str(n["source"])[:40],
+                    "PDF": "✅" if n["pdf"] else "❌",
                 })
-            st.dataframe(pd.DataFrame(log_rows), use_container_width=True, height=300)
+            files_df = pd.DataFrame(file_rows)
+            st.dataframe(
+                files_df,
+                use_container_width=True,
+                hide_index=True,
+                height=min(500, 50 + len(files_df) * 36),
+            )
+
+            # CSV 다운로드
+            csv = files_df.to_csv(index=False).encode("utf-8-sig")
+            st.download_button(
+                "📥 리스트 CSV 다운로드",
+                csv,
+                file_name=f"collected_files_{datetime.now().strftime('%Y%m%d')}.csv",
+                mime="text/csv",
+            )
         else:
-            st.info("아직 자동 수집된 논문이 없습니다. 파이프라인을 실행하세요.")
+            st.info("필터 조건에 맞는 파일이 없습니다.")
+
+        # ── 📚 전체 Foundation Model KB 파일 수 (참고) ──
+        with st.expander("📚 전체 Knowledge Base 파일 통계 (참고)"):
+            kb_pdf_dir = os.path.join(BASE_FOLDER, "논문정리", "pdf")
+            kb_txt_dir = os.path.join(BASE_FOLDER, "논문정리", "txt")
+            kb_pdf_count = 0
+            kb_txt_count = 0
+            kb_pdf_sub = {}
+            kb_txt_sub = {}
+            try:
+                if os.path.isdir(kb_pdf_dir):
+                    for sub in os.listdir(kb_pdf_dir):
+                        sp = os.path.join(kb_pdf_dir, sub)
+                        if os.path.isdir(sp):
+                            cnt = sum(len(files) for _, _, files in os.walk(sp))
+                            kb_pdf_sub[sub] = cnt
+                            kb_pdf_count += cnt
+                if os.path.isdir(kb_txt_dir):
+                    for sub in os.listdir(kb_txt_dir):
+                        sp = os.path.join(kb_txt_dir, sub)
+                        if os.path.isdir(sp):
+                            cnt = sum(len(files) for _, _, files in os.walk(sp))
+                            kb_txt_sub[sub] = cnt
+                            kb_txt_count += cnt
+            except Exception:
+                pass
+
+            kbc1, kbc2 = st.columns(2)
+            with kbc1:
+                st.metric("📄 PDF 파일 (전체)", f"{kb_pdf_count:,}")
+                for k, v in sorted(kb_pdf_sub.items(), key=lambda x: -x[1]):
+                    st.caption(f"  • {k}: {v:,}개")
+            with kbc2:
+                st.metric("📝 TXT 파일 (전체)", f"{kb_txt_count:,}")
+                for k, v in sorted(kb_txt_sub.items(), key=lambda x: -x[1]):
+                    st.caption(f"  • {k}: {v:,}개")
     else:
-        st.info("아직 자동 수집된 논문이 없습니다.")
+        st.info("아직 자동 수집된 파일이 없습니다. `🚀 자동 수집 시작` 버튼을 눌러 시작하세요.")
         st.markdown("""
         **시작하는 방법:**
-        1. 로컬에서: `python scripts/08_orchestrator.py`
-        2. GitHub Actions: 매일 오후 3시(KST) 자동 실행 (설정 필요)
+        1. 상단 `🚀 자동 수집 시작` 버튼 클릭 (로컬 실행)
+        2. 또는: `python scripts/08_orchestrator.py`
+        3. GitHub Actions: 매일 오후 3시(KST) 자동 실행 (설정 필요)
         """)
 
     # ── GitHub Actions 설정 안내 ──
