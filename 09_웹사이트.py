@@ -2536,12 +2536,81 @@ with tab13:
 
     snapshots = _record_snapshot_if_new()
 
+    # ── 📡 Foundation Model 반영 상태 패널 ──
+    try:
+        _kb_mtime_ts = os.path.getmtime(_kb_meta_path) if os.path.exists(_kb_meta_path) else 0
+        _kb_last_rebuild = datetime.fromtimestamp(_kb_mtime_ts).strftime("%Y-%m-%d %H:%M") if _kb_mtime_ts else "-"
+
+        _kb_txt_dir = os.path.join(BASE_FOLDER, "논문정리", "txt")
+        _kb_pdf_dir = os.path.join(BASE_FOLDER, "논문정리", "pdf")
+        _fs_txt_count = 0
+        _fs_pdf_count = 0
+        _fs_newer_than_kb = 0
+        if os.path.isdir(_kb_txt_dir):
+            for _root, _, _files in os.walk(_kb_txt_dir):
+                for _fn in _files:
+                    _fs_txt_count += 1
+                    try:
+                        if os.path.getmtime(os.path.join(_root, _fn)) > _kb_mtime_ts:
+                            _fs_newer_than_kb += 1
+                    except Exception:
+                        pass
+        if os.path.isdir(_kb_pdf_dir):
+            for _root, _, _files in os.walk(_kb_pdf_dir):
+                _fs_pdf_count += len(_files)
+
+        with open(_kb_meta_path, "r", encoding="utf-8") as _mf:
+            _kb_meta_now = json.load(_mf)
+        _kb_text_in = int(_kb_meta_now.get("text_files", 0))
+        _kb_chunks_in = int(_kb_meta_now.get("total_chunks", 0))
+
+        _sync_status = _fs_txt_count - _kb_text_in  # >0 이면 미반영 파일 존재
+        _sync_color = "#4CAF50" if _sync_status <= 0 else "#FF9800"
+        _sync_label = "✅ 최신 상태" if _sync_status <= 0 else f"⚠️ {_sync_status:,}개 미반영"
+
+        st.markdown(f"""
+<div style="background:linear-gradient(135deg,#0f1628 0%,#1a2340 100%);
+  border:1px solid {_sync_color}60;border-left:4px solid {_sync_color};
+  border-radius:10px;padding:14px 18px;margin:8px 0;">
+  <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+    <div>
+      <div style="color:#888;font-size:11px;">🧠 FOUNDATION MODEL 동기화 상태</div>
+      <div style="color:{_sync_color};font-size:18px;font-weight:bold;margin-top:2px;">{_sync_label}</div>
+    </div>
+    <div style="text-align:right;font-size:11px;color:#aaa;">
+      마지막 KB 리빌드<br>
+      <span style="color:#fff;font-size:13px;font-weight:bold;">{_kb_last_rebuild}</span>
+    </div>
+  </div>
+  <div style="margin-top:10px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;font-size:11px;">
+    <div style="background:rgba(255,255,255,0.04);padding:6px 8px;border-radius:4px;">
+      📝 KB TXT<br><span style="color:#58a6ff;font-size:14px;font-weight:bold;">{_kb_text_in:,}</span>
+    </div>
+    <div style="background:rgba(255,255,255,0.04);padding:6px 8px;border-radius:4px;">
+      📂 파일시스템 TXT<br><span style="color:#58a6ff;font-size:14px;font-weight:bold;">{_fs_txt_count:,}</span>
+    </div>
+    <div style="background:rgba(255,255,255,0.04);padding:6px 8px;border-radius:4px;">
+      📄 PDF 파일<br><span style="color:#58a6ff;font-size:14px;font-weight:bold;">{_fs_pdf_count:,}</span>
+    </div>
+    <div style="background:rgba(255,255,255,0.04);padding:6px 8px;border-radius:4px;">
+      🧠 Vector Chunks<br><span style="color:#58a6ff;font-size:14px;font-weight:bold;">{_kb_chunks_in:,}</span>
+    </div>
+  </div>
+</div>
+        """, unsafe_allow_html=True)
+    except Exception:
+        pass
+
     # 수집 버튼 UI
-    bc1, bc2 = st.columns([1, 3])
+    bc1, bc2, bc3 = st.columns([1.2, 1.2, 2.6])
     with bc1:
-        collect_clicked = st.button("🚀 자동 수집 시작", type="primary", use_container_width=True)
+        collect_clicked = st.button("🚀 자동 수집 + 반영", type="primary", use_container_width=True,
+                                   help="PubMed/특허/bioRxiv 수집 → PDF 추출 → AI 분석 → KB 리빌드 (전체 파이프라인)")
     with bc2:
-        st.caption("PubMed/특허/bioRxiv → PDF 추출 → AI 분석 → Foundation Model 반영")
+        rebuild_clicked = st.button("🔄 Foundation Model에만 반영", use_container_width=True,
+                                    help="수집은 스킵하고 현재 파일 시스템 상태만 KB에 반영 (build_knowledge_base.py)")
+    with bc3:
+        st.caption("🚀 전체 파이프라인 / 🔄 파일은 있는데 KB만 업데이트")
 
     if collect_clicked:
         # 실행 전 스냅샷 저장
@@ -2570,6 +2639,27 @@ with tab13:
                        "GitHub Actions `workflow_dispatch`로 수동 트리거하거나 로컬에서 실행하세요.")
         else:
             st.error(f"오케스트레이터를 찾을 수 없습니다: {orch_path}")
+
+    if rebuild_clicked:
+        kb_script = os.path.join(BASE_FOLDER, "scripts", "build_knowledge_base.py")
+        log_dir = os.path.join(BASE_FOLDER, "logs")
+        os.makedirs(log_dir, exist_ok=True)
+        log_file_path = os.path.join(log_dir, f"kb_rebuild_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
+        if os.path.exists(kb_script):
+            try:
+                py = sys.executable or "python3"
+                cmd = f'"{py}" "{kb_script}" > "{log_file_path}" 2>&1'
+                _subp.Popen(cmd, shell=True, cwd=BASE_FOLDER,
+                           stdout=_subp.DEVNULL, stderr=_subp.DEVNULL,
+                           start_new_session=True)
+                st.session_state["collect_log_path"] = log_file_path
+                st.session_state["collecting"] = True
+                st.success("🔄 Foundation Model 리빌드가 백그라운드에서 시작되었습니다. "
+                          "(resume 모드 — 신규/변경 파일만 임베딩)")
+            except Exception as e:
+                st.error(f"실행 실패: {e}")
+        else:
+            st.error(f"build_knowledge_base.py를 찾을 수 없습니다: {kb_script}")
 
     # ── 🎮 마인크래프트 스타일 실시간 수집 모니터 ──
     if st.session_state.get("collecting"):
