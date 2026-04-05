@@ -1754,127 +1754,331 @@ with tab10:
 # 탭 11: 📈 연구 동향 (Research Trends)
 # ============================================================
 with tab11:
-    st.markdown("### 📈 AGA 연구 동향")
-    st.caption("논문 수집 트렌드, 핫 키워드, 연도별 분포 분석")
+    import plotly.express as px
+    import re as _re_t
 
-    # collection_log.json 로드
-    _trend_log = []
-    for d in _search_dirs:
-        cl_path = os.path.join(d, "collection_log.json")
-        if os.path.exists(cl_path):
-            try:
-                with open(cl_path, "r", encoding="utf-8") as f:
-                    _trend_log = json.load(f)
-                break
-            except Exception:
-                pass
+    st.markdown("### 📈 AGA 연구 동향 — 심층 인사이트")
+    st.caption(f"{len(df_ok):,}건 문헌/특허의 타깃·약물·기전·효과·부작용 분석")
 
-    if _trend_log and len(_trend_log) > 0:
-        st.success(f"총 {len(_trend_log)}건 수집 기록")
+    # 헬퍼: 쉼표/세미콜론 분리 + 정규화
+    def _split_items(val):
+        if pd.isna(val) or not str(val).strip():
+            return []
+        s = str(val)
+        parts = _re_t.split(r"[,;·∙/]|\s\|\s|\n|와 |과 |및 ", s)
+        return [p.strip().strip(".()[]") for p in parts if p and len(p.strip()) > 1]
 
-        # 수집 출처별 분류
-        papers = sum(1 for x in _trend_log if 'pmid' in x)
-        patents = sum(1 for x in _trend_log if 'patent_number' in x)
-        biorxiv = sum(1 for x in _trend_log if x.get('source') == 'biorxiv')
-        other = len(_trend_log) - papers - patents - biorxiv
+    def _flatten_col(col_name):
+        items = []
+        if col_name in df_ok.columns:
+            for v in df_ok[col_name].dropna():
+                items.extend(_split_items(v))
+        return items
 
-        c1, c2, c3, c4 = st.columns(4)
-        c1.metric("📄 논문", papers)
-        c2.metric("📜 특허", patents)
-        c3.metric("🔬 Preprint", biorxiv)
-        c4.metric("📁 기타", other)
+    # ── 1. 요약 지표 ──────────────────────────────
+    n_total = len(df_ok)
+    n_paper = int((df_ok["문서유형"] == "Paper").sum()) if "문서유형" in df_ok.columns else 0
+    n_patent = int((df_ok["문서유형"] == "Patent").sum()) if "문서유형" in df_ok.columns else 0
+    n_targets_unique = len(set(_flatten_col("타겟(Target)")))
+    n_compounds_unique = len(set(_flatten_col("화합물(Compound)")))
 
-        # 수집 날짜별 트렌드
-        import plotly.express as px
+    k1, k2, k3, k4, k5 = st.columns(5)
+    k1.metric("📊 총 분석", f"{n_total:,}")
+    k2.metric("📄 논문", f"{n_paper:,}")
+    k3.metric("📜 특허", f"{n_patent:,}")
+    k4.metric("🎯 고유 타깃", f"{n_targets_unique:,}")
+    k5.metric("💊 고유 화합물", f"{n_compounds_unique:,}")
 
-        dates = []
-        for entry in _trend_log:
-            d_str = entry.get('collected_at', entry.get('date', ''))
-            if d_str:
-                try:
-                    dates.append(d_str[:10])
-                except Exception:
-                    pass
+    st.markdown("---")
 
-        if dates:
-            date_counts = Counter(dates)
-            date_df = pd.DataFrame([
-                {"날짜": k, "수집 건수": v}
-                for k, v in sorted(date_counts.items())
-            ])
-            if not date_df.empty:
-                st.markdown("#### 📅 일별 수집 현황")
-                fig = px.bar(date_df, x='날짜', y='수집 건수',
-                           title='일별 논문/특허 수집 현황')
-                fig.update_layout(height=350)
-                st.plotly_chart(fig, use_container_width=True)
+    # ── 2. 연구 유형 × 문서 유형 분포 ──────────────────
+    st.markdown("#### 📚 연구 유형 분포")
+    cc1, cc2 = st.columns(2)
+    with cc1:
+        if "연구유형" in df_ok.columns:
+            study_dist = df_ok["연구유형"].value_counts().reset_index()
+            study_dist.columns = ["연구유형", "건수"]
+            fig = px.pie(study_dist, names="연구유형", values="건수",
+                        title=f"연구유형 분포 ({len(study_dist)}개 유형)",
+                        color_discrete_sequence=px.colors.qualitative.Set3)
+            fig.update_traces(textposition='inside', textinfo='percent+label')
+            fig.update_layout(height=380)
+            st.plotly_chart(fig, use_container_width=True)
+    with cc2:
+        if "관련도" in df_ok.columns:
+            rel_dist = df_ok["관련도"].value_counts().sort_index().reset_index()
+            rel_dist.columns = ["관련도", "건수"]
+            fig = px.bar(rel_dist, x="관련도", y="건수",
+                        title="관련도 분포 (1-5)",
+                        color="건수", color_continuous_scale="Reds")
+            fig.update_layout(height=380)
+            st.plotly_chart(fig, use_container_width=True)
 
-        # 핫 키워드 분석 (제목에서 추출)
-        all_titles = []
-        for entry in _trend_log:
-            title = entry.get('title', '')
-            if title:
-                all_titles.append(title.lower())
+    st.markdown("---")
 
-        if all_titles:
-            # 핫 키워드 추출
-            import re as _re
-            stop_words = {'the', 'a', 'an', 'of', 'in', 'for', 'and', 'or', 'to', 'with',
-                         'by', 'on', 'is', 'are', 'was', 'were', 'from', 'at', 'as', 'its',
-                         'that', 'this', 'be', 'it', 'not', 'but', 'has', 'have', 'had',
-                         'no', 'can', 'may', 'via', 'through', 'between', 'using', 'based'}
-            word_counts = Counter()
-            for title in all_titles:
-                words = _re.findall(r'[a-z]{3,}', title)
-                for w in words:
-                    if w not in stop_words:
-                        word_counts[w] += 1
+    # ── 3. 🎯 Top 타깃 (Target) ──────────────────────
+    st.markdown("#### 🎯 Top 타깃 (Target)")
+    targets_raw = _flatten_col("타겟(Target)")
+    target_counts = Counter([t for t in targets_raw if len(t) < 60])
+    if target_counts:
+        top_targets = target_counts.most_common(25)
+        tdf = pd.DataFrame(top_targets, columns=["타깃", "빈도"])
+        fig = px.bar(tdf, x="빈도", y="타깃", orientation="h",
+                    title=f"가장 많이 연구된 타깃 Top 25 (총 {len(target_counts)}개 고유 타깃)",
+                    color="빈도", color_continuous_scale="Viridis")
+        fig.update_layout(height=560, yaxis={'categoryorder': 'total ascending'})
+        st.plotly_chart(fig, use_container_width=True)
 
-            if word_counts:
-                st.markdown("#### 🔥 핫 키워드 (제목 기반)")
-                kw_df = pd.DataFrame([
-                    {"키워드": k, "빈도": v}
-                    for k, v in word_counts.most_common(30)
-                ])
-                fig = px.bar(kw_df, x='빈도', y='키워드', orientation='h',
-                           title='제목에서 추출된 핵심 키워드 Top 30',
-                           color='빈도', color_continuous_scale='Reds')
-                fig.update_layout(height=600, yaxis={'categoryorder': 'total ascending'})
-                st.plotly_chart(fig, use_container_width=True)
+        # 타깃 패밀리 분류
+        target_families = {
+            "Androgen receptor (AR)": ["androgen receptor", "ar ", "dht", "5α", "5-alpha", "srd5a", "reductase"],
+            "Wnt/β-catenin": ["wnt", "β-catenin", "beta-catenin", "ctnnb", "dkk", "lrp"],
+            "JAK/STAT": ["jak", "stat", "janus"],
+            "Prostaglandin": ["prostaglandin", "pgd2", "pge2", "ptgs", "cox"],
+            "Growth factors": ["igf", "vegf", "fgf", "egf", "bmp", "tgf", "pdgf", "hgf"],
+            "Hedgehog/SHH": ["hedgehog", "shh", "gli", "smo", "ptch"],
+            "Stem cell / Niche": ["stem cell", "lgr", "dermal papilla", "hair follicle stem"],
+            "Inflammation": ["tnf", "il-", "il6", "nf-kb", "nf-κb", "cxcl", "ccl"],
+            "Apoptosis/Oxidative": ["bcl", "bax", "caspase", "ros", "oxidative"],
+            "Epigenetic": ["hdac", "dnmt", "mirna", "lncrna", "methylation"],
+        }
+        family_counts = {k: 0 for k in target_families}
+        for t in targets_raw:
+            tl = t.lower()
+            for fam, kws in target_families.items():
+                if any(kw in tl for kw in kws):
+                    family_counts[fam] += 1
+                    break
+        fam_df = pd.DataFrame(
+            [(k, v) for k, v in family_counts.items() if v > 0],
+            columns=["타깃 패밀리", "건수"]
+        ).sort_values("건수", ascending=True)
+        if not fam_df.empty:
+            fig = px.bar(fam_df, x="건수", y="타깃 패밀리", orientation="h",
+                        title="타깃 패밀리별 연구 집중도",
+                        color="건수", color_continuous_scale="Teal")
+            fig.update_layout(height=360)
+            st.plotly_chart(fig, use_container_width=True)
 
-        # 연도별 분포 (출판 연도)
-        years = []
-        for entry in _trend_log:
-            year = entry.get('year', entry.get('pub_year', ''))
-            if year:
-                try:
-                    years.append(int(str(year)[:4]))
-                except Exception:
-                    pass
+    st.markdown("---")
 
-        if years:
-            year_counts = Counter(years)
-            year_df = pd.DataFrame([
-                {"연도": k, "논문 수": v}
-                for k, v in sorted(year_counts.items())
-                if k >= 2000
-            ])
-            if not year_df.empty:
-                st.markdown("#### 📅 연도별 출판 분포")
-                fig = px.line(year_df, x='연도', y='논문 수',
-                            title='AGA 관련 논문 출판 연도 분포',
-                            markers=True)
-                fig.update_layout(height=350)
-                st.plotly_chart(fig, use_container_width=True)
-    else:
-        # collection_log.json이 없어도 AGA_data.xlsx에서 기본 통계
-        st.info("📈 수집 로그가 없습니다. 기본 문헌 통계를 표시합니다.")
-        if 'df_ok' in dir():
-            c1, c2 = st.columns(2)
-            c1.metric("총 문헌 수", len(df_ok))
-            doc_types = df_ok['문서유형'].value_counts() if '문서유형' in df_ok.columns else pd.Series()
-            if not doc_types.empty:
-                c2.metric("문서 유형 수", len(doc_types))
+    # ── 4. 💊 Top 약물/화합물 ──────────────────────
+    st.markdown("#### 💊 Top 약물/화합물")
+    compounds_raw = _flatten_col("화합물(Compound)")
+    comp_counts = Counter([c for c in compounds_raw if len(c) < 80 and len(c) > 2])
+    if comp_counts:
+        top_comps = comp_counts.most_common(25)
+        cdf = pd.DataFrame(top_comps, columns=["화합물", "빈도"])
+        fig = px.bar(cdf, x="빈도", y="화합물", orientation="h",
+                    title=f"가장 많이 연구된 화합물 Top 25 (총 {len(comp_counts)}개 고유)",
+                    color="빈도", color_continuous_scale="Plasma")
+        fig.update_layout(height=560, yaxis={'categoryorder': 'total ascending'})
+        st.plotly_chart(fig, use_container_width=True)
+
+        # 약물 클래스 분류
+        drug_classes = {
+            "5α-Reductase inhibitors": ["finasteride", "dutasteride", "epristeride", "5α", "5-alpha"],
+            "Minoxidil/Vasodilators": ["minoxidil", "vasodilator"],
+            "Anti-androgens": ["cyproterone", "spironolactone", "flutamide", "bicalutamide", "enzalutamide"],
+            "JAK inhibitors": ["tofacitinib", "ruxolitinib", "baricitinib", "jak inhibitor"],
+            "Prostaglandin analogs": ["latanoprost", "bimatoprost", "setipiprant", "prostaglandin"],
+            "Botanical/Natural": ["saw palmetto", "extract", "polyphenol", "flavonoid", "curcumin",
+                                  "resveratrol", "ginseng", "rosemary"],
+            "Peptides/Proteins": ["peptide", "copper peptide", "thymosin", "growth factor"],
+            "Stem cell / PRP": ["prp", "platelet", "stem cell", "exosome"],
+            "Nanocarriers/DDS": ["nanoparticle", "liposome", "micelle", "nanocarrier"],
+        }
+        dc_counts = {k: 0 for k in drug_classes}
+        for c in compounds_raw:
+            cl = c.lower()
+            for cls, kws in drug_classes.items():
+                if any(kw in cl for kw in kws):
+                    dc_counts[cls] += 1
+                    break
+        dc_df = pd.DataFrame(
+            [(k, v) for k, v in dc_counts.items() if v > 0],
+            columns=["약물 클래스", "건수"]
+        ).sort_values("건수", ascending=True)
+        if not dc_df.empty:
+            fig = px.bar(dc_df, x="건수", y="약물 클래스", orientation="h",
+                        title="약물 클래스별 연구 집중도",
+                        color="건수", color_continuous_scale="Oranges")
+            fig.update_layout(height=360)
+            st.plotly_chart(fig, use_container_width=True)
+
+    st.markdown("---")
+
+    # ── 5. ⚙️ 작용기전 (MoA) 및 신호전달경로 ─────────────
+    st.markdown("#### ⚙️ 작용기전 & 신호전달경로")
+    pc1, pc2 = st.columns(2)
+    with pc1:
+        pathways_raw = _flatten_col("신호전달경로")
+        pw_counts = Counter([p for p in pathways_raw if len(p) < 60 and len(p) > 2])
+        if pw_counts:
+            pwdf = pd.DataFrame(pw_counts.most_common(20), columns=["경로", "빈도"])
+            fig = px.bar(pwdf, x="빈도", y="경로", orientation="h",
+                        title="Top 20 신호전달경로",
+                        color="빈도", color_continuous_scale="Blues")
+            fig.update_layout(height=500, yaxis={'categoryorder': 'total ascending'})
+            st.plotly_chart(fig, use_container_width=True)
+    with pc2:
+        models_raw = _flatten_col("세포/모델")
+        mdl_counts = Counter([m for m in models_raw if len(m) < 60 and len(m) > 2])
+        if mdl_counts:
+            mdf = pd.DataFrame(mdl_counts.most_common(20), columns=["세포/모델", "빈도"])
+            fig = px.bar(mdf, x="빈도", y="세포/모델", orientation="h",
+                        title="Top 20 실험 모델",
+                        color="빈도", color_continuous_scale="Greens")
+            fig.update_layout(height=500, yaxis={'categoryorder': 'total ascending'})
+            st.plotly_chart(fig, use_container_width=True)
+
+    st.markdown("---")
+
+    # ── 6. 📊 Top 바이오마커 ──────────────────────
+    st.markdown("#### 📊 Top 바이오마커")
+    bms_raw = _flatten_col("바이오마커")
+    bm_counts = Counter([b for b in bms_raw if len(b) < 60 and len(b) > 2])
+    if bm_counts:
+        bmdf = pd.DataFrame(bm_counts.most_common(20), columns=["바이오마커", "빈도"])
+        fig = px.bar(bmdf, x="빈도", y="바이오마커", orientation="h",
+                    title="가장 많이 측정된 바이오마커 Top 20",
+                    color="빈도", color_continuous_scale="Purples")
+        fig.update_layout(height=480, yaxis={'categoryorder': 'total ascending'})
+        st.plotly_chart(fig, use_container_width=True)
+
+    st.markdown("---")
+
+    # ── 7. ✅ 효과 vs ⚠️ 부작용 키워드 분석 ─────────────
+    st.markdown("#### ✅ 효과 vs ⚠️ 부작용 — 핵심발견 텍스트 마이닝")
+
+    effect_kws = {
+        "모발 성장 촉진": ["hair growth", "hair regrow", "모발 성장", "발모", "육모", "promote hair", "stimulate hair"],
+        "모낭 활성화": ["follicle activation", "follicular", "anagen", "모낭", "hair follicle"],
+        "탈모 억제": ["hair loss prevent", "alopecia prevent", "inhibit hair loss", "탈모 억제"],
+        "모발 밀도 증가": ["hair density", "hair count", "thickness", "모발 밀도"],
+        "DHT 감소": ["dht reduc", "dht decrease", "inhibit dht", "dht 감소"],
+        "피지 감소": ["sebum", "피지"],
+        "항염/면역조절": ["anti-inflamm", "항염", "immunomodul", "면역"],
+        "혈류 개선": ["vasodilat", "blood flow", "혈류", "순환"],
+        "산화 스트레스 감소": ["antioxidant", "ros", "oxidative stress", "항산화"],
+    }
+    adverse_kws = {
+        "성기능 장애": ["sexual dysfunction", "libido", "erectile", "성기능", "발기"],
+        "피부 자극": ["irritation", "erythema", "dermatitis", "자극", "홍반", "소양"],
+        "전신 흡수/부작용": ["systemic", "전신 흡수", "systemic exposure"],
+        "우울/기분": ["depression", "mood", "우울"],
+        "간독성": ["hepato", "liver toxic", "간 독성"],
+        "알레르기": ["allergic", "hypersensitiv", "알레르기"],
+        "여성화": ["gynecomastia", "feminiz", "여유증"],
+        "두통/어지러움": ["headache", "dizz", "두통", "어지"],
+        "체모 증가": ["hypertrichosis", "hirsut", "다모", "체모"],
+    }
+
+    findings_text = " ".join(
+        str(x).lower() for x in df_ok.get("핵심발견", pd.Series(dtype=str)).dropna()
+    )
+    moa_text = " ".join(
+        str(x).lower() for x in df_ok.get("기전(MoA)", pd.Series(dtype=str)).dropna()
+    )
+    all_text = findings_text + " " + moa_text
+
+    eff_counts = {
+        k: sum(all_text.count(kw) for kw in kws) for k, kws in effect_kws.items()
+    }
+    adv_counts = {
+        k: sum(all_text.count(kw) for kw in kws) for k, kws in adverse_kws.items()
+    }
+
+    ec1, ec2 = st.columns(2)
+    with ec1:
+        eff_df = pd.DataFrame(
+            [(k, v) for k, v in eff_counts.items() if v > 0],
+            columns=["효과", "언급 횟수"]
+        ).sort_values("언급 횟수", ascending=True)
+        if not eff_df.empty:
+            fig = px.bar(eff_df, x="언급 횟수", y="효과", orientation="h",
+                        title="✅ 보고된 효과 Top",
+                        color="언급 횟수", color_continuous_scale="Greens")
+            fig.update_layout(height=420)
+            st.plotly_chart(fig, use_container_width=True)
+    with ec2:
+        adv_df = pd.DataFrame(
+            [(k, v) for k, v in adv_counts.items() if v > 0],
+            columns=["부작용", "언급 횟수"]
+        ).sort_values("언급 횟수", ascending=True)
+        if not adv_df.empty:
+            fig = px.bar(adv_df, x="언급 횟수", y="부작용", orientation="h",
+                        title="⚠️ 보고된 부작용 Top",
+                        color="언급 횟수", color_continuous_scale="Reds")
+            fig.update_layout(height=420)
+            st.plotly_chart(fig, use_container_width=True)
+
+    # 효과/부작용 비율 지표
+    tot_eff = sum(eff_counts.values())
+    tot_adv = sum(adv_counts.values())
+    if tot_eff + tot_adv > 0:
+        ratio = tot_eff / max(1, tot_eff + tot_adv) * 100
+        mm1, mm2, mm3 = st.columns(3)
+        mm1.metric("✅ 효과 언급", f"{tot_eff:,}")
+        mm2.metric("⚠️ 부작용 언급", f"{tot_adv:,}")
+        mm3.metric("📐 효과/부작용 비율", f"{ratio:.1f}%",
+                  help="100%에 가까울수록 효과 언급이 부작용보다 많음")
+
+    st.markdown("---")
+
+    # ── 8. 🔥 타깃 × 약물 클래스 히트맵 (선택적) ─────────
+    st.markdown("#### 🔥 타깃 × 연구유형 매트릭스")
+    if "연구유형" in df_ok.columns and "타겟(Target)" in df_ok.columns:
+        # 각 row의 첫 타깃만 추출
+        first_targets = []
+        for v in df_ok["타겟(Target)"]:
+            items = _split_items(v)
+            first_targets.append(items[0] if items else "")
+        tmp = df_ok.copy()
+        tmp["주타깃"] = first_targets
+        top25_targets = [t for t, _ in Counter(tmp["주타깃"]).most_common(20) if t]
+        tmp = tmp[tmp["주타깃"].isin(top25_targets)]
+        if not tmp.empty:
+            pivot = pd.crosstab(tmp["주타깃"], tmp["연구유형"])
+            fig = px.imshow(
+                pivot.values,
+                x=list(pivot.columns),
+                y=list(pivot.index),
+                color_continuous_scale="Hot",
+                aspect="auto",
+                title="Top 20 타깃 × 연구유형 (건수 히트맵)",
+                labels=dict(color="건수"),
+            )
+            fig.update_layout(height=560)
+            st.plotly_chart(fig, use_container_width=True)
+
+    # ── 9. 💡 자동 인사이트 요약 ──────────────────
+    st.markdown("---")
+    st.markdown("#### 💡 자동 인사이트")
+    insights = []
+    if target_counts:
+        top1 = target_counts.most_common(1)[0]
+        insights.append(f"🎯 가장 많이 연구된 타깃은 **{top1[0]}** ({top1[1]}건)")
+    if comp_counts:
+        top1c = comp_counts.most_common(1)[0]
+        insights.append(f"💊 가장 많이 언급된 화합물은 **{top1c[0]}** ({top1c[1]}건)")
+    if eff_counts:
+        top_eff = max(eff_counts.items(), key=lambda x: x[1])
+        if top_eff[1] > 0:
+            insights.append(f"✅ 가장 자주 보고된 효과는 **{top_eff[0]}** ({top_eff[1]}회 언급)")
+    if adv_counts:
+        top_adv = max(adv_counts.items(), key=lambda x: x[1])
+        if top_adv[1] > 0:
+            insights.append(f"⚠️ 주의해야 할 대표 부작용은 **{top_adv[0]}** ({top_adv[1]}회 언급)")
+    if bm_counts:
+        top_bm = bm_counts.most_common(1)[0]
+        insights.append(f"📊 가장 많이 측정된 바이오마커는 **{top_bm[0]}** ({top_bm[1]}건)")
+    if pw_counts:
+        top_pw = pw_counts.most_common(1)[0]
+        insights.append(f"⚙️ 핵심 신호전달경로는 **{top_pw[0]}** ({top_pw[1]}건)")
+
+    for ins in insights:
+        st.markdown(f"- {ins}")
 
 
 # ============================================================
