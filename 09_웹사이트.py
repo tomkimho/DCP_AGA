@@ -2358,15 +2358,269 @@ with tab13:
                 _subp.Popen(cmd, shell=True, cwd=BASE_FOLDER,
                            stdout=_subp.DEVNULL, stderr=_subp.DEVNULL,
                            start_new_session=True)
-                st.success(f"✅ 수집 파이프라인이 백그라운드에서 시작되었습니다.\n\n"
-                          f"📝 로그: `{os.path.basename(log_file_path)}`\n\n"
-                          f"완료 후 페이지를 새로고침하면 증가분이 표시됩니다.")
+                st.session_state["collect_log_path"] = log_file_path
+                st.session_state["collecting"] = True
             except Exception as e:
                 st.error(f"실행 실패: {e}")
                 st.info("Streamlit Cloud 환경에서는 로컬 실행이 제한될 수 있습니다. "
                        "GitHub Actions `workflow_dispatch`로 수동 트리거하거나 로컬에서 실행하세요.")
         else:
             st.error(f"오케스트레이터를 찾을 수 없습니다: {orch_path}")
+
+    # ── 🎮 마인크래프트 스타일 실시간 수집 모니터 ──
+    if st.session_state.get("collecting"):
+        _log_path = st.session_state.get("collect_log_path", "")
+        last_lines = []
+        if _log_path and os.path.exists(_log_path):
+            try:
+                with open(_log_path, "r", encoding="utf-8", errors="ignore") as _lf:
+                    _all = _lf.readlines()
+                last_lines = [ln.rstrip() for ln in _all[-12:] if ln.strip()]
+            except Exception:
+                pass
+
+        # 현재 단계 감지
+        joined = "\n".join(last_lines).lower()
+        if "build_knowledge_base" in joined or "chunk" in joined or "phase" in joined:
+            stage_icon = "🧠"
+            stage_label = "Foundation Model 반영 중"
+            char_mode = "brain"
+        elif "pdf" in joined or "extract" in joined or "text" in joined:
+            stage_icon = "📄"
+            stage_label = "PDF 텍스트 추출 중"
+            char_mode = "mine"
+        elif "claude" in joined or "analyz" in joined or "ai" in joined:
+            stage_icon = "🤖"
+            stage_label = "AI 정보 분석 중"
+            char_mode = "craft"
+        elif "patent" in joined or "특허" in joined:
+            stage_icon = "📜"
+            stage_label = "특허 데이터 수집 중"
+            char_mode = "walk"
+        elif "pubmed" in joined or "biorxiv" in joined or "download" in joined or "수집" in joined:
+            stage_icon = "🔍"
+            stage_label = "PubMed/bioRxiv 논문 수집 중"
+            char_mode = "walk"
+        elif last_lines:
+            stage_icon = "⚙️"
+            stage_label = "파이프라인 실행 중"
+            char_mode = "walk"
+        else:
+            stage_icon = "🚀"
+            stage_label = "시작 중..."
+            char_mode = "idle"
+
+        log_html = "<br>".join(
+            f"<span style='color:#8be9fd;'>&gt;</span> {ln.replace('<','&lt;').replace('>','&gt;')[:120]}"
+            for ln in last_lines[-8:]
+        ) or "<span style='color:#666;'>로그 대기 중...</span>"
+
+        st.markdown(f"""
+        <style>
+        @keyframes mc-walk {{
+            0%, 100% {{ transform: translateX(0) translateY(0); }}
+            25% {{ transform: translateX(2px) translateY(-2px); }}
+            50% {{ transform: translateX(4px) translateY(0); }}
+            75% {{ transform: translateX(2px) translateY(-2px); }}
+        }}
+        @keyframes mc-swing {{
+            0%, 100% {{ transform: rotate(-20deg); }}
+            50% {{ transform: rotate(40deg); }}
+        }}
+        @keyframes mc-bob {{
+            0%, 100% {{ transform: translateY(0); }}
+            50% {{ transform: translateY(-4px); }}
+        }}
+        @keyframes mc-blink {{
+            0%, 90%, 100% {{ opacity: 1; }}
+            95% {{ opacity: 0; }}
+        }}
+        @keyframes item-fall {{
+            0% {{ transform: translateY(-30px); opacity: 0; }}
+            20% {{ opacity: 1; }}
+            100% {{ transform: translateY(60px); opacity: 0; }}
+        }}
+        @keyframes cloud-move {{
+            0% {{ transform: translateX(-40px); }}
+            100% {{ transform: translateX(360px); }}
+        }}
+        .mc-box {{
+            background: linear-gradient(180deg, #87ceeb 0%, #87ceeb 55%, #8b6f47 55%, #8b6f47 70%, #5d4a2e 70%, #5d4a2e 100%);
+            border: 4px solid #2c1810;
+            border-radius: 6px;
+            width: 100%;
+            max-width: 640px;
+            height: 220px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 0 2px #d4a373, 0 4px 12px rgba(0,0,0,0.4);
+            font-family: 'Courier New', monospace;
+            image-rendering: pixelated;
+        }}
+        .mc-cloud {{
+            position: absolute; top: 15px; left: 0;
+            width: 50px; height: 14px;
+            background: #fff;
+            box-shadow: 10px -6px 0 #fff, 26px -6px 0 #fff, 18px -12px 0 #fff,
+                        -4px 0 0 #fff, 54px 0 0 #fff;
+            animation: cloud-move 18s linear infinite;
+        }}
+        .mc-cloud.c2 {{ top: 38px; animation-duration: 26s; animation-delay: -8s; }}
+        .mc-sun {{
+            position: absolute; top: 12px; right: 20px;
+            width: 28px; height: 28px;
+            background: #ffd93d;
+            border: 3px solid #f9a825;
+            box-shadow: 0 0 16px rgba(255,217,61,0.6);
+        }}
+        .mc-stage-label {{
+            position: absolute; top: 8px; left: 12px;
+            color: #fff; font-size: 14px; font-weight: bold;
+            text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+            z-index: 5;
+        }}
+        .mc-char {{
+            position: absolute; bottom: 62px; left: 48%;
+            width: 24px; height: 48px;
+            animation: {"mc-walk 0.6s steps(2) infinite" if char_mode=="walk" else "mc-bob 1.2s ease-in-out infinite"};
+            z-index: 3;
+        }}
+        .mc-head {{
+            position: absolute; top: 0; left: 2px;
+            width: 20px; height: 20px;
+            background: #c68642;
+            border: 1px solid #5d3a1a;
+            animation: mc-blink 4s infinite;
+        }}
+        .mc-head::before {{
+            content: ''; position: absolute; top: 5px; left: 3px;
+            width: 3px; height: 4px; background: #fff;
+            box-shadow: 8px 0 0 #fff, 3px 0 0 #000, 11px 0 0 #000;
+        }}
+        .mc-head::after {{
+            content: ''; position: absolute; top: 13px; left: 6px;
+            width: 8px; height: 2px; background: #5d3a1a;
+        }}
+        .mc-body {{
+            position: absolute; top: 20px; left: 4px;
+            width: 16px; height: 18px;
+            background: #00aced;
+            border: 1px solid #004d66;
+        }}
+        .mc-legs {{
+            position: absolute; top: 38px; left: 4px;
+            width: 16px; height: 10px;
+            background: #3a3a8a;
+            border: 1px solid #1a1a4a;
+        }}
+        .mc-arm {{
+            position: absolute; top: 20px; right: -4px;
+            width: 6px; height: 14px;
+            background: #c68642;
+            border: 1px solid #5d3a1a;
+            transform-origin: top center;
+            animation: {"mc-swing 0.4s ease-in-out infinite" if char_mode in ("mine","craft","brain") else "none"};
+        }}
+        .mc-tool {{
+            position: absolute; top: 30px; right: -14px;
+            font-size: 18px;
+            transform-origin: left center;
+            animation: {"mc-swing 0.4s ease-in-out infinite" if char_mode in ("mine","craft","brain") else "none"};
+        }}
+        .mc-item {{
+            position: absolute; top: 50px;
+            font-size: 18px;
+            animation: item-fall 1.8s ease-in infinite;
+        }}
+        .mc-item.i1 {{ left: 20%; animation-delay: 0s; }}
+        .mc-item.i2 {{ left: 35%; animation-delay: 0.4s; }}
+        .mc-item.i3 {{ left: 65%; animation-delay: 0.8s; }}
+        .mc-item.i4 {{ left: 80%; animation-delay: 1.2s; }}
+        .mc-chest {{
+            position: absolute; bottom: 20px; right: 30px;
+            width: 36px; height: 28px;
+            background: linear-gradient(180deg, #a0522d 0%, #a0522d 40%, #8b4513 40%, #8b4513 100%);
+            border: 2px solid #3e2311;
+            box-shadow: inset 0 0 0 2px #d2691e;
+            animation: mc-bob 2s ease-in-out infinite;
+        }}
+        .mc-chest::before {{
+            content: '🔒'; position: absolute; top: 8px; left: 12px;
+            font-size: 10px;
+        }}
+        .mc-tree {{
+            position: absolute; bottom: 58px; left: 20px;
+            width: 6px; height: 16px; background: #5d3a1a;
+        }}
+        .mc-tree::before {{
+            content: ''; position: absolute; top: -22px; left: -11px;
+            width: 28px; height: 28px; background: #228b22;
+            box-shadow: -6px 4px 0 #228b22, 6px 4px 0 #228b22,
+                        0 -6px 0 #2e8b2e;
+        }}
+        .mc-log-box {{
+            background: #0d0d0d;
+            border: 2px solid #3e3e3e;
+            border-top: 2px solid #00ff41;
+            border-radius: 4px;
+            padding: 10px 12px;
+            margin-top: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            color: #00ff41;
+            max-width: 640px;
+            max-height: 150px;
+            overflow-y: auto;
+            line-height: 1.6;
+        }}
+        .mc-pulse {{
+            display: inline-block;
+            width: 8px; height: 8px;
+            background: #ff3860;
+            border-radius: 50%;
+            margin-right: 6px;
+            animation: mc-bob 1s ease-in-out infinite;
+        }}
+        </style>
+
+        <div class="mc-box">
+            <div class="mc-stage-label"><span class="mc-pulse"></span>{stage_icon} {stage_label}</div>
+            <div class="mc-sun"></div>
+            <div class="mc-cloud"></div>
+            <div class="mc-cloud c2"></div>
+            <div class="mc-tree"></div>
+
+            <div class="mc-item i1">📄</div>
+            <div class="mc-item i2">📚</div>
+            <div class="mc-item i3">🧬</div>
+            <div class="mc-item i4">💊</div>
+
+            <div class="mc-char">
+                <div class="mc-head"></div>
+                <div class="mc-body"></div>
+                <div class="mc-legs"></div>
+                <div class="mc-arm"></div>
+                <div class="mc-tool">⛏️</div>
+            </div>
+
+            <div class="mc-chest"></div>
+        </div>
+
+        <div class="mc-log-box">
+            {log_html}
+        </div>
+        """, unsafe_allow_html=True)
+
+        _rc1, _rc2, _rc3 = st.columns([1, 1, 4])
+        with _rc1:
+            if st.button("🔄 새로고침", key="refresh_collect"):
+                st.rerun()
+        with _rc2:
+            if st.button("✖️ 숨기기", key="hide_collect"):
+                st.session_state["collecting"] = False
+                st.rerun()
+        with _rc3:
+            st.caption(f"📝 로그: `{os.path.basename(_log_path) if _log_path else '-'}`")
 
     # ── 성장 비교 카드 (4/3 100 >> 4/4 200 스타일) ──
     if len(snapshots) >= 2:
