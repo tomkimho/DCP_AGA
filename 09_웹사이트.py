@@ -2415,7 +2415,245 @@ with tab13:
             for ln in last_lines[-8:]
         ) or "<span style='color:#666;'>로그 대기 중...</span>"
 
-        st.markdown(f"""
+        # 어느 에이전트가 활성화 중인지 결정
+        active_agents = set()
+        if "pubmed" in joined or "biorxiv" in joined or "수집" in joined or "download" in joined:
+            active_agents.add("scout")
+        if "patent" in joined or "특허" in joined:
+            active_agents.add("hunter")
+        if "pdf" in joined or "extract" in joined or "text" in joined:
+            active_agents.add("miner")
+        if "claude" in joined or "analyz" in joined or " ai" in joined:
+            active_agents.add("analyst")
+        if "compound" in joined or "pubchem" in joined or "smiles" in joined:
+            active_agents.add("chem")
+        if "build_knowledge_base" in joined or "chunk" in joined or "embedding" in joined or "phase" in joined:
+            active_agents.add("brain")
+        if not active_agents:
+            active_agents = {"scout"}  # 시작 단계
+
+        def _act(aid):
+            return "active" if aid in active_agents else "idle"
+
+        import streamlit.components.v1 as _components
+
+        office_html = """<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0b0b14;font-family:'Courier New',monospace;color:#fff;padding:6px;overflow:hidden}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes bob-fast{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes type-arm{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(1px) rotate(-8deg)}75%{transform:translateY(1px) rotate(8deg)}}
+@keyframes swing{0%,100%{transform:rotate(-25deg)}50%{transform:rotate(35deg)}}
+@keyframes blink{0%,92%,100%{opacity:1}96%{opacity:0}}
+@keyframes screen-flicker{0%,100%{background:#0a2540}50%{background:#123a6b}}
+@keyframes data-stream{0%{transform:translateY(-20px);opacity:0}20%{opacity:1}100%{transform:translateY(80px);opacity:0}}
+@keyframes pulse-red{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:1;transform:scale(1.4)}}
+@keyframes pulse-green{0%,100%{box-shadow:0 0 4px #00ff41}50%{box-shadow:0 0 14px #00ff41,0 0 4px #00ff41}}
+@keyframes orbit{0%{transform:rotate(0deg) translateX(14px) rotate(0deg)}100%{transform:rotate(360deg) translateX(14px) rotate(-360deg)}}
+@keyframes brain-pulse{0%,100%{transform:scale(1);filter:hue-rotate(0deg)}50%{transform:scale(1.1);filter:hue-rotate(90deg)}}
+@keyframes gear{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes server-blink{0%,100%{background:#0f0}50%{background:#003300}}
+
+.office{
+  position:relative;width:100%;height:340px;
+  background:linear-gradient(180deg,#1a1a2e 0%,#16213e 50%,#0f1624 100%);
+  border:3px solid #3a3a5e;border-radius:8px;overflow:hidden;
+  box-shadow:inset 0 0 40px rgba(0,0,0,.6);
+}
+/* 배경 격자 (바닥) */
+.floor{position:absolute;left:0;right:0;bottom:0;height:40%;
+  background:
+    repeating-linear-gradient(90deg,#1e2a44 0 40px,#19243b 40px 80px),
+    linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.4) 100%);
+}
+.wall-line{position:absolute;left:0;right:0;height:2px;background:#2e3a5c;top:58%}
+
+.title-bar{position:absolute;top:0;left:0;right:0;padding:6px 10px;
+  background:rgba(0,0,0,.5);border-bottom:1px solid #3a3a5e;z-index:10;
+  font-size:12px;font-weight:bold;letter-spacing:.5px}
+.title-bar .led{display:inline-block;width:8px;height:8px;border-radius:50%;
+  background:#ff3860;margin-right:6px;animation:pulse-red 1s infinite}
+
+/* 데스크 */
+.desk{position:absolute;width:110px;height:70px;bottom:16%;
+  background:linear-gradient(180deg,#3d2817 0%,#2a1a0e 100%);
+  border:2px solid #1a0f07;border-radius:3px}
+.desk::before{content:'';position:absolute;left:-4px;right:-4px;top:-4px;height:6px;
+  background:#4a3020;border:2px solid #1a0f07;border-radius:2px}
+
+/* 모니터 */
+.monitor{position:absolute;width:38px;height:26px;top:-30px;left:50%;
+  transform:translateX(-50%);background:#0a2540;border:2px solid #1a1a2e;
+  border-radius:2px;animation:screen-flicker 2s infinite}
+.monitor::after{content:'';position:absolute;left:50%;bottom:-6px;
+  transform:translateX(-50%);width:12px;height:4px;background:#555}
+.monitor .code{position:absolute;top:2px;left:2px;right:2px;font-size:4px;
+  color:#00ff41;line-height:1.2;font-family:monospace}
+
+/* 캐릭터 (픽셀) */
+.char{position:absolute;width:28px;height:44px;bottom:22%;z-index:3;
+  animation:bob 1.8s ease-in-out infinite}
+.char.active{animation:bob-fast 0.8s ease-in-out infinite}
+.head{position:absolute;top:0;left:4px;width:20px;height:20px;
+  border:2px solid #3a2010;animation:blink 3.5s infinite}
+.head::before{content:'';position:absolute;top:6px;left:4px;width:3px;height:3px;
+  background:#fff;box-shadow:7px 0 0 #fff,2px 0 0 #000,9px 0 0 #000}
+.head::after{content:'';position:absolute;top:12px;left:7px;width:6px;height:1px;background:#3a2010}
+.body-p{position:absolute;top:20px;left:5px;width:18px;height:14px;border:2px solid #000}
+.legs{position:absolute;top:34px;left:6px;width:16px;height:8px;background:#2a2a5e;border:1px solid #000}
+.arm-l{position:absolute;top:22px;left:-1px;width:5px;height:12px;border:2px solid #3a2010;transform-origin:top center}
+.arm-r{position:absolute;top:22px;right:-1px;width:5px;height:12px;border:2px solid #3a2010;transform-origin:top center}
+.char.active .arm-l,.char.active .arm-r{animation:type-arm .3s ease-in-out infinite}
+
+/* 에이전트별 색상 */
+.agent-scout .head{background:#e8b88d}.agent-scout .body-p{background:#2196f3}.agent-scout .arm-l,.agent-scout .arm-r{background:#e8b88d}
+.agent-hunter .head{background:#e8b88d}.agent-hunter .body-p{background:#ff9800}.agent-hunter .arm-l,.agent-hunter .arm-r{background:#e8b88d}
+.agent-miner .head{background:#c9956b}.agent-miner .body-p{background:#4caf50}.agent-miner .arm-l,.agent-miner .arm-r{background:#c9956b}
+.agent-analyst .head{background:#f0cba8}.agent-analyst .body-p{background:#e91e63}.agent-analyst .arm-l,.agent-analyst .arm-r{background:#f0cba8}
+.agent-chem .head{background:#d9a77c}.agent-chem .body-p{background:#9c27b0}.agent-chem .arm-l,.agent-chem .arm-r{background:#d9a77c}
+.agent-brain .head{background:#e8b88d}.agent-brain .body-p{background:#00bcd4}.agent-brain .arm-l,.agent-brain .arm-r{background:#e8b88d}
+
+/* 이름표 */
+.nameplate{position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);
+  white-space:nowrap;font-size:9px;color:#fff;background:rgba(0,0,0,.7);
+  padding:1px 5px;border-radius:3px;border:1px solid #555}
+.status-dot{display:inline-block;width:5px;height:5px;border-radius:50%;
+  background:#666;margin-right:3px;vertical-align:middle}
+.active .status-dot{background:#00ff41;animation:pulse-green 1s infinite}
+
+/* 데이터 스트림 */
+.stream{position:absolute;font-size:12px;animation:data-stream 1.6s ease-in infinite;z-index:2}
+
+/* 중앙 서버 랙 */
+.server{position:absolute;top:30%;left:50%;transform:translateX(-50%);
+  width:46px;height:90px;background:linear-gradient(180deg,#222 0%,#111 100%);
+  border:2px solid #444;border-radius:3px;z-index:1}
+.server-led{position:absolute;left:6px;width:4px;height:4px;border-radius:50%;
+  background:#0f0;animation:server-blink .6s infinite}
+.server-led.l1{top:8px}.server-led.l2{top:18px;animation-delay:.1s}
+.server-led.l3{top:28px;animation-delay:.2s}.server-led.l4{top:38px;animation-delay:.3s}
+.server-led.l5{top:48px;animation-delay:.4s}.server-led.l6{top:58px;animation-delay:.5s}
+.server-label{position:absolute;bottom:4px;left:0;right:0;text-align:center;
+  font-size:8px;color:#0f0;letter-spacing:.5px}
+
+/* 뇌 (brain 에이전트 옆) */
+.brain-orb{position:absolute;font-size:22px;top:-18px;right:-10px;
+  animation:brain-pulse 1.2s ease-in-out infinite}
+
+/* 기어 (analyst 옆) */
+.gear{position:absolute;font-size:14px;top:-8px;right:-8px;animation:gear 2s linear infinite}
+
+/* 스캐너 광선 */
+.beam{position:absolute;top:20px;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,#00ff41,transparent);
+  opacity:.5;animation:data-stream 3s linear infinite}
+</style></head><body>
+
+<div class="office">
+  <div class="title-bar"><span class="led"></span>__STAGE_LABEL__ &nbsp;|&nbsp; AGA Foundation Model Lab — LIVE</div>
+  <div class="floor"></div>
+  <div class="wall-line"></div>
+
+  <!-- 중앙 서버 랙 -->
+  <div class="server">
+    <div class="server-led l1"></div><div class="server-led l2"></div>
+    <div class="server-led l3"></div><div class="server-led l4"></div>
+    <div class="server-led l5"></div><div class="server-led l6"></div>
+    <div class="server-label">KB-DB</div>
+  </div>
+
+  <!-- Agent 1: Paper Scout (왼쪽 1) -->
+  <div class="desk" style="left:4%;"></div>
+  <div class="monitor" style="left:calc(4% + 55px);bottom:calc(16% + 70px);transform:translateX(-50%)">
+    <div class="code">search:<br>pubmed<br>AGA...</div>
+  </div>
+  <div class="char agent-scout __SCOUT__" style="left:calc(4% + 55px);transform:translateX(-50%)">
+    <div class="head"></div><div class="body-p"></div><div class="legs"></div>
+    <div class="arm-l"></div><div class="arm-r"></div>
+    <div class="nameplate"><span class="status-dot"></span>🔍 Scout</div>
+  </div>
+  <div class="stream" style="left:calc(4% + 50px);top:30%;animation-delay:0s">📄</div>
+  <div class="stream" style="left:calc(4% + 65px);top:30%;animation-delay:.6s">📄</div>
+
+  <!-- Agent 2: Patent Hunter (왼쪽 2) -->
+  <div class="desk" style="left:22%;"></div>
+  <div class="monitor" style="left:calc(22% + 55px);bottom:calc(16% + 70px);transform:translateX(-50%)">
+    <div class="code">USPTO<br>EPO<br>patent</div>
+  </div>
+  <div class="char agent-hunter __HUNTER__" style="left:calc(22% + 55px);transform:translateX(-50%)">
+    <div class="head"></div><div class="body-p"></div><div class="legs"></div>
+    <div class="arm-l"></div><div class="arm-r"></div>
+    <div class="nameplate"><span class="status-dot"></span>📜 Hunter</div>
+  </div>
+  <div class="stream" style="left:calc(22% + 55px);top:32%;animation-delay:.3s">📜</div>
+
+  <!-- Agent 3: Text Miner (왼쪽 3) -->
+  <div class="desk" style="left:40%;"></div>
+  <div class="monitor" style="left:calc(40% + 55px);bottom:calc(16% + 70px);transform:translateX(-50%)">
+    <div class="code">pdf→txt<br>extract<br>page 42</div>
+  </div>
+  <div class="char agent-miner __MINER__" style="left:calc(40% + 55px);transform:translateX(-50%)">
+    <div class="head"></div><div class="body-p"></div><div class="legs"></div>
+    <div class="arm-l"></div><div class="arm-r"></div>
+    <div class="nameplate"><span class="status-dot"></span>⛏️ Miner</div>
+  </div>
+  <div class="stream" style="left:calc(40% + 55px);top:28%;animation-delay:.9s">📑</div>
+
+  <!-- Agent 4: AI Analyst (오른쪽 1) -->
+  <div class="desk" style="left:58%;"></div>
+  <div class="monitor" style="left:calc(58% + 55px);bottom:calc(16% + 70px);transform:translateX(-50%)">
+    <div class="code">claude<br>haiku<br>extract</div>
+  </div>
+  <div class="char agent-analyst __ANALYST__" style="left:calc(58% + 55px);transform:translateX(-50%)">
+    <div class="head"></div><div class="body-p"></div><div class="legs"></div>
+    <div class="arm-l"></div><div class="arm-r"></div>
+    <div class="gear">⚙️</div>
+    <div class="nameplate"><span class="status-dot"></span>🤖 Analyst</div>
+  </div>
+  <div class="stream" style="left:calc(58% + 55px);top:30%;animation-delay:.2s">🧬</div>
+
+  <!-- Agent 5: Chem Detective (오른쪽 2) -->
+  <div class="desk" style="left:76%;"></div>
+  <div class="monitor" style="left:calc(76% + 55px);bottom:calc(16% + 70px);transform:translateX(-50%)">
+    <div class="code">pubchem<br>SMILES<br>mol→3D</div>
+  </div>
+  <div class="char agent-chem __CHEM__" style="left:calc(76% + 55px);transform:translateX(-50%)">
+    <div class="head"></div><div class="body-p"></div><div class="legs"></div>
+    <div class="arm-l"></div><div class="arm-r"></div>
+    <div class="nameplate"><span class="status-dot"></span>💊 Chem</div>
+  </div>
+  <div class="stream" style="left:calc(76% + 55px);top:32%;animation-delay:.7s">💊</div>
+
+  <!-- Agent 6: Brain (중앙 상단 - foundation model) -->
+  <div class="char agent-brain __BRAIN__" style="left:50%;bottom:52%;transform:translateX(-50%);z-index:5">
+    <div class="head"></div><div class="body-p"></div><div class="legs"></div>
+    <div class="arm-l"></div><div class="arm-r"></div>
+    <div class="brain-orb">🧠</div>
+    <div class="nameplate"><span class="status-dot"></span>🧠 Brain</div>
+  </div>
+
+  <!-- 스캔 빔 -->
+  <div class="beam"></div>
+</div>
+
+</body></html>"""
+
+        # placeholder 치환
+        office_html = office_html.replace("__STAGE_LABEL__", f"{stage_icon} {stage_label}")
+        office_html = office_html.replace("__SCOUT__", _act("scout"))
+        office_html = office_html.replace("__HUNTER__", _act("hunter"))
+        office_html = office_html.replace("__MINER__", _act("miner"))
+        office_html = office_html.replace("__ANALYST__", _act("analyst"))
+        office_html = office_html.replace("__CHEM__", _act("chem"))
+        office_html = office_html.replace("__BRAIN__", _act("brain"))
+
+        _components.html(office_html, height=360, scrolling=False)
+
+        # 터미널 로그 박스 (별도 markdown - dedent 적용)
+        st.markdown(f"""<div style="background:#0d0d0d;border:2px solid #3e3e3e;border-top:2px solid #00ff41;border-radius:4px;padding:10px 12px;margin-top:4px;font-family:'Courier New',monospace;font-size:11px;color:#00ff41;max-height:150px;overflow-y:auto;line-height:1.6;">{log_html}</div>""", unsafe_allow_html=True)
+
+        # 사용하지 않는 legacy markdown 블록 (제거됨 - 아래는 빈 문자열)
+        _ = f"""
         <style>
         @keyframes mc-walk {{
             0%, 100% {{ transform: translateX(0) translateY(0); }}
@@ -2609,7 +2847,8 @@ with tab13:
         <div class="mc-log-box">
             {log_html}
         </div>
-        """, unsafe_allow_html=True)
+        """
+        del _
 
         _rc1, _rc2, _rc3 = st.columns([1, 1, 4])
         with _rc1:
