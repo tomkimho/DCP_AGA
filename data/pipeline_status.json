@@ -1,6 +1,6 @@
 {
   "agent": "biorxiv_searcher",
-  "status": "no_results",
-  "last_run": "2026-04-14 21:02:09",
-  "papers_found": 0
+  "status": "completed",
+  "last_run": "2026-04-15 21:03:11",
+  "papers_found": 1
 }
