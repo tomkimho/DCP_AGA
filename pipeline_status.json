@@ -1,117 +1,117 @@
 {
   "agent": "paper_searcher",
   "status": "idle",
-  "last_run": "2026-06-21T21:18:29.723784",
+  "last_run": "2026-06-22T22:06:58.398546",
   "papers_found": 0,
   "papers_downloaded": 0,
   "papers_skipped": 0,
   "overall_status": "completed",
-  "start_time": "2026-06-21T21:18:29.723784",
+  "start_time": "2026-06-22T22:06:58.398546",
   "errors": [],
-  "steps_completed": 8,
-  "total_steps": 8,
+  "steps_completed": 10,
+  "total_steps": 10,
   "current_step": "파이프라인 최종 정리",
   "step_details": {
     "PubMed 논문 수집": {
       "status": "completed",
-      "timestamp": "2026-06-21T21:18:29.927614",
+      "timestamp": "2026-06-22T22:06:58.593357",
       "details": {}
     },
     "특허 자동 수집": {
       "status": "completed",
-      "timestamp": "2026-06-21T21:18:33.850753",
+      "timestamp": "2026-06-22T22:07:02.284055",
       "details": {}
     },
     "BioRxiv 사전인쇄 수집": {
       "status": "completed",
-      "timestamp": "2026-06-21T21:21:18.643086",
+      "timestamp": "2026-06-22T22:07:55.484662",
       "details": {}
     },
     "PDF 텍스트 추출": {
       "status": "completed",
-      "timestamp": "2026-06-21T21:21:18.893804",
+      "timestamp": "2026-06-22T22:07:55.750488",
       "details": {}
     },
     "정보 AI 분석": {
       "status": "completed",
-      "timestamp": "2026-06-21T21:21:20.714536",
+      "timestamp": "2026-06-22T22:07:57.524901",
       "details": {}
     },
     "화합물 구조 수집": {
       "status": "completed",
-      "timestamp": "2026-06-21T21:21:21.695428",
+      "timestamp": "2026-06-22T22:07:58.518285",
       "details": {}
     },
     "바이오마커 분석": {
       "status": "completed",
-      "timestamp": "2026-06-21T21:21:22.730038",
+      "timestamp": "2026-06-22T22:09:07.506351",
       "details": {}
     },
     "파이프라인 최종 정리": {
       "status": "completed",
-      "timestamp": "2026-06-21T21:21:22.731950",
+      "timestamp": "2026-06-22T22:09:07.508309",
       "details": {}
     },
     "지능형 패턴 분석": {
       "status": "completed",
-      "timestamp": "2026-06-15T22:26:14.692395",
+      "timestamp": "2026-06-22T22:07:59.449195",
       "details": {}
     },
     "AI 신약 후보 도출": {
       "status": "completed",
-      "timestamp": "2026-06-15T22:27:28.991425",
+      "timestamp": "2026-06-22T22:09:06.462463",
       "details": {}
     }
   },
   "steps": {
     "05_pubmed": {
       "status": "completed",
-      "timestamp": "2026-06-21T21:18:29.927614",
+      "timestamp": "2026-06-22T22:06:58.593357",
       "details": {}
     },
     "06_특허": {
       "status": "completed",
-      "timestamp": "2026-06-21T21:18:33.850753",
+      "timestamp": "2026-06-22T22:07:02.284055",
       "details": {}
     },
     "07_biorxiv": {
       "status": "completed",
-      "timestamp": "2026-06-21T21:21:18.643086",
+      "timestamp": "2026-06-22T22:07:55.484662",
       "details": {}
     },
     "01_pdf": {
       "status": "completed",
-      "timestamp": "2026-06-21T21:21:18.893804",
+      "timestamp": "2026-06-22T22:07:55.750488",
       "details": {}
     },
     "02_정보추출": {
       "status": "completed",
-      "timestamp": "2026-06-21T21:21:20.714536",
+      "timestamp": "2026-06-22T22:07:57.524901",
       "details": {}
     },
     "03_화합물": {
       "status": "completed",
-      "timestamp": "2026-06-21T21:21:21.695428",
+      "timestamp": "2026-06-22T22:07:58.518285",
       "details": {}
     },
     "12_바이오마커": {
       "status": "completed",
-      "timestamp": "2026-06-21T21:21:22.730038",
+      "timestamp": "2026-06-22T22:09:07.506351",
       "details": {}
     },
     "파이프라인 최종 정리": {
       "status": "completed",
-      "timestamp": "2026-06-21T21:21:22.731950",
+      "timestamp": "2026-06-22T22:09:07.508309",
       "details": {}
     },
     "10_패턴분석": {
       "status": "completed",
-      "timestamp": "2026-06-15T22:26:14.692395",
+      "timestamp": "2026-06-22T22:07:59.449195",
       "details": {}
     },
     "11_신약후보": {
       "status": "completed",
-      "timestamp": "2026-06-15T22:27:28.991425",
+      "timestamp": "2026-06-22T22:09:06.462463",
       "details": {}
     }
   },
@@ -123,5 +123,5 @@
     "pdf_downloaded": 1,
     "abstract_only": 15
   },
-  "end_time": "2026-06-21T21:21:22.732282"
+  "end_time": "2026-06-22T22:09:07.508606"
 }
