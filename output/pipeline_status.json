@@ -1,17 +1,17 @@
 {
   "step_10_intelligent_analysis": {
     "completed": true,
-    "timestamp": "2026-07-13T21:06:45.388383",
+    "timestamp": "2026-07-20T21:20:11.043917",
     "dark_targets_identified": 1176,
     "gaps_identified": 267,
     "synergies_identified": 5389
   },
   "step_11_candidate_discovery": {
     "completed": true,
-    "timestamp": "2026-07-13T21:07:51.724139",
+    "timestamp": "2026-07-20T21:21:23.413841",
     "dark_targets_processed": 5,
-    "candidates_generated": 9,
-    "valid_candidates": 9,
+    "candidates_generated": 12,
+    "valid_candidates": 12,
     "model_used": "claude-haiku-4-5-20251001"
   }
 }
