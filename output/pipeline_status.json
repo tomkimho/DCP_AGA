@@ -1,14 +1,14 @@
 {
   "step_10_intelligent_analysis": {
     "completed": true,
-    "timestamp": "2026-07-20T21:20:11.043917",
+    "timestamp": "2026-07-27T21:19:35.927542",
     "dark_targets_identified": 1176,
     "gaps_identified": 267,
     "synergies_identified": 5389
   },
   "step_11_candidate_discovery": {
     "completed": true,
-    "timestamp": "2026-07-20T21:21:23.413841",
+    "timestamp": "2026-07-27T21:20:44.673805",
     "dark_targets_processed": 5,
     "candidates_generated": 12,
     "valid_candidates": 12,
