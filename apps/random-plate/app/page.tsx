@@ -1,12 +1,17 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import Wheel, { COLORS, SECTORS } from "@/components/Wheel";
 import Confetti from "@/components/Confetti";
+import Roulette, { COLORS } from "@/components/games/Roulette";
+import SlotMachine from "@/components/games/SlotMachine";
+import Revolver from "@/components/games/Revolver";
+import CardFlip from "@/components/games/CardFlip";
+import { GAMES, gameById, type GameId } from "@/lib/games";
 import { walkMinutes } from "@/lib/grid";
+import * as sound from "@/lib/sound";
 import type { Coords, Place, PlacesResponse } from "@/lib/types";
 
-type Step = "location" | "spin" | "result";
+type Step = "location" | "play" | "result";
 
 const RADIUS_OPTIONS = [
   { m: 400, label: "도보 5분" },
@@ -48,16 +53,39 @@ export default function Page() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  const [gameId, setGameId] = useState<GameId>("roulette");
   const [slots, setSlots] = useState<Place[]>([]);
-  const [targetIndex, setTargetIndex] = useState(0);
-  const [spinning, setSpinning] = useState(false);
+  const [round, setRound] = useState(0);
+  const [running, setRunning] = useState(false);
   const [winner, setWinner] = useState<Place | null>(null);
-  const [rerolls, setRerolls] = useState(0);
   const [confettiKey, setConfettiKey] = useState(0);
   const [copied, setCopied] = useState(false);
+  const [muted, setMuted] = useState(false);
 
   const meal = useMemo(() => mealLabel(), []);
+  const game = gameById(gameId);
   const apiCalls = useRef(0);
+  const revealTimer = useRef<number | null>(null);
+
+  const clearReveal = useCallback(() => {
+    if (revealTimer.current !== null) {
+      clearTimeout(revealTimer.current);
+      revealTimer.current = null;
+    }
+  }, []);
+
+  useEffect(() => clearReveal, [clearReveal]);
+
+  useEffect(() => {
+    sound.loadMutePref();
+    setMuted(sound.isMuted());
+    return sound.onMuteChange(setMuted);
+  }, []);
+
+  const dealSlots = useCallback((from: Place[], count: number) => {
+    setSlots(shuffle(from).slice(0, Math.min(count, from.length)));
+    setRound((r) => r + 1);
+  }, []);
 
   const loadPlaces = useCallback(
     async (coords: Coords, label: string, radius: number) => {
@@ -82,19 +110,20 @@ export default function Page() {
         setPool(data.places);
         setDemo(data.demo);
         setPlaceLabel(label);
-        setSlots(shuffle(data.places).slice(0, SECTORS));
-        setRerolls(0);
-        setStep("spin");
+        setWinner(null);
+        dealSlots(data.places, gameById(gameId).slots);
+        setStep("play");
       } catch (e) {
         setError(e instanceof Error ? e.message : "알 수 없는 오류");
       } finally {
         setLoading(false);
       }
     },
-    []
+    [dealSlots, gameId]
   );
 
   const useGps = useCallback(() => {
+    sound.unlock();
     if (!("geolocation" in navigator)) {
       setError("이 브라우저는 위치 기능을 지원하지 않습니다. 아래에서 골라주세요.");
       return;
@@ -116,31 +145,51 @@ export default function Page() {
     );
   }, [loadPlaces, radiusM]);
 
-  const spin = useCallback(() => {
-    if (spinning || slots.length === 0) return;
-    setWinner(null);
-    setTargetIndex(Math.floor(Math.random() * Math.min(SECTORS, slots.length)));
-    setSpinning(true);
-  }, [spinning, slots.length]);
-
-  const onSettled = useCallback(() => {
-    if (!spinning) return;
-    setSpinning(false);
-    const picked = slots[targetIndex];
-    if (picked) {
+  /**
+   * 게임이 결과를 확정한 순간 바로 결과 화면으로 넘기면
+   * 슬롯의 777이 맞춰지는 장면이나 룰렛이 멈춘 자리를 볼 수 없다.
+   * 축하 효과는 즉시 터뜨리고, 화면 전환만 잠깐 미룬다.
+   */
+  const onResult = useCallback(
+    (index: number) => {
+      const picked = slots[index];
+      if (!picked) return;
       setWinner(picked);
       setConfettiKey((k) => k + 1);
-      setStep("result");
-    }
-  }, [spinning, slots, targetIndex]);
+      sound.fanfare();
 
-  /** 리롤 — 고정된 후보 풀 안에서만 다시 뽑으므로 API 호출이 발생하지 않는다 */
-  const reroll = useCallback(() => {
+      clearReveal();
+      revealTimer.current = window.setTimeout(() => {
+        revealTimer.current = null;
+        setStep("result");
+      }, 1100);
+    },
+    [slots, clearReveal]
+  );
+
+  /** 같은 후보 풀 안에서 판을 다시 짠다 — 외부 API 호출이 발생하지 않는다 */
+  const playAgain = useCallback(() => {
+    sound.unlock();
+    sound.blip();
+    clearReveal();
     setWinner(null);
-    setSlots(shuffle(pool).slice(0, SECTORS));
-    setRerolls((n) => n + 1);
-    setStep("spin");
-  }, [pool]);
+    dealSlots(pool, game.slots);
+    setStep("play");
+  }, [pool, game.slots, dealSlots, clearReveal]);
+
+  const switchGame = useCallback(
+    (id: GameId) => {
+      if (running || id === gameId) return;
+      sound.unlock();
+      sound.blip();
+      clearReveal();
+      setGameId(id);
+      setWinner(null);
+      dealSlots(pool, gameById(id).slots);
+      setStep("play");
+    },
+    [running, gameId, pool, dealSlots, clearReveal]
+  );
 
   const share = useCallback(async () => {
     if (!winner) return;
@@ -162,20 +211,58 @@ export default function Page() {
     setCopied(false);
   }, [winner]);
 
+  /**
+   * 컴포넌트 함수로 만들면 Page가 리렌더될 때마다 새 타입이 되어 게임이
+   * 통째로 리마운트된다(회전 중 상태가 날아간다). 엘리먼트를 반환하는
+   * 평범한 함수여야 React가 SlotMachine/Roulette 같은 실제 타입으로 재조정한다.
+   */
+  const renderGame = () => {
+    const props = {
+      slots,
+      onResult,
+      onRunningChange: setRunning,
+    };
+    switch (gameId) {
+      case "slot":
+        return <SlotMachine {...props} />;
+      case "revolver":
+        return <Revolver {...props} />;
+      case "cards":
+        return <CardFlip {...props} />;
+      default:
+        return <Roulette {...props} />;
+    }
+  };
+
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-md flex-col px-5 pb-10 pt-8">
+    <main className="mx-auto w-full max-w-md px-5 pb-12 pt-6 lg:max-w-5xl lg:px-8 lg:pt-10">
       <Confetti fire={confettiKey} />
 
-      <header className="mb-7">
-        <h1 className="text-2xl font-black tracking-tight">
-          Random&nbsp;Plate
-          <span className="ml-2 align-middle text-[11px] font-bold text-white/40">
-            v0
-          </span>
-        </h1>
-        <p className="mt-1 text-sm text-white/55">
-          오늘 {meal} 뭐 먹지? 룰렛 한 번이면 끝.
-        </p>
+      <header className="mb-6 flex items-start justify-between gap-4 lg:mb-9">
+        <div>
+          <h1 className="text-2xl font-black tracking-tight lg:text-3xl">
+            Random&nbsp;Plate
+            <span className="ml-2 align-middle text-[11px] font-bold text-white/40">
+              v0
+            </span>
+          </h1>
+          <p className="mt-1 text-sm text-white/55">
+            오늘 {meal} 뭐 먹지? 한 판이면 끝.
+          </p>
+        </div>
+
+        <button
+          onClick={() => {
+            sound.unlock();
+            const next = sound.toggleMute();
+            if (!next) sound.blip();
+          }}
+          className="shrink-0 rounded-full border border-white/15 bg-white/5 px-3 py-2 text-sm transition hover:bg-white/10"
+          aria-label={muted ? "효과음 켜기" : "효과음 끄기"}
+          title={muted ? "효과음 켜기" : "효과음 끄기"}
+        >
+          {muted ? "🔇" : "🔊"}
+        </button>
       </header>
 
       {error && (
@@ -185,7 +272,7 @@ export default function Page() {
       )}
 
       {step === "location" && (
-        <section className="pop-in flex flex-col gap-6">
+        <section className="pop-in mx-auto flex max-w-md flex-col gap-6">
           <div>
             <p className="mb-3 text-sm font-semibold text-white/80">
               얼마나 걸어갈 수 있나요?
@@ -222,7 +309,7 @@ export default function Page() {
             <p className="mb-3 text-sm font-semibold text-white/80">
               또는 위치를 직접 고르기
             </p>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
               {PRESETS.map((p) => (
                 <button
                   key={p.name}
@@ -238,127 +325,148 @@ export default function Page() {
         </section>
       )}
 
-      {(step === "spin" || step === "result") && (
-        <section className="pop-in flex flex-1 flex-col">
-          <div className="mb-4 flex items-center justify-between text-xs text-white/50">
-            <span>
-              {placeLabel} · 반경 {radiusM}m · 후보 {pool.length}곳
-            </span>
-            <button
-              onClick={() => {
-                setStep("location");
-                setWinner(null);
-              }}
-              className="underline underline-offset-2 hover:text-white/80"
-            >
-              위치 변경
-            </button>
-          </div>
-
-          <Wheel
-            slots={slots}
-            spinning={spinning}
-            targetIndex={targetIndex}
-            onSettled={onSettled}
-          />
-
-          {step === "spin" && (
-            <ol className="mt-6 grid grid-cols-2 gap-x-3 gap-y-2.5">
-              {slots.map((p, i) => (
-                <li
-                  key={p.id}
-                  data-slot={i}
-                  className="flex items-center gap-2 overflow-hidden"
+      {(step === "play" || step === "result") && (
+        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start lg:gap-12">
+          {/* ── 왼쪽: 게임 또는 결과 ── */}
+          <section className="flex flex-col gap-5">
+            <div className="flex flex-wrap gap-2">
+              {GAMES.map((g) => (
+                <button
+                  key={g.id}
+                  onClick={() => switchGame(g.id)}
+                  disabled={running}
+                  className={`rounded-full border px-3 py-1.5 text-xs font-bold transition disabled:opacity-40 ${
+                    g.id === gameId
+                      ? "border-white/70 bg-white text-black"
+                      : "border-white/15 bg-white/5 text-white/70 hover:bg-white/10"
+                  }`}
                 >
-                  <span
-                    className="grid h-5 w-5 shrink-0 place-items-center rounded-md text-[11px] font-black text-black"
-                    style={{ background: COLORS[i % COLORS.length] }}
-                  >
-                    {i + 1}
-                  </span>
-                  <span className="truncate text-[13px] font-semibold text-white/80">
-                    {p.name}
-                  </span>
-                </li>
+                  {g.emoji} {g.name}
+                </button>
               ))}
-            </ol>
-          )}
+            </div>
 
-          {step === "spin" && (
-            <div className="mt-7 flex flex-col gap-3">
+            {step === "play" ? (
+              <div key={`${gameId}-${round}`} className="pop-in">
+                {renderGame()}
+              </div>
+            ) : (
+              winner && (
+                <div className="pop-in flex flex-col gap-4">
+                  <div className="card rounded-2xl px-5 py-6 lg:px-7 lg:py-8">
+                    <p className="text-xs font-bold tracking-wide text-fuchsia-300">
+                      오늘의 {meal} · {game.emoji} {game.name}
+                    </p>
+                    <h2 className="mt-1 text-2xl font-black leading-tight lg:text-4xl">
+                      {winner.name}
+                    </h2>
+                    <p className="mt-2 text-sm text-white/60">
+                      {winner.category} · 약 {winner.distanceM}m (도보{" "}
+                      {walkMinutes(winner.distanceM)}분)
+                    </p>
+                    {winner.roadAddress && (
+                      <p className="mt-1 text-xs text-white/40">
+                        {winner.roadAddress}
+                      </p>
+                    )}
+                  </div>
+
+                  <button onClick={playAgain} className="btn-primary">
+                    🔄 다시 하기
+                  </button>
+
+                  <a
+                    href={winner.placeUrl}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="rounded-2xl bg-[#ffe812] px-5 py-4 text-center text-base font-black text-black transition active:scale-[0.98]"
+                  >
+                    카카오맵에서 보기
+                  </a>
+
+                  <button onClick={share} className="btn-ghost">
+                    {copied ? "복사됨!" : "공유하기"}
+                  </button>
+                </div>
+              )
+            )}
+          </section>
+
+          {/* ── 오른쪽: 후보 목록과 조작 ── */}
+          <aside className="mt-8 flex flex-col gap-4 lg:mt-0">
+            <div className="flex items-center justify-between text-xs text-white/50">
+              <span>
+                {placeLabel} · 반경 {radiusM}m · 후보 {pool.length}곳
+              </span>
               <button
-                onClick={spin}
-                disabled={spinning}
-                className="rounded-2xl bg-white px-5 py-4 text-base font-black text-black transition active:scale-[0.98] disabled:opacity-50"
+                onClick={() => {
+                  clearReveal();
+                  setStep("location");
+                  setWinner(null);
+                }}
+                disabled={running}
+                className="underline underline-offset-2 hover:text-white/80 disabled:opacity-40"
               >
-                {spinning ? "돌리는 중…" : "🎡 돌리기"}
-              </button>
-              <button
-                onClick={reroll}
-                disabled={spinning}
-                className="rounded-2xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-bold text-white/75 transition hover:bg-white/10 disabled:opacity-40"
-              >
-                후보 8곳 다시 뽑기
+                위치 변경
               </button>
             </div>
-          )}
 
-          {step === "result" && winner && (
-            <div className="pop-in mt-7 flex flex-col gap-4">
-              <div className="card rounded-2xl px-5 py-5">
-                <p className="text-xs font-bold tracking-wide text-fuchsia-300">
-                  오늘의 {meal}
-                </p>
-                <h2 className="mt-1 text-2xl font-black leading-tight">
-                  {winner.name}
-                </h2>
-                <p className="mt-2 text-sm text-white/60">
-                  {winner.category} · 약 {winner.distanceM}m (도보{" "}
-                  {walkMinutes(winner.distanceM)}분)
-                </p>
-                {winner.roadAddress && (
-                  <p className="mt-1 text-xs text-white/40">
-                    {winner.roadAddress}
-                  </p>
-                )}
-              </div>
-
-              <a
-                href={winner.placeUrl}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="rounded-2xl bg-[#ffe812] px-5 py-4 text-center text-base font-black text-black transition active:scale-[0.98]"
-              >
-                카카오맵에서 보기
-              </a>
-
-              <div className="grid grid-cols-2 gap-3">
-                <button
-                  onClick={share}
-                  className="rounded-2xl border border-white/15 bg-white/5 px-4 py-3 text-sm font-bold transition hover:bg-white/10"
-                >
-                  {copied ? "복사됨!" : "공유하기"}
-                </button>
-                <button
-                  onClick={reroll}
-                  className="rounded-2xl border border-white/15 bg-white/5 px-4 py-3 text-sm font-bold transition hover:bg-white/10"
-                >
-                  다시 정하기
-                </button>
-              </div>
+            <div className="card rounded-2xl p-4">
+              <p className="mb-3 text-xs font-bold text-white/60">
+                이번 판 후보 {slots.length}곳
+              </p>
+              <ol className="grid grid-cols-1 gap-2.5 sm:grid-cols-2 lg:grid-cols-1">
+                {slots.map((p, i) => {
+                  const isWinner = winner?.id === p.id;
+                  return (
+                    <li
+                      key={p.id}
+                      data-slot={i}
+                      className={`flex items-center gap-2 overflow-hidden rounded-lg px-1.5 py-1 transition ${
+                        isWinner ? "bg-white/10" : ""
+                      }`}
+                    >
+                      <span
+                        className="grid h-5 w-5 shrink-0 place-items-center rounded-md text-[11px] font-black text-black"
+                        style={{ background: COLORS[i % COLORS.length] }}
+                      >
+                        {i + 1}
+                      </span>
+                      <span
+                        className={`truncate text-[13px] font-semibold ${
+                          isWinner ? "text-white" : "text-white/75"
+                        }`}
+                      >
+                        {p.name}
+                      </span>
+                      <span className="ml-auto shrink-0 text-[11px] text-white/35">
+                        {p.distanceM}m
+                      </span>
+                    </li>
+                  );
+                })}
+              </ol>
             </div>
-          )}
 
-          <p className="mt-6 text-center text-[11px] leading-relaxed text-white/35">
-            리롤 {rerolls}회 · 이번 세션 외부 API 호출{" "}
-            <b className="text-white/60">{apiCalls.current}회</b>
-            <br />
-            (후보 풀을 고정해 두므로 다시 뽑아도 호출이 늘지 않습니다)
-          </p>
-        </section>
+            <button
+              onClick={playAgain}
+              disabled={running}
+              className="btn-ghost"
+            >
+              후보 {game.slots}곳 다시 뽑기
+            </button>
+
+            <p className="text-center text-[11px] leading-relaxed text-white/35">
+              이번 세션 외부 API 호출{" "}
+              <b className="text-white/60">{apiCalls.current}회</b>
+              <br />
+              (후보 풀을 고정해 두므로 몇 번을 다시 해도 호출이 늘지 않습니다)
+            </p>
+          </aside>
+        </div>
       )}
 
-      <footer className="mt-auto pt-8 text-center text-[11px] leading-relaxed text-white/30">
+      <footer className="mt-12 text-center text-[11px] leading-relaxed text-white/30">
         {demo ? (
           <span className="inline-block rounded-full border border-amber-300/30 bg-amber-400/10 px-3 py-1 font-bold text-amber-200">
             데모 데이터 — 실제 식당이 아닙니다
