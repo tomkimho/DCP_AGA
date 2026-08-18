@@ -347,7 +347,10 @@ export default function Page() {
             </div>
 
             {step === "play" ? (
-              <div key={`${gameId}-${round}`} className="pop-in">
+              <div
+                key={`${gameId}-${round}`}
+                className="pop-in flex w-full lg:min-h-[540px] lg:items-center"
+              >
                 {renderGame()}
               </div>
             ) : (

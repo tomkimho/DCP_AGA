@@ -77,7 +77,7 @@ export default function Roulette({
   };
 
   return (
-    <div className="flex flex-col items-center gap-6">
+    <div className="flex w-full flex-col items-center gap-6">
       <div className="relative mx-auto aspect-square w-full max-w-[min(84vw,320px)] select-none lg:max-w-[380px]">
         <div className="absolute left-1/2 -top-1 z-10 -translate-x-1/2">
           <div
