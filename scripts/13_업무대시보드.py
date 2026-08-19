@@ -363,7 +363,9 @@ def render(payload):
                             "assets", "dashboard_template.html")
     with open(tpl_path, encoding="utf-8") as f:
         tpl = f.read()
-    data = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
+    # ensure_ascii=True: 한글을 \\uXXXX로 이스케이프한다. 뷰어가 인코딩을 잘못
+    # 잡아도 데이터는 ASCII라 깨지지 않고, 화면에는 정상 한글로 복원된다.
+    data = json.dumps(payload, ensure_ascii=True, separators=(",", ":"))
     data = data.replace("</", "<\\/")  # </script> 조기 종료 방지
     return tpl.replace("/*__DATA__*/null", data)
 
