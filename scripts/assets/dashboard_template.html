@@ -1,0 +1,797 @@
+<title>주간 업무 현황판</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+:root{
+  --bg:#F1F4F6; --surface:#FFFFFF; --surface-2:#E9EEF1; --surface-3:#F7F9FA;
+  --ink:#151B21; --ink-2:#4C5A61; --ink-3:#7C8A95;
+  --line:#DCE3E8; --line-2:#C6D0D7;
+  --accent:#0E6B72; --accent-ink:#0E6B72; --accent-soft:#DFEEEE;
+  --c-sales:#AE5429; --c-gov:#2A5AA4; --c-tech:#0E6B72; --c-biz:#77488F; --c-etc:#5A6670;
+  --ok:#2C7A4C; --warn:#9C6B08; --crit:#AE3535;
+  --heat:14,107,114;
+  --shadow:0 1px 2px rgba(21,27,33,.05), 0 6px 18px rgba(21,27,33,.05);
+  --radius:6px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1319; --surface:#161C24; --surface-2:#1E252E; --surface-3:#131920;
+    --ink:#E5EAEF; --ink-2:#A2AEB9; --ink-3:#6D7A86;
+    --line:#28313B; --line-2:#36414D;
+    --accent:#43ADB3; --accent-ink:#69C4C9; --accent-soft:#123037;
+    --c-sales:#DB8A5C; --c-gov:#7CA6E6; --c-tech:#5BBEC4; --c-biz:#B48BCB; --c-etc:#93A0AB;
+    --ok:#5FB37F; --warn:#D2A03E; --crit:#DE7272;
+    --heat:90,200,206;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.28);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1319; --surface:#161C24; --surface-2:#1E252E; --surface-3:#131920;
+  --ink:#E5EAEF; --ink-2:#A2AEB9; --ink-3:#6D7A86;
+  --line:#28313B; --line-2:#36414D;
+  --accent:#43ADB3; --accent-ink:#69C4C9; --accent-soft:#123037;
+  --c-sales:#DB8A5C; --c-gov:#7CA6E6; --c-tech:#5BBEC4; --c-biz:#B48BCB; --c-etc:#93A0AB;
+  --ok:#5FB37F; --warn:#D2A03E; --crit:#DE7272;
+  --heat:90,200,206;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.28);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  font-size:14px; line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{margin:0; font-weight:600; text-wrap:balance; letter-spacing:-.01em}
+a{color:inherit}
+button{font:inherit; color:inherit; cursor:pointer; background:none; border:none}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:3px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace; font-variant-numeric:tabular-nums}
+
+/* ---------------------------------------------------------- shell */
+.shell{display:grid; grid-template-columns:232px minmax(0,1fr); min-height:100vh}
+.rail{
+  position:sticky; top:0; height:100vh; overflow-y:auto;
+  background:var(--surface); border-right:1px solid var(--line);
+  display:flex; flex-direction:column; gap:22px; padding:22px 18px;
+}
+.brand{display:flex; flex-direction:column; gap:3px}
+.brand b{font-size:15px; font-weight:600; letter-spacing:-.02em}
+.brand span{font-size:11px; color:var(--ink-3); letter-spacing:.06em; text-transform:uppercase}
+.nav{display:flex; flex-direction:column; gap:1px}
+.nav button{
+  display:flex; align-items:center; gap:9px; width:100%;
+  padding:8px 10px; border-radius:var(--radius); color:var(--ink-2);
+  font-size:13.5px; text-align:left; transition:background .12s, color .12s;
+}
+.nav button:hover{background:var(--surface-2); color:var(--ink)}
+.nav button[aria-current="true"]{background:var(--accent-soft); color:var(--accent-ink); font-weight:500}
+.nav .dot{width:5px; height:5px; border-radius:50%; background:currentColor; opacity:.55; flex:none}
+.rail-foot{margin-top:auto; display:flex; flex-direction:column; gap:10px}
+.rail-note{font-size:11px; line-height:1.5; color:var(--ink-3)}
+.theme-toggle{
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+  padding:7px 10px; border:1px solid var(--line); border-radius:var(--radius);
+  font-size:12px; color:var(--ink-2);
+}
+.theme-toggle:hover{border-color:var(--line-2); color:var(--ink)}
+
+.main{min-width:0; padding:26px 30px 64px; display:flex; flex-direction:column; gap:26px}
+
+/* ---------------------------------------------------------- topbar */
+.topbar{display:flex; align-items:flex-end; justify-content:space-between; gap:20px; flex-wrap:wrap}
+.topbar h1{font-size:22px}
+.topbar .sub{font-size:12.5px; color:var(--ink-3); margin-top:3px}
+.search{position:relative; flex:none}
+.search input{
+  width:280px; padding:9px 12px 9px 32px; font:inherit; font-size:13px;
+  background:var(--surface); color:var(--ink);
+  border:1px solid var(--line); border-radius:var(--radius);
+}
+.search input::placeholder{color:var(--ink-3)}
+.search input:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft)}
+.search svg{position:absolute; left:10px; top:50%; transform:translateY(-50%); color:var(--ink-3)}
+
+/* ---------------------------------------------------------- primitives */
+.panel{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow)}
+.panel-head{
+  display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
+  padding:14px 18px; border-bottom:1px solid var(--line);
+}
+.panel-head h2{font-size:14.5px}
+.panel-head .hint{font-size:11.5px; color:var(--ink-3)}
+.panel-body{padding:18px}
+.eyebrow{font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); font-weight:500}
+
+.kpis{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px}
+.kpi{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px; box-shadow:var(--shadow)}
+.kpi .v{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; font-size:26px; font-weight:500; line-height:1.15; letter-spacing:-.02em}
+.kpi .k{font-size:11.5px; color:var(--ink-3); margin-top:4px}
+.kpi .m{font-size:11px; color:var(--ink-3); margin-top:6px; padding-top:6px; border-top:1px dashed var(--line)}
+.kpi.accent .v{color:var(--accent-ink)}
+
+.chip{
+  display:inline-flex; align-items:center; gap:5px; padding:2px 8px;
+  border-radius:99px; font-size:11.5px; line-height:1.7; white-space:nowrap;
+  border:1px solid currentColor; background:var(--surface-3);
+}
+.chip .swatch{width:6px; height:6px; border-radius:50%; background:currentColor}
+.c-sales{color:var(--c-sales)} .c-gov{color:var(--c-gov)} .c-tech{color:var(--c-tech)}
+.c-biz{color:var(--c-biz)} .c-etc{color:var(--c-etc)}
+
+.seg{display:inline-flex; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:var(--surface)}
+.seg button{padding:6px 12px; font-size:12.5px; color:var(--ink-2); border-right:1px solid var(--line)}
+.seg button:last-child{border-right:none}
+.seg button:hover{background:var(--surface-2)}
+.seg button[aria-pressed="true"]{background:var(--accent-soft); color:var(--accent-ink); font-weight:500}
+
+mark{background:var(--accent-soft); color:var(--accent-ink); border-radius:2px; padding:0 1px}
+
+/* ---------------------------------------------------------- heatmap */
+.scroll-x{overflow-x:auto}
+.heat{border-collapse:separate; border-spacing:2px; font-size:11px}
+.heat th{font-weight:400; color:var(--ink-3); text-align:left; white-space:nowrap}
+.heat thead th{font-size:10px; padding-bottom:4px; vertical-align:bottom}
+.heat thead th span{display:block; writing-mode:vertical-rl; transform:rotate(180deg); font-family:"IBM Plex Mono",monospace}
+.heat tbody th{padding-right:10px; color:var(--ink-2); font-size:12px; text-align:right}
+.heat td{width:16px; height:16px; border-radius:2px; background:transparent; box-shadow:inset 0 0 0 1px var(--line)}
+.heat td[data-v]:not([data-v="0"]){box-shadow:none}
+.legend{display:flex; align-items:center; gap:6px; font-size:11px; color:var(--ink-3)}
+.legend i{width:14px; height:10px; border-radius:2px; display:block}
+
+/* ---------------------------------------------------------- board */
+.board-nav{display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+.board-nav select{
+  font:inherit; font-size:13px; padding:7px 10px; background:var(--surface); color:var(--ink);
+  border:1px solid var(--line); border-radius:var(--radius);
+}
+.stepper{display:inline-flex; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden}
+.stepper button{padding:6px 11px; color:var(--ink-2)}
+.stepper button:hover:not(:disabled){background:var(--surface-2); color:var(--ink)}
+.stepper button:disabled{opacity:.35; cursor:not-allowed}
+.stepper button:first-child{border-right:1px solid var(--line)}
+
+.orgcard{border-top:1px solid var(--line)}
+.orgcard:first-child{border-top:none}
+.orgcard > header{
+  display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;
+  padding:13px 18px; background:var(--surface-3); border-bottom:1px solid var(--line);
+}
+.orgcard > header h3{font-size:13.5px}
+.orgcard > header .who{font-size:12px; color:var(--ink-3)}
+.orgcard > header .pill{
+  font-size:11px; color:var(--ink-3); font-family:"IBM Plex Mono",monospace;
+}
+.orgcard > header .toggle{
+  margin-left:auto; display:inline-flex; align-items:center; gap:6px;
+  font-size:11.5px; color:var(--ink-3); padding:3px 8px;
+  border:1px solid var(--line); border-radius:var(--radius);
+}
+.orgcard > header .toggle:hover{color:var(--ink); border-color:var(--line-2)}
+.orgcard > header .toggle .caret{transition:transform .15s; font-size:9px}
+.orgcard[data-collapsed="true"] .toggle .caret{transform:rotate(-90deg)}
+.orgcard[data-collapsed="true"] .cols{display:none}
+.repeat{
+  display:inline-block; margin-left:6px; padding:0 5px; border-radius:3px;
+  font-size:10.5px; font-family:"IBM Plex Mono",monospace;
+  background:var(--surface-2); color:var(--ink-3); border:1px solid var(--line);
+}
+.repeat.stale{color:var(--warn); border-color:currentColor}
+.drawer .spark-wrap{padding:12px 20px 0; color:var(--accent-ink)}
+.cols{display:grid; grid-template-columns:1fr 1fr}
+.col{padding:14px 18px 18px; min-width:0}
+.col + .col{border-left:1px solid var(--line)}
+.col > .eyebrow{display:flex; align-items:center; gap:6px; margin-bottom:10px}
+.col > .eyebrow b{width:6px; height:6px; border-radius:50%; display:block}
+.col.done > .eyebrow b{background:var(--ok)}
+.col.plan > .eyebrow b{background:var(--warn)}
+.catblock{margin-bottom:14px}
+.catblock:last-child{margin-bottom:0}
+.catblock > .cathead{display:flex; align-items:center; gap:6px; margin-bottom:5px}
+.catblock > .cathead .bar{width:3px; height:12px; border-radius:2px; background:currentColor}
+.catblock > .cathead span{font-size:11.5px; font-weight:500}
+.bullets{list-style:none; margin:0; padding:0 0 0 2px; display:flex; flex-direction:column; gap:3px}
+.bullets li{
+  font-size:12.5px; line-height:1.6; color:var(--ink-2);
+  padding-left:11px; position:relative; word-break:keep-all; overflow-wrap:anywhere;
+}
+.bullets li::before{
+  content:""; position:absolute; left:1px; top:.62em;
+  width:4px; height:1px; background:var(--line-2);
+}
+.bullets li.lead{color:var(--ink); font-weight:500; padding-left:0}
+.bullets li.lead::before{display:none}
+.bullets li.sub{padding-left:0; margin-left:0; color:var(--ink); margin-top:4px}
+.bullets li.sub::before{display:none}
+.bullets li:not(.sub):not(.lead){margin-left:11px}
+.tag{
+  display:inline-block; font-size:11px; padding:1px 6px; border-radius:3px;
+  background:var(--surface-2); color:var(--ink); font-weight:500; margin-right:4px;
+  border:1px solid var(--line);
+}
+.empty{font-size:12px; color:var(--ink-3); font-style:italic}
+
+/* ---------------------------------------------------------- table */
+table.grid{width:100%; border-collapse:collapse; font-size:12.5px}
+table.grid th{
+  text-align:left; font-size:11px; letter-spacing:.05em; text-transform:uppercase;
+  color:var(--ink-3); font-weight:500; padding:0 12px 8px; white-space:nowrap;
+  border-bottom:1px solid var(--line);
+}
+table.grid td{padding:9px 12px; border-bottom:1px solid var(--line); vertical-align:middle}
+table.grid tbody tr{cursor:pointer}
+table.grid tbody tr:hover{background:var(--surface-3)}
+table.grid tbody tr[aria-selected="true"]{background:var(--accent-soft)}
+.pname{font-weight:500; color:var(--ink)}
+.porgs{font-size:11px; color:var(--ink-3); margin-top:1px}
+.num{text-align:right; font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums}
+.spark{display:block}
+
+/* ---------------------------------------------------------- drawer */
+.drawer{
+  position:fixed; inset:0 0 0 auto; width:min(520px,92vw); z-index:40;
+  background:var(--surface); border-left:1px solid var(--line);
+  box-shadow:-14px 0 40px rgba(0,0,0,.14);
+  display:flex; flex-direction:column;
+  transform:translateX(100%); transition:transform .22s ease; visibility:hidden;
+}
+.drawer[data-open="true"]{transform:none; visibility:visible}
+.drawer header{
+  display:flex; align-items:flex-start; gap:12px; padding:18px 20px;
+  border-bottom:1px solid var(--line);
+}
+.drawer header h3{font-size:15px}
+.drawer header .meta{font-size:11.5px; color:var(--ink-3); margin-top:4px}
+.drawer .close{margin-left:auto; color:var(--ink-3); font-size:18px; line-height:1; padding:2px 6px}
+.drawer .close:hover{color:var(--ink)}
+.drawer .body{overflow-y:auto; padding:16px 20px 40px}
+.tl{list-style:none; margin:0; padding:0}
+.tl li{position:relative; padding:0 0 14px 18px; border-left:1px solid var(--line)}
+.tl li:last-child{border-left-color:transparent}
+.tl li::before{
+  content:""; position:absolute; left:-3.5px; top:6px; width:6px; height:6px;
+  border-radius:50%; background:var(--line-2);
+}
+.tl li[data-kind="done"]::before{background:var(--ok)}
+.tl li[data-kind="plan"]::before{background:var(--warn)}
+.tl .when{font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--ink-3)}
+.tl .what{font-size:12.5px; color:var(--ink-2); line-height:1.6; margin-top:2px; word-break:keep-all}
+.scrim{position:fixed; inset:0; background:rgba(10,14,18,.32); z-index:39; opacity:0; pointer-events:none; transition:opacity .22s}
+.scrim[data-open="true"]{opacity:1; pointer-events:auto}
+
+/* ---------------------------------------------------------- issues */
+.issuelist{display:flex; flex-direction:column}
+.issueday{display:grid; grid-template-columns:104px minmax(0,1fr); gap:16px; padding:14px 0; border-top:1px solid var(--line)}
+.issueday:first-child{border-top:none; padding-top:0}
+.issueday .when{font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-3); padding-top:1px}
+.issueday .when b{display:block; color:var(--ink); font-weight:500}
+.issueday ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:5px}
+.issueday li{
+  font-size:12.5px; line-height:1.6; color:var(--ink-2);
+  padding-left:12px; position:relative; word-break:keep-all;
+}
+.issueday li::before{content:""; position:absolute; left:0; top:.62em; width:5px; height:1px; background:var(--line-2)}
+.issueday li.new::before{background:var(--crit); width:5px; height:5px; border-radius:50%; top:.5em}
+.issueday li.new{color:var(--ink)}
+
+.reg{display:flex; flex-direction:column}
+.reg-row{
+  display:grid; grid-template-columns:minmax(0,1fr) 120px 96px;
+  gap:16px; align-items:start; padding:12px 0; border-top:1px solid var(--line);
+}
+.reg-row:first-child{border-top:none; padding-top:0}
+.reg-row .t{font-size:12.5px; line-height:1.6; color:var(--ink-2); word-break:keep-all; overflow-wrap:anywhere}
+.reg-row .t .flag{
+  display:inline-block; margin-right:6px; padding:0 6px; border-radius:3px;
+  font-size:10.5px; font-weight:500; border:1px solid currentColor;
+}
+.reg-row .t .flag.n{color:var(--ok)}
+.reg-row .t .flag.s{color:var(--crit)}
+.reg-row .t .flag.c{color:var(--ink-3)}
+.reg-row .d{font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--ink-3); line-height:1.5}
+.reg-row .d b{display:block; color:var(--ink-2); font-weight:400}
+.reg-row .runs{display:flex; align-items:center; gap:6px; justify-content:flex-end}
+.reg-row .runs span{font-family:"IBM Plex Mono",monospace; font-size:11.5px; color:var(--ink-2)}
+.reg-row .runs i{display:block; height:16px; border-radius:2px; background:currentColor}
+.reg-open{color:var(--crit)} .reg-closed{color:var(--ink-3)}
+
+.sectionhead{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap}
+.sectionhead h2{font-size:16px}
+.sectionhead p{margin:0; font-size:12.5px; color:var(--ink-3)}
+section{scroll-margin-top:20px}
+.stack{display:flex; flex-direction:column; gap:14px}
+.hidden{display:none !important}
+
+@media (max-width:1080px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static; height:auto; flex-direction:row; align-items:center; flex-wrap:wrap; gap:14px; border-right:none; border-bottom:1px solid var(--line)}
+  .nav{flex-direction:row; flex-wrap:wrap; gap:4px}
+  .nav button{width:auto; padding:6px 10px; font-size:13px}
+  .brand{flex:1 0 100%}
+  .rail-foot{margin-top:0; flex-direction:row; align-items:center}
+  .rail-note{display:none}
+  .main{padding:20px 18px 56px}
+  .cols{grid-template-columns:1fr}
+  .col + .col{border-left:none; border-top:1px solid var(--line)}
+  .search input{width:200px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important; animation:none !important}
+}
+</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand">
+      <b>주간 업무 현황판</b>
+      <span id="brandRange">—</span>
+    </div>
+    <nav class="nav" id="nav">
+      <button data-go="overview" aria-current="true"><i class="dot"></i>전체 요약</button>
+      <button data-go="board"><i class="dot"></i>회차별 보고</button>
+      <button data-go="projects"><i class="dot"></i>프로젝트 추적</button>
+      <button data-go="issues"><i class="dot"></i>이슈 · 지시사항</button>
+    </nav>
+    <div class="rail-foot">
+      <button class="theme-toggle" id="themeBtn" type="button">
+        <span>화면 테마</span><span id="themeLabel" class="mono">시스템</span>
+      </button>
+      <p class="rail-note">주간 업무보고 문서를 회의 회차 단위로 파싱해 재구성한 화면입니다. 원문 표현을 그대로 유지합니다.</p>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <h1>주간 업무 현황판</h1>
+        <p class="sub" id="subline">—</p>
+      </div>
+      <div class="search">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+          <circle cx="7" cy="7" r="4.5"></circle><path d="M10.5 10.5 14 14"></path>
+        </svg>
+        <input id="q" type="search" placeholder="키워드 검색 (예: 과제명, IRB)" autocomplete="off">
+      </div>
+    </div>
+
+    <!-- ========================================== 전체 요약 -->
+    <section id="overview" class="stack">
+      <div class="kpis" id="kpis"></div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>조직별 보고 활동량</h2>
+          <div class="legend">
+            <span>없음</span>
+            <i style="box-shadow:inset 0 0 0 1px var(--line)"></i>
+            <span style="margin-left:8px">적음</span>
+            <i style="background:rgba(var(--heat),.10)"></i>
+            <i style="background:rgba(var(--heat),.32)"></i>
+            <i style="background:rgba(var(--heat),.58)"></i>
+            <i style="background:rgba(var(--heat),.85)"></i>
+            <span>많음</span>
+          </div>
+        </div>
+        <div class="panel-body scroll-x">
+          <table class="heat" id="heat"></table>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>영역별 보고 비중</h2>
+          <span class="hint">진행현황 · 진행계획 항목 수 기준</span>
+        </div>
+        <div class="panel-body" id="catmix"></div>
+      </div>
+    </section>
+
+    <!-- ========================================== 회차별 보고 -->
+    <section id="board" class="stack hidden">
+      <div class="sectionhead">
+        <h2>회차별 보고</h2>
+        <p id="boardMeta">—</p>
+      </div>
+      <div class="panel">
+        <div class="panel-head">
+          <div class="board-nav">
+            <span class="stepper">
+              <button id="prevMeeting" type="button" title="이전 회차">◀</button>
+              <button id="nextMeeting" type="button" title="다음 회차">▶</button>
+            </span>
+            <select id="meetingPick" aria-label="회차 선택"></select>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+            <span class="hint" id="presenters"></span>
+            <span class="seg"><button id="expandAll" type="button">모두 펼치기</button><button id="collapseAll" type="button">모두 접기</button></span>
+          </div>
+        </div>
+        <div id="boardBody"></div>
+      </div>
+    </section>
+
+    <!-- ========================================== 프로젝트 추적 -->
+    <section id="projects" class="stack hidden">
+      <div class="sectionhead">
+        <h2>프로젝트 추적</h2>
+        <p>보고서에서 굵게 표기된 고객사 · 정부과제 · 기술 · 행사 단위를 회차별로 집계했습니다. 행을 누르면 이력이 열립니다.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-head">
+          <div class="seg" id="kindSeg">
+            <button data-kind="all" aria-pressed="true">전체</button>
+            <button data-kind="client">고객사·매출</button>
+            <button data-kind="grant">정부지원사업</button>
+            <button data-kind="product">기술·제품</button>
+            <button data-kind="event">행사</button>
+            <button data-kind="other">기타</button>
+          </div>
+          <span class="hint" id="projCount"></span>
+        </div>
+        <div class="panel-body scroll-x" style="padding-top:12px">
+          <table class="grid" id="projTable">
+            <thead><tr>
+              <th>항목</th><th>구분</th><th class="num">보고 항목</th>
+              <th>회차별 추이</th><th>최초</th><th>최근</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== 이슈 -->
+    <section id="issues" class="stack hidden">
+      <div class="sectionhead">
+        <h2>이슈 · 지시사항</h2>
+        <p>같은 항목이 여러 회차에 이월되므로 항목 단위로 묶었습니다. 연속 회차가 길수록 오래 남아 있는 건입니다.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-head">
+          <div class="seg" id="issueSeg">
+            <button data-t="issues" aria-pressed="true">이슈사항</button>
+            <button data-t="directives">대표님 지시사항</button>
+          </div>
+          <span class="hint" id="issueCount"></span>
+        </div>
+        <div class="panel-body"><div class="reg" id="issueList"></div></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <header>
+    <div>
+      <h3 id="dTitle">—</h3>
+      <div class="meta" id="dMeta"></div>
+    </div>
+    <button class="close" id="dClose" type="button" aria-label="닫기">✕</button>
+  </header>
+  <div class="spark-wrap" id="dSpark"></div>
+  <div class="body"><ul class="tl" id="dBody"></ul></div>
+</aside>
+
+<script>
+const DATA = /*__DATA__*/null;
+
+const CAT = Object.fromEntries(DATA.categories);
+const CATKEYS = DATA.categories.map(c => c[0]);
+const CATCLASS = {sales:'c-sales', gov:'c-gov', tech:'c-tech', biz:'c-biz', etc:'c-etc'};
+const KINDLABEL = {client:'고객사·매출', grant:'정부지원사업', product:'기술·제품', event:'행사', other:'기타'};
+const KINDCLASS = {client:'c-sales', grant:'c-gov', product:'c-tech', event:'c-biz', other:'c-etc'};
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const short = d => d.slice(5);
+
+let query = '';
+let meetingIdx = DATA.meetings.length - 1;
+let kindFilter = 'all';
+let issueTab = 'issues';
+
+/* 볼드 프로젝트명(…)을 태그로, 검색어를 하이라이트로 */
+function markup(text){
+  const parts = String(text).split('\u0003');
+  let html = '';
+  for (let i = 0; i < parts.length; i++){
+    const piece = highlight(esc(parts[i]));
+    html += (i % 2) ? `<span class="tag">${piece}</span>` : piece;
+  }
+  return html;
+}
+function highlight(html){
+  if (!query) return html;
+  const re = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+  return html.replace(re, '<mark>$1</mark>');
+}
+const hits = text => !query || String(text).toLowerCase().includes(query.toLowerCase());
+
+/* ---------------------------------------------------------- 요약 */
+function renderKPIs(){
+  const dates = DATA.dates;
+  const clients = DATA.projects.filter(p => p.kind === 'client');
+  const grants  = DATA.projects.filter(p => p.kind === 'grant');
+  const events  = DATA.projects.filter(p => p.kind === 'event');
+  const lastIdx = dates.length - 1;
+  const activeC = clients.filter(p => p.last >= lastIdx - 3).length;
+  const activeG = grants.filter(p => p.last >= lastIdx - 3).length;
+  const bullets = DATA.meetings[lastIdx].rows.reduce((n, r) =>
+    n + Object.values(r.done).flat().length + Object.values(r.plan).flat().length, 0);
+  const openIssues = DATA.issues.filter(r => r.open).length;
+  const openDirect = DATA.directives.filter(r => r.open).length;
+
+  const cards = [
+    {v: dates.length, k: '집계 회차', m: `${dates[0]} ~ ${dates[lastIdx]}`, accent:true},
+    {v: DATA.orgs.length, k: '보고 조직', m: DATA.meetings[lastIdx].rows.length + '개 조직 최근 보고'},
+    {v: clients.length, k: '고객사·매출 건', m: `최근 4회차 활성 ${activeC}건`},
+    {v: grants.length, k: '정부지원사업', m: `최근 4회차 활성 ${activeG}건`},
+    {v: events.length, k: '대외 행사', m: '학회 · 파트너링 포함'},
+    {v: bullets, k: '최근 회차 보고 항목', m: `미해결 이슈 ${openIssues}건 · 지시사항 ${openDirect}건`},
+  ];
+  $('#kpis').innerHTML = cards.map(c => `
+    <div class="kpi${c.accent ? ' accent' : ''}">
+      <div class="v">${c.v}</div><div class="k">${esc(c.k)}</div><div class="m">${esc(c.m)}</div>
+    </div>`).join('');
+
+  $('#brandRange').textContent = dates[0].slice(0,7) + ' – ' + dates[lastIdx].slice(0,7);
+  $('#subline').textContent =
+    `${dates[0]} ~ ${dates[lastIdx]} · 회의 ${dates.length}회 · 조직 ${DATA.orgs.length}개 · 추적 항목 ${DATA.projects.length}건`;
+}
+
+function renderHeat(){
+  const dates = DATA.dates;
+  const rows = DATA.orgs.map(o => [o.org, DATA.activity[o.org] || dates.map(() => 0)]);
+  const max = Math.max(1, ...rows.flatMap(r => r[1]));
+  const head = '<thead><tr><th></th>' +
+    dates.map(d => `<th><span>${short(d)}</span></th>`).join('') + '</tr></thead>';
+  const body = '<tbody>' + rows.map(([org, series]) => {
+    const cells = series.map((v, i) => {
+      const a = v ? (0.10 + 0.75 * Math.sqrt(v / max)).toFixed(3) : 0;
+      const bg = v ? `background:rgba(var(--heat),${a})` : '';
+      return `<td data-v="${v}" style="${bg}" title="${esc(org)} · ${dates[i]} · ${v}개 항목"></td>`;
+    }).join('');
+    return `<tr><th>${esc(org)}</th>${cells}</tr>`;
+  }).join('') + '</tbody>';
+  $('#heat').innerHTML = head + body;
+}
+
+function renderCatMix(){
+  const tally = {};
+  CATKEYS.forEach(k => tally[k] = {done: 0, plan: 0});
+  DATA.meetings.forEach(m => m.rows.forEach(r => {
+    for (const [k, v] of Object.entries(r.done)) if (tally[k]) tally[k].done += v.length;
+    for (const [k, v] of Object.entries(r.plan)) if (tally[k]) tally[k].plan += v.length;
+  }));
+  const total = Object.values(tally).reduce((n, t) => n + t.done + t.plan, 0) || 1;
+  $('#catmix').innerHTML = `<div style="display:flex;flex-direction:column;gap:10px">` +
+    CATKEYS.map(k => {
+      const t = tally[k], sum = t.done + t.plan;
+      const pct = (100 * sum / total);
+      return `<div style="display:grid;grid-template-columns:132px minmax(0,1fr) 96px;gap:12px;align-items:center">
+        <span class="chip ${CATCLASS[k]}"><i class="swatch"></i>${esc(CAT[k])}</span>
+        <span style="display:flex;height:9px;border-radius:3px;overflow:hidden;background:var(--surface-2)">
+          <i style="width:${(100*t.done/total).toFixed(2)}%;background:currentColor;opacity:.9" class="${CATCLASS[k]}"></i>
+          <i style="width:${(100*t.plan/total).toFixed(2)}%;background:currentColor;opacity:.42" class="${CATCLASS[k]}"></i>
+        </span>
+        <span class="mono" style="font-size:11.5px;color:var(--ink-3);text-align:right">
+          ${sum}건 · ${pct.toFixed(1)}%</span>
+      </div>`;
+    }).join('') +
+    `</div><p style="margin:14px 0 0;font-size:11.5px;color:var(--ink-3)">
+       진한 색 = 진행 현황(완료), 옅은 색 = 진행 계획</p>`;
+}
+
+/* ---------------------------------------------------------- 회차 보드 */
+function renderMeetingPicker(){
+  $('#meetingPick').innerHTML = DATA.meetings.map((m, i) =>
+    `<option value="${i}"${i === meetingIdx ? ' selected' : ''}>${m.date} (${m.weekday || '-'})</option>`).join('');
+}
+
+function catBlock(key, bullets){
+  const items = bullets.filter(b => !query || hits(b.replace(/\u0003/g, '')));
+  if (!items.length) return '';
+  return `<div class="catblock">
+    <div class="cathead ${CATCLASS[key]}"><i class="bar"></i><span>${esc(CAT[key])}</span></div>
+    <ul class="bullets">${items.map(b => {
+      const cls = b.startsWith('\u0003') ? 'lead'
+                : (b.startsWith('○') || b.startsWith('※')) ? 'sub' : '';
+      return `<li class="${cls}">${markup(b)}</li>`;
+    }).join('')}</ul></div>`;
+}
+
+function renderBoard(){
+  const m = DATA.meetings[meetingIdx];
+  $('#boardMeta').textContent =
+    `${m.date} (${m.weekday || '-'}) · ${meetingIdx + 1}/${DATA.meetings.length}회차 · 보고 조직 ${m.rows.length}개`;
+  $('#presenters').textContent = m.presenters.length ? '발표순서 ' + m.presenters.join(' › ') : '';
+  $('#prevMeeting').disabled = meetingIdx === 0;
+  $('#nextMeeting').disabled = meetingIdx === DATA.meetings.length - 1;
+  $('#meetingPick').value = String(meetingIdx);
+
+  const cards = m.rows.map(r => {
+    const done = CATKEYS.map(k => r.done[k] ? catBlock(k, r.done[k]) : '').join('');
+    const plan = CATKEYS.map(k => r.plan[k] ? catBlock(k, r.plan[k]) : '').join('');
+    if (query && !done && !plan && !hits(r.org) && !hits(r.person)) return '';
+    const n = Object.values(r.done).flat().length + Object.values(r.plan).flat().length;
+    return `<article class="orgcard">
+      <header>
+        <h3>${esc(r.org)}</h3>
+        ${r.person ? `<span class="who">${esc(r.person)}</span>` : ''}
+        <span class="pill">${n}개 항목</span>
+        <button class="toggle" type="button" data-toggle><i class="caret">▼</i>접기</button>
+      </header>
+      <div class="cols">
+        <div class="col done"><div class="eyebrow"><b></b>진행 현황</div>
+          ${done || '<p class="empty">해당 없음</p>'}</div>
+        <div class="col plan"><div class="eyebrow"><b></b>진행 계획</div>
+          ${plan || '<p class="empty">해당 없음</p>'}</div>
+      </div>
+    </article>`;
+  }).join('');
+  $('#boardBody').innerHTML = cards ||
+    `<p class="empty" style="padding:26px 18px">검색어 “${esc(query)}”와 일치하는 보고 항목이 없습니다.</p>`;
+}
+
+/* ---------------------------------------------------------- 프로젝트 */
+function sparkline(series, w = 168, h = 22){
+  const n = series.length, max = Math.max(1, ...series);
+  const bw = w / n;
+  const bars = series.map((v, i) => {
+    const bh = v ? Math.max(2, (h - 3) * v / max) : 0;
+    if (!bh) return `<rect x="${(i*bw).toFixed(2)}" y="${h-1}" width="${(bw-1).toFixed(2)}" height="1" fill="currentColor" opacity=".18"/>`;
+    const last = i === n - 1 && v;
+    return `<rect x="${(i*bw).toFixed(2)}" y="${(h-bh).toFixed(2)}" width="${(bw-1).toFixed(2)}" height="${bh.toFixed(2)}"
+      fill="currentColor" opacity="${last ? 1 : .48}" rx="1"/>`;
+  }).join('');
+  return `<svg class="spark" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img"
+    aria-label="회차별 보고 항목 추이">${bars}</svg>`;
+}
+
+function renderProjects(){
+  const list = DATA.projects.filter(p =>
+    (kindFilter === 'all' || p.kind === kindFilter) &&
+    (!query || hits(p.name) || p.notes.some(nt => hits(nt.text))));
+  $('#projCount').textContent = `${list.length}건 표시`;
+  $('#projTable').querySelector('tbody').innerHTML = list.map(p => `
+    <tr data-name="${esc(p.name)}" tabindex="0">
+      <td><div class="pname">${highlight(esc(p.name))}</div>
+          <div class="porgs">${esc(p.orgs.slice(0,2).join(', '))}${p.orgs.length > 2 ? ` 외 ${p.orgs.length-2}` : ''}</div></td>
+      <td><span class="chip ${KINDCLASS[p.kind]}"><i class="swatch"></i>${KINDLABEL[p.kind]}</span></td>
+      <td class="num">${p.count}</td>
+      <td class="${KINDCLASS[p.kind]}">${sparkline(p.series)}</td>
+      <td class="mono" style="font-size:11.5px;color:var(--ink-3)">${short(DATA.dates[p.first])}</td>
+      <td class="mono" style="font-size:11.5px">${short(DATA.dates[p.last])}</td>
+    </tr>`).join('') ||
+    `<tr><td colspan="6"><p class="empty" style="padding:18px 0">일치하는 항목이 없습니다.</p></td></tr>`;
+}
+
+function openDrawer(name){
+  const p = DATA.projects.find(x => x.name === name);
+  if (!p) return;
+  $('#dTitle').textContent = p.name;
+  $('#dMeta').innerHTML =
+    `<span class="chip ${KINDCLASS[p.kind]}"><i class="swatch"></i>${KINDLABEL[p.kind]}</span>
+     &nbsp;보고 항목 ${p.count}건 · ${DATA.dates[p.first]} ~ ${DATA.dates[p.last]} · ${esc(p.orgs.join(', '))}`;
+  $('#dSpark').innerHTML = sparkline(p.series, 300, 34);
+  $('#dSpark').className = 'spark-wrap ' + KINDCLASS[p.kind];
+  $('#dBody').innerHTML = p.notes.map(nt => {
+    const n = nt.dates.length;
+    const span = n > 1 ? `${nt.dates[0]} → ${nt.dates[n-1]}` : nt.dates[0];
+    const badge = n > 2 ? `<span class="repeat stale">${n}회 동일 기재</span>`
+                : n > 1 ? `<span class="repeat">${n}회</span>` : '';
+    return `<li data-kind="${nt.kind}">
+      <div class="when">${span} · ${nt.kind === 'done' ? '진행 현황' : '진행 계획'} · ${esc(nt.org)}${badge}</div>
+      <div class="what">${markup(nt.text)}</div>
+    </li>`;
+  }).join('') ||
+    '<li><div class="what">세부 기재 내용 없이 항목명만 보고된 건입니다.</div></li>';
+  $('#drawer').dataset.open = 'true';
+  $('#drawer').setAttribute('aria-hidden', 'false');
+  $('#scrim').dataset.open = 'true';
+  document.querySelectorAll('#projTable tbody tr').forEach(tr =>
+    tr.setAttribute('aria-selected', String(tr.dataset.name === name)));
+}
+function closeDrawer(){
+  $('#drawer').dataset.open = 'false';
+  $('#drawer').setAttribute('aria-hidden', 'true');
+  $('#scrim').dataset.open = 'false';
+  document.querySelectorAll('#projTable tbody tr').forEach(tr => tr.setAttribute('aria-selected', 'false'));
+}
+
+/* ---------------------------------------------------------- 이슈 */
+function renderIssues(){
+  const rows = (DATA[issueTab] || []).filter(r => hits(r.text));
+  const maxStreak = Math.max(1, ...(DATA[issueTab] || []).map(r => r.streak));
+  const openN = (DATA[issueTab] || []).filter(r => r.open).length;
+  $('#issueCount').textContent =
+    `${rows.length}건 표시 · 최근 회차에 남아 있는 건 ${openN}건`;
+  $('#issueList').innerHTML = rows.map(r => {
+    const flag = r.new ? '<span class="flag n">신규</span>'
+               : r.streak >= 8 ? `<span class="flag s">${r.streak}회 연속</span>`
+               : !r.open ? '<span class="flag c">종료</span>' : '';
+    const w = Math.max(6, 64 * r.streak / maxStreak);
+    return `<div class="reg-row">
+      <div class="t">${flag}${highlight(esc(r.text))}</div>
+      <div class="d">${r.first}<b>→ ${r.last}</b></div>
+      <div class="runs ${r.open ? 'reg-open' : 'reg-closed'}">
+        <i style="width:${w.toFixed(0)}px" title="연속 ${r.streak}회차"></i>
+        <span>${r.count}</span>
+      </div>
+    </div>`;
+  }).join('') || `<p class="empty">표시할 항목이 없습니다.</p>`;
+}
+
+/* ---------------------------------------------------------- 라우팅 */
+function go(id){
+  ['overview','board','projects','issues'].forEach(s =>
+    $('#' + s).classList.toggle('hidden', s !== id));
+  document.querySelectorAll('#nav button').forEach(b =>
+    b.setAttribute('aria-current', String(b.dataset.go === id)));
+  window.scrollTo({top: 0, behavior: 'instant'});
+}
+
+function renderAll(){ renderBoard(); renderProjects(); renderIssues(); }
+
+/* ---------------------------------------------------------- 이벤트 */
+$('#nav').addEventListener('click', e => {
+  const b = e.target.closest('button[data-go]'); if (b) go(b.dataset.go);
+});
+$('#q').addEventListener('input', e => { query = e.target.value.trim(); renderAll(); });
+$('#meetingPick').addEventListener('change', e => { meetingIdx = +e.target.value; renderBoard(); });
+$('#prevMeeting').addEventListener('click', () => { if (meetingIdx > 0){ meetingIdx--; renderBoard(); }});
+$('#nextMeeting').addEventListener('click', () => { if (meetingIdx < DATA.meetings.length-1){ meetingIdx++; renderBoard(); }});
+$('#kindSeg').addEventListener('click', e => {
+  const b = e.target.closest('button[data-kind]'); if (!b) return;
+  kindFilter = b.dataset.kind;
+  [...e.currentTarget.children].forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  renderProjects();
+});
+$('#issueSeg').addEventListener('click', e => {
+  const b = e.target.closest('button[data-t]'); if (!b) return;
+  issueTab = b.dataset.t;
+  [...e.currentTarget.children].forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  renderIssues();
+});
+$('#projTable').addEventListener('click', e => {
+  const tr = e.target.closest('tr[data-name]'); if (tr) openDrawer(tr.dataset.name);
+});
+$('#projTable').addEventListener('keydown', e => {
+  if (e.key !== 'Enter') return;
+  const tr = e.target.closest('tr[data-name]'); if (tr) openDrawer(tr.dataset.name);
+});
+$('#boardBody').addEventListener('click', e => {
+  const b = e.target.closest('button[data-toggle]'); if (!b) return;
+  const card = b.closest('.orgcard');
+  const now = card.dataset.collapsed !== 'true';
+  card.dataset.collapsed = String(now);
+  b.lastChild.textContent = now ? '펼치기' : '접기';
+});
+function setAllCards(collapsed){
+  document.querySelectorAll('#boardBody .orgcard').forEach(card => {
+    card.dataset.collapsed = String(collapsed);
+    const b = card.querySelector('button[data-toggle]');
+    if (b) b.lastChild.textContent = collapsed ? '펼치기' : '접기';
+  });
+}
+$('#expandAll').addEventListener('click', () => setAllCards(false));
+$('#collapseAll').addEventListener('click', () => setAllCards(true));
+$('#dClose').addEventListener('click', closeDrawer);
+$('#scrim').addEventListener('click', closeDrawer);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
+
+const THEMES = [['시스템', null], ['라이트', 'light'], ['다크', 'dark']];
+let themeIdx = 0;
+$('#themeBtn').addEventListener('click', () => {
+  themeIdx = (themeIdx + 1) % THEMES.length;
+  const [label, val] = THEMES[themeIdx];
+  if (val) document.documentElement.setAttribute('data-theme', val);
+  else document.documentElement.removeAttribute('data-theme');
+  $('#themeLabel').textContent = label;
+});
+
+renderKPIs(); renderHeat(); renderCatMix(); renderMeetingPicker(); renderAll();
+</script>
