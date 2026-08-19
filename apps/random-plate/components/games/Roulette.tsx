@@ -1,23 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { GameProps } from "@/lib/games";
+import { COLORS, type GameProps } from "@/lib/games";
 import * as sound from "@/lib/sound";
 
-const SECTORS = 8;
-const ANGLE = 360 / SECTORS;
+const MAX_SECTORS = 8;
 const DURATION_MS = 4600;
-
-export const COLORS = [
-  "#ff6b6b",
-  "#ffa94d",
-  "#ffd43b",
-  "#69db7c",
-  "#38d9a9",
-  "#4dabf7",
-  "#9775fa",
-  "#f783ac",
-];
 
 /** 12시 방향을 0도로 두고 시계방향으로 도는 좌표계 */
 function point(cx: number, cy: number, r: number, clockDeg: number) {
@@ -25,10 +13,10 @@ function point(cx: number, cy: number, r: number, clockDeg: number) {
   return [cx + r * Math.cos(rad), cy + r * Math.sin(rad)] as const;
 }
 
-function sectorPath(i: number) {
+function sectorPath(i: number, ang: number) {
   const [cx, cy, r] = [160, 160, 150];
-  const [x0, y0] = point(cx, cy, r, i * ANGLE - ANGLE / 2);
-  const [x1, y1] = point(cx, cy, r, i * ANGLE + ANGLE / 2);
+  const [x0, y0] = point(cx, cy, r, i * ang - ang / 2);
+  const [x1, y1] = point(cx, cy, r, i * ang + ang / 2);
   return `M ${cx} ${cy} L ${x0} ${y0} A ${r} ${r} 0 0 1 ${x1} ${y1} Z`;
 }
 
@@ -37,6 +25,11 @@ export default function Roulette({
   onResult,
   onRunningChange,
 }: GameProps) {
+  // 반경이 좁으면 후보가 8곳이 안 된다. 칸을 후보 수에 맞춰야
+  // 절대 뽑히지 않는 빈 칸이 생기지 않는다.
+  const sectors = Math.max(2, Math.min(MAX_SECTORS, slots.length));
+  const ANGLE = 360 / sectors;
+
   const [rotation, setRotation] = useState(0);
   const [spinning, setSpinning] = useState(false);
   const target = useRef(0);
@@ -49,7 +42,7 @@ export default function Roulette({
     sound.unlock();
     sound.blip();
 
-    const idx = Math.floor(Math.random() * Math.min(SECTORS, slots.length));
+    const idx = Math.floor(Math.random() * sectors);
     target.current = idx;
 
     // 12시 포인터 아래로 idx 섹터를 데려오는 최소 회전량
@@ -97,12 +90,12 @@ export default function Roulette({
           onTransitionEnd={settle}
           aria-hidden
         >
-          {Array.from({ length: SECTORS }).map((_, i) => {
+          {Array.from({ length: sectors }).map((_, i) => {
             const [tx, ty] = point(160, 160, 104, i * ANGLE);
             return (
               <g key={i}>
                 <path
-                  d={sectorPath(i)}
+                  d={sectorPath(i, ANGLE)}
                   fill={COLORS[i % COLORS.length]}
                   stroke="rgba(0,0,0,0.28)"
                   strokeWidth={2}

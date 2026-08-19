@@ -2,16 +2,18 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Confetti from "@/components/Confetti";
-import Roulette, { COLORS } from "@/components/games/Roulette";
+import Roulette from "@/components/games/Roulette";
 import SlotMachine from "@/components/games/SlotMachine";
 import Revolver from "@/components/games/Revolver";
 import CardFlip from "@/components/games/CardFlip";
-import { GAMES, gameById, type GameId } from "@/lib/games";
+import MapView from "@/components/map/MapView";
+import { COLORS, GAMES, gameById, type GameId } from "@/lib/games";
 import { walkMinutes } from "@/lib/grid";
 import * as sound from "@/lib/sound";
 import type { Coords, Place, PlacesResponse } from "@/lib/types";
 
 type Step = "location" | "play" | "result";
+type LocState = "locating" | "ok" | "denied" | "unsupported" | "manual";
 
 const RADIUS_OPTIONS = [
   { m: 400, label: "도보 5분" },
@@ -19,7 +21,9 @@ const RADIUS_OPTIONS = [
   { m: 1200, label: "도보 15분" },
 ];
 
-/** GPS 거부 시의 폴백. 주소 검색은 카카오 키가 필요하므로 Stage 2로 미뤘다. */
+/** 위치를 못 잡았을 때 지도를 띄워 둘 임시 중심 */
+const FALLBACK_CENTER: Coords = { lat: 37.5665, lng: 126.978 };
+
 const PRESETS: Array<{ name: string; coords: Coords }> = [
   { name: "강남역", coords: { lat: 37.4979, lng: 127.0276 } },
   { name: "여의도역", coords: { lat: 37.5215, lng: 126.9243 } },
@@ -46,8 +50,13 @@ function mealLabel(): string {
 export default function Page() {
   const [step, setStep] = useState<Step>("location");
   const [radiusM, setRadiusM] = useState(800);
-  const [placeLabel, setPlaceLabel] = useState<string | null>(null);
 
+  const [center, setCenter] = useState<Coords | null>(null);
+  const [userAt, setUserAt] = useState<Coords | null>(null);
+  const [locState, setLocState] = useState<LocState>("locating");
+  const [placeLabel, setPlaceLabel] = useState("이 근처");
+
+  const [preview, setPreview] = useState<Place[]>([]);
   const [pool, setPool] = useState<Place[]>([]);
   const [demo, setDemo] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -82,68 +91,95 @@ export default function Page() {
     return sound.onMuteChange(setMuted);
   }, []);
 
+  /* ── 시작하자마자 내 위치를 잡는다 ── */
+  useEffect(() => {
+    if (!("geolocation" in navigator)) {
+      setLocState("unsupported");
+      setCenter(FALLBACK_CENTER);
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const c = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        setUserAt(c);
+        setCenter(c);
+        setLocState("ok");
+        setPlaceLabel("현재 위치");
+      },
+      () => {
+        setLocState("denied");
+        setCenter(FALLBACK_CENTER);
+      },
+      { enableHighAccuracy: false, timeout: 10_000, maximumAge: 300_000 }
+    );
+  }, []);
+
+  const fetchPlaces = useCallback(async (c: Coords, r: number) => {
+    const res = await fetch(`/api/places?lat=${c.lat}&lng=${c.lng}&radius=${r}`);
+    if (!res.ok) throw new Error(`요청 실패 (${res.status})`);
+    const data: PlacesResponse = await res.json();
+    if (!data.cached) apiCalls.current += 1;
+    setDemo(data.demo);
+    return data.places;
+  }, []);
+
+  /*
+   * 지도를 움직이는 동안 매 프레임 조회하면 실제 배포본에서 카카오 호출이
+   * 폭증한다. 손을 뗀 뒤에만 한 번 조회한다.
+   */
+  useEffect(() => {
+    if (step !== "location" || !center) return;
+    let dead = false;
+    setLoading(true);
+    const t = window.setTimeout(() => {
+      fetchPlaces(center, radiusM)
+        .then((places) => {
+          if (dead) return;
+          setPreview(places);
+          setError(null);
+        })
+        .catch((e: Error) => {
+          if (!dead) setError(e.message);
+        })
+        .finally(() => {
+          if (!dead) setLoading(false);
+        });
+    }, 400);
+    return () => {
+      dead = true;
+      clearTimeout(t);
+    };
+  }, [step, center, radiusM, fetchPlaces]);
+
   const dealSlots = useCallback((from: Place[], count: number) => {
     setSlots(shuffle(from).slice(0, Math.min(count, from.length)));
     setRound((r) => r + 1);
   }, []);
 
-  const loadPlaces = useCallback(
-    async (coords: Coords, label: string, radius: number) => {
-      setLoading(true);
-      setError(null);
-      try {
-        const res = await fetch(
-          `/api/places?lat=${coords.lat}&lng=${coords.lng}&radius=${radius}`
-        );
-        if (!res.ok) throw new Error(`요청 실패 (${res.status})`);
-        const data: PlacesResponse = await res.json();
-
-        if (!data.cached) apiCalls.current += 1;
-
-        if (data.places.length === 0) {
-          setError(
-            "이 반경 안에서 식당을 찾지 못했습니다. 반경을 넓혀서 다시 시도해 주세요."
-          );
-          return;
-        }
-
-        setPool(data.places);
-        setDemo(data.demo);
-        setPlaceLabel(label);
-        setWinner(null);
-        dealSlots(data.places, gameById(gameId).slots);
-        setStep("play");
-      } catch (e) {
-        setError(e instanceof Error ? e.message : "알 수 없는 오류");
-      } finally {
-        setLoading(false);
-      }
-    },
-    [dealSlots, gameId]
-  );
-
-  const useGps = useCallback(() => {
+  const start = useCallback(() => {
+    if (preview.length < 3) return;
     sound.unlock();
-    if (!("geolocation" in navigator)) {
-      setError("이 브라우저는 위치 기능을 지원하지 않습니다. 아래에서 골라주세요.");
-      return;
-    }
-    setLoading(true);
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        void loadPlaces(
-          { lat: pos.coords.latitude, lng: pos.coords.longitude },
-          "현재 위치",
-          radiusM
-        );
-      },
-      () => {
-        setLoading(false);
-        setError("위치 권한이 거부됐습니다. 아래에서 직접 골라주세요.");
-      },
-      { enableHighAccuracy: false, timeout: 10_000, maximumAge: 300_000 }
-    );
-  }, [loadPlaces, radiusM]);
+    sound.blip();
+    setPool(preview);
+    setWinner(null);
+    dealSlots(preview, game.slots);
+    setStep("play");
+  }, [preview, game.slots, dealSlots]);
+
+  const usePreset = useCallback((p: { name: string; coords: Coords }) => {
+    sound.unlock();
+    sound.blip();
+    setUserAt(null);
+    setLocState("manual");
+    setCenter(p.coords);
+    setPlaceLabel(p.name);
+  }, []);
+
+  const recenter = useCallback(() => {
+    if (!userAt) return;
+    sound.blip();
+    setCenter(userAt);
+  }, [userAt]);
 
   /**
    * 게임이 결과를 확정한 순간 바로 결과 화면으로 넘기면
@@ -217,11 +253,7 @@ export default function Page() {
    * 평범한 함수여야 React가 SlotMachine/Roulette 같은 실제 타입으로 재조정한다.
    */
   const renderGame = () => {
-    const props = {
-      slots,
-      onResult,
-      onRunningChange: setRunning,
-    };
+    const props = { slots, onResult, onRunningChange: setRunning };
     switch (gameId) {
       case "slot":
         return <SlotMachine {...props} />;
@@ -233,6 +265,15 @@ export default function Page() {
         return <Roulette {...props} />;
     }
   };
+
+  const locLine =
+    locState === "locating"
+      ? "위치 확인 중…"
+      : locState === "ok"
+        ? "현재 위치"
+        : locState === "manual"
+          ? placeLabel
+          : "위치를 쓸 수 없어요 — 아래에서 골라주세요";
 
   return (
     <main className="mx-auto w-full max-w-md px-5 pb-12 pt-6 lg:max-w-5xl lg:px-8 lg:pt-10">
@@ -254,8 +295,7 @@ export default function Page() {
         <button
           onClick={() => {
             sound.unlock();
-            const next = sound.toggleMute();
-            if (!next) sound.blip();
+            if (!sound.toggleMute()) sound.blip();
           }}
           className="shrink-0 rounded-full border border-white/15 bg-white/5 px-3 py-2 text-sm transition hover:bg-white/10"
           aria-label={muted ? "효과음 켜기" : "효과음 끄기"}
@@ -272,7 +312,45 @@ export default function Page() {
       )}
 
       {step === "location" && (
-        <section className="pop-in mx-auto flex max-w-md flex-col gap-6">
+        <section className="pop-in mx-auto flex max-w-2xl flex-col gap-5">
+          <div className="relative h-[46vh] max-h-[26rem] w-full overflow-hidden rounded-2xl border border-white/10 bg-[#0a0710] lg:h-[24rem] lg:max-h-none">
+            {center && (
+              <MapView
+                center={center}
+                radiusM={radiusM}
+                places={preview}
+                userAt={userAt}
+                interactive
+                onCenterChange={setCenter}
+                className="h-full w-full"
+              />
+            )}
+
+            <div className="pointer-events-none absolute left-3 top-3 flex items-center gap-2 rounded-full border border-white/15 bg-black/70 px-3 py-1.5 text-xs font-bold backdrop-blur">
+              <span
+                className={`h-2 w-2 rounded-full ${
+                  locState === "ok"
+                    ? "bg-emerald-400"
+                    : locState === "denied" || locState === "unsupported"
+                      ? "bg-red-400"
+                      : "bg-white/40"
+                }`}
+              />
+              {locLine}
+            </div>
+
+            {userAt && (
+              <button
+                onClick={recenter}
+                className="absolute bottom-3 right-3 grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-black/70 text-sm backdrop-blur transition hover:border-amber-300"
+                aria-label="내 위치로"
+                title="내 위치로"
+              >
+                ◎
+              </button>
+            )}
+          </div>
+
           <div>
             <p className="mb-3 text-sm font-semibold text-white/80">
               얼마나 걸어갈 수 있나요?
@@ -281,7 +359,10 @@ export default function Page() {
               {RADIUS_OPTIONS.map((o) => (
                 <button
                   key={o.m}
-                  onClick={() => setRadiusM(o.m)}
+                  onClick={() => {
+                    sound.blip();
+                    setRadiusM(o.m);
+                  }}
                   className={`rounded-xl border px-3 py-3 text-sm font-bold transition ${
                     radiusM === o.m
                       ? "border-white/70 bg-white text-black"
@@ -298,36 +379,42 @@ export default function Page() {
           </div>
 
           <button
-            onClick={useGps}
-            disabled={loading}
+            onClick={start}
+            disabled={loading || preview.length < 3}
             className="rounded-2xl bg-gradient-to-r from-indigo-500 to-fuchsia-500 px-5 py-4 text-base font-black shadow-lg shadow-fuchsia-900/30 transition active:scale-[0.98] disabled:opacity-50"
           >
-            {loading ? "찾는 중…" : "📍 내 위치로 시작하기"}
+            {loading ? "주변을 찾는 중…" : "이 근처에서 시작"}
           </button>
 
-          <div>
-            <p className="mb-3 text-sm font-semibold text-white/80">
-              또는 위치를 직접 고르기
-            </p>
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+          <p className="text-center text-[11px] leading-relaxed text-white/40">
+            {loading
+              ? " "
+              : preview.length >= 3
+                ? `반경 안에 ${preview.length}곳 · 지도를 끌어서 중심을 옮길 수 있습니다.`
+                : "이 근처엔 후보가 부족합니다. 반경을 넓히거나 지도를 옮겨 보세요."}
+          </p>
+
+          <details className="border-t border-white/10 pt-4">
+            <summary className="cursor-pointer text-sm font-semibold text-white/60 hover:text-white/85">
+              위치를 직접 고르기
+            </summary>
+            <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
               {PRESETS.map((p) => (
                 <button
                   key={p.name}
-                  disabled={loading}
-                  onClick={() => void loadPlaces(p.coords, p.name, radiusM)}
-                  className="card rounded-xl px-3 py-3 text-sm font-semibold text-white/85 transition hover:bg-white/10 disabled:opacity-50"
+                  onClick={() => usePreset(p)}
+                  className="card rounded-xl px-3 py-3 text-sm font-semibold text-white/85 transition hover:bg-white/10"
                 >
                   {p.name}
                 </button>
               ))}
             </div>
-          </div>
+          </details>
         </section>
       )}
 
       {(step === "play" || step === "result") && (
         <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start lg:gap-12">
-          {/* ── 왼쪽: 게임 또는 결과 ── */}
           <section className="flex flex-col gap-5">
             <div className="flex flex-wrap gap-2">
               {GAMES.map((g) => (
@@ -384,7 +471,7 @@ export default function Page() {
                     rel="noreferrer noopener"
                     className="rounded-2xl bg-[#ffe812] px-5 py-4 text-center text-base font-black text-black transition active:scale-[0.98]"
                   >
-                    카카오맵에서 보기
+                    지도에서 보기
                   </a>
 
                   <button onClick={share} className="btn-ghost">
@@ -395,7 +482,6 @@ export default function Page() {
             )}
           </section>
 
-          {/* ── 오른쪽: 후보 목록과 조작 ── */}
           <aside className="mt-8 flex flex-col gap-4 lg:mt-0">
             <div className="flex items-center justify-between text-xs text-white/50">
               <span>
@@ -413,6 +499,20 @@ export default function Page() {
                 위치 변경
               </button>
             </div>
+
+            {center && (
+              <div className="relative aspect-square w-full overflow-hidden rounded-2xl border border-white/10 bg-[#0a0710]">
+                <MapView
+                  center={center}
+                  radiusM={radiusM}
+                  places={pool}
+                  slots={slots}
+                  winner={winner}
+                  userAt={userAt}
+                  className="h-full w-full"
+                />
+              </div>
+            )}
 
             <div className="card rounded-2xl p-4">
               <p className="mb-3 text-xs font-bold text-white/60">
@@ -451,11 +551,7 @@ export default function Page() {
               </ol>
             </div>
 
-            <button
-              onClick={playAgain}
-              disabled={running}
-              className="btn-ghost"
-            >
+            <button onClick={playAgain} disabled={running} className="btn-ghost">
               후보 {game.slots}곳 다시 뽑기
             </button>
 

@@ -56,41 +56,78 @@ const DEMO: Array<[string, string]> = [
   ["치킨 텐더 플래터", "치킨"],
 ];
 
+/** 격자 한 칸의 크기(m). 이 간격으로 가게 자리가 잡힌다. */
+const CELL_M = 130;
+const LAT_CELL = CELL_M / 111_320;
+/** 경도 칸 크기는 위도에 따라 변하지만, 기준 위도를 고정해야 격자가 전역에서 안정적이다 */
+const LNG_CELL = CELL_M / (111_320 * Math.cos((37.5 * Math.PI) / 180));
+
 /**
- * 중심좌표 주변에 데모 가게를 결정론적으로 배치한다.
- * 황금각(137.5°) 분산 + 인덱스 기반 반지름이라 같은 좌표면 항상 같은 결과가 나온다.
+ * FNV 계열 정수 해시 — 같은 칸이면 항상 같은 값.
+ *
+ * salt로 서로 독립인 값을 두 개 뽑는다. 하나로 밀도와 이름을 동시에
+ * 정하면 안 된다: 밀도가 h % 3, 이름이 h % 45(= 3 × 15)라면
+ * 3의 배수인 h만 남으므로 45개 중 15개 이름만 영원히 뽑힌다.
+ */
+function cellHash(i: number, j: number, salt: number): number {
+  let h = 2166136261 ^ salt ^ Math.imul(i, 374761393) ^ Math.imul(j, 668265263);
+  h = Math.imul(h ^ (h >>> 13), 1274126177);
+  h = Math.imul(h ^ (h >>> 15), 2246822519);
+  return (h ^ (h >>> 16)) >>> 0;
+}
+
+/**
+ * 절대 좌표 격자 위에 데모 가게를 결정론적으로 배치한다.
+ *
+ * 중심 기준으로 생성하면 지도를 움직일 때 가게가 따라와서 지도처럼 보이지
+ * 않는다. 칸마다 위치가 고정되어 있어야 내가 움직이고 가게는 그대로 있다.
  */
 export function demoPlaces(center: Coords, radiusM: number): Place[] {
-  const out: Place[] = [];
+  const span = Math.ceil(radiusM / CELL_M) + 1;
+  const ci = Math.round(center.lat / LAT_CELL);
+  const cj = Math.round(center.lng / LNG_CELL);
 
-  for (let i = 0; i < DEMO.length; i++) {
-    const [name, category] = DEMO[i];
-    const angle = (i * 137.508 * Math.PI) / 180;
-    // 반지름을 sqrt로 분포시켜야 원 안에 고르게 퍼진다
-    const r = radiusM * Math.sqrt(((i * 37) % 100) / 100) * 0.95 + 40;
+  const found: Place[] = [];
 
-    const dLat = (r * Math.cos(angle)) / 111_320;
-    const dLng =
-      (r * Math.sin(angle)) /
-      (111_320 * Math.cos((center.lat * Math.PI) / 180) || 1);
+  for (let di = -span; di <= span; di++) {
+    for (let dj = -span; dj <= span; dj++) {
+      const i = ci + di;
+      const j = cj + dj;
+      if (cellHash(i, j, 0) % 3 !== 0) continue; // 세 칸에 한 곳쯤
 
-    const lat = center.lat + dLat;
-    const lng = center.lng + dLng;
-    const distanceM = distanceMeters(center, { lat, lng });
-    if (distanceM > radiusM) continue;
+      const h = cellHash(i, j, 0x9e3779b9);
+      // 격자 티가 나지 않게 칸 안에서 흔든다
+      const jx = (((h >>> 8) % 100) / 100 - 0.5) * 0.7;
+      const jy = (((h >>> 16) % 100) / 100 - 0.5) * 0.7;
 
-    out.push({
-      id: `demo-${i}`,
-      name,
-      category,
-      roadAddress: null,
-      // 실제 좌표 링크가 아니라 이름 검색 링크 — 데모임을 숨기지 않기 위함
-      placeUrl: `https://map.kakao.com/link/search/${encodeURIComponent(name)}`,
-      lat,
-      lng,
-      distanceM,
-    });
+      const lat = (i + jy) * LAT_CELL;
+      const lng = (j + jx) * LNG_CELL;
+      const distanceM = distanceMeters(center, { lat, lng });
+      if (distanceM > radiusM) continue;
+
+      const [name, category] = DEMO[h % DEMO.length];
+      found.push({
+        id: `demo-${i}-${j}`,
+        name,
+        category,
+        roadAddress: null,
+        // 실제 좌표 링크가 아니라 이름 검색 링크 — 데모임을 숨기지 않기 위함
+        placeUrl: `https://map.kakao.com/link/search/${encodeURIComponent(name)}`,
+        lat,
+        lng,
+        distanceM,
+      });
+    }
   }
 
-  return out.sort((a, b) => a.distanceM - b.distanceM);
+  found.sort((a, b) => a.distanceM - b.distanceM);
+
+  // 같은 이름이 여러 칸에 나올 수 있다. 룰렛에 같은 가게가 두 번 뜨면
+  // 결과를 신뢰할 수 없으므로 가까운 쪽만 남긴다.
+  const seen = new Set<string>();
+  return found.filter((p) => {
+    if (seen.has(p.name)) return false;
+    seen.add(p.name);
+    return true;
+  });
 }

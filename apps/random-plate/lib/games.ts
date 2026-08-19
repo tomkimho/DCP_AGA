@@ -1,5 +1,17 @@
 import type { Place } from "./types";
 
+/** 후보 번호 색 — 룰렛 섹터, 목록 배지, 지도 핀이 전부 이 색을 공유한다 */
+export const COLORS = [
+  "#ff6b6b",
+  "#ffa94d",
+  "#ffd43b",
+  "#69db7c",
+  "#38d9a9",
+  "#4dabf7",
+  "#9775fa",
+  "#f783ac",
+];
+
 export type GameId = "roulette" | "slot" | "revolver" | "cards";
 
 export type GameDef = {
