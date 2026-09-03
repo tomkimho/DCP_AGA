@@ -1,12 +1,12 @@
 {
   "agent": "paper_searcher",
   "status": "idle",
-  "last_run": "2026-09-02T22:27:45.013556",
+  "last_run": "2026-09-03T22:24:50.354566",
   "papers_found": 0,
   "papers_downloaded": 0,
   "papers_skipped": 0,
   "overall_status": "completed",
-  "start_time": "2026-09-02T22:27:45.013556",
+  "start_time": "2026-09-03T22:24:50.354566",
   "errors": [],
   "steps_completed": 8,
   "total_steps": 8,
@@ -14,42 +14,42 @@
   "step_details": {
     "PubMed 논문 수집": {
       "status": "completed",
-      "timestamp": "2026-09-02T22:27:45.216704",
+      "timestamp": "2026-09-03T22:24:50.789437",
       "details": {}
     },
     "특허 자동 수집": {
       "status": "completed",
-      "timestamp": "2026-09-02T22:27:48.506001",
+      "timestamp": "2026-09-03T22:24:53.850850",
       "details": {}
     },
     "BioRxiv 사전인쇄 수집": {
       "status": "completed",
-      "timestamp": "2026-09-02T22:29:18.003582",
+      "timestamp": "2026-09-03T22:33:41.623559",
       "details": {}
     },
     "PDF 텍스트 추출": {
       "status": "completed",
-      "timestamp": "2026-09-02T22:29:18.128519",
+      "timestamp": "2026-09-03T22:33:41.831118",
       "details": {}
     },
     "정보 AI 분석": {
       "status": "completed",
-      "timestamp": "2026-09-02T22:29:19.849960",
+      "timestamp": "2026-09-03T22:33:43.195041",
       "details": {}
     },
     "화합물 구조 수집": {
       "status": "completed",
-      "timestamp": "2026-09-02T22:29:20.790471",
+      "timestamp": "2026-09-03T22:33:43.866202",
       "details": {}
     },
     "바이오마커 분석": {
       "status": "completed",
-      "timestamp": "2026-09-02T22:29:21.694646",
+      "timestamp": "2026-09-03T22:33:44.505404",
       "details": {}
     },
     "파이프라인 최종 정리": {
       "status": "completed",
-      "timestamp": "2026-09-02T22:29:21.696464",
+      "timestamp": "2026-09-03T22:33:44.507179",
       "details": {}
     },
     "지능형 패턴 분석": {
@@ -66,42 +66,42 @@
   "steps": {
     "05_pubmed": {
       "status": "completed",
-      "timestamp": "2026-09-02T22:27:45.216704",
+      "timestamp": "2026-09-03T22:24:50.789437",
       "details": {}
     },
     "06_특허": {
       "status": "completed",
-      "timestamp": "2026-09-02T22:27:48.506001",
+      "timestamp": "2026-09-03T22:24:53.850850",
       "details": {}
     },
     "07_biorxiv": {
       "status": "completed",
-      "timestamp": "2026-09-02T22:29:18.003582",
+      "timestamp": "2026-09-03T22:33:41.623559",
       "details": {}
     },
     "01_pdf": {
       "status": "completed",
-      "timestamp": "2026-09-02T22:29:18.128519",
+      "timestamp": "2026-09-03T22:33:41.831118",
       "details": {}
     },
     "02_정보추출": {
       "status": "completed",
-      "timestamp": "2026-09-02T22:29:19.849960",
+      "timestamp": "2026-09-03T22:33:43.195041",
       "details": {}
     },
     "03_화합물": {
       "status": "completed",
-      "timestamp": "2026-09-02T22:29:20.790471",
+      "timestamp": "2026-09-03T22:33:43.866202",
       "details": {}
     },
     "12_바이오마커": {
       "status": "completed",
-      "timestamp": "2026-09-02T22:29:21.694646",
+      "timestamp": "2026-09-03T22:33:44.505404",
       "details": {}
     },
     "파이프라인 최종 정리": {
       "status": "completed",
-      "timestamp": "2026-09-02T22:29:21.696464",
+      "timestamp": "2026-09-03T22:33:44.507179",
       "details": {}
     },
     "10_패턴분석": {
@@ -123,5 +123,5 @@
     "pdf_downloaded": 1,
     "abstract_only": 15
   },
-  "end_time": "2026-09-02T22:29:21.696686"
+  "end_time": "2026-09-03T22:33:44.507478"
 }
