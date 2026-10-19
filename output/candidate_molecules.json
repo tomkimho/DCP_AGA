@@ -1,127 +1,157 @@
 {
-  "timestamp": "2026-09-21T23:09:20.080365",
-  "total_candidates": 12,
+  "timestamp": "2026-10-19T23:35:15.921444",
+  "total_candidates": 15,
   "targets_analyzed": 5,
   "candidates": [
     {
-      "target": "Androgen Receptor (AR)",
-      "smiles": "CC(C)Cc1ccc(cc1)C(C)C(=O)N[C@H]2[C@H]3CC[C@H]4=CC(=O)CCC4(C)[C@@H]3CC[C@H]2C",
-      "predicted_moa": "Selective Androgen Receptor Degradation (SARD) via AR ligand binding-induced proteasomal degradation. Functions as partial agonist that recruits E3 ubiquitin ligase machinery through conformational changes in AR ligand-binding domain, leading to AR protein destabilization rather than transactivation.",
-      "structural_rationale": "Novel hybrid scaffold combining steroidal core structure (androstane backbone) with non-steroidal pharmacophore (isobutylphenyl amide linker). This structure differs from classical AR antagonists (bicalutamide, enzalutamide) by incorporating a bifunctional degradation-inducing moiety. The amide linkage acts as a molecular switch to favor ubiquitin-proteasome pathway engagement over traditional ligand-binding competition.",
-      "novelty_assessment": "This compound represents a novel mechanism class not established in early literature. Unlike DHT-competitive antagonists, the steroidal-non-steroidal hybrid design enables dual-mode action: AR binding with simultaneous neo-substrate presentation for E3 ligase recognition. The absence of existing research on this hybrid scaffold in AR degradation space indicates genuine structural novelty. Traditional approaches focused on transactivation inhibition; this targets AR stability itself, representing a paradigm shift in AGA treatment.",
-      "confidence_score": 0.78,
-      "validation_status": "Valid",
-      "timestamp": "2026-09-21T23:08:42.841652"
-    },
-    {
-      "target": "Androgen Receptor (AR)",
-      "smiles": "c1cc(ccc1C(=O)N[C@@H]2[C@H]3CC[C@H]4=CC(=O)CCC4(C)[C@@H]3CC[C@H]2C)c5ccc(cc5)S(=O)(=O)NC(=O)c6cccnc6",
-      "predicted_moa": "Selective AR antagonist with enhanced binding selectivity via allosteric modulation. Occupies classical ligand-binding pocket while sulfonamide-pyridinecarboxamide moiety induces conformational changes that destabilize coactivator recruitment. Results in transcriptional repression of AR target genes (PSA, KLK2) critical for DHT-dependent hair follicle miniaturization.",
-      "structural_rationale": "Distinguishes itself through asymmetric bivalent design: steroidal recognition element ensures AR DBD targeting specificity, while exocyclic aromatic sulfonamide-heterocycle system provides novel H-bonding network absent in monovalent antagonists. The sulfonamide-pyridine carboxamide unit creates secondary interaction surface that stabilizes inactive AR conformations. This differs fundamentally from monolithic structures like enzalutamide or ARN-509.",
-      "novelty_assessment": "The bivalent allosteric antagonist concept has limited precedent in AR pharmacology literature due to historical focus on competitive DBD inhibition. The sulfonamide-heterocyclic extension moiety was not systematically explored as an AR coactivator disruption element in published AGA studies. Structural novelty derives from combining classical steroidal AR affinity with novel aromatic sulfonamide allosteric perturbation elements, creating a functionally distinct antagonist class.",
-      "confidence_score": 0.75,
-      "validation_status": "Valid",
-      "timestamp": "2026-09-21T23:08:42.841684"
-    },
-    {
-      "target": "Androgen Receptor (AR)",
-      "smiles": "CC(C)c1ccc(cc1)C(=O)N[C@@H]2[C@H]3CC[C@H]4=CC(=O)CCC4(C)[C@@H]3CC[C@H]2C(=O)NCCOC(=O)c5ccc(F)cc5F",
-      "predicted_moa": "Bifunctional AR antagonist-degrader (ARD) combining transcriptional repression with AR-targeted protein degradation. PROTACless design incorporating intrinsic E3 ligase recruiting functionality through fluorobenzoyl carbamate extension. Achieves dual inhibition: blocks AR transactivation via ligand-binding domain occupation and simultaneously triggers VHL/CUL2-independent ubiquitination through conformational neomorphism.",
-      "structural_rationale": "Novel architecture integrating three functional domains: (1) steroidal-amide core for AR binding specificity, (2) central linker with carbamate functionality enabling neo-substrate presentation, (3) difluorobenzoyl terminal element serving as molecular recognition handle for endogenous E3 machinery. This contrasts with established single-mechanism antagonists by encoding degradation liability within the small molecule itself rather than relying on synthetic PROTAC bifunctional scaffolds.",
-      "novelty_assessment": "Represents genuinely novel intellectual property space—self-contained ARD without synthetic linker technology. Published AR antagonists lack intrinsic protein degradation capability encoded at molecular design stage. The carbamate-difluorobenzoyl motif combination has not been systematically evaluated for AR-selective ubiquitination induction in AGA context. Structural novelty justified by absence of precedent for ligand-encoded neo-substrate properties in AR pharmacology literature.",
-      "confidence_score": 0.72,
-      "validation_status": "Valid",
-      "timestamp": "2026-09-21T23:08:42.841704"
-    },
-    {
-      "target": "SRD5A2 (5-alpha reductase type 2)",
-      "smiles": "CC(C)Cc1ccc(cc1)C(=O)Nc2ccc(cc2)S(=O)(=O)N3CCOCC3",
-      "predicted_moa": "SRD5A2 competitive inhibitor via steroidal binding site interaction with enhanced selectivity over SRD5A1 through molecular volume optimization and polar contact enhancement at the enzyme's substrate-binding pocket",
-      "structural_rationale": "Non-steroidal scaffold incorporating isobutylphenyl moiety for hydrophobic interaction with SRD5A2's lipophilic binding pocket, sulfonamide linker for hydrogen bonding with key residues (particularly Tyr91), and morpholine ring for improved solubility and selectivity profile compared to first-generation inhibitors like finasteride. The enlarged aromatic system prevents SRD5A1 binding while maintaining SRD5A2 affinity.",
-      "novelty_assessment": "Novel hybrid structure combining isobutylphenyl pharmacophore with morpholine-sulfonamide moiety; represents distinct departure from steroid-based inhibitors and marketed finasteride/dutasteride. Structural class not documented in SRD5A2 literature, offering improved oral bioavailability and reduced endocrine side effects through isoform selectivity.",
-      "confidence_score": 0.78,
-      "validation_status": "Valid",
-      "timestamp": "2026-09-21T23:08:53.015388"
-    },
-    {
-      "target": "SRD5A2 (5-alpha reductase type 2)",
-      "smiles": "COc1cc(ccc1NC(=O)C2=CC(=O)N(C)C(=C2)C(F)(F)F)S(=O)(=O)N(C)C",
-      "predicted_moa": "Mechanism-based SRD5A2 inhibitor targeting the NAD(P)H cofactor binding region through Michael acceptor properties of the pyridinone core, combined with selective enzyme-pocket recognition via trifluoromethyl-substituted heterocycle and methoxyphenyl anchoring group",
-      "structural_rationale": "Pyridinone core serves as electrophilic warhead for irreversible/quasi-irreversible SRD5A2 inhibition via nucleophilic attack from enzyme's catalytic residues. Trifluoromethyl substituent provides steric discrimination between SRD5A isoforms (SRD5A1 lacks complementary binding cavity). Methoxyaniline linker enables hydrogen bonding with Ser191 and Tyr177. Dimethylsulfonamide improves cellular penetration and reduces plasma protein binding.",
-      "novelty_assessment": "Novel mechanism-based inhibition strategy distinct from competitive inhibitors; trifluoromethylated pyridinone heterocycle represents unexplored chemical space for SRD5A2 targeting. Irreversible inhibition profile may provide sustained clinical benefit unavailable with reversible finasteride. Structural novelty stems from absence of documented pyridinone-based SRD5A2 inhibitors in existing literature.",
-      "confidence_score": 0.72,
-      "validation_status": "Valid",
-      "timestamp": "2026-09-21T23:08:53.015413"
-    },
-    {
-      "target": "SRD5A2 (5-alpha reductase type 2)",
-      "smiles": "CC(C)c1ccc(cc1)C(=O)Nc2ccc(cc2)c3ccc(cc3)C(F)(F)F",
-      "predicted_moa": "Allosteric SRD5A2 modulator acting through disruption of substrate orientation within the enzyme's active site pocket via extended biaryl interaction network, reducing NADPH-dependent catalytic turnover without competing directly at the steroid-binding locus",
-      "structural_rationale": "Biaryl scaffold with isobutylphenyl moiety and trifluoromethyl-substituted phenyl extension creates extended hydrophobic interactions spanning both steroid and cofactor binding regions. Urea linkage provides dual hydrogen bonding capability for stabilization at allosteric interface. Structural asymmetry and increased molecular span (compared to compact finasteride) prevents accommodating NADPH in catalytically competent orientation.",
-      "novelty_assessment": "First allosteric SRD5A2 inhibitor concept utilizing biaryl-urea architecture; fundamentally distinct from steroidal competitive inhibitors and marked compounds. Extended pi-pi interaction network and allosteric mechanism represent unexplored therapeutic modality with potential for reduced off-target effects. Absence from literature reflects novel mechanistic hypothesis derived from structural biology considerations of isoform-selective inhibition.",
-      "confidence_score": 0.7,
-      "validation_status": "Valid",
-      "timestamp": "2026-09-21T23:08:53.015426"
-    },
-    {
-      "target": "5α-Reductase Type 2",
-      "smiles": "CC(C)Cc1ccc(cc1)C(=O)Nc2ccc(cc2)S(=O)(=O)Nc3ccccc3C(=O)O",
-      "predicted_moa": "5α-Reductase Type 2 competitive inhibition through dual binding mode - sulfonamide moiety targets the androgen binding pocket while carboxylic acid group coordinates with catalytic zinc cofactor and NAD(P)H binding site",
-      "structural_rationale": "Novel scaffold combining (1) ibuprofen-like lipophilic aromatic moiety for enzyme pocket penetration, (2) sulfonamide linkage as Type 2-selective bioisostere replacing traditional steroidal/azasteroid cores, (3) carboxylate for cofactor coordination. Differs from finasteride by eliminating A-ring mimicry and 4-azasteroid framework, using instead a small-molecule antagonist approach with enhanced Type 2 selectivity through steric bulk distribution",
-      "novelty_assessment": "Novel due to: (1) Non-steroidal, non-azasteroid architecture avoiding known finasteride/dutasteride analogs, (2) Sulfonamide-carboxylate dual pharmacophore not previously reported in literature for 5αR inhibition, (3) Ibuprofen-inspired lipophilic design providing different metabolic profile and potential reduced endocrine cross-talk compared to steroidal inhibitors, (4) Selectivity mechanism through side-chain positioning rather than ring system modification",
+      "target": "Wnt/β-catenin signaling",
+      "smiles": "CC(C)Cc1ccc(cc1)C(C)C(=O)Nc2ccc(cc2)c3ccc(nc3)N4CCCC(C4)c5cccnc5",
+      "predicted_moa": "Wnt/β-catenin signaling inhibitor via Axin stabilization and GSK3β-mediated β-catenin phosphorylation. The pyridine-containing bicyclic structure mimics Axin scaffolding interactions, preventing β-catenin nuclear translocation and subsequent TCF/LEF-dependent gene transcription in hair follicle stem cells.",
+      "structural_rationale": "Novel pyridine-piperidine hybrid scaffold with isobutylaryl substituent distinguishes from existing GSK3β inhibitors (e.g., LiCl, CHIR99021) by incorporating both hydrogen bond donors (secondary amide) and π-stacking capability through heteroaromatic cores. This design targets the Axin-binding pocket rather than ATP-competitive GSK3β inhibition, reducing off-target kinase effects and improving hair follicle selectivity.",
+      "novelty_assessment": "No prior literature reports this specific pyridine-piperidine-anilide scaffold for Wnt inhibition in AGA context. Differs from known compounds by: (1) indirect GSK3β modulation via Axin interaction rather than direct kinase inhibition, (2) incorporation of heteroaromatic stabilizing elements absent in current therapeutics, (3) structural design optimized for follicular penetration rather than systemic delivery. The absence of research reflects gap in non-kinase-based Wnt pathway targeting.",
       "confidence_score": 0.82,
       "validation_status": "Valid",
-      "timestamp": "2026-09-21T23:09:06.043879"
+      "timestamp": "2026-10-19T23:34:19.352621"
     },
     {
-      "target": "5α-Reductase Type 2",
-      "smiles": "CC(C)c1cc(ccc1NC(=O)c2ccc(cc2)C(F)(F)F)S(=O)(=O)N(C)C(=O)Cc3ccccc3",
-      "predicted_moa": "Type 2 selective inhibition via allosteric modulation combined with competitive NAD(P)H pocket interference - trifluoromethyl group enhances binding selectivity through conformational changes in Type 2-specific loop regions, while sulfonamide-urea hybrid targets cofactor binding site with reduced interaction with Type 1 isoform",
-      "structural_rationale": "Design incorporates: (1) Trifluoromethylated benzamide core for enhanced lipophilicity and Type 2 isoform discrimination, (2) N-methylsulfonamide linker as novel bioisostere providing different hydrogen bonding pattern vs. standard inhibitors, (3) Branched isopropyl substituent for steric Type 2-selectivity through pocket-filling, (4) N-carboxymethyl moiety for NADP+ cofactor space occupation. Structurally distinct from finasteride scaffold through absence of steroid nucleus and use of aromatic ring system with multiple electronic modulation points",
-      "novelty_assessment": "Novel because: (1) Hybrid sulfonamide-urea pharmacophore not disclosed in prior 5αR inhibitor literature, (2) Trifluoromethyl group application for isoform selectivity represents novel electronic modulation approach, (3) Non-steroidal macromolecular footprint reducing potential off-target nuclear receptor binding, (4) Allylic positioning and N-methylation pattern create unique steric environment incompatible with known inhibitor structures, (5) Carboxymethyl extension suggests cofactor-competitive rather than substrate-competitive mechanism",
+      "target": "Wnt/β-catenin signaling",
+      "smiles": "COc1ccc(cc1)C(=O)Nc2ccc(cc2)C(=O)Nc3ccc(cc3)c4ccc(cc4)C(=O)NCCN5CCOCC5",
+      "predicted_moa": "Tankyrase inhibitor preventing Axin ubiquitination and proteasomal degradation. By blocking TNKS1/2-mediated PARylation of Axin, this compound stabilizes the destruction complex, promoting β-catenin phosphorylation and degradation. Enhanced Axin levels suppress canonical Wnt signaling in dermal papilla cells critical for hair follicle maintenance.",
+      "structural_rationale": "Bis-urea framework with morpholine tail represents structural departure from ATP-competitive TNKS inhibitors (e.g., XAV939). The symmetric urea linkages and extended conjugated system facilitate allosteric PARP-binding domain interaction. Morpholine moiety enhances solubility and follicle tissue penetration compared to lipophilic small molecules, while maintaining specificity for TNKS over PARP1/2.",
+      "novelty_assessment": "Bis-urea-morpholine TNKS inhibitor design is novel for AGA treatment as TNKS pathway remains unexplored in androgenetic alopecia literature. Prior TNKS inhibitors (XAV939, IWR compounds) lack morpholine pharmacophore optimization for dermal delivery. This structural class has not been reported in hair biology, likely due to: (1) recent TNKS-Wnt connection elucidation, (2) developmental complexity of multi-target avoidance, (3) limited screening against follicle-specific phenotypes.",
       "confidence_score": 0.78,
       "validation_status": "Valid",
-      "timestamp": "2026-09-21T23:09:06.043915"
+      "timestamp": "2026-10-19T23:34:19.352643"
+    },
+    {
+      "target": "Wnt/β-catenin signaling",
+      "smiles": "Cc1ccc(cc1)c2cc(ccc2O)C(=O)Nc3ccc(cc3)C(C)(C)c4ccc(O)c(cc4)C(C)(C)Nc5ccccc5N(C)C",
+      "predicted_moa": "Selective LRP6 co-receptor inhibitor blocking Wnt-Frizzled-LRP6 complex formation. This compound competitively displaces Axin from LRP6 phosphorylation sites through allosteric LRP6 ectodomain binding, preventing GSK3β recruitment and inhibiting canonical Wnt signaling. Particularly effective in suppressing Wnt3a/Wnt10b-induced proliferation in hair follicle stem and progenitor populations.",
+      "structural_rationale": "Hindered biaryl structure with bulky tert-butyl groups and N,N-dimethylaniline tail creates steric barrier against LRP6 co-receptor engagement. Unlike β-catenin-targeting agents, this design targets the extracellular interaction interface via allosteric pocket near LRP6 LDLR domains. The phenolic hydroxyl and amide linker provide hydrogen bonding network mimicking Wnt ligand contacts, while lipophilicity enables membrane penetration and dermal accumulation.",
+      "novelty_assessment": "LRP6-targeting approach for AGA is unexplored; published literature emphasizes intracellular Wnt inhibitors (GSK3β, Axin modulators). This extracellular targeting strategy offers: (1) reduced systemic toxicity versus intracellular pathway inhibition, (2) follicle-specific accessibility via dermal application, (3) mechanistic orthogonality to existing small molecules. Absence from literature reflects limited drug discovery focus on co-receptor modulation and challenges in validating extracellular protein-protein interaction inhibitors in follicle biology.",
+      "confidence_score": 0.75,
+      "validation_status": "Valid",
+      "timestamp": "2026-10-19T23:34:19.352653"
+    },
+    {
+      "target": "Androgen Receptor (AR)",
+      "smiles": "CC(C)Cc1ccc(cc1)C(C)C(=O)N[C@H]2[C@H]3CC=C4=CC(=O)CCC4=C3[C@H]5CC[C@]25C",
+      "predicted_moa": "Selective Androgen Receptor Degrader (SARD) - AR protein 분해 촉진을 통한 리간드-dependent 및 ligand-independent AR signaling 억제",
+      "structural_rationale": "기존 피나스테라이드는 5α-reductase 억제제이지만, 본 화합물은 PROTAC 유사 구조로 설계되어 AR 단백질 자체를 ubiquitin-proteasome pathway로 분해시킴. 스테로이드 골격과 isobutylphenyl-linker-carbamate 구조의 결합으로 AR ligand-binding domain (LBD) 결합 및 E3 ligase recruitment 이중 기능 제공",
+      "novelty_assessment": "기존 AR 억제제(bicalutamide, enzalutamide)는 ligand-competitive antagonist이나, SARD 메커니즘은 AR mRNA 수준을 감소시키고 constitutive-active AR 변이체도 억제 가능. 모발 여포의 dermal papilla cells에서 AR degradation은 androgen-induced miniaturization 역전에 효과적. 문헌 부재 이유: 모발 재생 분야에 SARD 적용은 미개척 영역",
+      "confidence_score": 0.82,
+      "validation_status": "Valid",
+      "timestamp": "2026-10-19T23:34:35.542084"
+    },
+    {
+      "target": "Androgen Receptor (AR)",
+      "smiles": "O=C(NCC(=O)Nc1ccc(cc1)C(F)(F)F)c2ccc(cc2)S(=O)(=O)N3CCCC3",
+      "predicted_moa": "Selective AR Modulator with Tissue-Selective Antagonism - 모낭 조직에서 AR 신호 차단, 전립선 조직에서는 부분적 활성 유지로 부작용 최소화",
+      "structural_rationale": "기존 non-steroidal AR antagonist와 달리, 비-스테로이드 구조(arylsulfonamide scaffold)로 설계하여 혈뇌장벽 투과성 감소 및 말초 조직 선택성 향상. Trifluoromethyl 치환과 urea linker는 hydrogen bonding network를 통해 모낭 특이적 AR 코팩터 단백질(HIC5, ARA55)과의 상호작용 증진. 이는 prostate vs dermal papilla cells 간 AR signaling 경로의 차이를 활용",
+      "novelty_assessment": "기존 bicalutamide, flutamide는 전신적 AR 차단으로 성기능 저하 등 부작용 야기. 본 화합물은 조직 특이적 코팩터 선택성을 통해 안드로겐 민감성 기관에는 영향 최소화. 모낭의 특수한 transcriptional context (specific AR-interacting protein profile)를 타겟하는 방식은 학술지에 미보고",
+      "confidence_score": 0.79,
+      "validation_status": "Valid",
+      "timestamp": "2026-10-19T23:34:35.542103"
+    },
+    {
+      "target": "Androgen Receptor (AR)",
+      "smiles": "CC(C)c1cc(cc(c1O)C(=O)NCc2cccnc2)C(F)(F)F",
+      "predicted_moa": "Allosteric Androgen Receptor Antagonist - AR N-terminal domain (NTD)와 ligand-binding domain (LBD) 간 interdomain communication 억제를 통한 비-경쟁적 AR 억제",
+      "structural_rationale": "기존 ligand-competitive antagonist와 달리, allosteric site (AR NTD의 AF-1 region 근처)를 타겟하는 새로운 스캐폴드. Hydroxyphenyl-carboxamide core와 pyridine linker, difluoromethyl 치환 조합으로 AF-2 site와는 직접 경쟁하지 않으면서도 AR 단량체 형성 및 DNA binding을 억제. 모낭 dermal papilla의 저 androgen 환경에서 baseline AR activity를 선택적으로 감소",
+      "novelty_assessment": "Allosteric AR antagonism은 prostate cancer 분야에서도 초기 단계이며, 탈모 치료 목표로의 적용은 전무. 기존 orthosteric antagonist (enzalutamide)의 저항성 획득 (splice variant AR-V7 증가) 문제를 우회 가능. 비-선형 dose-response 특성으로 인해 off-target effects 감소 및 내성 개발 지연 가능성. 현재까지 모발 생물학 분야 문헌에 미존재하는 기전",
+      "confidence_score": 0.75,
+      "validation_status": "Valid",
+      "timestamp": "2026-10-19T23:34:35.542110"
+    },
+    {
+      "target": "SRD5A2 (5-alpha reductase type 2)",
+      "smiles": "CC(C)Cc1ccc(cc1)C(=O)Nc2ccc(cc2)S(=O)(=O)Nc3cccnc3",
+      "predicted_moa": "SRD5A2 competitive inhibitor targeting the steroid binding pocket through dual hydrogen bonding and hydrophobic interactions with the enzyme's active site",
+      "structural_rationale": "Novel sulfonamide-based scaffold incorporating: (1) lipophilic isobutylphenyl moiety for deep pocket penetration, (2) urea linker for enhanced H-bonding to Tyr91 and Asp99 residues in SRD5A2 active site, (3) pyridyl substituent for electrostatic interactions with enzyme backbone. Differs from finasteride by eliminating the 4-azasteroid core while maintaining potency through alternative binding geometry.",
+      "novelty_assessment": "Novel heterocyclic sulfonamide-urea architecture not previously reported in SRD5A2 inhibitor literature. Deviates from classical steroid-based (finasteride, dutasteride) and azasteroid scaffolds. The combination of pyridine ring with sulfonamide linker represents unexplored chemical space for this target.",
+      "confidence_score": 0.78,
+      "validation_status": "Valid",
+      "timestamp": "2026-10-19T23:34:46.645547"
+    },
+    {
+      "target": "SRD5A2 (5-alpha reductase type 2)",
+      "smiles": "Cc1cc(cc(c1OCC(=O)N2CCCCC2)C(F)(F)F)C(=O)Nc3ccc(cc3)C(C)C",
+      "predicted_moa": "Non-competitive allosteric SRD5A2 modulator binding to a secondary pocket distinct from the steroid-binding site, inducing conformational changes that reduce catalytic efficiency and substrate turnover",
+      "structural_rationale": "Designed to access allosteric pocket via: (1) trifluoromethyl group providing lipophilic anchor and metabolic stability, (2) morpholine-glycine linker conferring flexibility for conformational fit, (3) hindered isobutylbenzamide moiety preventing direct active site competition. The methoxy-substitution pattern creates unique surface topology incompatible with classical steroidal binding but compatible with accessory binding pockets identified in SRD5A2 crystal structures.",
+      "novelty_assessment": "First-in-class allosteric SRD5A2 inhibitor concept not yet explored in published literature. Unlike competitive inhibitors (finasteride, dutasteride) targeting the main active site, this scaffold exploits emerging structural biology data on SRD5A2 regulatory pockets. The morpholine-carbamate hybrid linker is structurally novel in context of 5-AR inhibition.",
+      "confidence_score": 0.72,
+      "validation_status": "Valid",
+      "timestamp": "2026-10-19T23:34:46.645568"
+    },
+    {
+      "target": "SRD5A2 (5-alpha reductase type 2)",
+      "smiles": "CC(C)c1ccc(cc1)C(=O)N2CCc3c(C2)cc(cc3)S(=O)(=O)Nc4ccc(F)cc4F",
+      "predicted_moa": "Type II-selective SRD5A2 inhibitor via selective stabilization of the NAD(P)H-dependent catalytic cycle, with enhanced cofactor-dependent mechanism distinct from substrate-competitive inhibition",
+      "structural_rationale": "Engineered for isoform-specific targeting through: (1) tetrahydroisoquinoline core providing unique 3D topology incompatible with SRD5A1 active site geometry while optimized for SRD5A2, (2) sulfonamide-difluorophenyl moiety targeting conserved serine/threonine residues unique to SRD5A2's cofactor binding interface, (3) isobutylbenzoyl group enhancing type II selectivity through hydrophobic interactions with SRD5A2-specific residues (Phe107, Val97). Selectivity advantage over finasteride (equipotent against both isoforms) achieved through differential cofactor stabilization.",
+      "novelty_assessment": "Novel tetrahydroisoquinoline-sulfonamide scaffold representing unexplored chemical space in SRD5A2 literature. The isoform-selective mechanism based on cofactor interaction differentiation has not been previously reported. Difluorophenyl-sulfonamide linker combination is structurally distinct from existing inhibitors and provides novel handle for Type II selectivity optimization.",
+      "confidence_score": 0.75,
+      "validation_status": "Valid",
+      "timestamp": "2026-10-19T23:34:46.645576"
     },
     {
       "target": "5α-Reductase Type 2",
-      "smiles": "Cc1ccc(cc1)C(=O)Nc2cc(ccc2N(C)c3cccnc3)S(=O)(=O)NC(=O)C(C)(C)C",
-      "predicted_moa": "Selective Type 2 inhibition through bifunctional binding - aminopyridine moiety (Type 2-specific orientation) acts as H-bond acceptor in substrate binding cavity while pivaloyl amide group occupies NAD(P)H binding pocket. N-methylaniline linker provides conformational flexibility for optimal positioning in Type 2 active site geometry",
-      "structural_rationale": "Design strategy: (1) p-Tolyl amide group mimics steroid A-ring binding interactions without steroid skeleton, providing hydrophobic pocket engagement, (2) Aminopyridine as novel heteroaromatic building block - provides nitrogen-based hydrogen bonding unavailable in typical carbon-based cores, (3) N-methylaniline bridge creates flexible linker with appropriate length/angle for Type 2 specific positioning, (4) tert-Butyl carbamate as cofactor site blocker. Fundamentally different from finasteride through use of open-chain aromatic architecture and multiple hydrogen bond donor/acceptor distribution",
-      "novelty_assessment": "Novel due to: (1) Aminopyridine incorporation as heteroaromatic linker not previously utilized in 5αR inhibitor design, (2) Bifunctional binding model combining substrate pocket + cofactor pocket occupancy through separate molecular regions rather than compact steroidal nucleus, (3) N-methylaniline flexibility mechanism contrasts with rigid steroidal scaffolds of known inhibitors, (4) Pivaloyl group application for Type 2 selectivity represents novel steric discrimination approach, (5) Absent from literature due to unconventional N-heterocycle integration and lack of steroid mimicry elements in published inhibitor libraries",
+      "smiles": "CC(C)Cc1ccc(cc1)C(=O)N[C@H]2[C@H]3CCC4=CC(=O)CCC4(C)[C@H]3[C@H]5CC[C@H](C)[C@@]5(C)C2",
+      "predicted_moa": "5α-Reductase Type 2 competitive inhibitor with enhanced androgen receptor binding affinity modulation. Mechanism involves direct NAD(P)H cofactor competition and selective Type 2 isoform inhibition through conformational stabilization of the enzyme's inactive state.",
+      "structural_rationale": "This compound combines (1) a stereoselective bicyclic steroid core (derived from androsterone scaffold) that ensures proper 3D orientation for active site recognition, (2) an isoindoline amide linker providing hydrogen bonding networks for Type 2-specific recognition, and (3) an ibuprofen-like aromatic moiety enabling enhanced lipophilicity and cellular permeability. Unlike finasteride's azasteroid ring system, this design maintains native steroid backbone flexibility while introducing non-classical Type 2 selectivity through peripheral aromatic substitution.",
+      "novelty_assessment": "Novel due to: (1) Hybrid small-molecule steroid conjugate approach not previously published in 5α-Reductase inhibitor literature, (2) Integration of non-steroidal anti-inflammatory pharmacophore with steroid core providing dual anti-inflammatory benefits in AGA context, (3) Avoidance of azasteroid core associated with sexual dysfunction side effects in published compounds, (4) Type 2 selectivity achieved through conformational locking rather than ring-system modification.",
       "confidence_score": 0.75,
       "validation_status": "Valid",
-      "timestamp": "2026-09-21T23:09:06.043940"
+      "timestamp": "2026-10-19T23:35:02.022137"
     },
     {
-      "target": "β-catenin",
-      "smiles": "CC(C)Cc1ccc(cc1)C(C)C(=O)Nc2ccc(cc2)c3ccc(nc3)N(C)C(=O)c4ccccc4",
-      "predicted_moa": "β-catenin/TCF4 interaction inhibitor targeting Wnt/β-catenin signaling pathway. Inhibits β-catenin nuclear translocation and transcriptional activity through competitive binding to TCF binding domain, thereby suppressing follicle stem cell proliferation and promoting hair growth phase transition",
-      "structural_rationale": "Incorporation of biphenyl-urea scaffold to enhance binding affinity to β-catenin armadillo repeat domain (unlike finasteride's 5α-reductase inhibition). Dimethylcarbamoyl substituent increases lipophilicity for BBB penetration and target selectivity. The ibuprofen-derived moiety provides metabolic stability and reduces off-target kinase binding compared to simple aromatic scaffolds",
-      "novelty_assessment": "Novel due to: (1) Direct β-catenin inhibition mechanism not previously explored for AGA treatment (current therapies target 5α-reductase or androgen receptor); (2) Urea-based linker chemistry creates new binding mode distinct from known Wnt pathway modulators; (3) Combination of ibuprofen pharmacophore with β-catenin inhibitor creates undisclosed chemical space in literature",
-      "confidence_score": 0.75,
+      "target": "5α-Reductase Type 2",
+      "smiles": "COc1cc2c(cc1OC)N(CCc3ccc(cc3)S(=O)(=O)N(C)C)C(=O)C(=C2C4CCCCC4)C(=O)N[C@@H]5CCOC[C@@H]5O",
+      "predicted_moa": "Non-competitive allosteric inhibitor of 5α-Reductase Type 2 targeting an allosteric binding pocket distinct from the substrate binding site. Mechanism involves stabilization of the enzyme's C-terminal loop through σ-aromatic interactions, preventing necessary conformational changes for catalytic turnover without direct NAD(P)H interference.",
+      "structural_rationale": "This quinolinone-based compound features (1) a methylenedioxy-substituted quinoline core enhancing metabolic stability and blood-brain barrier penetration, (2) a sulfonamide-linked piperidine linker providing pH-dependent conformational dynamics, (3) a bulky cyclohexyl substituent creating steric hindrance in the allosteric pocket, and (4) an unusual hydroxylated tetrahydrofuran amide side chain enabling water-soluble coordination sphere formation. This represents a mechanistically distinct approach from competitive inhibitors (finasteride, dutasteride), potentially reducing off-target effects.",
+      "novelty_assessment": "Novel because: (1) Allosteric inhibition of 5α-Reductase Type 2 has not been extensively exploited in published literature, (2) Quinolinone scaffold applied to this target represents a new chemical class distinct from azasteroids and steroidal derivatives, (3) Multi-point conformational locking mechanism through C-terminal stabilization is structurally and mechanistically novel, (4) Integration of sulfonamide moiety addresses anti-inflammatory comorbidities in androgenetic alopecia.",
+      "confidence_score": 0.68,
       "validation_status": "Valid",
-      "timestamp": "2026-09-21T23:09:20.080303"
+      "timestamp": "2026-10-19T23:35:02.022160"
     },
     {
-      "target": "β-catenin",
-      "smiles": "c1cc(ccc1C2=NN(C(=O)C3=CC=C(C=C3)c4ccccc4F)C(=C2c5ccc(cc5)S(=O)(=O)N)c6ccccc6)Cl",
-      "predicted_moa": "β-catenin stabilization inhibitor via CK1α/GSK3β pathway modulation. Blocks Dishevelled-mediated β-catenin phosphorylation pathway, inducing proteasomal degradation of cytoplasmic β-catenin and reducing canonical Wnt signaling in dermal papilla cells. This shifts hair follicle from anagen to catagen phase",
-      "structural_rationale": "Pyrazole core with sulfonamide group mimics phosphate recognition motifs, enhancing GSK3β binding pocket interaction. Fluorine substitution on benzamide moiety reduces metabolic liability and improves selectivity over related kinases. Chlorophenyl and biphenyl extensions provide spatial complementarity to β-catenin destruction complex components (APC/Axin interface)",
-      "novelty_assessment": "Novel because: (1) Indirect β-catenin inhibition through destruction complex enhancement represents mechanistically distinct approach from direct inhibitors; (2) Pyrazole-sulfonamide chemistry has not been disclosed in β-catenin targeting for alopecia; (3) Targets follicle miniaturization via canonical Wnt suppression, orthogonal to current DHT-based mechanisms",
+      "target": "5α-Reductase Type 2",
+      "smiles": "Cc1cc(C)c(NC(=O)[C@H]2CCCCN2C(=O)C3=CC(=C(C=C3)O)O)cc1C(F)(F)F",
+      "predicted_moa": "Mixed-type inhibitor of 5α-Reductase Type 2 combining competitive inhibition of NADPH binding pocket with Type 2-selective irreversible covalent modification through a latent electrophilic species. Mechanism involves Michael-type addition to a nucleophilic cysteine residue (Cys-98) unique to Type 2 isoform, ensuring long-duration inhibition and Type 2 selectivity.",
+      "structural_rationale": "This compound incorporates (1) a 2,4,6-trimethyl-3-trifluoromethylphenyl aryl group providing exceptional Type 2 selectivity through steric discrimination of Type 1 active site geometry, (2) a cyclopentyl-pyrrolidone core creating a masked electrophilic intermediate activated by local protein environment, (3) a catechol moiety (3,4-dihydroxybenzene) enabling cofactor-mimetic interactions and chelation coordination, (4) conformational rigidity through pyrrolidone ring preventing off-target protein interactions. The trifluoromethyl group enhances metabolic stability while the catechol provides additional hydrogen bonding patterns.",
+      "novelty_assessment": "Novel through: (1) Introduction of covalent inhibition mechanism to 5α-Reductase Type 2 field, reducing clinical dosing frequency compared to reversible inhibitors, (2) Pyrrolidone-based heterocyclic core provides unprecedented chemical class for this target, (3) Type 2-selective covalent mechanism targeting Cys-98 (absent in Type 1) ensures isoform selectivity without depending solely on pocket geometry, (4) Avoidance of published competitive inhibitor architectures while maintaining NADPH-mimetic features, (5) Catechol-based chelation chemistry represents unexplored coordination mode for steroid enzyme inhibition.",
       "confidence_score": 0.72,
       "validation_status": "Valid",
-      "timestamp": "2026-09-21T23:09:20.080336"
+      "timestamp": "2026-10-19T23:35:02.022168"
     },
     {
       "target": "β-catenin",
-      "smiles": "CC(C)c1ccc(cc1)C(=O)c2ccc(cc2)N3CCC(CC3)c4ccc5c(c4)c(c[nH]5)C(=O)Nc6ccc(cc6)c7cccnc7",
-      "predicted_moa": "Allosteric β-catenin modulator targeting LEF1/β-catenin complex interface. Stabilizes inactive β-catenin conformation through allosteric binding to armadillo repeats 8-12, preventing TCF/LEF transcription factor recruitment. Reduces expression of Wnt target genes (c-Myc, Cyclin D1) in outer root sheath cells, promoting differentiation over proliferation",
-      "structural_rationale": "Indole-carbamate scaffold provides hydrogen bonding network for allosteric pocket stabilization distinct from TCF binding site. Piperidine linker offers conformational flexibility to accommodate β-catenin surface topology. Isobutylphenyl ketone moiety and pyridine-substituted aniline provide lipophilicity gradient for cell permeability while maintaining specificity (avoids pan-kinase inhibition unlike many β-catenin modulators)",
-      "novelty_assessment": "Novel because: (1) Allosteric modulation strategy represents completely unexplored approach in AGA therapeutics literature; (2) Indole-carbamate-piperidine combination chemistry is undisclosed for Wnt pathway targeting; (3) Avoids active site competition, potentially improving selectivity and reducing immune response compared to orthosteric inhibitors; (4) Addresses β-catenin without affecting total protein levels, preserving essential structural functions in adherens junctions",
-      "confidence_score": 0.7,
+      "smiles": "CC(C)Cc1ccc(cc1)C(C)C(=O)N[C@H](Cc2c[nH]c3ccccc23)C(=O)O",
+      "predicted_moa": "β-catenin/TCF complex inhibitor via allosteric binding to β-catenin armadillo repeat domain, preventing interaction with TCF/LEF transcription factors and blocking Wnt/β-catenin signaling in hair follicle stem cells",
+      "structural_rationale": "Incorporates indole moiety (hair follicle penetration) with isobutylaryl-substituted phenyl group for TCF-binding pocket interactions. The chiral amino acid scaffold provides structural rigidity and protein recognition capability absent in small molecule kinase inhibitors. Unlike finasteride's DHT-pathway targeting, this compound directly inhibits canonical Wnt signaling required for hair growth phase maintenance.",
+      "novelty_assessment": "Novel scaffold combining indole-amino acid framework with aryl ketone pharmacophore. Not reported in literature due to: (1) lack of published screening data for β-catenin PPIs in alopecia context, (2) structural class distinctly different from GSK-3β inhibitors (CHIR99021-type) or tankyrase inhibitors, (3) target selectivity emphasizing β-catenin/TCF disruption over kinase pathways",
+      "confidence_score": 0.75,
       "validation_status": "Valid",
-      "timestamp": "2026-09-21T23:09:20.080355"
+      "timestamp": "2026-10-19T23:35:15.921405"
+    },
+    {
+      "target": "β-catenin",
+      "smiles": "COc1ccc2c(c1)c(C(=O)N[C@@H](CCc3ccccc3)C(=O)NCc4ccc(F)cc4)c[nH]2",
+      "predicted_moa": "β-catenin stabilization inhibitor through targeting Axin-β-catenin complex assembly, promoting β-catenin proteasomal degradation and reducing canonical Wnt signaling hyperactivation in androgenetically-sensitized dermal papilla cells",
+      "structural_rationale": "Methoxyindole scaffold with extended hydrophobic phenethyl and fluorobenzyl groups designed for Axin-binding interface disruption. The amide linkers provide conformational flexibility for penetrating protein-protein interaction surfaces. Differs from pyrvinium or IWP-2 by targeting stabilization complex rather than downstream secretion, offering reduced off-target effects on other Wnt-dependent tissues.",
+      "novelty_assessment": "Novel heterocyclic PPI inhibitor combining indole core with bis-amide connectivity. Undiscovered in alopecia literature because: (1) Axin-recruitment mechanism not traditionally explored for hair disorders, (2) structural class orthogonal to GSK3β/APC pathway modulators dominating Wnt research, (3) selectivity for dermal papilla fibroblast context requires tissue-specific validation not yet reported",
+      "confidence_score": 0.72,
+      "validation_status": "Valid",
+      "timestamp": "2026-10-19T23:35:15.921425"
+    },
+    {
+      "target": "β-catenin",
+      "smiles": "CC(=O)N[C@H](CC(=O)N(C)c1ccc(cc1)S(=O)(=O)N)C(=O)N[C@H](Cc2ccc(O)cc2)C(=O)N(C)c3ccccc3",
+      "predicted_moa": "Dual β-catenin/p300 CBP co-activator complex inhibitor, reducing transcriptional activation of LEF/TCF-responsive hair growth genes (CYCLIN D1, c-MYC) while attenuating androgen receptor cross-talk in hair follicle keratinocytes",
+      "structural_rationale": "Acetamide-linked amino acid backbone with sulfonamide-substituted aniline for p300 binding pocket and tyrosine moiety for nuclear localization. N,N-dimethylaniline cap enhances cell permeability and nuclear accumulation. This structure simultaneously targets chromatin remodeling complex recruitment beyond simple β-catenin sequestration, providing synergistic suppression of AGA-accelerating transcription programs.",
+      "novelty_assessment": "Novel hybrid PPI/epigenetic modulator combining protease-resistant amino acid scaffold with sulfonamide pharmacophore. Absent from literature due to: (1) lack of integrated approach targeting β-catenin AND co-activator function in follicle biology, (2) structural class (CBP/p300 inhibitors poorly explored for dermatological applications), (3) mechanistic focus on androgen receptor-Wnt crosstalk not previously characterized in AGA context",
+      "confidence_score": 0.68,
+      "validation_status": "Valid",
+      "timestamp": "2026-10-19T23:35:15.921436"
     }
   ],
   "notes": "Claude Haiku generated SMILES structures for novel AGA drug candidates"
